@@ -1,0 +1,38 @@
+name: Test CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - '!master'
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js v18.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install pnpm v8.x
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Install deps
+        run: pnpm i
+
+      - name: CI
+        run: npm run ci
+
+      - name: Test and coverage
+        run: npm run test:coverage
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
