@@ -86,7 +86,7 @@ const themeConfig = {
 };
 
 export default defineConfig({
-  apiParser: isProduction ? {} : false,
+  apiParser: {},
   base: '/',
   define: {
     'process.env': process.env,
@@ -97,11 +97,9 @@ export default defineConfig({
   mfsu: isWin ? undefined : {},
   npmClient: 'pnpm',
   publicPath: '/',
-  resolve: isProduction
-    ? {
-        entryFile: './src/index.ts',
-      }
-    : undefined,
+  resolve: {
+    entryFile: './src/index.ts',
+  },
   styles: [
     `html, body { background: transparent;  }
 
