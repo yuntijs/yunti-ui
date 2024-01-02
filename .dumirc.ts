@@ -69,9 +69,9 @@ const themeConfig = {
     repo: 'yuntijs/yunti-ui',
     repoId: 'R_kgDOK7a7AQ',
   },
-  name: 'UI',
+  name: ' UI',
   nav: [
-    { link: '/components/action-icon', title: 'Components' },
+    { link: '/components/logo', title: 'Components' },
     { link: 'https://ant.design/components/overview', mode: 'override', title: 'AntdComponents' },
     { link: '/colors', title: 'Colors' },
     { link: 'https://lucide.dev/icons', mode: 'override', title: 'Icons' },
