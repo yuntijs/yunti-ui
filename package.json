@@ -29,7 +29,8 @@
     "build": "father build",
     "ci": "npm run lint && npm run type-check",
     "clean": "rm -r es umd lib dist coverage .dumi/tmp .eslintcache node_modules/.cache",
-    "dev": "father dev",
+    "dev": "dumi dev",
+    "dev:father": "father dev",
     "docs:build": "dumi build",
     "docs:build-analyze": "ANALYZE=1 dumi build",
     "docs:dev": "dumi dev",
@@ -97,7 +98,7 @@
     "babel-plugin-antd-style": "latest",
     "commitlint": "^18",
     "dumi": "^2",
-    "dumi-theme-lobehub": "latest",
+    "dumi-theme-lobehub": "^1.7.5",
     "eslint": "^8.56.0",
     "father": "^4.3.8",
     "husky": "^8",
@@ -132,9 +133,9 @@
         "/umd/index.min.js"
       ],
       "externals": {
-        "@tenx-ui/materials": ">=1.1.1",
-        "antd": ">=5.4.0",
-        "react": ">=16.9.0"
+        "antd": ">=5",
+        "antd-style": ">=3",
+        "react": ">=18"
       }
     }
   }

@@ -6,6 +6,43 @@ const isProduction = process.env.NODE_ENV === 'production';
 const isWin = process.platform === 'win32';
 
 const themeConfig = {
+  logo: 'https://avatars.githubusercontent.com/u/148947838',
+  footerConfig: {
+    resources: {
+      title: 'Resources',
+      items: [
+        {
+          description: 'CloudNative Components',
+          openExternal: true,
+          title: 'Yunti UI',
+          url: 'https://github.com/yuntijs/yunti-ui',
+        },
+        {
+          description: 'Awesome lint configs',
+          openExternal: true,
+          title: 'Yunti Lint',
+          url: 'https://github.com/yuntijs/yunti-lint',
+        },
+      ],
+    },
+    moreProducts: {
+      title: 'More Products',
+      items: [
+        {
+          description: 'Framework for k8s',
+          openExternal: true,
+          title: 'Kubebb',
+          url: 'https://github.com/kubebb',
+        },
+        {
+          description: 'One-stop LLMOps platform',
+          openExternal: true,
+          title: 'KubeAGI',
+          url: 'https://github.com/kubeagi',
+        },
+      ],
+    },
+  },
   actions: [
     {
       link: homepage,
@@ -26,13 +63,12 @@ const themeConfig = {
   },
   description: 'Yunti UI is an open-source UI component library for building Cloud Native web apps',
   footer: 'Made with ☁️ by YuntiJS',
-
-  // giscus: {
-  //   category: 'Q&A',
-  //   categoryId: 'DIC_kwDOJloKoM4CXsCu',
-  //   repo: 'yuntijs/yunti-ui',
-  //   repoId: 'R_kgDOJloKoA',
-  // },
+  giscus: {
+    category: 'Q&A',
+    categoryId: 'DIC_kwDOK7a7Ac4CcBHb',
+    repo: 'yuntijs/yunti-ui',
+    repoId: 'R_kgDOK7a7AQ',
+  },
   name: 'UI',
   nav: [
     { link: '/components/action-icon', title: 'Components' },

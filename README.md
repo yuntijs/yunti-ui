@@ -33,13 +33,11 @@ English ・ [简体中文](./README.zh-CN.md) ・ [Changelog](./CHANGELOG.md) ·
 
 #### TOC
 
-- [yunti-ui](#yunti-ui) - [TOC](#toc) - [](#)
-  - [📦 Installation](#-installation)
-    - [Compile with NextJS](#compile-with-nextjs)
-  - [☁️ Usage](#-usage)
-  - [⌨️ Local Development](#️-local-development)
-  - [🤝 Contributing](#-contributing)
-  - [🔗 More Products](#-more-products)
+- [📦 Installation](#-installation)
+  - [Compile with NextJS](#compile-with-nextjs)
+- [☁️ Usage](#️-usage)
+- [⌨️ Local Development](#️-local-development)
+- [🤝 Contributing](#-contributing)
 
 ####
 
@@ -111,7 +109,7 @@ Or clone it for local development:
 git clone https://github.com/yuntijs/yunti-ui.git
 cd yunti-ui
 pnpm install
-pnpm start
+pnpm dev
 ```
 
 <div align="right">
@@ -147,8 +145,9 @@ This project is [MIT](./LICENSE) licensed.
 
 <!-- LINK GROUP -->
 
+<!-- [vercel-link]: https://ui.yuntijs.com -->
+
 [back-to-top]: https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square
-[banner]: https://github-production-user-asset-6210df.s3.amazonaws.com/17870709/268452017-960ab8a1-e4b7-4648-beb1-77daf4b6034a.png
 [codespaces-link]: https://codespaces.new/yuntijs/yunti-ui
 [codespaces-shield]: https://github.com/codespaces/badge.svg
 [contributors-contrib]: https://contrib.rocks/image?repo=yuntijs/yunti-ui
@@ -171,10 +170,6 @@ This project is [MIT](./LICENSE) licensed.
 [github-releasedate-shield]: https://img.shields.io/github/release-date/yuntijs/yunti-ui?labelColor=black&style=flat-square
 [github-stars-link]: https://github.com/yuntijs/yunti-ui/network/stargazers
 [github-stars-shield]: https://img.shields.io/github/stars/yuntijs/yunti-ui?color=ffcb47&labelColor=black&style=flat-square
-[yunti-chat]: https://github.com/yuntijs/yunti-chat
-[yunti-commit]: https://github.com/yuntijs/yunti-commit/tree/master/packages/yunti-commit
-[yunti-i18n]: https://github.com/yuntijs/yunti-commit/tree/master/packages/yunti-i18n
-[yunti-theme]: https://github.com/yuntijs/sd-webui-yunti-theme
 [npm-downloads-link]: https://www.npmjs.com/package/@yuntijs/ui
 [npm-downloads-shield]: https://img.shields.io/npm/dt/@yuntijs/ui?labelColor=black&style=flat-square
 [npm-release-link]: https://www.npmjs.com/package/@yuntijs/ui
@@ -182,7 +177,3 @@ This project is [MIT](./LICENSE) licensed.
 [pr-welcome-link]: https://github.com/yuntijs/yunti-chat/pulls
 [pr-welcome-shield]: https://img.shields.io/badge/☁️_pr_welcome-%E2%86%92-ffcb47?labelColor=black&style=for-the-badge
 [profile-link]: https://github.com/yuntijs
-
-<!-- [vercel-link]: https://ui.yuntijs.com -->
-
-[vercel-shield]: https://img.shields.io/website?down_message=offline&label=vercel&labelColor=black&logo=vercel&style=flat-square&up_message=online&url=https%3A%2F%2Fui.yuntijs.com
