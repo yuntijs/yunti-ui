@@ -92,6 +92,7 @@
     "@types/query-string": "^6",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
+    "@vitest/coverage-v8": "latest",
     "@yuntijs/lint": "^1.4.0",
     "antd": "^5.12.5",
     "antd-style": "^3",

@@ -23,6 +23,7 @@ bun.lockb
 .coverage
 .eslintcache
 .stylelintcache
+coverage
 
 # production
 dist
