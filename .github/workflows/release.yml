@@ -5,7 +5,7 @@ on:
     branches:
       - main
       - alpha
-      # - beta
+      - beta
       - rc
 
 jobs:
@@ -45,7 +45,7 @@ jobs:
       - name: Release
         run: npm run release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Sync to cnpm
