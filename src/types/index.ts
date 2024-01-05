@@ -2,7 +2,6 @@ import { type HTMLAttributes } from 'react';
 
 export * from './customStylish';
 export * from './customToken';
-export * from './meta';
 
 export type DivProps = HTMLAttributes<HTMLDivElement>;
 
