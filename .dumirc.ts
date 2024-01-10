@@ -87,7 +87,7 @@ const themeConfig = {
 
 export default defineConfig({
   apiParser: {},
-  base: '/',
+  base: isProduction ? '/yunti-ui/' : '/',
   define: {
     'process.env': process.env,
   },
@@ -96,7 +96,8 @@ export default defineConfig({
   locales: [{ id: 'en-US', name: 'English' }],
   mfsu: isWin ? undefined : {},
   npmClient: 'pnpm',
-  publicPath: '/',
+  publicPath: '/yunti-ui/',
+  outputPath: './dist/yunti-ui/',
   resolve: {
     entryFile: './src/index.ts',
   },
