@@ -1,6 +1,6 @@
 ---
 nav: Components
-group: 数据展示
+group: Data Display
 title: Tree
 description: The Tree component is a list of multi-level structures.
 ---
