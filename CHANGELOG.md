@@ -2,6 +2,34 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.2](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.1...v1.0.0-beta.2)
+
+<sup>Released on **2024-01-10**</sup>
+
+#### ✨ Features
+
+- **components**: Add ConfigProvider, add MonacoEditor.
+- **misc**: Add utils.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **components**: Add ConfigProvider ([fcb449c](https://github.com/yuntijs/yunti-ui/commit/fcb449c))
+- **components**: Add MonacoEditor ([1005ecc](https://github.com/yuntijs/yunti-ui/commit/1005ecc))
+- **misc**: Add utils ([3a831ba](https://github.com/yuntijs/yunti-ui/commit/3a831ba))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## Version 1.0.0-beta.1
 
 <sup>Released on **2024-01-05**</sup>
