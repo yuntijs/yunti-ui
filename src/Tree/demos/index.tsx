@@ -1,5 +1,6 @@
 import { StoryBook, useControls, useCreateStore } from '@lobehub/ui';
-import { Tree, TreeDataNode, TreeProps } from '@yuntijs/ui';
+import type { TreeDataNode, TreeProps } from '@yuntijs/ui';
+import { Tree } from '@yuntijs/ui';
 
 const treeData: TreeDataNode[] = [
   {
