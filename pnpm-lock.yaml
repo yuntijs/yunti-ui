@@ -32,6 +32,9 @@ dependencies:
   react-layout-kit:
     specifier: ^1
     version: 1.7.4(react@18.2.0)
+  url-join:
+    specifier: ^5.0.0
+    version: 5.0.0
 
 devDependencies:
   '@testing-library/react':
@@ -2387,8 +2390,8 @@ packages:
       - supports-color
     dev: false
 
-  /@lobehub/ui@1.125.8(@types/react-dom@18.2.18)(@types/react@18.2.40)(antd-style@3.6.1)(antd@5.12.5)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-2pCdiMdAU3FhMxKi1I87nJGWZrL4z3SzTulNKnPCG2tgmsx/X+KZZGWhN3unGLZpheC2APmrC62ovoKeMFMDVw==}
+  /@lobehub/ui@1.126.0(@types/react-dom@18.2.18)(@types/react@18.2.40)(antd-style@3.6.1)(antd@5.12.5)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-buJ2Vd9yCaw++svhBW2qMu2YkPsURw+92kSkIuZtf76fgdIgXn+QY834AULg8/q1SpXBXXKAYlmJxQoBCNH7vg==}
     peerDependencies:
       antd: '>=5'
       antd-style: '>=3'
@@ -2417,7 +2420,7 @@ packages:
       immer: 10.0.3
       leva: 0.9.35(@types/react-dom@18.2.18)(@types/react@18.2.40)(react-dom@18.2.0)(react@18.2.0)
       lodash-es: 4.17.21
-      lucide-react: 0.304.0(react@18.2.0)
+      lucide-react: 0.308.0(react@18.2.0)
       polished: 4.2.2
       prism-react-renderer: 2.3.1(react@18.2.0)
       query-string: 8.1.0
@@ -7837,7 +7840,7 @@ packages:
     dependencies:
       '@floating-ui/react': 0.26.4(react-dom@18.2.0)(react@18.2.0)
       '@giscus/react': 2.4.0(react-dom@18.2.0)(react@18.2.0)
-      '@lobehub/ui': 1.125.8(@types/react-dom@18.2.18)(@types/react@18.2.40)(antd-style@3.6.1)(antd@5.12.5)(react-dom@18.2.0)(react@18.2.0)
+      '@lobehub/ui': 1.126.0(@types/react-dom@18.2.18)(@types/react@18.2.40)(antd-style@3.6.1)(antd@5.12.5)(react-dom@18.2.0)(react@18.2.0)
       ahooks: 3.7.8(react@18.2.0)
       antd: 5.12.5(react-dom@18.2.0)(react@18.2.0)
       antd-style: 3.6.1(@types/react@18.2.40)(antd@5.12.5)(react-dom@18.2.0)(react@18.2.0)
@@ -7852,7 +7855,7 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       react-layout-kit: 1.7.4(react@18.2.0)
-      styled-components: 6.1.6(react-dom@18.2.0)(react@18.2.0)
+      styled-components: 6.1.8(react-dom@18.2.0)(react@18.2.0)
       use-merge-value: 1.2.0(react@18.2.0)
       zustand: 4.4.7(@types/react@18.2.40)(immer@10.0.3)(react@18.2.0)
     transitivePeerDependencies:
@@ -12338,8 +12341,8 @@ packages:
       react: 18.2.0
     dev: true
 
-  /lucide-react@0.304.0(react@18.2.0):
-    resolution: {integrity: sha512-BlaKhPYo2hcZDjM34DpvypC3DoQ2x1NDugocmJP/G7y/hUmoV+/gK/4eXkIWaWwJ5naD1EBdF5n+XDCiUNXQ2w==}
+  /lucide-react@0.308.0(react@18.2.0):
+    resolution: {integrity: sha512-QC3S4Qi6s5y/w4bhS7sauDG29MsPwV0C5g9/mKkY7/gm3tPpg9tyRQG33g597Q5M3vmE0APcPuOjyQKsF8gnIg==}
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0
     dependencies:
@@ -18425,8 +18428,8 @@ packages:
     dependencies:
       inline-style-parser: 0.1.1
 
-  /styled-components@6.1.6(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-DgTLULSC29xpabJ24bbn1+hulU6vvGFQf4RPwBOJrm8WJFnN42yXpo5voBt3jDSJBa5tBd1L6PqswJjQ0wRKdg==}
+  /styled-components@6.1.8(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-PQ6Dn+QxlWyEGCKDS71NGsXoVLKfE1c3vApkvDYS5KAK+V8fNWGhbSUEo9Gg2iaID2tjLXegEW3bZDUGpofRWw==}
     engines: {node: '>= 16'}
     peerDependencies:
       react: '>= 16.8.0'
