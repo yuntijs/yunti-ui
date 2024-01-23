@@ -24,7 +24,7 @@ export default () => {
       },
       theme: {
         options: ['vs', 'vs-dark', 'hc-light', 'hc-black'],
-        value: 'vs',
+        value: '',
       },
       supportFullScreen: true,
       enableOutline: false,

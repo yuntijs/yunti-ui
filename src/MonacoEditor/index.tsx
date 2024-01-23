@@ -5,13 +5,18 @@ import type {
   IGeneralManacoEditorProps,
   ISingleMonacoEditorProps,
 } from '@alilc/lowcode-plugin-base-monaco-editor/lib/helper';
+import { theme as antdTheme } from 'antd';
 import type { editor as IEditor } from 'monaco-editor';
 import React, { useMemo, useState } from 'react';
 
 import { useCdnFn } from '..';
 
-export * from '@alilc/lowcode-plugin-base-monaco-editor/es/controller';
-export * from '@alilc/lowcode-plugin-base-monaco-editor/es/monaco';
+const { useToken } = antdTheme;
+
+export {
+  type EditorMeta,
+  Controller as MonacoController,
+} from '@alilc/lowcode-plugin-base-monaco-editor/es/controller';
 
 export interface BaseMonacoEditorProps extends IGeneralManacoEditorProps {
   /** Should the editor be read only. See also domReadOnly. Defaults to false. */
@@ -43,6 +48,7 @@ export const BaseMonacoEditor: React.FC<
     lineNumbers = 'on',
     wordWrap = 'off',
     contextmenu = true,
+    theme: themeFromProps,
     minimapEnabled = false,
     version = '0.45.0',
     requireConfig: requireConfigFromProps = {},
@@ -50,6 +56,14 @@ export const BaseMonacoEditor: React.FC<
     onChange,
     ...otherProps
   } = props;
+
+  const token = useToken();
+  const theme = useMemo(() => {
+    if (themeFromProps) {
+      return themeFromProps;
+    }
+    return token.theme.id === 2 ? 'vs-dark' : 'vs';
+  }, [token.theme.id, themeFromProps]);
 
   const [editorInstance, setEditorInstance] = useState<IEditorInstance>();
   const handleEditorDidMount: BaseMonacoEditorProps['editorDidMount'] = (monaco, editor) => {
@@ -64,7 +78,6 @@ export const BaseMonacoEditor: React.FC<
     }
   };
 
-  // @Todo: auto change light/dark theme
   const editorOptions = useMemo(() => {
     const newOps = Object.assign({}, options, {
       readOnly,
@@ -105,6 +118,7 @@ export const BaseMonacoEditor: React.FC<
       onChange={onChange}
       options={editorOptions}
       requireConfig={requireConfig}
+      theme={theme}
       {...otherProps}
     />
   );

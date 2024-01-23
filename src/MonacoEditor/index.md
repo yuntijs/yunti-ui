@@ -71,7 +71,7 @@ export default () => {
 
 - `language` the initial language of the auto created model in the editor.
 
-- `theme` the theme of the editor. Defaults to `vs`, also supports `vs-dark`, `hc-light`, `hc-black`.
+- `theme` the theme of the editor. The default is `vs` or `vs-dark`, which will automatically change with the antd theme according to the antd theme, also supports `vs-dark`, `hc-light`, `hc-black`. If you specify this field, this theme will be fixed.
 
 - `readOnly` Should the editor be read only. See also domReadOnly. Defaults to false.
 

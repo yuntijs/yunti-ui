@@ -14,7 +14,6 @@ export default () => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        background: '#fff',
         height: '100vh',
       }}
     >

@@ -81,13 +81,13 @@ const nextConfig = {
 > and it is recommended to use [antd-style](https://ant-design.github.io/antd-style/) as the default css-in-js styling solution.
 
 ```tsx
-import { ThemeProvider } from '@yuntijs/ui';
-import { Button } from 'antd';
+import { ConfigProvider } from '@yuntijs/ui';
+import { Logo } from 'antd';
 
 export default () => (
-  <ThemeProvider>
-    <Button>Hello YuntiUI</Button>
-  </ThemeProvider>
+  <ConfigProvider>
+    <Logo />
+  </ConfigProvider>
 );
 ```
 
@@ -174,6 +174,6 @@ This project is [MIT](./LICENSE) licensed.
 [npm-downloads-shield]: https://img.shields.io/npm/dt/@yuntijs/ui?labelColor=black&style=flat-square
 [npm-release-link]: https://www.npmjs.com/package/@yuntijs/ui
 [npm-release-shield]: https://img.shields.io/npm/v/@yuntijs/ui?color=369eff&labelColor=black&logo=npm&logoColor=white&style=flat-square
-[pr-welcome-link]: https://github.com/yuntijs/yunti-chat/pulls
+[pr-welcome-link]: https://github.com/yuntijs/yunti-ui/pulls
 [pr-welcome-shield]: https://img.shields.io/badge/☁️_pr_welcome-%E2%86%92-ffcb47?labelColor=black&style=for-the-badge
 [profile-link]: https://github.com/yuntijs
