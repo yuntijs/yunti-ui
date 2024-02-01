@@ -5,13 +5,11 @@ import type {
   IGeneralManacoEditorProps,
   ISingleMonacoEditorProps,
 } from '@alilc/lowcode-plugin-base-monaco-editor/lib/helper';
-import { theme as antdTheme } from 'antd';
+import { useThemeMode } from 'antd-style';
 import type { editor as IEditor } from 'monaco-editor';
 import React, { useMemo, useState } from 'react';
 
 import { useCdnFn } from '..';
-
-const { useToken } = antdTheme;
 
 export {
   type EditorMeta,
@@ -57,13 +55,13 @@ export const BaseMonacoEditor: React.FC<
     ...otherProps
   } = props;
 
-  const token = useToken();
+  const { isDarkMode } = useThemeMode();
   const theme = useMemo(() => {
     if (themeFromProps) {
       return themeFromProps;
     }
-    return token.theme.id === 2 ? 'vs-dark' : 'vs';
-  }, [token.theme.id, themeFromProps]);
+    return isDarkMode ? 'vs-dark' : 'vs';
+  }, [isDarkMode, themeFromProps]);
 
   const [editorInstance, setEditorInstance] = useState<IEditorInstance>();
   const handleEditorDidMount: BaseMonacoEditorProps['editorDidMount'] = (monaco, editor) => {
