@@ -1,7 +1,7 @@
 import { StoryBook, useControls, useCreateStore } from '@lobehub/ui';
 import { MonacoDiffEditor, MonacoDiffEditorProps } from '@yuntijs/ui';
 
-import { original, value } from '../data/diff';
+import { original, value } from './data/diff';
 
 export default () => {
   const store = useCreateStore();

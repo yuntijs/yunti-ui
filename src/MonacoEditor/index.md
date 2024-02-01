@@ -51,11 +51,11 @@ export default () => {
 
 ### BaseMonacoEditor
 
-<code src="./demos/playground/index.tsx" center></code>
+<code src="./demos/Playground.tsx" center></code>
 
 ### DiffMonacoEditor
 
-<code src="./demos/playground/DiffEditor2.tsx" center></code>
+<code src="./demos/DiffEditorPlayground.tsx" center></code>
 
 ## APIs
 
