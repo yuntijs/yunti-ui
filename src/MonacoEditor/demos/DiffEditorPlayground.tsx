@@ -5,7 +5,7 @@ import { original, value } from './data/diff';
 
 export default () => {
   const store = useCreateStore();
-  const control: MonacoDiffEditorProps = useControls(
+  const control: MonacoDiffEditorProps | any = useControls(
     {
       readOnly: false,
       lineNumbers: {

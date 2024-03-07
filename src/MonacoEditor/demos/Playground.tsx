@@ -3,7 +3,7 @@ import { MonacoEditor, MonacoEditorProps } from '@yuntijs/ui';
 
 export default () => {
   const store = useCreateStore();
-  const control: MonacoEditorProps = useControls(
+  const control: MonacoEditorProps | any = useControls(
     {
       readOnly: false,
       lineNumbers: {
