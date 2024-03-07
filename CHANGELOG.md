@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.7](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.6...v1.0.0-beta.7)
+
+<sup>Released on **2024-03-07**</sup>
+
+#### ✨ Features
+
+- **monaco-editor**: Support fullscreen toggle.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **monaco-editor**: Support fullscreen toggle ([bea77d9](https://github.com/yuntijs/yunti-ui/commit/bea77d9))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.6](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.5...v1.0.0-beta.6)
 
 <sup>Released on **2024-02-01**</sup>
