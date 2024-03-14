@@ -2,6 +2,39 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.8](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.7...v1.0.0-beta.8)
+
+<sup>Released on **2024-03-14**</sup>
+
+#### ✨ Features
+
+- **misc**: Add SliderInput component.
+
+#### 🐛 Bug Fixes
+
+- **MonacoEditor**: Fix fullscreeen icon z-index issue.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **misc**: Add SliderInput component ([52fdc85](https://github.com/yuntijs/yunti-ui/commit/52fdc85))
+
+#### What's fixed
+
+- **MonacoEditor**: Fix fullscreeen icon z-index issue ([0bd617e](https://github.com/yuntijs/yunti-ui/commit/0bd617e))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.7](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.6...v1.0.0-beta.7)
 
 <sup>Released on **2024-03-07**</sup>
