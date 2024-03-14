@@ -28,7 +28,6 @@ export const useStyles = createStyles(
         cursor: pointer;
 
         position: absolute;
-        z-index: 9999;
 
         width: 20px;
         height: 20px;
@@ -43,6 +42,7 @@ export const useStyles = createStyles(
       }
 
       .base-monaco-full-screen-icon-cancel {
+        z-index: 9999;
         top: 10px;
         right: 138px;
         background-image: url(${fullScreenCancelIcon});
