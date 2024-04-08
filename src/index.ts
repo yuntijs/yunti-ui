@@ -7,6 +7,7 @@ export * from './Tree';
 
 // ~ custom antd
 export * from './Alert';
+export * from './Card';
 
 // ~ antd
 export {
@@ -20,6 +21,20 @@ export {
   type AutoCompleteProps,
   Avatar,
   type AvatarProps,
+  BackTop,
+  type BackTopProps,
+  Badge, // @todo composed type
+  type BadgeProps,
+  Button, // @todo dependence unifiedLink. link type, hover primary color, back button
+  type ButtonProps,
+  Calendar,
+  type CalendarProps,
+  Carousel,
+  type CarouselProps,
+  Checkbox,
+  type CheckboxProps,
+  ColorPicker,
+  type ColorPickerProps,
 } from 'antd';
 
 // ~ antd-style
