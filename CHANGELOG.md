@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.9](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.8...v1.0.0-beta.9)
+
+<sup>Released on **2024-04-08**</sup>
+
+#### ✨ Features
+
+- **misc**: Add Alert component.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **misc**: Add Alert component ([c66b6c9](https://github.com/yuntijs/yunti-ui/commit/c66b6c9))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.8](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.7...v1.0.0-beta.8)
 
 <sup>Released on **2024-03-14**</sup>
