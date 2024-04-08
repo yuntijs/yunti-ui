@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.10](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.9...v1.0.0-beta.10)
+
+<sup>Released on **2024-04-08**</sup>
+
+#### ✨ Features
+
+- **misc**: Add Card component.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **misc**: Add Card component ([5dab5f6](https://github.com/yuntijs/yunti-ui/commit/5dab5f6))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.9](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.8...v1.0.0-beta.9)
 
 <sup>Released on **2024-04-08**</sup>
