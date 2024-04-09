@@ -8,6 +8,7 @@ export * from './Tree';
 // ~ custom antd
 export * from './Alert';
 export * from './Card';
+export * from './Descriptions';
 
 // ~ antd
 export {
@@ -31,11 +32,29 @@ export {
   type CalendarProps,
   Carousel,
   type CarouselProps,
+  Cascader,
+  type CascaderProps,
   Checkbox,
   type CheckboxProps,
+  Col,
+  Collapse,
+  type CollapseProps,
   ColorPicker,
   type ColorPickerProps,
+  type ColProps, // @todo center style
+  DatePicker,
+  type DatePickerProps,
 } from 'antd';
+
+// ~ @lobehub/ui
+export {
+  Highlighter,
+  type HighlighterProps,
+  Markdown,
+  type MarkdownProps,
+  SyntaxHighlighter,
+  type SyntaxHighlighterProps,
+} from '@lobehub/ui';
 
 // ~ antd-style
 export { useResponsive, useTheme, useThemeMode } from 'antd-style';
