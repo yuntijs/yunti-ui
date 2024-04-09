@@ -9,6 +9,7 @@ export * from './Tree';
 export * from './Alert';
 export * from './Card';
 export * from './Descriptions';
+export * from './Divider';
 
 // ~ antd
 export {
