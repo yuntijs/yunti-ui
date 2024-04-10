@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.15](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.14...v1.0.0-beta.15)
+
+<sup>Released on **2024-04-10**</sup>
+
+#### ✨ Features
+
+- **misc**: Add component: FormHelper.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **misc**: Add component: FormHelper ([b28cae4](https://github.com/yuntijs/yunti-ui/commit/b28cae4))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.14](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.13...v1.0.0-beta.14)
 
 <sup>Released on **2024-04-10**</sup>
