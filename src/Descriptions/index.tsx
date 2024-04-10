@@ -11,7 +11,6 @@ export interface CustomDescriptionsProps {
   borderedBottomDashed?: boolean;
   borderedTop?: boolean;
   borderedTopDashed?: boolean;
-  itemStyle?: React.CSSProperties;
 }
 export interface DescriptionsProps extends AntdDescriptionsProps, CustomDescriptionsProps {}
 
@@ -24,7 +23,6 @@ export const Descriptions: React.FC<DescriptionsProps> & {
     borderedBottomDashed,
     borderedTop,
     borderedTopDashed,
-    itemStyle,
     ...otherProps
   } = props;
   const { styles, cx } = useStyles({
@@ -32,7 +30,6 @@ export const Descriptions: React.FC<DescriptionsProps> & {
     borderedBottomDashed,
     borderedTop,
     borderedTopDashed,
-    itemStyle,
     size: otherProps.size,
   });
   return <AntdDescriptions {...otherProps} className={cx(styles.custom, className)} />;
