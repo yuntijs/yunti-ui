@@ -11,6 +11,7 @@ export * from './Card';
 export * from './Descriptions';
 export * from './Divider';
 export * from './Drawer';
+export * from './FormHelper';
 export * from './Modal';
 
 // ~ antd
@@ -64,7 +65,7 @@ export {
   type FormRule,
   Grid,
   Image,
-  ImageProps,
+  type ImageProps,
   Input,
   InputNumber,
   type InputNumberProps,
