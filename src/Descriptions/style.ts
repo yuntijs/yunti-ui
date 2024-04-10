@@ -10,7 +10,6 @@ export const useStyles = createStyles(
       borderedBottomDashed,
       borderedTop,
       borderedTopDashed,
-      itemStyle,
       size,
     }: DescriptionsProps
   ) => {
@@ -20,21 +19,14 @@ export const useStyles = createStyles(
       default: `${token.paddingSM}px ${token.paddingLG}px`,
     };
     const hasCustomSizeStyle = borderedBottom || borderedBottomDashed;
-    const itemStyleString =
-      itemStyle &&
-      Object.keys(itemStyle)
-        // @ts-ignore
-        .map(key => `${key}:${itemStyle[key]};`)
-        .join('');
     return {
       custom: css`
         .${prefixCls}-descriptions-item-content {
           align-items: center !important;
         }
         .${prefixCls}-descriptions-row > td {
-          padding-bottom: 8px !important;
           padding-top: 8px !important;
-          ${itemStyleString}
+          padding-bottom: 8px !important;
         }
         ${hasCustomSizeStyle &&
         size &&
