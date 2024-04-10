@@ -2,6 +2,39 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.12](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.11...v1.0.0-beta.12)
+
+<sup>Released on **2024-04-10**</sup>
+
+#### ♻ Code Refactoring
+
+- **Descriptions**: Delete itemStyle prop.
+
+#### ✨ Features
+
+- **misc**: Add Divider Component.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### Code refactoring
+
+- **Descriptions**: Delete itemStyle prop ([c1904b9](https://github.com/yuntijs/yunti-ui/commit/c1904b9))
+
+#### What's improved
+
+- **misc**: Add Divider Component ([5c56228](https://github.com/yuntijs/yunti-ui/commit/5c56228))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.11](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.10...v1.0.0-beta.11)
 
 <sup>Released on **2024-04-09**</sup>
