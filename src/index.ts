@@ -10,6 +10,7 @@ export * from './Alert';
 export * from './Card';
 export * from './Descriptions';
 export * from './Divider';
+export * from './Drawer';
 
 // ~ antd
 export {
@@ -45,6 +46,12 @@ export {
   type ColProps, // @todo center style
   DatePicker,
   type DatePickerProps,
+  Dropdown,
+  type DropDownProps,
+  Flex,
+  type FlexProps,
+  Space,
+  type SpaceProps,
 } from 'antd';
 
 // ~ @lobehub/ui
