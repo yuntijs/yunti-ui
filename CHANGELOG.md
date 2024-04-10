@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.13](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.12...v1.0.0-beta.13)
+
+<sup>Released on **2024-04-10**</sup>
+
+#### ✨ Features
+
+- **misc**: Add Drawer component.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **misc**: Add Drawer component ([baeb103](https://github.com/yuntijs/yunti-ui/commit/baeb103))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.12](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.11...v1.0.0-beta.12)
 
 <sup>Released on **2024-04-10**</sup>
