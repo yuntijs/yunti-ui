@@ -7,11 +7,13 @@ export * from './Tree';
 
 // ~ custom antd
 export * from './Alert';
+export * from './App';
 export * from './Card';
 export * from './Descriptions';
 export * from './Divider';
 export * from './Drawer';
 export * from './Modal';
+export * from './notification';
 
 // ~ antd
 export {
@@ -19,8 +21,6 @@ export {
   type AffixProps,
   Anchor,
   type AnchorProps,
-  App,
-  type AppProps,
   AutoComplete,
   type AutoCompleteProps,
   Avatar,
