@@ -2,6 +2,32 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.16](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.15...v1.0.0-beta.16)
+
+<sup>Released on **2024-04-12**</sup>
+
+#### ✨ Features
+
+- **misc**: Add Notification component, add Radio component.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **misc**: Add Notification component ([1e5a0cf](https://github.com/yuntijs/yunti-ui/commit/1e5a0cf))
+- **misc**: Add Radio component ([14ae57c](https://github.com/yuntijs/yunti-ui/commit/14ae57c))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.15](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.14...v1.0.0-beta.15)
 
 <sup>Released on **2024-04-10**</sup>
