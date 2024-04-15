@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.17](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.16...v1.0.0-beta.17)
+
+<sup>Released on **2024-04-15**</sup>
+
+#### ✨ Features
+
+- **misc**: Add Table component.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **misc**: Add Table component ([9360db4](https://github.com/yuntijs/yunti-ui/commit/9360db4))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.16](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.15...v1.0.0-beta.16)
 
 <sup>Released on **2024-04-12**</sup>
