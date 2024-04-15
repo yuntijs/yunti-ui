@@ -16,6 +16,7 @@ export * from './Modal';
 export * from './notification';
 export * from './Radio';
 export * from './Table';
+export * from './Typography';
 
 // ~ antd
 export {
@@ -153,8 +154,6 @@ export {
   type TreeProps,
   TreeSelect,
   type TreeSelectProps,
-  Typography,
-  type TypographyProps,
   Upload,
   type UploadFile,
   type UploadProps,

@@ -82,6 +82,7 @@
     "@ant-design/icons": "^5",
     "@babel/runtime": "^7",
     "@lobehub/ui": "^1",
+    "dayjs": "^1.11.10",
     "leva": "^0",
     "lodash-es": "^4",
     "lucide-react": "latest",
