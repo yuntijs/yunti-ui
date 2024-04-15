@@ -98,7 +98,7 @@
     "@types/react-dom": "^18",
     "@vitest/coverage-v8": "latest",
     "@yuntijs/lint": "^1.4.0",
-    "antd": "^5.12.5",
+    "antd": "^5.16.1",
     "antd-style": "^3",
     "babel-plugin-antd-style": "latest",
     "commitlint": "^18",

@@ -15,6 +15,7 @@ export * from './Drawer';
 export * from './Modal';
 export * from './notification';
 export * from './Radio';
+export * from './Table';
 
 // ~ antd
 export {
@@ -126,13 +127,6 @@ export {
   type SubMenuProps,
   Switch,
   type SwitchProps,
-  Table,
-  type TableColumnGroupType,
-  type TableColumnProps,
-  type TableColumnsType,
-  type TableColumnType,
-  type TablePaginationConfig,
-  type TableProps,
   type TabPaneProps,
   Tabs,
   type TabsProps,
