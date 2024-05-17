@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.21](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.20...v1.0.0-beta.21)
+
+<sup>Released on **2024-05-17**</sup>
+
+#### 🐛 Bug Fixes
+
+- **Page**: Fix divider issue for descriptions.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **Page**: Fix divider issue for descriptions ([e77b58c](https://github.com/yuntijs/yunti-ui/commit/e77b58c))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.20](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.19...v1.0.0-beta.20)
 
 <sup>Released on **2024-05-17**</sup>
