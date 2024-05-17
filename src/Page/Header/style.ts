@@ -19,12 +19,12 @@ export const useStyles = createStyles(
         font-weight: 700;
       `,
       descriptions: css`
-        font-size: ${token.fontSizeSM}px;
+        font-size: ${token.fontSize}px;
         color: ${token.colorTextSecondary};
         .${prefixCls}-badge.${prefixCls}-badge-status {
-          font-size: ${token.fontSizeSM}px;
+          font-size: ${token.fontSize}px;
           & > .${prefixCls}-badge-status-text {
-            font-size: ${token.fontSizeSM}px;
+            font-size: ${token.fontSize}px;
             color: ${token.colorTextSecondary};
           }
         }
