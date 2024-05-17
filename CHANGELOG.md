@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.19](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.18...v1.0.0-beta.19)
+
+<sup>Released on **2024-05-17**</sup>
+
+#### ✨ Features
+
+- **misc**: Add Page component.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **misc**: Add Page component ([a1d3fea](https://github.com/yuntijs/yunti-ui/commit/a1d3fea))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.18](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.17...v1.0.0-beta.18)
 
 <sup>Released on **2024-04-17**</sup>
