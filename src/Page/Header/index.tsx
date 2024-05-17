@@ -66,8 +66,12 @@ export const PageHeader: React.FC<PageHeaderProps> = props => {
     const descriptionsElement: React.ReactNode[] = [];
     for (const [index, desc] of descriptions.entries()) {
       const { icon: descIcon, text } = desc;
+      if (status || index >= 1) {
+        descriptionsElement.push(
+          <Divider dashed={false} key={`divider-${index}`} type="vertical" />
+        );
+      }
       descriptionsElement.push(
-        <Divider dashed={false} key={`divider-${index}`} type="vertical" />,
         <Flex gap={4} key={`desc-${index}`}>
           <Tooltip title={descIcon?.tooltip}>{descIcon?.content}</Tooltip>
           <span>{text}</span>
