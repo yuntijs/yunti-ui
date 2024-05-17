@@ -12,6 +12,7 @@ export const useStyles = createStyles(
       icon: css`
         width: 64px;
         height: 64px;
+        background-color: ${token.colorFillTertiary};
         border-radius: ${token.borderRadiusLG}px;
       `,
       title: css`

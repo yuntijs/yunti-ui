@@ -100,7 +100,7 @@ export const PageHeader: React.FC<PageHeaderProps> = props => {
   if (loading) {
     return (
       <Flex className={cx(styles.root, className)} gap={20}>
-        {icon && <Skeleton.Avatar active shape="square" size={64} />}
+        <Skeleton.Avatar active shape="square" size={64} />
         <Flex flex="2" justify="space-between" vertical>
           <Skeleton.Input active size={25 as any} />
           <Skeleton.Input active size={18 as any} />
