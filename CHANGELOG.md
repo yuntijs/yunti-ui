@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.20](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.19...v1.0.0-beta.20)
+
+<sup>Released on **2024-05-17**</sup>
+
+#### 🐛 Bug Fixes
+
+- **Page**: Change font size of descriptions text to 14.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **Page**: Change font size of descriptions text to 14 ([6563223](https://github.com/yuntijs/yunti-ui/commit/6563223))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.19](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.18...v1.0.0-beta.19)
 
 <sup>Released on **2024-05-17**</sup>
