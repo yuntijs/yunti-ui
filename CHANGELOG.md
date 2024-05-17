@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.22](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.21...v1.0.0-beta.22)
+
+<sup>Released on **2024-05-17**</sup>
+
+#### 🐛 Bug Fixes
+
+- **Page**: Fix icon loading.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **Page**: Fix icon loading ([c63776b](https://github.com/yuntijs/yunti-ui/commit/c63776b))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.21](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.20...v1.0.0-beta.21)
 
 <sup>Released on **2024-05-17**</sup>
