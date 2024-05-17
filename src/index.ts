@@ -15,6 +15,7 @@ export * from './Drawer';
 export * from './FormHelper';
 export * from './Modal';
 export * from './notification';
+export * from './Page';
 export * from './Radio';
 export * from './Table';
 export * from './Typography';

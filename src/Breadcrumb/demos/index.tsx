@@ -4,16 +4,16 @@ import { Breadcrumb } from '@yuntijs/ui';
 
 const items = [
   {
-    title: 'Home',
-  },
-  {
-    title: 'Application Center',
-  },
-  {
+    path: '/apps',
     title: 'Application List',
   },
   {
-    title: 'An Application',
+    path: '/detail/app-1',
+    title: 'Detail',
+  },
+  {
+    path: '/versions',
+    title: 'Version',
   },
 ];
 

@@ -39,7 +39,8 @@ export interface CustomDividerProps {
 export interface DividerProps extends AntdDividerProps, CustomDividerProps {}
 
 export const Divider: React.FC<DividerProps> = props => {
-  const { mode, content, defaultOpen, iconPlacement, openIcon, closeIcon, ...otherProps } = props;
+  const { mode, content, defaultOpen, iconPlacement, openIcon, closeIcon, type, ...otherProps } =
+    props;
 
   const { styles } = useStyles({});
 
@@ -49,12 +50,12 @@ export const Divider: React.FC<DividerProps> = props => {
   const closeIconDom = closeIcon ? closeIcon : <MinusSquareOutlined />;
   const openIconDom = openIcon ? openIcon : <PlusSquareOutlined />;
   const iconDom = canExpanded && <span>{open ? closeIconDom : openIconDom}</span>;
-  if (mode === 'line') {
-    return <AntdDivider {...otherProps} />;
+  if (mode === 'line' || type === 'vertical') {
+    return <AntdDivider type={type} {...otherProps} />;
   }
   return (
     <>
-      <AntdDivider {...otherProps}>
+      <AntdDivider type={type} {...otherProps}>
         <span
           className={canExpanded ? styles.custom : ''}
           onClick={() => {
