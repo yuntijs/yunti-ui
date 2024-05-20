@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.24](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.23...v1.0.0-beta.24)
+
+<sup>Released on **2024-05-20**</sup>
+
+#### 💄 Styles
+
+- **Page**: Remove header background and border.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### Styles
+
+- **Page**: Remove header background and border ([ebc3110](https://github.com/yuntijs/yunti-ui/commit/ebc3110))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.23](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.22...v1.0.0-beta.23)
 
 <sup>Released on **2024-05-20**</sup>
