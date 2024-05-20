@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.25](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.24...v1.0.0-beta.25)
+
+<sup>Released on **2024-05-20**</sup>
+
+#### ✨ Features
+
+- **Page**: Support page status and header bordered.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **Page**: Support page status and header bordered ([b9ceefd](https://github.com/yuntijs/yunti-ui/commit/b9ceefd))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.24](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.23...v1.0.0-beta.24)
 
 <sup>Released on **2024-05-20**</sup>
