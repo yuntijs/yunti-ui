@@ -5,9 +5,9 @@ export const useStyles = createStyles(
     return {
       root: css`
         padding: ${token.padding}px;
-        background-color: ${token.colorBgBase};
+        /* background-color: ${token.colorBgBase};
         border-radius: ${token.borderRadius}px;
-        box-shadow: ${token.boxShadowTertiary};
+        box-shadow: ${token.boxShadowTertiary}; */
       `,
       icon: css`
         width: 64px;
