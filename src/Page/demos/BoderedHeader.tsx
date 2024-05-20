@@ -7,10 +7,10 @@ import { useStyles } from './style';
 
 const { Breadcrumb, Header, Content } = Page;
 
-const PageLoadingDemo = () => {
+const PageBorderedHeaderDemo = () => {
   const { styles } = useStyles();
   return (
-    <Page className={styles.root} loading>
+    <Page className={styles.root}>
       <Breadcrumb items={[{ title: '插件列表', path: '/plugins' }, { title: '插件详情' }]} />
       <Header
         bordered
@@ -24,4 +24,4 @@ const PageLoadingDemo = () => {
   );
 };
 
-export default PageLoadingDemo;
+export default PageBorderedHeaderDemo;

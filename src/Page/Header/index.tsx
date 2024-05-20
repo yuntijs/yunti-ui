@@ -9,6 +9,8 @@ import { HeaderButtonGroup, type HeaderButtonGroupProps } from './ButtonGroup';
 import { useStyles } from './style';
 
 export interface PageHeaderProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
+  /** 是否有边框，默认没有 */
+  bordered?: boolean;
   /** 状态 */
   status?: {
     status: BadgeProps['status'];
@@ -50,9 +52,10 @@ export const PageHeader: React.FC<PageHeaderProps> = props => {
     descriptionsRender,
     extraContent = {},
     extraContentRender,
+    bordered,
     ...otherProps
   } = props;
-  const { styles, cx } = useStyles();
+  const { styles, cx } = useStyles({ bordered });
 
   const renderTitle = useCallback(() => {
     const titleElement = <span className={styles.title}>{title}</span>;
@@ -95,14 +98,16 @@ export const PageHeader: React.FC<PageHeaderProps> = props => {
     return buttons;
   }, [extraContent, extraContentRender]);
 
-  const { loading } = useContext(PageContext);
+  const { loading, status: pageStatus } = useContext(PageContext);
 
   if (loading) {
     return (
       <Flex className={cx(styles.root, className)} gap={20}>
         <Skeleton.Avatar active shape="square" size={64} />
-        <Flex flex="2" justify="space-between" vertical>
-          <Skeleton.Input active size={25 as any} />
+        <Flex className={styles.content} flex="2" justify="space-between" vertical>
+          <div className={styles.titleBox}>
+            <Skeleton.Input active size={25 as any} />
+          </div>
           <Skeleton.Input active size={18 as any} />
         </Flex>
         <Flex align="center" flex="0 0 140px" justify="flex-end">
@@ -110,6 +115,10 @@ export const PageHeader: React.FC<PageHeaderProps> = props => {
         </Flex>
       </Flex>
     );
+  }
+
+  if (pageStatus) {
+    return null;
   }
 
   return (

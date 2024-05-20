@@ -1,14 +1,18 @@
 import { createStyles } from 'antd-style';
 
 export const useStyles = createStyles(
-  ({ css, token, prefixCls }) => {
+  ({ css, token, prefixCls }, { bordered = false }: { bordered?: boolean }) => {
     return {
-      root: css`
-        padding: ${token.padding}px;
-        /* background-color: ${token.colorBgBase};
-        border-radius: ${token.borderRadius}px;
-        box-shadow: ${token.boxShadowTertiary}; */
-      `,
+      root: bordered
+        ? css`
+            padding: ${token.padding}px;
+            background-color: ${token.colorBgBase};
+            border-radius: ${token.borderRadius}px;
+            box-shadow: ${token.boxShadowTertiary};
+          `
+        : css`
+            padding: ${token.padding}px 0;
+          `,
       icon: css`
         width: 64px;
         height: 64px;

@@ -1,16 +1,14 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useContext, useEffect } from 'react';
 
 import { Breadcrumb } from '../../Breadcrumb';
 import type { BreadcrumbProps } from '../../Breadcrumb';
+import { PageContext, PageContextValue } from '../PageContext';
 
-export interface PageBreadcrumbProps extends BreadcrumbProps {
-  /** Link component */
-  Link?: typeof React.Component | React.FC;
-}
+export type PageBreadcrumbProps = BreadcrumbProps;
 
-interface BreadcrumbLinkProps extends React.HtmlHTMLAttributes<HTMLElement> {
+export interface BreadcrumbLinkProps extends React.HtmlHTMLAttributes<HTMLElement> {
   to: string;
-  Link?: PageBreadcrumbProps['Link'];
+  Link?: PageContextValue['Link'];
 }
 const BreadcrumbLink: React.FC<BreadcrumbLinkProps> = props => {
   const { to, Link, children, ...otherProps } = props;
@@ -29,7 +27,11 @@ const BreadcrumbLink: React.FC<BreadcrumbLinkProps> = props => {
 };
 
 export const PageBreadcrumb: React.FC<PageBreadcrumbProps> = props => {
-  const { Link, ...otherProps } = props;
+  const { Link, breadcrumb } = useContext(PageContext);
+
+  useEffect(() => {
+    breadcrumb?.setItems?.(props.items);
+  }, [props.items]);
 
   // @ts-ignore
   const itemRender = useCallback<BreadcrumbProps['itemRender']>(
@@ -49,5 +51,5 @@ export const PageBreadcrumb: React.FC<PageBreadcrumbProps> = props => {
     [Link]
   );
 
-  return <Breadcrumb itemRender={itemRender} {...otherProps} />;
+  return <Breadcrumb itemRender={itemRender} {...props} />;
 };

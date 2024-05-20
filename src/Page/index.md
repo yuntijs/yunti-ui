@@ -78,6 +78,16 @@ export default IndexPage;
 
 <code src="./demos/Loading.tsx"></code>
 
+### Border Header sample
+
+<code src="./demos/BoderedHeader.tsx"></code>
+
+### Error status sample
+
+When specify `status` of `Page`, the `Content` will be rendered as `Result`. Support `403`, `404` and `500`.
+
+<code src="./demos/ErrorStatus.tsx"></code>
+
 ## API
 
 待补充
