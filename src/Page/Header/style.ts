@@ -4,7 +4,7 @@ export const useStyles = createStyles(
   ({ css, token, prefixCls }) => {
     return {
       root: css`
-        padding: 16px 24px;
+        padding: ${token.padding}px;
         background-color: ${token.colorBgBase};
         border-radius: ${token.borderRadius}px;
         box-shadow: ${token.boxShadowTertiary};
@@ -14,6 +14,12 @@ export const useStyles = createStyles(
         height: 64px;
         background-color: ${token.colorFillTertiary};
         border-radius: ${token.borderRadiusLG}px;
+      `,
+      content: css`
+        padding: ${token.paddingXXS}px 0;
+      `,
+      titleBox: css`
+        margin-bottom: ${token.marginSM}px;
       `,
       title: css`
         font-size: ${token.fontSizeHeading5}px;

@@ -27,7 +27,7 @@ export interface PageHeaderProps extends Omit<React.HTMLAttributes<HTMLDivElemen
       content: React.ReactNode;
       // @Todo
       // tooltip: string | TooltipProps;
-      tooltip: string;
+      tooltip?: string;
     };
     text: React.ReactNode;
   }[];
@@ -115,8 +115,8 @@ export const PageHeader: React.FC<PageHeaderProps> = props => {
   return (
     <Flex className={cx(styles.root, className)} gap={20} {...otherProps}>
       {icon && <img alt="icon" className={styles.icon} src={icon} />}
-      <Flex flex="2" justify="space-between" vertical>
-        {renderTitle()}
+      <Flex className={styles.content} flex="2" justify="space-between" vertical>
+        <div className={styles.titleBox}>{renderTitle()}</div>
         <Flex align="center" className={styles.descriptions} gap={4}>
           {status && <Badge size="small" {...status} />}
           {renderDescriptions()}

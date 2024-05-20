@@ -4,7 +4,7 @@ export const useStyles = createStyles(
   ({ css, token }) => {
     return {
       root: css`
-        padding: 24px;
+        padding: ${token.padding}px;
         background-color: ${token.colorBgBase};
         border-radius: ${token.borderRadius}px;
         box-shadow: ${token.boxShadowTertiary};
