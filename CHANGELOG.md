@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.23](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.22...v1.0.0-beta.23)
+
+<sup>Released on **2024-05-20**</sup>
+
+#### 💄 Styles
+
+- **Page**: Change padding and margin.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### Styles
+
+- **Page**: Change padding and margin ([75dcbdf](https://github.com/yuntijs/yunti-ui/commit/75dcbdf))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.22](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.21...v1.0.0-beta.22)
 
 <sup>Released on **2024-05-17**</sup>
