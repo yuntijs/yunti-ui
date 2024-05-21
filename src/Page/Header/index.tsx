@@ -1,12 +1,16 @@
 import { Badge, Flex, Skeleton, Tooltip } from 'antd';
 import type { BadgeProps } from 'antd';
-import React, { useCallback, useContext } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 
 import Divider from '@/Divider';
+import Typography from '@/Typography';
 
 import { PageContext } from '../PageContext';
 import { HeaderButtonGroup, type HeaderButtonGroupProps } from './ButtonGroup';
+import { HeaderIcon, HeaderIconProps, getIconSize } from './Icon';
 import { useStyles } from './style';
+
+const { Paragraph } = Typography;
 
 export interface PageHeaderProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
   /** 是否有边框，默认没有 */
@@ -17,12 +21,14 @@ export interface PageHeaderProps extends Omit<React.HTMLAttributes<HTMLDivElemen
     text: BadgeProps['text'];
     title?: BadgeProps['title'];
   };
-  /** 图标地址 */
-  icon?: string;
+  /** 图标 src 路径或者详细配置 */
+  icon?: string | HeaderIconProps;
   /** 标题 */
   title: React.ReactNode;
   /** 标题自定义渲染 */
   titleRender?: (titleElement: React.ReactNode) => React.ReactNode;
+  /** 副标题：例如描述等 */
+  subTitle?: React.ReactNode;
   /** 描述列表 */
   descriptions?: {
     icon: {
@@ -39,6 +45,8 @@ export interface PageHeaderProps extends Omit<React.HTMLAttributes<HTMLDivElemen
   extraContent?: HeaderButtonGroupProps;
   /** 右侧扩展区域自定义渲染 */
   extraContentRender?: (buttonsElement: React.ReactNode) => React.ReactNode;
+  /** 控制 header 与 content 的分割线，当 bordered 为 true 时，divider 自动设置为 false */
+  divider?: boolean;
 }
 
 export const PageHeader: React.FC<PageHeaderProps> = props => {
@@ -47,15 +55,30 @@ export const PageHeader: React.FC<PageHeaderProps> = props => {
     icon,
     title,
     titleRender,
+    subTitle,
     status,
     descriptions = [],
     descriptionsRender,
     extraContent = {},
     extraContentRender,
     bordered,
+    divider,
     ...otherProps
   } = props;
-  const { styles, cx } = useStyles({ bordered });
+  const { styles, cx } = useStyles({ bordered, divider });
+
+  const iconProps = useMemo(() => {
+    if (!icon) {
+      return;
+    }
+    if (typeof icon === 'string') {
+      return { src: icon };
+    }
+    if (subTitle && icon.size === undefined) {
+      icon.size = 'large';
+    }
+    return icon;
+  }, [icon, subTitle]);
 
   const renderTitle = useCallback(() => {
     const titleElement = <span className={styles.title}>{title}</span>;
@@ -103,10 +126,15 @@ export const PageHeader: React.FC<PageHeaderProps> = props => {
   if (loading) {
     return (
       <Flex className={cx(styles.root, className)} gap={20}>
-        <Skeleton.Avatar active shape="square" size={64} />
-        <Flex className={styles.content} flex="2" justify="space-between" vertical>
+        <Skeleton.Avatar active shape={iconProps?.shape} size={getIconSize(iconProps?.size)} />
+        <Flex flex="2" justify="space-between" vertical>
           <div className={styles.titleBox}>
             <Skeleton.Input active size={25 as any} />
+            {subTitle && (
+              <div className={styles.subTitle}>
+                <Skeleton.Input active size={18 as any} />
+              </div>
+            )}
           </div>
           <Skeleton.Input active size={18 as any} />
         </Flex>
@@ -123,9 +151,20 @@ export const PageHeader: React.FC<PageHeaderProps> = props => {
 
   return (
     <Flex className={cx(styles.root, className)} gap={20} {...otherProps}>
-      {icon && <img alt="icon" className={styles.icon} src={icon} />}
-      <Flex className={styles.content} flex="2" justify="space-between" vertical>
-        <div className={styles.titleBox}>{renderTitle()}</div>
+      {iconProps && (
+        <Flex>
+          <HeaderIcon className={styles.icon} {...iconProps} />
+        </Flex>
+      )}
+      <Flex flex="2" justify="space-between" vertical>
+        <Flex className={styles.titleBox} vertical>
+          {renderTitle()}
+          {subTitle && (
+            <Paragraph className={styles.subTitle} ellipsis={{ rows: 2 }}>
+              {subTitle}
+            </Paragraph>
+          )}
+        </Flex>
         <Flex align="center" className={styles.descriptions} gap={4}>
           {status && <Badge size="small" {...status} />}
           {renderDescriptions()}

@@ -17,11 +17,8 @@ const { Breadcrumb, Header, Content } = Page;
 
 const IndexPage = () => {
   return (
-    <Page>
-      <Breadcrumb
-        Link={Link}
-        items={[{ title: '插件列表', path: '/plugins' }, { title: '插件详情' }]}
-      />
+    <Page Link={Link}>
+      <Breadcrumb items={[{ title: '插件列表', path: '/plugins' }, { title: '插件' }] />
       <Header
         descriptions={[
           {
@@ -47,12 +44,8 @@ const IndexPage = () => {
           status: 'processing',
           text: '运行中',
         }}
+        subTitle="我是一个插件的描述"
         title="我是一个插件"
-        titleRender={title => (
-          <Space>
-            {title} <StarOutlined />
-          </Space>
-        )}
       />
       <Content>
         <Space size={12}>

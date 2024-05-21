@@ -13,8 +13,10 @@ const PageLoadingDemo = () => {
     <Page className={styles.root} loading>
       <Breadcrumb items={[{ title: '插件列表', path: '/plugins' }, { title: '插件详情' }]} />
       <Header
-        bordered
-        icon="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+        icon={{
+          src: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+        }}
+        subTitle="我是一个插件的描述"
         title="我是一个插件"
       />
       <Content>

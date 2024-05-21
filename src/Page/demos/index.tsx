@@ -11,6 +11,7 @@ import {
   UserOutlined,
 } from '@ant-design/icons';
 import { Button, Input, Page, Space } from '@yuntijs/ui';
+import { useEffect, useState } from 'react';
 
 import { List } from './List';
 import { useStyles } from './style';
@@ -19,9 +20,15 @@ const { Breadcrumb, Header, Content } = Page;
 
 const PageDemo = () => {
   const { styles } = useStyles();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => setLoading(false), 1500);
+    return () => clearTimeout(timeout);
+  }, []);
 
   return (
-    <Page className={styles.root}>
+    <Page className={styles.root} loading={loading}>
       <Breadcrumb items={[{ title: '插件列表', path: '/plugins' }, { title: '插件详情' }]} />
       <Header
         descriptions={[
@@ -58,12 +65,15 @@ const PageDemo = () => {
           ],
           onClick: (key, e) => console.log('key', key, e),
         }}
-        icon={'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'}
+        icon={{
+          src: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+        }}
         status={{
           status: 'processing',
           text: '运行中',
           title: '插件运行正常',
         }}
+        subTitle="我是一个插件的描述"
         title="我是一个插件"
         titleRender={title => (
           <Space>
