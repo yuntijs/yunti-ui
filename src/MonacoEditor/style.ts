@@ -8,7 +8,7 @@ import fullScreenIcon from './assets/img/full-screen-icon.png';
  */
 export const useStyles = createStyles(
   (
-    { css },
+    { css, token },
     {
       minimapEnabled = false,
       isFullScreen = false,
@@ -55,8 +55,8 @@ export const useStyles = createStyles(
         box-sizing: content-box;
         min-height: 100px;
 
-        border: 1px solid transparent;
-        border-radius: 3px;
+        border: 1px solid ${token.colorBorder};
+        border-radius: ${token.borderRadius}px;
         &:hover {
           border-color: var(--color-field-border-hover, rgba(31, 56, 88, 0.1));
         }
@@ -72,6 +72,34 @@ export const useStyles = createStyles(
           height: 100%;
           min-height: 100px;
           background: transparent;
+          & > .monaco-editor {
+            border-radius: ${token.borderRadius}px;
+            .overflow-guard,
+            .margin {
+              border-top-left-radius: ${token.borderRadius}px;
+              border-bottom-left-radius: ${token.borderRadius}px;
+            }
+            .monaco-scrollable-element {
+              border-top-right-radius: ${token.borderRadius}px;
+              border-bottom-right-radius: ${token.borderRadius}px;
+            }
+          }
+          .monaco-diff-editor {
+            border-radius: ${token.borderRadius}px;
+            & > .original > .monaco-editor {
+              border-top-left-radius: ${token.borderRadius}px;
+              border-bottom-left-radius: ${token.borderRadius}px;
+              .overflow-guard,
+              .margin {
+                border-top-left-radius: ${token.borderRadius}px;
+                border-bottom-left-radius: ${token.borderRadius}px;
+              }
+            }
+            .diffViewport {
+              border-top-right-radius: ${token.borderRadius - 1}px;
+              border-bottom-right-radius: ${token.borderRadius - 1}px;
+            }
+          }
         }
 
         ${fullScreenStyle}
