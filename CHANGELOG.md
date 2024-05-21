@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.26](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.25...v1.0.0-beta.26)
+
+<sup>Released on **2024-05-21**</sup>
+
+#### ♻ Code Refactoring
+
+- **Page**: Add subTitle, icon detail config and change style.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### Code refactoring
+
+- **Page**: Add subTitle, icon detail config and change style ([a9b1ae8](https://github.com/yuntijs/yunti-ui/commit/a9b1ae8))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.25](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.24...v1.0.0-beta.25)
 
 <sup>Released on **2024-05-20**</sup>
