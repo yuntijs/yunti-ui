@@ -72,7 +72,7 @@ export const PageHeader: React.FC<PageHeaderProps> = props => {
       return;
     }
     if (typeof icon === 'string') {
-      return { src: icon };
+      return { src: icon, size: subTitle ? 'large' : 'default' } as HeaderIconProps;
     }
     if (subTitle && icon.size === undefined) {
       icon.size = 'large';

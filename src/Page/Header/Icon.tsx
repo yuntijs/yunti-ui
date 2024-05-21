@@ -25,7 +25,7 @@ export const getIconSize = (size: HeaderIconProps['size']) => {
       return 40;
     }
     case 'large': {
-      return 104;
+      return 88;
     }
     default: {
       return 64;
