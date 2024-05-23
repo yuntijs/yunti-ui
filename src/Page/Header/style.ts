@@ -25,9 +25,11 @@ export const useStyles = createStyles(
         &.${prefixCls}-avatar.${prefixCls}-avatar-square {
           border-radius: 10px;
         }
+        .${prefixCls}-skeleton-avatar {
+          border-radius: 10px;
+        }
       `,
       titleBox: css`
-        margin-top: ${token.marginXXS}px;
         margin-bottom: ${token.marginSM}px;
       `,
       subTitle: css`

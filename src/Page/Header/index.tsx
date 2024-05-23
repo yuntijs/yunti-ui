@@ -24,7 +24,7 @@ export interface PageHeaderProps extends Omit<React.HTMLAttributes<HTMLDivElemen
   /** 图标 src 路径或者详细配置 */
   icon?: string | HeaderIconProps;
   /** 标题 */
-  title: React.ReactNode;
+  title?: React.ReactNode;
   /** 标题自定义渲染 */
   titleRender?: (titleElement: React.ReactNode) => React.ReactNode;
   /** 副标题：例如描述等 */
@@ -126,7 +126,14 @@ export const PageHeader: React.FC<PageHeaderProps> = props => {
   if (loading) {
     return (
       <Flex className={cx(styles.root, className)} gap={20}>
-        <Skeleton.Avatar active shape={iconProps?.shape} size={getIconSize(iconProps?.size)} />
+        <Flex>
+          <Skeleton.Avatar
+            active
+            className={styles.icon}
+            shape={iconProps?.shape}
+            size={getIconSize(iconProps?.size)}
+          />
+        </Flex>
         <Flex flex="2" justify="space-between" vertical>
           <div className={styles.titleBox}>
             <Skeleton.Input active size={25 as any} />
