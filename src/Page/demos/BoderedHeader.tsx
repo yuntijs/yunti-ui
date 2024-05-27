@@ -22,6 +22,9 @@ const PageBorderedHeaderDemo = () => {
             },
             text: '张萝卜',
           },
+          {
+            text: '2024-05-16 17:36:09',
+          },
         ]}
         extraContent={{
           items: [

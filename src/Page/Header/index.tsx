@@ -31,7 +31,7 @@ export interface PageHeaderProps extends Omit<React.HTMLAttributes<HTMLDivElemen
   subTitle?: React.ReactNode;
   /** 描述列表 */
   descriptions?: {
-    icon: {
+    icon?: {
       content: React.ReactNode;
       // @Todo
       // tooltip: string | TooltipProps;
@@ -68,10 +68,7 @@ export const PageHeader: React.FC<PageHeaderProps> = props => {
   const { styles, cx } = useStyles({ bordered, divider });
 
   const iconProps = useMemo(() => {
-    if (!icon) {
-      return;
-    }
-    if (typeof icon === 'string') {
+    if (!icon || typeof icon === 'string') {
       return { src: icon, size: subTitle ? 'large' : 'default' } as HeaderIconProps;
     }
     if (subTitle && icon.size === undefined) {
@@ -99,7 +96,7 @@ export const PageHeader: React.FC<PageHeaderProps> = props => {
       }
       descriptionsElement.push(
         <Flex gap={4} key={`desc-${index}`}>
-          <Tooltip title={descIcon?.tooltip}>{descIcon?.content}</Tooltip>
+          {descIcon && <Tooltip title={descIcon.tooltip}>{descIcon.content}</Tooltip>}
           <span>{text}</span>
         </Flex>
       );
