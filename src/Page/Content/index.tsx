@@ -35,7 +35,7 @@ export const PageContent: React.FC<PageContentProps> = props => {
       );
     }
     return children;
-  }, [status, children, breadcrumb]);
+  }, [status, children, Link, breadcrumb?.items]);
 
   if (loading) {
     return <Skeleton active className={cx(styles.root, className)} />;

@@ -101,7 +101,7 @@ export const BaseMonacoEditor: React.FC<
     });
     editorInstance?.updateOptions(newOps);
     return newOps;
-  }, [readOnly, lineNumbers, wordWrap, contextmenu, minimapEnabled, options]);
+  }, [options, readOnly, lineNumbers, wordWrap, contextmenu, minimapEnabled, editorInstance]);
 
   const genCdnUrl = useCdnFn();
 
@@ -116,7 +116,7 @@ export const BaseMonacoEditor: React.FC<
         ...requireConfigFromProps.paths,
       },
     });
-  }, [requireConfigFromProps, version]);
+  }, [genCdnUrl, requireConfigFromProps, version]);
 
   const [isFullScreen, setIsFullScreen] = useState(false);
   const { styles, cx } = useStyles({ minimapEnabled, isFullScreen });

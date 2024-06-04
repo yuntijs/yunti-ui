@@ -4,7 +4,7 @@ import { TooltipPropsWithTitle } from 'antd/lib/tooltip';
 import dayjs from 'dayjs';
 import dayjsRelativeTime from 'dayjs/plugin/relativeTime';
 import { set } from 'lodash-es';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 dayjs.extend(dayjsRelativeTime);
 
@@ -36,36 +36,30 @@ const getFromNow = (t: any) => dayjs(t ? new Date(t) : new Date()).fromNow();
 const Time: React.FC<TimeProps> = props => {
   const { time, format, relativeTime = true, tooltip, ...textProps } = props;
   const [showTime, setShowTime] = useState(getFromNow(time));
-  const [timer, setTimer] = useState<any>();
-
-  const clearTimer = () => {
-    if (timer) {
-      clearInterval(timer);
-    }
-  };
 
   // The relative time within the last hour is updated automatically
-  const setTimeInterval = (currentTime: dayjs.ConfigType) => {
-    clearTimer();
+  const setTimeInterval = useCallback((currentTime: dayjs.ConfigType) => {
     const now = dayjs();
     const timeMoment = dayjs(currentTime);
     const diff = now.diff(timeMoment);
     if (diff > 0 && diff < 60 * 60 * 1000) {
-      const t = setInterval(() => {
+      return setInterval(() => {
         setShowTime(getFromNow(currentTime));
       }, 60 * 1000);
-      setTimer(t);
     }
-  };
+  }, []);
 
   useEffect(() => {
+    let timeout: NodeJS.Timeout | undefined;
     if (relativeTime) {
-      setTimeInterval(new Date(time));
+      timeout = setTimeInterval(new Date(time));
     }
     return () => {
-      clearTimer();
+      if (timeout) {
+        clearInterval(timeout);
+      }
     };
-  }, []);
+  }, [relativeTime, setTimeInterval, time]);
 
   useEffect(() => {
     if (!relativeTime) return;
@@ -74,7 +68,7 @@ const Time: React.FC<TimeProps> = props => {
       setShowTime(nextFromNow);
       setTimeInterval(new Date(time));
     }
-  }, [time, relativeTime]);
+  }, [time, relativeTime, showTime, setTimeInterval]);
 
   const fmtTime = dayjs(time).format(format || 'YYYY-MM-DD HH:mm:ss');
 

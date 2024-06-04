@@ -53,6 +53,7 @@ export const useStyles = createStyles(
         position: relative;
 
         box-sizing: content-box;
+        width: 100%;
         min-height: 100px;
 
         border: 1px solid ${token.colorBorder};

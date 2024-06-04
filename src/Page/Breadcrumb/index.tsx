@@ -31,7 +31,7 @@ export const PageBreadcrumb: React.FC<PageBreadcrumbProps> = props => {
 
   useEffect(() => {
     breadcrumb?.setItems?.(props.items);
-  }, [props.items]);
+  }, [breadcrumb, props.items]);
 
   // @ts-ignore
   const itemRender = useCallback<BreadcrumbProps['itemRender']>(
