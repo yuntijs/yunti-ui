@@ -2,6 +2,33 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.30](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.29...v1.0.0-beta.30)
+
+<sup>Released on **2024-06-04**</sup>
+
+#### 🐛 Bug Fixes
+
+- **Page**: Descriptions may not rerender when descriptions props change.
+- **misc**: Add hooks deps.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **Page**: Descriptions may not rerender when descriptions props change ([8fc35ee](https://github.com/yuntijs/yunti-ui/commit/8fc35ee))
+- **misc**: Add hooks deps ([6063f6a](https://github.com/yuntijs/yunti-ui/commit/6063f6a))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.29](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.28...v1.0.0-beta.29)
 
 <sup>Released on **2024-05-27**</sup>
