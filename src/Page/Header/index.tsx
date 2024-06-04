@@ -1,6 +1,6 @@
 import { Badge, Flex, Skeleton, Tooltip } from 'antd';
 import type { BadgeProps } from 'antd';
-import React, { useCallback, useContext, useMemo } from 'react';
+import React, { useContext, useMemo } from 'react';
 
 import Divider from '@/Divider';
 import Typography from '@/Typography';
@@ -77,15 +77,15 @@ export const PageHeader: React.FC<PageHeaderProps> = props => {
     return icon;
   }, [icon, subTitle]);
 
-  const renderTitle = useCallback(() => {
+  const TitleNode = useMemo(() => {
     const titleElement = <span className={styles.title}>{title}</span>;
     if (titleRender) {
       return titleRender(titleElement);
     }
     return titleElement;
-  }, [title, titleRender]);
+  }, [styles.title, title, titleRender]);
 
-  const renderDescriptions = useCallback(() => {
+  const DescriptionsNode = useMemo(() => {
     const descriptionsElement: React.ReactNode[] = [];
     for (const [index, desc] of descriptions.entries()) {
       const { icon: descIcon, text } = desc;
@@ -105,9 +105,9 @@ export const PageHeader: React.FC<PageHeaderProps> = props => {
       return descriptionsRender(descriptionsElement);
     }
     return descriptionsElement;
-  }, [title, titleRender]);
+  }, [descriptions, descriptionsRender, status]);
 
-  const renderExtraContent = useCallback(() => {
+  const ExtraContentNode = useMemo(() => {
     if (!extraContent && !extraContentRender) {
       return null;
     }
@@ -116,7 +116,7 @@ export const PageHeader: React.FC<PageHeaderProps> = props => {
       return extraContentRender(buttons);
     }
     return buttons;
-  }, [extraContent, extraContentRender]);
+  }, [extraContent, extraContentRender, styles.rightButtons]);
 
   const { loading, status: pageStatus } = useContext(PageContext);
 
@@ -162,20 +162,21 @@ export const PageHeader: React.FC<PageHeaderProps> = props => {
       )}
       <Flex flex="2" justify="space-between" vertical>
         <Flex className={styles.titleBox} vertical>
-          {renderTitle()}
+          {TitleNode}
           {subTitle && (
             <Paragraph className={styles.subTitle} ellipsis={{ rows: 2 }}>
               {subTitle}
             </Paragraph>
           )}
         </Flex>
+        {/* @Todo: change to use https://ant.design/components/space-cn#space-demo-split */}
         <Flex align="center" className={styles.descriptions} gap={4}>
           {status && <Badge size="small" {...status} />}
-          {renderDescriptions()}
+          {DescriptionsNode}
         </Flex>
       </Flex>
       <Flex align="center" flex="1" justify="flex-end">
-        {renderExtraContent()}
+        {ExtraContentNode}
       </Flex>
     </Flex>
   );
