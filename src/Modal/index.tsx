@@ -5,6 +5,8 @@ import {
 } from 'antd';
 import React from 'react';
 
+import { prefixCls } from '@/utils/constants';
+
 import { useStyles } from './style';
 
 export type ModalFuncProps = AntdModalFuncProps;
@@ -22,7 +24,9 @@ const OriginModal: React.FC<ModalProps> = props => {
 
   const { styles, cx } = useStyles({ borderd, ...otherProps });
 
-  return <AntdModal {...otherProps} className={cx(styles.custom, className)} />;
+  return (
+    <AntdModal {...otherProps} className={cx(styles.custom, `${prefixCls}-modal`, className)} />
+  );
 };
 
 type ModalType = typeof AntdModal;
