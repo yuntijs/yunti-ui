@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.31](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.30...v1.0.0-beta.31)
+
+<sup>Released on **2024-06-13**</sup>
+
+#### 💄 Styles
+
+- **Modal**: Add default classname.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### Styles
+
+- **Modal**: Add default classname ([c6985e3](https://github.com/yuntijs/yunti-ui/commit/c6985e3))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.30](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.29...v1.0.0-beta.30)
 
 <sup>Released on **2024-06-04**</sup>
