@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.32](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.31...v1.0.0-beta.32)
+
+<sup>Released on **2024-07-03**</sup>
+
+#### ✨ Features
+
+- **misc**: Add Mentions component.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **misc**: Add Mentions component ([e92fbdd](https://github.com/yuntijs/yunti-ui/commit/e92fbdd))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.31](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.30...v1.0.0-beta.31)
 
 <sup>Released on **2024-06-13**</sup>
