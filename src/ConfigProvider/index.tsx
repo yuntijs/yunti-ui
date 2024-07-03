@@ -7,6 +7,7 @@ export interface Config {
   customCdnFn?: CdnFn;
   imgAs?: ElementType;
   proxy?: CDN | 'custom';
+  prefixCls: string;
 }
 
 export const ConfigContext = createContext<Config | null>(null);

@@ -1,6 +1,7 @@
 export * from './Breadcrumb';
 export * from './ConfigProvider';
 export * from './Logo';
+export * from './Mentions';
 export * from './MonacoEditor';
 export * from './SliderInput';
 export * from './Tree';
@@ -26,6 +27,8 @@ export {
   type AffixProps,
   Anchor,
   type AnchorProps,
+  type MentionProps as AntdMentionProps,
+  Mentions as AntdMentions,
   AutoComplete,
   type AutoCompleteProps,
   Avatar,
@@ -82,8 +85,6 @@ export {
   List,
   type ListProps,
   type MappingAlgorithm,
-  type MentionProps,
-  Mentions,
   Menu,
   type MenuItemProps,
   type MenuProps,
