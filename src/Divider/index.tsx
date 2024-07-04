@@ -39,8 +39,16 @@ export interface CustomDividerProps {
 export interface DividerProps extends AntdDividerProps, CustomDividerProps {}
 
 export const Divider: React.FC<DividerProps> = props => {
-  const { mode, content, defaultOpen, iconPlacement, openIcon, closeIcon, type, ...otherProps } =
-    props;
+  const {
+    mode = 'line',
+    content,
+    defaultOpen,
+    iconPlacement = 'left',
+    openIcon,
+    closeIcon,
+    type,
+    ...otherProps
+  } = props;
 
   const { styles } = useStyles({});
 
@@ -64,12 +72,12 @@ export const Divider: React.FC<DividerProps> = props => {
         >
           <Space size={6}>
             {iconPlacement !== 'right' && iconDom}
-            <span>{props.children}</span>
+            <span>{content}</span>
             {iconPlacement === 'right' && iconDom}
           </Space>
         </span>
       </AntdDivider>
-      {canExpanded && <div style={{ display: open ? 'block' : 'none' }}>{content}</div>}
+      {canExpanded && <div style={{ display: open ? 'block' : 'none' }}>{props.children}</div>}
     </>
   );
 };

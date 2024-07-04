@@ -14,13 +14,7 @@ export default () => {
 
       <div>
         <Divider
-          content={
-            <div>
-              The YuntiUI components are inspired by LobeUI and developed based on Antd components,
-              fully compatible with Antd components, and it is recommended to use antd-style as the
-              default css-in-js styling solution.
-            </div>
-          }
+          content="YuntiUI"
           dashed={true}
           defaultOpen={true}
           iconPlacement="left"
@@ -28,7 +22,11 @@ export default () => {
           orientation="left"
           orientationMargin={0}
         >
-          YuntiUI
+          <div>
+            The YuntiUI components are inspired by LobeUI and developed based on Antd components,
+            fully compatible with Antd components, and it is recommended to use antd-style as the
+            default css-in-js styling solution.
+          </div>
         </Divider>
       </div>
 
