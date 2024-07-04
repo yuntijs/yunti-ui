@@ -1,5 +1,4 @@
-import { Card, Dropdown, Table, TableProps, Tag } from '@yuntijs/ui';
-import { ConfigProvider } from 'antd';
+import { Dropdown, Table, TableProps, Tag } from '@yuntijs/ui';
 import { useState } from 'react';
 
 interface DataType {
@@ -50,7 +49,7 @@ type Sorts = GetSingle<Parameters<OnChange>[2]>;
 export default () => {
   const [current, setCurrent] = useState<number>(1);
   const [pageSize, setPageSize] = useState<number>(10);
-  const [total] = useState<number>(15);
+  const [total] = useState<number>(data.length);
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
   const [loading] = useState(false);
 
@@ -145,35 +144,29 @@ export default () => {
   };
 
   return (
-    <ConfigProvider theme={{ components: { Table: { headerBg: 'transparent' } } }}>
-      <Card bordered={false}>
-        <Table
-          columns={columns}
-          dataSource={data}
-          expandable={{
-            expandedRowRender: record => <p style={{ margin: 0 }}>{record.description}</p>,
-            rowExpandable: record => record.name !== 'Not Expandable',
-          }}
-          loading={loading}
-          onChange={handleTableChange}
-          pagination={{
-            position: ['topRight'],
-            simple: true,
-            current,
-            onChange: handlePaginationChange,
-            onShowSizeChange: handlePaginationChange,
-            pageSize,
-            showTotal: newTotal => `共计 ${newTotal} 条`,
-            total,
-          }}
-          rowSelection={{
-            selectedRowKeys,
-            onChange: (newSelectedRowKeys: React.Key[]) => {
-              setSelectedRowKeys(newSelectedRowKeys);
-            },
-          }}
-        />
-      </Card>
-    </ConfigProvider>
+    <Table
+      columns={columns}
+      dataSource={data}
+      expandable={{
+        expandedRowRender: record => <p style={{ margin: 0 }}>{record.description}</p>,
+        rowExpandable: record => record.name !== 'Not Expandable',
+      }}
+      loading={loading}
+      onChange={handleTableChange}
+      pagination={{
+        current,
+        onChange: handlePaginationChange,
+        onShowSizeChange: handlePaginationChange,
+        pageSize,
+        showTotal: newTotal => `共计 ${newTotal} 条`,
+        total,
+      }}
+      rowSelection={{
+        selectedRowKeys,
+        onChange: (newSelectedRowKeys: React.Key[]) => {
+          setSelectedRowKeys(newSelectedRowKeys);
+        },
+      }}
+    />
   );
 };

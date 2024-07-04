@@ -1,7 +1,10 @@
 import { Table as AntdTable, TableProps, Tooltip } from 'antd';
 import { AnyObject } from 'antd/es/_util/type';
-import React from 'react';
+import React, { useMemo } from 'react';
 
+import { CollapseTable } from './collapse';
+
+export * from './collapse';
 export {
   type TableColumnGroupType,
   type TableColumnProps,
@@ -25,13 +28,12 @@ export const Table: YuntiTable & {
   Column: typeof AntdTable.Column;
   ColumnGroup: typeof AntdTable.ColumnGroup;
   Summary: typeof AntdTable.Summary;
+  Collapse: typeof CollapseTable;
 } = <RecordType extends AnyObject = AnyObject>(props: TableProps<RecordType>) => {
   const { columns, ...otherProps } = props;
 
-  let formatColumns;
-
-  if (columns) {
-    formatColumns = columns.map(item => {
+  const formatColumns = useMemo(() => {
+    return columns?.map(item => {
       if (!item.render) {
         item.render = text => text ?? '-';
       }
@@ -58,7 +60,8 @@ export const Table: YuntiTable & {
 
       return item;
     });
-  }
+  }, [columns]);
+
   return <AntdTable<RecordType> {...otherProps} columns={formatColumns} />;
 };
 
@@ -71,5 +74,6 @@ Table.SELECTION_NONE = AntdTable.SELECTION_NONE;
 Table.Column = AntdTable.Column;
 Table.ColumnGroup = AntdTable.ColumnGroup;
 Table.Summary = AntdTable.Summary;
+Table.Collapse = CollapseTable;
 
 export default Table;

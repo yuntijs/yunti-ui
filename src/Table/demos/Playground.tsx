@@ -51,7 +51,7 @@ export default () => {
   const store = useCreateStore();
   const [current, setCurrent] = useState<number>(1);
   const [pageSize, setPageSize] = useState<number>(10);
-  const [total] = useState<number>(15);
+  const [total] = useState<number>(data.length);
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
   const [loading] = useState(false);
 
@@ -175,8 +175,6 @@ export default () => {
         loading={loading}
         onChange={handleTableChange}
         pagination={{
-          position: ['topRight'],
-          simple: true,
           current,
           onChange: handlePaginationChange,
           onShowSizeChange: handlePaginationChange,
