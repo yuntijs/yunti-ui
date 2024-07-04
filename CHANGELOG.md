@@ -2,6 +2,36 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.33](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.32...v1.0.0-beta.33)
+
+<sup>Released on **2024-07-04**</sup>
+
+#### ✨ Features
+
+- **Divider**: Change mode default to line and fix children issue.
+- **misc**: Add CollapseGroup component, add CollapseTable component, add DragPanel component, add FormCollapseList component.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **Divider**: Change mode default to line and fix children issue ([6afc272](https://github.com/yuntijs/yunti-ui/commit/6afc272))
+- **misc**: Add CollapseGroup component ([ddc88df](https://github.com/yuntijs/yunti-ui/commit/ddc88df))
+- **misc**: Add CollapseTable component ([10f100d](https://github.com/yuntijs/yunti-ui/commit/10f100d))
+- **misc**: Add DragPanel component ([294cefc](https://github.com/yuntijs/yunti-ui/commit/294cefc))
+- **misc**: Add FormCollapseList component ([5b7ede2](https://github.com/yuntijs/yunti-ui/commit/5b7ede2))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.32](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.31...v1.0.0-beta.32)
 
 <sup>Released on **2024-07-03**</sup>
