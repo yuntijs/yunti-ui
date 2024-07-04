@@ -6,7 +6,7 @@ title: Mentions
 
 ## Usage
 
-inspired by [Dify](https://github.com/langgenius/dify) and [lexical-beautiful-mentions](https://github.com/sodenn/lexical-beautiful-mentions).
+Based on [lexical editor](https://lexical.dev/), inspired by [Dify](https://github.com/langgenius/dify) and [lexical-beautiful-mentions](https://github.com/sodenn/lexical-beautiful-mentions).
 
 ### Simple usage
 
