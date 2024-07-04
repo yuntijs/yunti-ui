@@ -1,5 +1,7 @@
 export * from './Breadcrumb';
+export * from './CollapseGroup';
 export * from './ConfigProvider';
+export * from './DragPanel';
 export * from './Logo';
 export * from './Mentions';
 export * from './MonacoEditor';
@@ -13,6 +15,7 @@ export * from './Card';
 export * from './Descriptions';
 export * from './Divider';
 export * from './Drawer';
+export * from './Form';
 export * from './FormHelper';
 export * from './Modal';
 export * from './notification';
@@ -63,14 +66,6 @@ export {
   Flex,
   type FlexProps,
   FloatButton,
-  type FloatButtonProps,
-  Form,
-  type FormInstance,
-  type FormItemProps,
-  type FormListFieldData,
-  type FormListOperation,
-  type FormProps,
-  type FormRule,
   type GlobalToken,
   Grid,
   Image,
