@@ -1,6 +1,8 @@
 import { Flex } from 'antd';
 import React, { useState } from 'react';
 
+import { useLink } from '@/ConfigProvider';
+
 import type { PageBreadcrumbProps } from './Breadcrumb';
 import { DefaultLink, PageContext, PageContextValue } from './PageContext';
 import { useStyles } from './style';
@@ -12,7 +14,15 @@ export interface PageProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const Page: React.FC<PageProps> = props => {
-  const { loading, className, children, Link = DefaultLink, status, ...otherProps } = props;
+  const LinkFromRootConfigProvider = useLink();
+  const {
+    loading,
+    className,
+    children,
+    Link = LinkFromRootConfigProvider || DefaultLink,
+    status,
+    ...otherProps
+  } = props;
   const { styles, cx } = useStyles(otherProps);
   const [breadcrumbItems, setBreadcrumbItems] = useState<PageBreadcrumbProps['items']>([]);
 
