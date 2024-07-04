@@ -2,6 +2,33 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.34](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.33...v1.0.0-beta.34)
+
+<sup>Released on **2024-07-04**</sup>
+
+#### ✨ Features
+
+- **ConfigProvider**: Add Link to config.
+- **Page**: Handle Breadcrumb href.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **ConfigProvider**: Add Link to config ([e123f31](https://github.com/yuntijs/yunti-ui/commit/e123f31))
+- **Page**: Handle Breadcrumb href ([ba753d7](https://github.com/yuntijs/yunti-ui/commit/ba753d7))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.33](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.32...v1.0.0-beta.33)
 
 <sup>Released on **2024-07-04**</sup>
