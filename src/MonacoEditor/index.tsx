@@ -9,7 +9,7 @@ import { useThemeMode } from 'antd-style';
 import type { editor as IEditor } from 'monaco-editor';
 import React, { useMemo, useState } from 'react';
 
-import { useCdnFn } from '..';
+import { useCdnFn } from '../ConfigProvider';
 import { useStyles } from './style';
 
 export {

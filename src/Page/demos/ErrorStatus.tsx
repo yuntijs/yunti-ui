@@ -11,10 +11,16 @@ const PageErrorStatusDemo = () => {
   const { styles } = useStyles();
   return (
     <Page className={styles.root} status={404}>
-      <Breadcrumb items={[{ title: '插件列表', path: '/plugins' }, { title: '插件详情' }]} />
+      <Breadcrumb
+        items={[
+          { title: '插件列表', href: '/plugins' },
+          { title: '天气插件', href: '/plugins/detail/plugin-1' },
+          { title: '查询 15 日天气' },
+        ]}
+      />
       <Header
         icon="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-        title="我是一个插件"
+        title="天气插件"
       />
       <Content>
         <></>

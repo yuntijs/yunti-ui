@@ -36,12 +36,14 @@ export const PageBreadcrumb: React.FC<PageBreadcrumbProps> = props => {
   // @ts-ignore
   const itemRender = useCallback<BreadcrumbProps['itemRender']>(
     (currentRoute, params, items, paths) => {
-      const isLast = currentRoute.path === items.at(-1)?.path;
+      const isLast = currentRoute.href
+        ? currentRoute.href === items.at(-1)?.href
+        : currentRoute.path === items.at(-1)?.path;
       if (isLast) {
         return <span>{currentRoute.title}</span>;
       }
 
-      const to = `/${paths.join('/')}`;
+      const to = currentRoute.href ? currentRoute.href : `/${paths.join('/')}`;
       return (
         <BreadcrumbLink Link={Link} to={to}>
           {currentRoute.title}
