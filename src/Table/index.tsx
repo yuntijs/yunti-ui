@@ -34,8 +34,8 @@ export const Table: YuntiTable & {
 
   const formatColumns = useMemo(() => {
     return columns?.map(item => {
-      if (!item.render) {
-        item.render = text => text ?? '-';
+      if (item.render) {
+        return item;
       }
 
       if (
@@ -56,6 +56,10 @@ export const Table: YuntiTable & {
               '-'
             ),
         };
+      }
+
+      if (!item.render) {
+        item.render = text => text ?? '-';
       }
 
       return item;
