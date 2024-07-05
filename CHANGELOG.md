@@ -2,6 +2,47 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.35](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.34...v1.0.0-beta.35)
+
+<sup>Released on **2024-07-05**</sup>
+
+#### ♻ Code Refactoring
+
+- **misc**: Move dayjs to peer deps.
+
+#### ✨ Features
+
+- **Page**: Add gap Props support for Page.
+
+#### 🐛 Bug Fixes
+
+- **Table**: Render not work.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### Code refactoring
+
+- **misc**: Move dayjs to peer deps ([4e7bb35](https://github.com/yuntijs/yunti-ui/commit/4e7bb35))
+
+#### What's improved
+
+- **Page**: Add gap Props support for Page ([fa60447](https://github.com/yuntijs/yunti-ui/commit/fa60447))
+
+#### What's fixed
+
+- **Table**: Render not work ([21d610f](https://github.com/yuntijs/yunti-ui/commit/21d610f))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.34](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.33...v1.0.0-beta.34)
 
 <sup>Released on **2024-07-04**</sup>
