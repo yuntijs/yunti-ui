@@ -32,9 +32,6 @@ importers:
       '@lobehub/ui':
         specifier: ^1.146.4
         version: 1.146.4(@types/react-dom@18.2.18)(@types/react@18.2.40)(ahooks@3.7.8(react@18.2.0))(antd-style@3.6.1(@types/react@18.2.40)(antd@5.19.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(antd@5.19.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(lucide-react@0.400.0(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      dayjs:
-        specifier: ^1.11.10
-        version: 1.11.10
       leva:
         specifier: ^0
         version: 0.9.35(@types/react-dom@18.2.18)(@types/react@18.2.40)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -96,6 +93,9 @@ importers:
       commitlint:
         specifier: ^18
         version: 18.4.3(typescript@5.3.3)
+      dayjs:
+        specifier: ^1.11.10
+        version: 1.11.10
       dumi:
         specifier: ^2
         version: 2.2.16(@babel/core@7.23.6)(@types/node@18.19.3)(@types/react@18.2.40)(eslint@8.56.0)(jest@27.5.1)(prettier@3.1.1)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(rollup@3.29.4)(stylelint@15.11.0(typescript@5.3.3))(terser@5.26.0)(type-fest@4.8.3)(typescript@5.3.3)(webpack@5.89.0)

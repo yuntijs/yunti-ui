@@ -86,7 +86,6 @@
     "@lexical/text": "^0.16.1",
     "@lexical/utils": "^0.16.1",
     "@lobehub/ui": "^1.146.4",
-    "dayjs": "^1.11.10",
     "leva": "^0",
     "lexical": "^0.16.1",
     "lodash-es": "^4",
@@ -109,6 +108,7 @@
     "antd-style": "^3.6.1",
     "babel-plugin-antd-style": "latest",
     "commitlint": "^18",
+    "dayjs": "^1.11.10",
     "dumi": "^2",
     "dumi-theme-lobehub": "^1.7.6",
     "eslint": "^8.56.0",
@@ -131,6 +131,7 @@
   "peerDependencies": {
     "antd": ">=5",
     "antd-style": ">=3",
+    "dayjs": ">=1",
     "react": ">=18",
     "react-dom": ">=18"
   },
