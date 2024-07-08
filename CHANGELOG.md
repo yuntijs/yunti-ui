@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.36](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.35...v1.0.0-beta.36)
+
+<sup>Released on **2024-07-08**</sup>
+
+#### 🐛 Bug Fixes
+
+- **Page**: Add align center for descriptions item.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **Page**: Add align center for descriptions item ([dd4ae6a](https://github.com/yuntijs/yunti-ui/commit/dd4ae6a))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.35](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.34...v1.0.0-beta.35)
 
 <sup>Released on **2024-07-05**</sup>
