@@ -87,7 +87,7 @@ export const PageHeader: React.FC<PageHeaderProps> = props => {
 
   const DescriptionsNode = useMemo(() => {
     const descriptionsElement: React.ReactNode[] = [];
-    for (const [index, desc] of descriptions.entries()) {
+    for (const [index, desc] of descriptions.filter(d => !!d).entries()) {
       const { icon: descIcon, text } = desc;
       if (status || index >= 1) {
         descriptionsElement.push(
@@ -95,7 +95,7 @@ export const PageHeader: React.FC<PageHeaderProps> = props => {
         );
       }
       descriptionsElement.push(
-        <Flex gap={4} key={`desc-${index}`}>
+        <Flex align="center" gap={4} key={`desc-${index}`}>
           {descIcon && <Tooltip title={descIcon.tooltip}>{descIcon.content}</Tooltip>}
           <span>{text}</span>
         </Flex>
