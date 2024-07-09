@@ -4,7 +4,7 @@ export const useStyles = createStyles(
   ({ css, token }) => {
     return {
       root: css`
-        padding-top: ${token.paddingXS}px;
+        width: 100%;
       `,
     };
   },

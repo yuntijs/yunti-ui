@@ -8,13 +8,16 @@ export const useStyles = createStyles(
     return {
       root: bordered
         ? css`
+            margin-bottom: ${token.marginXS}px;
             padding: ${token.padding}px;
+
             background-color: ${token.colorBgBase};
             border-radius: ${token.borderRadius}px;
             box-shadow: ${token.boxShadowTertiary};
           `
         : css`
             padding-top: ${token.paddingXS}px;
+            margin-bottom: ${token.marginXS}px;
             ${divider &&
             css`
               padding-bottom: ${token.paddingLG}px;
