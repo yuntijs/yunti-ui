@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.37](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.36...v1.0.0-beta.37)
+
+<sup>Released on **2024-07-09**</sup>
+
+#### ✨ Features
+
+- **Page**: Add Title.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **Page**: Add Title ([84d6cb0](https://github.com/yuntijs/yunti-ui/commit/84d6cb0))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.36](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.35...v1.0.0-beta.36)
 
 <sup>Released on **2024-07-08**</sup>
