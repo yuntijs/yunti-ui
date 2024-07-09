@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.38](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.37...v1.0.0-beta.38)
+
+<sup>Released on **2024-07-09**</sup>
+
+#### 🐛 Bug Fixes
+
+- **Page**: Custom style not work.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **Page**: Custom style not work ([d43891a](https://github.com/yuntijs/yunti-ui/commit/d43891a))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.37](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.36...v1.0.0-beta.37)
 
 <sup>Released on **2024-07-09**</sup>
