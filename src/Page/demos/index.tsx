@@ -13,12 +13,12 @@ import {
 import { Button, Input, Page, Space } from '@yuntijs/ui';
 import { useEffect, useState } from 'react';
 
-import { List } from './List';
+import { Table } from './Table';
 import { useStyles } from './style';
 
 const { Breadcrumb, Header, Content } = Page;
 
-const PageDemo = () => {
+const DetailPageDemo = () => {
   const { styles } = useStyles();
   const [loading, setLoading] = useState(true);
 
@@ -89,10 +89,10 @@ const PageDemo = () => {
           <Button icon={<ReloadOutlined />}>刷新</Button>
           <Input.Search placeholder="请输入关键字搜索" />
         </Space>
-        <List />
+        <Table />
       </Content>
     </Page>
   );
 };
 
-export default PageDemo;
+export default DetailPageDemo;

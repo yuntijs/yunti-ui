@@ -63,9 +63,13 @@ const IndexPage = () => {
 export default IndexPage;
 ```
 
-### Simple usage
+### Detail page
 
 <code src="./demos/index.tsx"></code>
+
+### List page
+
+<code src="./demos/List.tsx"></code>
 
 ### Loading sample
 

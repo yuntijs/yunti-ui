@@ -1,86 +1,41 @@
-import { Space, Table, Tag } from 'antd';
-import type { TableProps } from 'antd';
-import React from 'react';
+/**
+ * compact: true
+ */
 
-interface DataType {
-  key: string;
-  name: string;
-  age: number;
-  address: string;
-  tags: string[];
-}
+/* eslint-disable no-console */
+import { PlusOutlined, ReloadOutlined } from '@ant-design/icons';
+import { Button, Input, Page, Space } from '@yuntijs/ui';
+import { useEffect, useState } from 'react';
 
-const columns: TableProps<DataType>['columns'] = [
-  {
-    title: '姓名',
-    dataIndex: 'name',
-    key: 'name',
-    render: text => <a>{text}</a>,
-  },
-  {
-    title: '年龄',
-    dataIndex: 'age',
-    key: 'age',
-  },
-  {
-    title: '地址',
-    dataIndex: 'address',
-    key: 'address',
-  },
-  {
-    title: '标签',
-    key: 'tags',
-    dataIndex: 'tags',
-    render: (_, { tags }) => (
-      <>
-        {tags.map(tag => {
-          let color = tag.length > 5 ? 'geekblue' : 'green';
-          if (tag === 'loser') {
-            color = 'volcano';
-          }
-          return (
-            <Tag color={color} key={tag}>
-              {tag.toUpperCase()}
-            </Tag>
-          );
-        })}
-      </>
-    ),
-  },
-  {
-    title: '操作',
-    key: 'action',
-    render: (_, record) => (
-      <Space size="middle">
-        <a>Invite {record.name}</a>
-        <a>Delete</a>
-      </Space>
-    ),
-  },
-];
+import { Table } from './Table';
+import { useStyles } from './style';
 
-const data: DataType[] = [
-  {
-    key: '1',
-    name: 'John Brown',
-    age: 32,
-    address: 'New York No. 1 Lake Park',
-    tags: ['nice', 'developer'],
-  },
-  {
-    key: '2',
-    name: 'Jim Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-    tags: ['loser'],
-  },
-  {
-    key: '3',
-    name: 'Joe Black',
-    age: 32,
-    address: 'Sydney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
-  },
-];
+const { Title, Content } = Page;
 
-export const List: React.FC = () => <Table columns={columns} dataSource={data} />;
+const ListPageDemo = () => {
+  const { styles } = useStyles();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => setLoading(false), 1500);
+    return () => clearTimeout(timeout);
+  }, []);
+
+  return (
+    <Page className={styles.root} loading={loading}>
+      <Title>插件</Title>
+      <Content>
+        <Space size={12}>
+          <Button icon={<PlusOutlined />} type="primary">
+            创建
+          </Button>
+          <Button icon={<ReloadOutlined />}>刷新</Button>
+          <Input.Search placeholder="请输入关键字搜索" />
+        </Space>
+        <Table />
+      </Content>
+    </Page>
+  );
+};
+
+export default ListPageDemo;
