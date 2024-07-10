@@ -1,6 +1,7 @@
 import { LexicalComposer } from '@lexical/react/LexicalComposer';
 import { ContentEditable } from '@lexical/react/LexicalContentEditable';
 import { LexicalErrorBoundary } from '@lexical/react/LexicalErrorBoundary';
+import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin';
 import { OnChangePlugin } from '@lexical/react/LexicalOnChangePlugin';
 import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
 import type { EditorState } from 'lexical';
@@ -15,6 +16,7 @@ import {
 } from './plugins/mention-node';
 import { MentionPickerPlugin, type MentionPickerPluginProps } from './plugins/mention-picker';
 import OnBlurBlock from './plugins/on-blur-or-focus-block';
+import { MentionsConfigProvider } from './provider';
 import { useStyles } from './style';
 import type { AutoSize, MentionsOptionsMap } from './types';
 import { textToEditorState } from './utils';
@@ -73,8 +75,8 @@ export const Mentions: React.FC<MentionsProps> = ({
       onError: (error: Error) => {
         throw error;
       },
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
 
@@ -97,42 +99,45 @@ export const Mentions: React.FC<MentionsProps> = ({
 
   return (
     <LexicalComposer initialConfig={{ ...initialConfig, editable }}>
-      <div className={cx(styles.wrapper, wrapperClassname)}>
-        <RichTextPlugin
-          ErrorBoundary={LexicalErrorBoundary}
-          contentEditable={
-            <ContentEditable
-              className={cx(
-                {
-                  [styles.root]: true,
-                  [styles.filled]: variant === 'filled',
-                  [styles.borderless]: variant === 'borderless',
-                  [styles.disabled]: disabled,
-                },
-                className
-              )}
-              style={style || {}}
-            />
-          }
-          placeholder={
-            <div className={styles.placeholder}>
-              {placeholder || `输入 ${triggers.join(' 或 ')} 插入引用`}
-            </div>
-          }
-        />
-        <MentionPickerPlugin
-          allowSpaces={allowSpaces}
-          onSelect={onSelect}
-          options={options}
-          preTriggerChars={preTriggerChars}
-          punctuation={punctuation}
-          triggers={triggers}
-        />
-        <MentionNodePlugin optionsMap={optionsMap} />
-        <MentionNodePluginReplacement optionsMap={optionsMap} />
-        <OnChangePlugin onChange={handleEditorChange} />
-        <OnBlurBlock onBlur={onBlur} onFocus={onFocus} />
-      </div>
+      <MentionsConfigProvider value={{ optionsMap }}>
+        <div className={cx(styles.wrapper, wrapperClassname)}>
+          <RichTextPlugin
+            ErrorBoundary={LexicalErrorBoundary}
+            contentEditable={
+              <ContentEditable
+                className={cx(
+                  {
+                    [styles.root]: true,
+                    [styles.filled]: variant === 'filled',
+                    [styles.borderless]: variant === 'borderless',
+                    [styles.disabled]: disabled,
+                  },
+                  className
+                )}
+                style={style || {}}
+              />
+            }
+            placeholder={
+              <div className={styles.placeholder}>
+                {placeholder || `输入 ${triggers.join(' 或 ')} 插入引用`}
+              </div>
+            }
+          />
+          <MentionPickerPlugin
+            allowSpaces={allowSpaces}
+            onSelect={onSelect}
+            options={options}
+            preTriggerChars={preTriggerChars}
+            punctuation={punctuation}
+            triggers={triggers}
+          />
+          <MentionNodePlugin />
+          <MentionNodePluginReplacement />
+          <HistoryPlugin />
+          <OnChangePlugin onChange={handleEditorChange} />
+          <OnBlurBlock onBlur={onBlur} onFocus={onFocus} />
+        </div>
+      </MentionsConfigProvider>
     </LexicalComposer>
   );
 };

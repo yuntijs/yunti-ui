@@ -1,47 +1,33 @@
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
-import { mergeRegister } from '@lexical/utils';
 import { Icon } from '@lobehub/ui';
 import { Flex, Tooltip } from 'antd';
-import { COMMAND_PRIORITY_EDITOR } from 'lexical';
 import { CircleAlert } from 'lucide-react';
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo, useEffect } from 'react';
+
+import { useOptionsMap } from '@/Mentions/provider';
 
 import { useSelectOrDelete } from '../../hooks';
-import { MentionsOptionsMap } from '../../types';
 import { MentionNode } from './node';
 import { useStyles } from './style';
-import { DELETE_MENTION_COMMAND, UPDATE_MENTIONS_OPTIONS } from './utils';
+import { DELETE_MENTION_COMMAND } from './utils';
 
 export interface MentionNodeComponentProps {
   nodeKey: string;
   variable: string;
-  optionsMap: MentionsOptionsMap;
 }
 
 export const MentionNodeComponent: React.FC<MentionNodeComponentProps> = memo(
-  ({ nodeKey, variable, optionsMap = {} }) => {
+  ({ nodeKey, variable }) => {
+    const optionsMap = useOptionsMap();
     const [editor] = useLexicalComposerContext();
     const [ref, isSelected] = useSelectOrDelete(nodeKey, DELETE_MENTION_COMMAND);
-    const [localMentionsOptionsMap, setLocalMentionsOptionsMap] =
-      useState<MentionsOptionsMap>(optionsMap);
-    const option = localMentionsOptionsMap?.[variable];
+    const option = optionsMap?.[variable];
     const { styles } = useStyles({ isSelected, isError: !option || !!option.error });
 
     useEffect(() => {
-      if (!editor.hasNodes([MentionNode]))
+      if (!editor.hasNodes([MentionNode])) {
         throw new Error('MentionsNodePlugin: MentionNode not registered on editor');
-
-      return mergeRegister(
-        editor.registerCommand(
-          UPDATE_MENTIONS_OPTIONS,
-          (newOptionsMap: MentionsOptionsMap) => {
-            setLocalMentionsOptionsMap(newOptionsMap);
-
-            return true;
-          },
-          COMMAND_PRIORITY_EDITOR
-        )
-      );
+      }
     }, [editor]);
 
     const Item = (

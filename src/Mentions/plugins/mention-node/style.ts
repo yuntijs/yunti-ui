@@ -22,10 +22,8 @@ export const useStyles = createStyles(
       }
       if (isSelected) {
         return {
-          // background: token.colorInfoBgHover,
-          background: token.colorInfoBg,
+          background: token.colorInfoBgHover,
           border: token.colorInfoBorder,
-          // color: token.colorInfoTextActive,
           color: token.colorInfoText,
         };
       }
@@ -38,6 +36,8 @@ export const useStyles = createStyles(
     const { background, border, color } = getColors();
     return {
       root: css`
+        user-select: none;
+
         margin: 1px 2px;
         padding: 0 4px;
 

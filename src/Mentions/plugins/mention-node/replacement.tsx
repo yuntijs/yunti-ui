@@ -4,19 +4,17 @@ import type { TextNode } from 'lexical';
 import { $applyNodeReplacement } from 'lexical';
 import React, { memo, useCallback, useEffect } from 'react';
 
-import { MentionsOptionsMap } from '../../types';
 import { decoratorTransform } from '../../utils';
 import { CustomTextNode } from '../custom-text/node';
 import { $createMentionNode, MentionNode } from './node';
 import { MENTION_REGEX } from './utils';
 
 export interface MentionNodePluginReplacementProps {
-  optionsMap: MentionsOptionsMap;
   onInsert?: () => void;
 }
 
 export const MentionNodePluginReplacement: React.FC<MentionNodePluginReplacementProps> = memo(
-  ({ optionsMap, onInsert }) => {
+  ({ onInsert }) => {
     const [editor] = useLexicalComposerContext();
 
     useEffect(() => {
@@ -29,9 +27,9 @@ export const MentionNodePluginReplacement: React.FC<MentionNodePluginReplacement
         if (onInsert) onInsert();
 
         const nodePathString = textNode.getTextContent().slice(2, -2);
-        return $applyNodeReplacement($createMentionNode(nodePathString, optionsMap));
+        return $applyNodeReplacement($createMentionNode(nodePathString));
       },
-      [onInsert, optionsMap]
+      [onInsert]
     );
 
     const getMatch = useCallback((text: string) => {
