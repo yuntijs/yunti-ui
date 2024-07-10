@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.39](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.38...v1.0.0-beta.39)
+
+<sup>Released on **2024-07-10**</sup>
+
+#### ✨ Features
+
+- **Mentions**: Fix copy paste and support history.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **Mentions**: Fix copy paste and support history ([a7d91fa](https://github.com/yuntijs/yunti-ui/commit/a7d91fa))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.38](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.37...v1.0.0-beta.38)
 
 <sup>Released on **2024-07-09**</sup>
