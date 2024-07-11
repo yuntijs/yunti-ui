@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.43](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.42...v1.0.0-beta.43)
+
+<sup>Released on **2024-07-11**</sup>
+
+#### 🐛 Bug Fixes
+
+- **ProCard**: Change margin bottom for title.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **ProCard**: Change margin bottom for title ([08440c1](https://github.com/yuntijs/yunti-ui/commit/08440c1))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.42](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.41...v1.0.0-beta.42)
 
 <sup>Released on **2024-07-11**</sup>
