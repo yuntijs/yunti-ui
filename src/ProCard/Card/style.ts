@@ -5,7 +5,8 @@ export const useStyles = createStyles(({ css, token, prefixCls }) => {
     root: css`
       position: relative;
 
-      min-width: 320px;
+      overflow: hidden;
+
       margin: 0;
       padding: 0;
 

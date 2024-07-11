@@ -12,7 +12,9 @@ export const useStyles = createStyles(
           .${prefixCls}-descriptions-item {
             &-container {
               .${prefixCls}-descriptions-item-label {
+                overflow: hidden;
                 width: ${lableWidth}px;
+                white-space: nowrap;
               }
               .${prefixCls}-descriptions-item-content {
                 overflow: hidden;
