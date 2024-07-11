@@ -30,6 +30,7 @@ export const useStyles = createStyles(
       `,
       titleBox: css`
         margin-right: 4px;
+        margin-bottom: ${token.marginXXS}px;
       `,
       title: css`
         overflow: hidden;
@@ -37,7 +38,6 @@ export const useStyles = createStyles(
         flex: 1;
 
         width: 100px;
-        margin-bottom: ${token.marginXS}px;
 
         font-size: 16px;
         font-weight: ${token.fontWeightStrong};
@@ -45,6 +45,7 @@ export const useStyles = createStyles(
         white-space: nowrap;
       `,
       description: css`
+        margin-right: 4px;
         &.${prefixCls}-typography {
           margin-bottom: 0 !important;
           font-size: 12px;

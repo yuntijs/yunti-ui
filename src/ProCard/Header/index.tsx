@@ -42,8 +42,8 @@ export const ProCardHeader: React.FC<ProCardHeaderProps> = props => {
           />
         </Flex>
       )}
-      <Flex className={styles.titleBox} flex="1" vertical>
-        <Flex gap={4}>
+      <Flex flex="1" vertical>
+        <Flex className={styles.titleBox} gap={4}>
           <div className={styles.title}>{title}</div>
           {extra && (
             <Flex
