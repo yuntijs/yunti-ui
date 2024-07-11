@@ -171,7 +171,7 @@ export const PageHeader: React.FC<PageHeaderProps> = props => {
         </Flex>
         {/* @Todo: change to use https://ant.design/components/space-cn#space-demo-split */}
         <Flex align="center" className={styles.descriptions} gap={4}>
-          {status && <Badge size="small" {...status} />}
+          {status && <Badge {...status} />}
           {DescriptionsNode}
         </Flex>
       </Flex>

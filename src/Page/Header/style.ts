@@ -26,6 +26,7 @@ export const useStyles = createStyles(
           `,
       icon: css`
         &.${prefixCls}-avatar.${prefixCls}-avatar-square {
+          color: ${token.colorPrimary};
           border-radius: 10px;
         }
         .${prefixCls}-skeleton-avatar {
