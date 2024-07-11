@@ -689,19 +689,20 @@
             background-color: `,`;
           `])),n.colorBgLayout),a),titleBox:t(vr||(vr=h()([`
         margin-right: 4px;
-      `]))),title:t(mr||(mr=h()([`
+        margin-bottom: `,`px;
+      `])),n.marginXXS),title:t(mr||(mr=h()([`
         overflow: hidden;
         display: inline-block;
         flex: 1;
 
         width: 100px;
-        margin-bottom: `,`px;
 
         font-size: 16px;
         font-weight: `,`;
         text-overflow: ellipsis;
         white-space: nowrap;
-      `])),n.marginXS,n.fontWeightStrong),description:t(pr||(pr=h()([`
+      `])),n.fontWeightStrong),description:t(pr||(pr=h()([`
+        margin-right: 4px;
         &.`,`-typography {
           margin-bottom: 0 !important;
           font-size: 12px;
@@ -711,7 +712,7 @@
         margin-top: -4px;
       `]))),rightButtons:t(hr||(hr=h()([`
         justify-content: flex-end;
-      `])))}},{hashPriority:"low"}),Ni=["className","icon","title","description","extra","divider"],Zi=["className","shape","size"],Oi=["children"],Ei=He.Paragraph,Ti=function(e){var t=e.className,n=e.icon,a=e.title,o=e.description,i=e.extra,c=e.divider,d=j()(e,Ni),v=Mi({divider:c,iconBg:!(n!=null&&n.src)}),p=v.styles,m=v.cx,f=n||{},g=f.className,y=f.shape,b=y===void 0?"square":y,A=f.size,S=A===void 0?72:A,C=j()(f,Zi),T=i||{},L=T.children,k=j()(T,Oi);return(0,l.jsxs)(Z.Z,u()(u()({className:m(p.root,t),gap:20},d),{},{children:[n&&(0,l.jsx)(Z.Z,{children:(0,l.jsx)($e.C,u()({className:m(p.icon,g),shape:b,size:S},C))}),(0,l.jsxs)(Z.Z,{className:p.titleBox,flex:"1",vertical:!0,children:[(0,l.jsxs)(Z.Z,{gap:4,children:[(0,l.jsx)("div",{className:p.title,children:a}),i&&(0,l.jsx)(Z.Z,{align:"flex-start",className:p.extra,justify:"flex-end",onClick:function(F){return F.stopPropagation()},children:(0,l.jsx)(Xe.Z,u()(u()({},k),{},{children:L||(0,l.jsx)(re.ZP,{icon:(0,l.jsx)(we.Z,{icon:ji.Z}),size:"small",type:"text"})}))})]}),o&&(0,l.jsx)(Ei,{className:p.description,ellipsis:{rows:2},children:o})]})]}))},Ne=gi;Ne.Header=Ti,Ne.Content=Ci,Ne.Descriptions=Li;var Pi=s(73239),Ii=s(10714),xr,gr,yr,br,ki=(0,I.kc)(function(r,e){var t=r.css,n=r.token,a=r.prefixCls,o=e.size,i=e.segmented,c=function(){return i?i!==!0?i.gap:!0:0}(),d=function(){if(i)return i!==!0?i.borderRadius:!0}(),v=function(){var b={small:n.sizeSM,middle:n.size,large:n.sizeLG};return typeof c=="string"?b[c]:c===!0?o?b[o]:b.middle:c||0},p=function(){var b={small:n.controlHeightSM,middle:n.controlHeight,large:n.controlHeightLG};if(d===!0)return o?b[o]:b.middle;if(d||d===0)return d},m=p()&&t(xr||(xr=h()([`
+      `])))}},{hashPriority:"low"}),Ni=["className","icon","title","description","extra","divider"],Zi=["className","shape","size"],Oi=["children"],Ei=He.Paragraph,Ti=function(e){var t=e.className,n=e.icon,a=e.title,o=e.description,i=e.extra,c=e.divider,d=j()(e,Ni),v=Mi({divider:c,iconBg:!(n!=null&&n.src)}),p=v.styles,m=v.cx,f=n||{},g=f.className,y=f.shape,b=y===void 0?"square":y,A=f.size,S=A===void 0?72:A,C=j()(f,Zi),T=i||{},L=T.children,k=j()(T,Oi);return(0,l.jsxs)(Z.Z,u()(u()({className:m(p.root,t),gap:20},d),{},{children:[n&&(0,l.jsx)(Z.Z,{children:(0,l.jsx)($e.C,u()({className:m(p.icon,g),shape:b,size:S},C))}),(0,l.jsxs)(Z.Z,{flex:"1",vertical:!0,children:[(0,l.jsxs)(Z.Z,{className:p.titleBox,gap:4,children:[(0,l.jsx)("div",{className:p.title,children:a}),i&&(0,l.jsx)(Z.Z,{align:"flex-start",className:p.extra,justify:"flex-end",onClick:function(F){return F.stopPropagation()},children:(0,l.jsx)(Xe.Z,u()(u()({},k),{},{children:L||(0,l.jsx)(re.ZP,{icon:(0,l.jsx)(we.Z,{icon:ji.Z}),size:"small",type:"text"})}))})]}),o&&(0,l.jsx)(Ei,{className:p.description,ellipsis:{rows:2},children:o})]})]}))},Ne=gi;Ne.Header=Ti,Ne.Content=Ci,Ne.Descriptions=Li;var Pi=s(73239),Ii=s(10714),xr,gr,yr,br,ki=(0,I.kc)(function(r,e){var t=r.css,n=r.token,a=r.prefixCls,o=e.size,i=e.segmented,c=function(){return i?i!==!0?i.gap:!0:0}(),d=function(){if(i)return i!==!0?i.borderRadius:!0}(),v=function(){var b={small:n.sizeSM,middle:n.size,large:n.sizeLG};return typeof c=="string"?b[c]:c===!0?o?b[o]:b.middle:c||0},p=function(){var b={small:n.controlHeightSM,middle:n.controlHeight,large:n.controlHeightLG};if(d===!0)return o?b[o]:b.middle;if(d||d===0)return d},m=p()&&t(xr||(xr=h()([`
         label {
           border-inline-start-width: 1px !important;
           border-radius: `,`px !important;
