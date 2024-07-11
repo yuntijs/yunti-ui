@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.45](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.44...v1.0.0-beta.45)
+
+<sup>Released on **2024-07-11**</sup>
+
+#### 🐛 Bug Fixes
+
+- **ProCard**: Change Descriptions padding to 4px.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **ProCard**: Change Descriptions padding to 4px ([18e1b41](https://github.com/yuntijs/yunti-ui/commit/18e1b41))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.44](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.43...v1.0.0-beta.44)
 
 <sup>Released on **2024-07-11**</sup>
