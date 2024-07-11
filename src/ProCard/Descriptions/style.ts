@@ -6,9 +6,12 @@ export const useStyles = createStyles(
     return {
       root: css`
         &.${prefixCls}-descriptions {
-          /* .${prefixCls}-descriptions-row {
-            border-bottom: 1px dashed ${token.colorSplit};
-          } */
+          .${prefixCls}-descriptions-row {
+            & > td {
+              padding-top: 4px !important;
+              padding-bottom: 4px !important;
+            }
+          }
           .${prefixCls}-descriptions-item {
             &-container {
               .${prefixCls}-descriptions-item-label {
