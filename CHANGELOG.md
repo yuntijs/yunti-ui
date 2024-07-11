@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.44](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.43...v1.0.0-beta.44)
+
+<sup>Released on **2024-07-11**</sup>
+
+#### 🐛 Bug Fixes
+
+- **ProCard**: Remove min widh.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **ProCard**: Remove min widh ([6b7a9ef](https://github.com/yuntijs/yunti-ui/commit/6b7a9ef))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.43](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.42...v1.0.0-beta.43)
 
 <sup>Released on **2024-07-11**</sup>
