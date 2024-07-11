@@ -1,7 +1,10 @@
 import { createStyles } from 'antd-style';
 
 export const useStyles = createStyles(
-  ({ css, token, prefixCls }, { divider = true }: { divider?: boolean }) => {
+  (
+    { css, token, prefixCls },
+    { divider = true, iconBg = true }: { divider?: boolean; iconBg?: boolean }
+  ) => {
     return {
       root: css`
         padding: 24px 20px ${divider ? 20 : 0}px 24px;
@@ -13,7 +16,13 @@ export const useStyles = createStyles(
       icon: css`
         &.${prefixCls}-avatar {
           color: ${token.colorPrimary};
-          background-color: ${token.colorPrimaryBgHover};
+          ${iconBg &&
+          css`
+            background-color: ${token.colorBgLayout};
+          `}
+          &.${prefixCls}-avatar-square {
+            border-radius: 10px;
+          }
           .anticon {
             font-size: 40px;
           }

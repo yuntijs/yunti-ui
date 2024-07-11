@@ -24,7 +24,7 @@ export interface ProCardHeaderProps extends Omit<React.HTMLAttributes<HTMLDivEle
 
 export const ProCardHeader: React.FC<ProCardHeaderProps> = props => {
   const { className, icon, title, description, extra, divider, ...otherProps } = props;
-  const { styles, cx } = useStyles({ divider });
+  const { styles, cx } = useStyles({ divider, iconBg: !icon?.src });
 
   const { className: iconClassName, shape = 'square', size = 72, ...otherIconProps } = icon || {};
   const { children: extraChildren, ...otherExtraProps } = extra || {};
@@ -45,7 +45,12 @@ export const ProCardHeader: React.FC<ProCardHeaderProps> = props => {
         <Flex gap={4}>
           <div className={styles.title}>{title}</div>
           {extra && (
-            <Flex align="flex-start" className={styles.extra} justify="flex-end">
+            <Flex
+              align="flex-start"
+              className={styles.extra}
+              justify="flex-end"
+              onClick={e => e.stopPropagation()}
+            >
               <Dropdown {...otherExtraProps}>
                 {extraChildren || <Button icon={<MoreOutlined />} size="small" type="text" />}
               </Dropdown>

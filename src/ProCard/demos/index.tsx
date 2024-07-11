@@ -14,7 +14,7 @@ const ProCardDemo = () => {
   const { styles } = useStyles();
   return (
     <div className={styles.root}>
-      <ProCard style={{ width: 520 }}>
+      <ProCard onClick={e => console.log('card clicked =>', e)} style={{ width: 520 }}>
         <ProCard.Header
           description="我是特别长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长的描述"
           extra={{

@@ -21,6 +21,10 @@ export const useStyles = createStyles(({ css, token, prefixCls }) => {
       box-shadow: none;
     `,
     hoverable: css`
+      cursor: pointer;
+      transition:
+        box-shadow ${token.motionDurationMid},
+        border-color ${token.motionDurationMid};
       &:hover {
         border-color: transparent;
         box-shadow: ${token.boxShadow};
