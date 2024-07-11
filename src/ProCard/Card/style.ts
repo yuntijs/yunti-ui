@@ -13,7 +13,7 @@ export const useStyles = createStyles(({ css, token, prefixCls }) => {
       color: ${token.colorText};
 
       background: ${token.colorBgContainer};
-      border-radius: ${token.borderRadiusLG}px;
+      border-radius: ${token.borderRadius * 2}px;
       box-shadow: ${token.boxShadowTertiary};
     `,
     bordered: css`

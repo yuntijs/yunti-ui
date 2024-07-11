@@ -1,6 +1,7 @@
-import { MoreOutlined } from '@ant-design/icons';
+import { Icon } from '@lobehub/ui';
 import { Avatar, Button, Dropdown, Flex } from 'antd';
 import type { AvatarProps, DropDownProps } from 'antd';
+import { EllipsisVertical } from 'lucide-react';
 import React from 'react';
 
 import Typography from '@/Typography';
@@ -52,7 +53,9 @@ export const ProCardHeader: React.FC<ProCardHeaderProps> = props => {
               onClick={e => e.stopPropagation()}
             >
               <Dropdown {...otherExtraProps}>
-                {extraChildren || <Button icon={<MoreOutlined />} size="small" type="text" />}
+                {extraChildren || (
+                  <Button icon={<Icon icon={EllipsisVertical} />} size="small" type="text" />
+                )}
               </Dropdown>
             </Flex>
           )}
