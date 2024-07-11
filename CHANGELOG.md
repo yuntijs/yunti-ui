@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.41](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.40...v1.0.0-beta.41)
+
+<sup>Released on **2024-07-11**</sup>
+
+#### 🐛 Bug Fixes
+
+- **ProCard**: Change some style and add stopPropagation for extra.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **ProCard**: Change some style and add stopPropagation for extra ([a8fcf43](https://github.com/yuntijs/yunti-ui/commit/a8fcf43))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.40](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.39...v1.0.0-beta.40)
 
 <sup>Released on **2024-07-11**</sup>
