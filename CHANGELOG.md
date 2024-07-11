@@ -2,6 +2,39 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.40](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.39...v1.0.0-beta.40)
+
+<sup>Released on **2024-07-11**</sup>
+
+#### ✨ Features
+
+- **misc**: Add ProCard component.
+
+#### 🐛 Bug Fixes
+
+- **Page**: Change some style.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **misc**: Add ProCard component ([7fb0065](https://github.com/yuntijs/yunti-ui/commit/7fb0065))
+
+#### What's fixed
+
+- **Page**: Change some style ([26eb500](https://github.com/yuntijs/yunti-ui/commit/26eb500))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.39](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.38...v1.0.0-beta.39)
 
 <sup>Released on **2024-07-10**</sup>
