@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.47](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.46...v1.0.0-beta.47)
+
+<sup>Released on **2024-07-17**</sup>
+
+#### ✨ Features
+
+- **misc**: ChatInputArea.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **misc**: ChatInputArea ([da2aa3a](https://github.com/yuntijs/yunti-ui/commit/da2aa3a))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.46](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.45...v1.0.0-beta.46)
 
 <sup>Released on **2024-07-17**</sup>
