@@ -12,6 +12,7 @@ export * from './Tree';
 export * from './Alert';
 export * from './App';
 export * from './Card';
+export * from './ChatInputArea';
 export * from './Descriptions';
 export * from './Divider';
 export * from './Drawer';
