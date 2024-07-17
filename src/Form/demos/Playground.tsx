@@ -9,6 +9,7 @@ export default () => {
     {
       name: 'outputs',
       title: '输出变量',
+      fieldRemoveButton: true,
       readOnly: false,
       defaultActive: true,
       disabled: false,
