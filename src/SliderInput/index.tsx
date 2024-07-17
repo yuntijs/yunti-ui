@@ -91,7 +91,7 @@ export const SliderInput: React.FC<SliderInputProps> = ({
           min={min}
           onChange={onNumberChange}
           step={step}
-          value={value || number}
+          value={value ?? number}
         />
       </Col>
       <Col {...inputCol}>
@@ -105,7 +105,7 @@ export const SliderInput: React.FC<SliderInputProps> = ({
           onChange={onNumberChange as InputNumberProps['onChange']}
           placeholder={placeholder}
           step={step}
-          value={value || number}
+          value={value ?? number}
         />
       </Col>
     </Row>

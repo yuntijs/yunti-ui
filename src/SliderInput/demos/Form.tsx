@@ -11,7 +11,7 @@ const SliderInputFormDemo = () => {
         initialValues={{
           CPU: 4,
           memory: 16,
-          GPU: 1,
+          GPU: 0,
         }}
         labelAlign="left"
         labelCol={{ flex: '110px' }}
