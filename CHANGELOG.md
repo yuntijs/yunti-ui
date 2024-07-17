@@ -2,6 +2,39 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.46](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.45...v1.0.0-beta.46)
+
+<sup>Released on **2024-07-17**</sup>
+
+#### ✨ Features
+
+- **FormCollapseList**: Support extra, expandIcon and fieldRemoveButton.
+
+#### 🐛 Bug Fixes
+
+- **SliderInput**: InitialValue not work when specify to 0.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **FormCollapseList**: Support extra, expandIcon and fieldRemoveButton ([4814160](https://github.com/yuntijs/yunti-ui/commit/4814160))
+
+#### What's fixed
+
+- **SliderInput**: InitialValue not work when specify to 0 ([cb8d581](https://github.com/yuntijs/yunti-ui/commit/cb8d581))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.45](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.44...v1.0.0-beta.45)
 
 <sup>Released on **2024-07-11**</sup>
