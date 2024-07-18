@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.49](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.48...v1.0.0-beta.49)
+
+<sup>Released on **2024-07-18**</sup>
+
+#### ✨ Features
+
+- **misc**: Add Highlighter Component custom.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **misc**: Add Highlighter Component custom ([98439cc](https://github.com/yuntijs/yunti-ui/commit/98439cc))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.48](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.47...v1.0.0-beta.48)
 
 <sup>Released on **2024-07-18**</sup>
