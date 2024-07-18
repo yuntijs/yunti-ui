@@ -2,6 +2,7 @@ export * from './CollapseGroup';
 export * from './ConfigProvider';
 export * from './DragPanel';
 export * from './Logo';
+export * from './LogViewer';
 export * from './Mentions';
 export * from './MonacoEditor';
 export * from './Page';

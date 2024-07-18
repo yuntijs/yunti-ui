@@ -86,6 +86,7 @@
     "@lexical/text": "^0.16.1",
     "@lexical/utils": "^0.16.1",
     "@lobehub/ui": "^1.146.4",
+    "@melloware/react-logviewer": "^5.1.1",
     "@shikijs/transformers": "^1.10.3",
     "leva": "^0",
     "lexical": "^0.16.1",
