@@ -1,16 +1,17 @@
-export * from './Breadcrumb';
 export * from './CollapseGroup';
 export * from './ConfigProvider';
 export * from './DragPanel';
 export * from './Logo';
 export * from './Mentions';
 export * from './MonacoEditor';
+export * from './Page';
+export * from './ProCard';
 export * from './SliderInput';
-export * from './Tree';
 
 // ~ custom antd
 export * from './Alert';
 export * from './App';
+export * from './Breadcrumb';
 export * from './Card';
 export * from './Descriptions';
 export * from './Divider';
@@ -20,14 +21,15 @@ export * from './Form';
 export * from './FormHelper';
 export * from './Modal';
 export * from './notification';
-export * from './Page';
-export * from './ProCard';
 export * from './Radio';
 export * from './Table';
+export * from './Tree';
 export * from './Typography';
 
 // ~ custom @lobehub/ui
 export * from './ChatInputArea';
+export * from './Highlighter';
+export * from './styles';
 
 // ~ antd
 export {
@@ -165,8 +167,6 @@ export {
 
 // ~ @lobehub/ui
 export {
-  Highlighter,
-  type HighlighterProps,
   Markdown,
   type MarkdownProps,
   SyntaxHighlighter,

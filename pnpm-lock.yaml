@@ -32,6 +32,9 @@ importers:
       '@lobehub/ui':
         specifier: ^1.146.4
         version: 1.146.4(@types/react-dom@18.2.18)(@types/react@18.2.40)(ahooks@3.7.8(react@18.2.0))(antd-style@3.6.1(@types/react@18.2.40)(antd@5.19.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(antd@5.19.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(lucide-react@0.400.0(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@shikijs/transformers':
+        specifier: ^1.10.3
+        version: 1.10.3
       leva:
         specifier: ^0
         version: 0.9.35(@types/react-dom@18.2.18)(@types/react@18.2.40)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -56,6 +59,12 @@ importers:
       react-layout-kit:
         specifier: ^1
         version: 1.7.4(react@18.2.0)
+      shiki:
+        specifier: ^1.10.3
+        version: 1.10.3
+      swr:
+        specifier: ^2.2.5
+        version: 2.2.5(react@18.2.0)
       url-join:
         specifier: ^5.0.0
         version: 5.0.0
@@ -1455,6 +1464,16 @@ packages:
       react: '>=18'
       react-dom: '>=18'
 
+  '@lobehub/ui@1.146.8':
+    resolution: {integrity: sha512-kP8YoDCoU/wHsa3Odoezh7X+0vQWBNURPYxvfK+p6oge/DfZM+RV06ItgABUbaXvRW4tRlsekIkUZ7UJiiMv/Q==}
+    peerDependencies:
+      ahooks: '>=3'
+      antd: '>=5.13.0'
+      antd-style: '>=3'
+      lucide-react: '>=0.396.0'
+      react: '>=18'
+      react-dom: '>=18'
+
   '@makotot/ghostui@2.0.0':
     resolution: {integrity: sha512-LD6OeMv+yGjpYZNjh34yDTCIE1NegqOtJq5gm4wX6op3QL7K5psTVzMjkWzseBoYj0XOD4g+UJVIZTprfoOPGg==}
     engines: {node: '>=10'}
@@ -2065,11 +2084,11 @@ packages:
   '@semrel-extra/npm@1.2.2':
     resolution: {integrity: sha512-QoOJFUd00ORaqOQUe2wYmwPwa7NRdGGfUhzjZ9UEZqoqymXaBDVmFF2hE3h8mFaTa/iWpAyRrrjTsg8HbSpZyw==}
 
-  '@shikijs/core@1.10.1':
-    resolution: {integrity: sha512-qdiJS5a/QGCff7VUFIqd0hDdWly9rDp8lhVmXVrS11aazX8LOTRLHAXkkEeONNsS43EcCd7gax9LLoOz4vlFQA==}
+  '@shikijs/core@1.10.3':
+    resolution: {integrity: sha512-D45PMaBaeDHxww+EkcDQtDAtzv00Gcsp72ukBtaLSmqRvh0WgGMq3Al0rl1QQBZfuneO75NXMIzEZGFitThWbg==}
 
-  '@shikijs/transformers@1.10.1':
-    resolution: {integrity: sha512-0gLtcFyi6R6zcUkFajUEp1Qiv7lHBSFgOz4tQvS8nFsYCQSLI1/9pM+Me8jEIPXv7XLKAoUjw6InL+Sv+BHw/A==}
+  '@shikijs/transformers@1.10.3':
+    resolution: {integrity: sha512-MNjsyye2WHVdxfZUSr5frS97sLGe6G1T+1P41QjyBFJehZphMcr4aBlRLmq6OSPBslYe9byQPVvt/LJCOfxw8Q==}
 
   '@sinclair/typebox@0.27.8':
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
@@ -8996,8 +9015,8 @@ packages:
     resolution: {integrity: sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==}
     engines: {node: '>=8'}
 
-  shiki@1.10.1:
-    resolution: {integrity: sha512-uafV7WCgN4YYrccH6yxpnps6k38sSTlFRrwc4jycWmhWxJIm9dPrk+XkY1hZ2t0I7jmacMNb15Lf2fspa/Y3lg==}
+  shiki@1.10.3:
+    resolution: {integrity: sha512-eneCLncGuvPdTutJuLyUGS8QNPAVFO5Trvld2wgEq1e002mwctAhJKeMGWtWVXOIEzmlcLRqcgPSorR6AVzOmQ==}
 
   shortid@2.2.16:
     resolution: {integrity: sha512-Ugt+GIZqvGXCIItnsL+lvFJOiN7RYqlGy7QE41O3YC1xbNSeDGIRO7xg2JJXIAj1cAGnOeC1r7/T9pgrtQbv4g==}
@@ -9326,8 +9345,8 @@ packages:
   style-to-object@0.4.4:
     resolution: {integrity: sha512-HYNoHZa2GorYNyqiCaBgsxvcJIn7OHq6inEga+E6Ke3m5JkoqpQbnFssk4jwe+K7AhGa2fcha4wSOf1Kn01dMg==}
 
-  styled-components@6.1.11:
-    resolution: {integrity: sha512-Ui0jXPzbp1phYij90h12ksljKGqF8ncGx+pjrNPsSPhbUUjWT2tD1FwGo2LF6USCnbrsIhNngDfodhxbegfEOA==}
+  styled-components@6.1.12:
+    resolution: {integrity: sha512-n/O4PzRPhbYI0k1vKKayfti3C/IGcPf+DqcrOB7O/ab9x4u/zjqraneT5N45+sIe87cxrCApXM8Bna7NYxwoTA==}
     engines: {node: '>= 16'}
     peerDependencies:
       react: '>= 16.8.0'
@@ -12047,7 +12066,7 @@ snapshots:
       '@giscus/react': 3.0.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@lobehub/emojilib': 1.0.0
       '@react-spring/web': 9.7.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      '@shikijs/transformers': 1.10.1
+      '@shikijs/transformers': 1.10.3
       '@splinetool/runtime': 0.9.526
       ahooks: 3.7.8(react@18.2.0)
       antd: 5.19.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -12080,7 +12099,66 @@ snapshots:
       remark-breaks: 4.0.0
       remark-gfm: 3.0.1
       remark-math: 5.1.1
-      shiki: 1.10.1
+      shiki: 1.10.3
+      swr: 2.2.5(react@18.2.0)
+      ts-md5: 1.3.1
+      url-join: 5.0.0
+      use-merge-value: 1.2.0(react@18.2.0)
+      uuid: 10.0.0
+      zustand: 4.5.4(@types/react@18.2.40)(immer@10.1.1)(react@18.2.0)
+      zustand-utils: 1.3.2(react@18.2.0)(zustand@4.5.4(@types/react@18.2.40)(immer@10.1.1)(react@18.2.0))
+    transitivePeerDependencies:
+      - '@types/react'
+      - '@types/react-dom'
+      - supports-color
+
+  '@lobehub/ui@1.146.8(@types/react-dom@18.2.18)(@types/react@18.2.40)(ahooks@3.7.8(react@18.2.0))(antd-style@3.6.1(@types/react@18.2.40)(antd@5.19.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(antd@5.19.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(lucide-react@0.400.0(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
+    dependencies:
+      '@babel/runtime': 7.24.7
+      '@dnd-kit/core': 6.1.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@dnd-kit/modifiers': 7.0.0(@dnd-kit/core@6.1.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)
+      '@dnd-kit/sortable': 8.0.0(@dnd-kit/core@6.1.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)
+      '@dnd-kit/utilities': 3.2.2(react@18.2.0)
+      '@emoji-mart/data': 1.2.1
+      '@emoji-mart/react': 1.1.1(emoji-mart@5.6.0)(react@18.2.0)
+      '@floating-ui/react': 0.26.19(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@giscus/react': 3.0.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@lobehub/emojilib': 1.0.0
+      '@react-spring/web': 9.7.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@shikijs/transformers': 1.10.3
+      '@splinetool/runtime': 0.9.526
+      ahooks: 3.7.8(react@18.2.0)
+      antd: 5.19.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      antd-style: 3.6.1(@types/react@18.2.40)(antd@5.19.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      chroma-js: 2.4.2
+      dayjs: 1.11.11
+      emoji-mart: 5.6.0
+      emoji-regex: 10.3.0
+      fast-deep-equal: 3.1.3
+      immer: 10.1.1
+      leva: 0.9.35(@types/react-dom@18.2.18)(@types/react@18.2.40)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      lodash-es: 4.17.21
+      lucide-react: 0.400.0(react@18.2.0)
+      numeral: 2.0.6
+      polished: 4.3.1
+      prism-react-renderer: 2.3.1(react@18.2.0)
+      query-string: 9.0.0
+      rc-footer: 0.6.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      re-resizable: 6.9.17(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      react-error-boundary: 4.0.13(react@18.2.0)
+      react-layout-kit: 1.9.0(react@18.2.0)
+      react-markdown: 8.0.7(@types/react@18.2.40)(react@18.2.0)
+      react-merge-refs: 2.1.1
+      react-rnd: 10.4.11(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      react-simple-code-editor: 0.13.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      rehype-katex: 6.0.3
+      rehype-raw: 7.0.0
+      remark-breaks: 4.0.0
+      remark-gfm: 3.0.1
+      remark-math: 5.1.1
+      shiki: 1.10.3
       swr: 2.2.5(react@18.2.0)
       ts-md5: 1.3.1
       url-join: 5.0.0
@@ -12816,11 +12894,13 @@ snapshots:
 
   '@semrel-extra/npm@1.2.2': {}
 
-  '@shikijs/core@1.10.1': {}
-
-  '@shikijs/transformers@1.10.1':
+  '@shikijs/core@1.10.3':
     dependencies:
-      shiki: 1.10.1
+      '@types/hast': 3.0.4
+
+  '@shikijs/transformers@1.10.3':
+    dependencies:
+      shiki: 1.10.3
 
   '@sinclair/typebox@0.27.8': {}
 
@@ -15517,7 +15597,7 @@ snapshots:
     dependencies:
       '@floating-ui/react': 0.26.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@giscus/react': 2.4.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      '@lobehub/ui': 1.146.4(@types/react-dom@18.2.18)(@types/react@18.2.40)(ahooks@3.7.8(react@18.2.0))(antd-style@3.6.1(@types/react@18.2.40)(antd@5.19.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(antd@5.19.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(lucide-react@0.400.0(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@lobehub/ui': 1.146.8(@types/react-dom@18.2.18)(@types/react@18.2.40)(ahooks@3.7.8(react@18.2.0))(antd-style@3.6.1(@types/react@18.2.40)(antd@5.19.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(antd@5.19.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(lucide-react@0.400.0(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       ahooks: 3.7.8(react@18.2.0)
       antd: 5.19.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       antd-style: 3.6.1(@types/react@18.2.40)(antd@5.19.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -15532,7 +15612,7 @@ snapshots:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       react-layout-kit: 1.7.4(react@18.2.0)
-      styled-components: 6.1.11(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      styled-components: 6.1.12(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       use-merge-value: 1.2.0(react@18.2.0)
       zustand: 4.4.7(@types/react@18.2.40)(immer@10.1.1)(react@18.2.0)
     transitivePeerDependencies:
@@ -22516,9 +22596,10 @@ snapshots:
 
   shebang-regex@3.0.0: {}
 
-  shiki@1.10.1:
+  shiki@1.10.3:
     dependencies:
-      '@shikijs/core': 1.10.1
+      '@shikijs/core': 1.10.3
+      '@types/hast': 3.0.4
 
   shortid@2.2.16:
     dependencies:
@@ -22877,7 +22958,7 @@ snapshots:
     dependencies:
       inline-style-parser: 0.1.1
 
-  styled-components@6.1.11(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
+  styled-components@6.1.12(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
       '@emotion/is-prop-valid': 1.2.2
       '@emotion/unitless': 0.8.1
