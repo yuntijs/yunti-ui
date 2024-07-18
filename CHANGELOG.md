@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.48](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.47...v1.0.0-beta.48)
+
+<sup>Released on **2024-07-18**</sup>
+
+#### ✨ Features
+
+- **misc**: Add Dropdown Component custom.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **misc**: Add Dropdown Component custom ([99e63d3](https://github.com/yuntijs/yunti-ui/commit/99e63d3))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.47](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.46...v1.0.0-beta.47)
 
 <sup>Released on **2024-07-17**</sup>
