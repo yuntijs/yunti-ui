@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.50](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.49...v1.0.0-beta.50)
+
+<sup>Released on **2024-07-18**</sup>
+
+#### ✨ Features
+
+- **misc**: Add LogViewer Component.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **misc**: Add LogViewer Component ([3d8b4c2](https://github.com/yuntijs/yunti-ui/commit/3d8b4c2))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.49](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.48...v1.0.0-beta.49)
 
 <sup>Released on **2024-07-18**</sup>
