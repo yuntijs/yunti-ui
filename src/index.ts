@@ -12,10 +12,10 @@ export * from './Tree';
 export * from './Alert';
 export * from './App';
 export * from './Card';
-export * from './ChatInputArea';
 export * from './Descriptions';
 export * from './Divider';
 export * from './Drawer';
+export * from './Dropdown';
 export * from './Form';
 export * from './FormHelper';
 export * from './Modal';
@@ -25,6 +25,9 @@ export * from './ProCard';
 export * from './Radio';
 export * from './Table';
 export * from './Typography';
+
+// ~ custom @lobehub/ui
+export * from './ChatInputArea';
 
 // ~ antd
 export {
@@ -61,8 +64,6 @@ export {
   type CountdownProps,
   DatePicker,
   type DatePickerProps,
-  Dropdown,
-  type DropDownProps,
   Empty,
   type EmptyProps,
   Flex,

@@ -1,6 +1,6 @@
 ---
 nav: Components
-group: Data Display
+group: General
 title: Breadcrumb
 description: A breadcrumb displays the current location within a hierarchy. It allows going back to states higher up in the hierarchy.
 ---
