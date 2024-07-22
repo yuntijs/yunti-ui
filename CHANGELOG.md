@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.51](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.50...v1.0.0-beta.51)
+
+<sup>Released on **2024-07-22**</sup>
+
+#### ✨ Features
+
+- **misc**: Add Status component.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **misc**: Add Status component ([ed765a9](https://github.com/yuntijs/yunti-ui/commit/ed765a9))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.50](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.49...v1.0.0-beta.50)
 
 <sup>Released on **2024-07-18**</sup>
