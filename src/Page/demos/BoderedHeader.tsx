@@ -47,7 +47,7 @@ const PageBorderedHeaderDemo = () => {
         status={{
           status: 'processing',
           text: '运行中',
-          title: '插件运行正常',
+          tooltip: '插件运行正常',
         }}
         title="我是一个插件"
       />

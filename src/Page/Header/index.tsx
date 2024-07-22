@@ -1,8 +1,8 @@
-import { Badge, Flex, Skeleton, Tooltip } from 'antd';
-import type { BadgeProps } from 'antd';
+import { Flex, Skeleton, Tooltip } from 'antd';
 import React, { useContext, useMemo } from 'react';
 
 import Divider from '@/Divider';
+import { Status, StatusProps } from '@/Status';
 import Typography from '@/Typography';
 
 import { PageContext } from '../PageContext';
@@ -16,11 +16,7 @@ export interface PageHeaderProps extends Omit<React.HTMLAttributes<HTMLDivElemen
   /** 是否有边框，默认没有 */
   bordered?: boolean;
   /** 状态 */
-  status?: {
-    status: BadgeProps['status'];
-    text: BadgeProps['text'];
-    title?: BadgeProps['title'];
-  };
+  status?: StatusProps;
   /** 图标 src 路径或者详细配置 */
   icon?: string | HeaderIconProps;
   /** 标题 */
@@ -171,7 +167,7 @@ export const PageHeader: React.FC<PageHeaderProps> = props => {
         </Flex>
         {/* @Todo: change to use https://ant.design/components/space-cn#space-demo-split */}
         <Flex align="center" className={styles.descriptions} gap={4}>
-          {status && <Badge {...status} />}
+          {status && <Status {...status} />}
           {DescriptionsNode}
         </Flex>
       </Flex>

@@ -8,6 +8,7 @@ export * from './MonacoEditor';
 export * from './Page';
 export * from './ProCard';
 export * from './SliderInput';
+export * from './Status';
 
 // ~ custom antd
 export * from './Alert';
