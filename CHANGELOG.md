@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.52](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.51...v1.0.0-beta.52)
+
+<sup>Released on **2024-07-25**</sup>
+
+#### ✨ Features
+
+- **Highlighter**: Support contentStyle.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **Highlighter**: Support contentStyle ([5963ed6](https://github.com/yuntijs/yunti-ui/commit/5963ed6))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.51](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.50...v1.0.0-beta.51)
 
 <sup>Released on **2024-07-22**</sup>
