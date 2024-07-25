@@ -12,6 +12,7 @@ import React, { useMemo, useState } from 'react';
 import { useCdnFn } from '../ConfigProvider';
 import { useStyles } from './style';
 
+// @Todo: Controller SSR error: https://github.com/alibaba/lowcode-plugins/blob/main/packages/base-monaco-editor/src/controller.ts#L33
 export {
   type EditorMeta,
   Controller as MonacoController,

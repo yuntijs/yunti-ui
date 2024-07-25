@@ -22,6 +22,7 @@ export const DragPanel: React.FC<DragPanelProps> = memo(
     const draggleRef = useRef<HTMLDivElement>(null);
 
     const onStart = (_event: DraggableEvent, uiData: DraggableData) => {
+      // @Todo SSR
       const { clientWidth, clientHeight } = window.document.documentElement;
       const targetRect = draggleRef.current?.getBoundingClientRect();
       if (!targetRect) {

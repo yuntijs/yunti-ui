@@ -22,6 +22,7 @@ export interface FullFeaturedHighlighterProps extends DivProps {
    * @description The language of the code content
    */
   language: string;
+  contentStyle?: React.CSSProperties;
 }
 
 const options: SelectProps['options'] = languageMap.map(item => ({
@@ -38,6 +39,7 @@ export const FullFeaturedHighlighter = memo<FullFeaturedHighlighterProps>(
     allowChangeLanguage = false,
     fileName,
     icon,
+    contentStyle,
     ...rest
   }) => {
     const [expand, setExpand] = useState(true);
@@ -78,7 +80,7 @@ export const FullFeaturedHighlighter = memo<FullFeaturedHighlighterProps>(
         </Flexbox>
         <SyntaxHighlighter
           language={lang?.toLowerCase()}
-          style={expand ? {} : { height: 0, overflow: 'hidden' }}
+          style={expand ? contentStyle : { ...contentStyle, height: 0, overflow: 'hidden' }}
         >
           {children}
         </SyntaxHighlighter>

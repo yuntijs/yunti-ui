@@ -25,11 +25,12 @@ export const useStyles = createStyles(({ css, token, cx, prefixCls, stylish }) =
     shiki: cx(
       `${prefix}-shiki`,
       css`
+        overflow: auto;
         margin: 0;
         padding: 0;
 
         .shiki {
-          overflow-x: auto;
+          overflow: unset;
           margin: 0;
           padding: 0;
           background: none !important;
@@ -110,6 +111,9 @@ export const useStyles = createStyles(({ css, token, cx, prefixCls, stylish }) =
       `
     ),
     unshiki: css`
+      overflow: auto;
+      margin: 0;
+      padding: 0;
       color: ${token.colorTextDescription};
     `,
   };

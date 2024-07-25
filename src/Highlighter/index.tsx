@@ -1,7 +1,7 @@
 'use client';
 
 import { CopyButton, type CopyButtonProps, Spotlight, Tag } from '@lobehub/ui';
-import { ReactNode, memo } from 'react';
+import React, { ReactNode, memo } from 'react';
 
 import { DivProps } from '@/types';
 
@@ -43,6 +43,10 @@ export interface HighlighterProps extends DivProps {
    * @default 'block'
    */
   type?: 'ghost' | 'block' | 'pure';
+  /**
+   * @description The style of the code content
+   */
+  contentStyle?: React.CSSProperties;
 }
 
 export const Highlighter = memo<HighlighterProps>(
@@ -60,6 +64,7 @@ export const Highlighter = memo<HighlighterProps>(
     allowChangeLanguage,
     fileName,
     icon,
+    contentStyle,
     ...rest
   }) => {
     const { styles, cx } = useStyles(type);
@@ -70,6 +75,7 @@ export const Highlighter = memo<HighlighterProps>(
         <FullFeaturedHighlighter
           allowChangeLanguage={allowChangeLanguage}
           className={className}
+          contentStyle={contentStyle}
           fileName={fileName}
           icon={icon}
           language={language}
@@ -93,7 +99,9 @@ export const Highlighter = memo<HighlighterProps>(
         )}
         {showLanguage && language && <Tag className={styles.lang}>{language.toLowerCase()}</Tag>}
         <div className={styles.scroller}>
-          <SyntaxHighlighter language={language?.toLowerCase()}>{children}</SyntaxHighlighter>
+          <SyntaxHighlighter language={language?.toLowerCase()} style={contentStyle}>
+            {children}
+          </SyntaxHighlighter>
         </div>
       </div>
     );

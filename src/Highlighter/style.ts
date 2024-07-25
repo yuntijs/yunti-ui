@@ -21,8 +21,8 @@ export const useStyles = createStyles(
         css`
           position: absolute;
           z-index: 2;
-          inset-block-start: ${type === 'pure' ? 0 : '8px'};
-          inset-inline-end: ${type === 'pure' ? 0 : '8px'};
+          inset-block-start: ${type === 'pure' ? 0 : '12px'};
+          inset-inline-end: ${type === 'pure' ? 0 : '12px'};
 
           opacity: 0;
         `
@@ -79,8 +79,8 @@ export const useStyles = createStyles(
         css`
           position: absolute;
           z-index: 2;
-          inset-block-end: 8px;
-          inset-inline-end: 0;
+          inset-block-end: 12px;
+          inset-inline-end: 4px;
 
           font-family: ${token.fontFamilyCode};
           color: ${token.colorTextSecondary};
