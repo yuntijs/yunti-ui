@@ -7,42 +7,42 @@ const isWin = process.platform === 'win32';
 
 const themeConfig = {
   logo: 'https://avatars.githubusercontent.com/u/148947838',
-  footerConfig: {
-    resources: {
-      title: 'Resources',
-      items: [
-        {
-          description: 'CloudNative Components',
-          openExternal: true,
-          title: 'Yunti UI',
-          url: 'https://github.com/yuntijs/yunti-ui',
-        },
-        {
-          description: 'Awesome lint configs',
-          openExternal: true,
-          title: 'Yunti Lint',
-          url: 'https://github.com/yuntijs/yunti-lint',
-        },
-      ],
-    },
-    moreProducts: {
-      title: 'More Products',
-      items: [
-        {
-          description: 'Framework for k8s',
-          openExternal: true,
-          title: 'Kubebb',
-          url: 'https://github.com/kubebb',
-        },
-        {
-          description: 'One-stop LLMOps platform',
-          openExternal: true,
-          title: 'KubeAGI',
-          url: 'https://github.com/kubeagi',
-        },
-      ],
-    },
-  },
+  // footerConfig: {
+  //   resources: {
+  //     title: 'Resources',
+  //     items: [
+  //       {
+  //         description: 'CloudNative Components',
+  //         openExternal: true,
+  //         title: 'Yunti UI',
+  //         url: 'https://github.com/yuntijs/yunti-ui',
+  //       },
+  //       {
+  //         description: 'Awesome lint configs',
+  //         openExternal: true,
+  //         title: 'Yunti Lint',
+  //         url: 'https://github.com/yuntijs/yunti-lint',
+  //       },
+  //     ],
+  //   },
+  //   moreProducts: {
+  //     title: 'More Products',
+  //     items: [
+  //       {
+  //         description: 'Framework for k8s',
+  //         openExternal: true,
+  //         title: 'Kubebb',
+  //         url: 'https://github.com/kubebb',
+  //       },
+  //       {
+  //         description: 'One-stop LLMOps platform',
+  //         openExternal: true,
+  //         title: 'KubeAGI',
+  //         url: 'https://github.com/kubeagi',
+  //       },
+  //     ],
+  //   },
+  // },
   actions: [
     {
       link: homepage,
@@ -70,12 +70,13 @@ const themeConfig = {
     repoId: 'R_kgDOK7a7AQ',
   },
   name: 'UI',
+  sidebarGroupModePath: ['/components'],
   nav: [
-    { link: '/components/breadcrumb', title: 'Components' },
-    // { link: 'https://ant.design/components/overview', mode: 'override', title: 'AntdComponents' },
+    { link: '/components/chat-input-area', title: 'Components' },
+    { link: 'https://ant.design/components/overview', mode: 'override', title: 'Antd Components' },
     // { link: '/colors', title: 'Colors' },
-    // { link: 'https://lucide.dev/icons', mode: 'override', title: 'Icons' },
-    // { link: 'https://ant-design.github.io/antd-style', mode: 'override', title: 'CSSinJS' },
+    { link: 'https://lucide.dev/icons', mode: 'override', title: 'Lucide Icons' },
+    { link: 'https://ant-design.github.io/antd-style', mode: 'override', title: 'CSSinJS' },
     { link: '/changelog', title: 'Changelog' },
   ],
   socialLinks: {
@@ -83,6 +84,14 @@ const themeConfig = {
     github: homepage,
   },
   title: 'Yunti UI',
+  exportStatic: {
+    // 忽略预渲染失败的错误
+    ignorePreRenderError: true,
+  },
+  ...(isProduction ? { ssr: { builder: 'webpack' } } : {}),
+  sitemap: {
+    hostname: 'https://yuntijs.github.io/yunti-ui',
+  },
 };
 
 export default defineConfig({
