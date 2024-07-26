@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.53](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.52...v1.0.0-beta.53)
+
+<sup>Released on **2024-07-26**</sup>
+
+#### 🐛 Bug Fixes
+
+- **Highlighter**: Lang may be undefined.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **Highlighter**: Lang may be undefined ([3a755c2](https://github.com/yuntijs/yunti-ui/commit/3a755c2))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.52](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.51...v1.0.0-beta.52)
 
 <sup>Released on **2024-07-25**</sup>
