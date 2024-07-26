@@ -4,7 +4,7 @@ import { homepage, name } from './package.json';
 
 const isProduction = process.env.NODE_ENV === 'production';
 const isWin = process.platform === 'win32';
-
+console.log('isProduction', isProduction);
 const themeConfig = {
   logo: 'https://avatars.githubusercontent.com/u/148947838',
   // footerConfig: {
@@ -73,10 +73,10 @@ const themeConfig = {
   sidebarGroupModePath: ['/components'],
   nav: [
     { link: '/components/chat-input-area', title: 'Components' },
-    { link: 'https://ant.design/components/overview', mode: 'override', title: 'Antd Components' },
+    { link: 'https://ant.design/components/overview', title: 'Antd Components' },
     // { link: '/colors', title: 'Colors' },
-    { link: 'https://lucide.dev/icons', mode: 'override', title: 'Lucide Icons' },
-    { link: 'https://ant-design.github.io/antd-style', mode: 'override', title: 'CSSinJS' },
+    { link: 'https://lucide.dev/icons', title: 'Lucide Icons' },
+    { link: 'https://ant-design.github.io/antd-style', title: 'CSSinJS' },
     { link: '/changelog', title: 'Changelog' },
   ],
   socialLinks: {
@@ -84,11 +84,6 @@ const themeConfig = {
     github: homepage,
   },
   title: 'Yunti UI',
-  exportStatic: {
-    // 忽略预渲染失败的错误
-    ignorePreRenderError: true,
-  },
-  ...(isProduction ? { ssr: { builder: 'webpack' } } : {}),
   sitemap: {
     hostname: 'https://yuntijs.github.io/yunti-ui',
   },
@@ -119,4 +114,9 @@ export default defineConfig({
   ],
   themeConfig,
   title: 'Yunti UI',
+  exportStatic: {
+    // 忽略预渲染失败的错误
+    ignorePreRenderError: true,
+  },
+  ...(isProduction ? { ssr: { builder: 'webpack' } } : {}),
 });
