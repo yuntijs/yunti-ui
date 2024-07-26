@@ -40,7 +40,7 @@ const initHighlighter = async (lang: string): Promise<Highlighter> => {
 
 export const useHighlight = (text: string, lang: string, isDarkMode: boolean) =>
   useSWR(
-    [lang.toLowerCase(), isDarkMode ? 'dark' : 'light', text].join('-'),
+    [lang?.toLowerCase(), isDarkMode ? 'dark' : 'light', text].join('-'),
     async () => {
       try {
         const language = lang.toLowerCase();

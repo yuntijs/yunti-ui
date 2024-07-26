@@ -43,7 +43,7 @@ export const FullFeaturedHighlighter = memo<FullFeaturedHighlighterProps>(
     ...rest
   }) => {
     const [expand, setExpand] = useState(true);
-    const [lang, setLang] = useState(language);
+    const [lang, setLang] = useState(language || 'markdown');
     const { styles, cx } = useStyles('block');
     const container = cx(styles.container, className);
 
