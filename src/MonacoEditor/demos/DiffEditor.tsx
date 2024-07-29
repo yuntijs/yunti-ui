@@ -12,6 +12,7 @@ export default () => {
         console.log(input);
       }}
       original={original}
+      supportFullScreen
       value={value}
       width="740px"
     />

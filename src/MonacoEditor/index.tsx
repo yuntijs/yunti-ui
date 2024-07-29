@@ -1,22 +1,18 @@
-import { SingleMonacoEditorComponent } from '@alilc/lowcode-plugin-base-monaco-editor';
+import type { Monaco } from '@monaco-editor/loader';
+import { useThemeMode } from 'antd-style';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+
+import { useCdnFn } from '../ConfigProvider';
+import { SingleMonacoEditorComponent } from './base';
 import type {
   IDiffMonacoEditorProps,
   IEditorInstance,
   IGeneralManacoEditorProps,
   ISingleMonacoEditorProps,
-} from '@alilc/lowcode-plugin-base-monaco-editor/lib/helper';
-import { useThemeMode } from 'antd-style';
-import type { editor as IEditor } from 'monaco-editor';
-import React, { useMemo, useState } from 'react';
-
-import { useCdnFn } from '../ConfigProvider';
-import { useStyles } from './style';
+} from './base/helper';
 
 // @Todo: Controller SSR error: https://github.com/alibaba/lowcode-plugins/blob/main/packages/base-monaco-editor/src/controller.ts#L33
-export {
-  type EditorMeta,
-  Controller as MonacoController,
-} from '@alilc/lowcode-plugin-base-monaco-editor/es/controller';
+export { type EditorMeta, Controller as MonacoController } from './base/controller';
 
 export interface BaseMonacoEditorProps extends IGeneralManacoEditorProps {
   /** Should the editor be read only. See also domReadOnly. Defaults to false. */
@@ -41,8 +37,6 @@ export const BaseMonacoEditor: React.FC<
     type?: 'single' | 'diff';
     /** Is show fullscreen button */
     supportFullScreen?: boolean;
-    /** className of diff editor wrapper */
-    diffEditorWrapperClassName?: boolean;
   }
 > = props => {
   const {
@@ -57,14 +51,15 @@ export const BaseMonacoEditor: React.FC<
     version = '0.45.0',
     requireConfig: requireConfigFromProps = {},
     options,
-    onChange,
     className,
-    diffEditorWrapperClassName,
     supportFullScreen,
-    width,
-    height,
     ...otherProps
   } = props;
+
+  const editorDidMountRef = useRef(editorDidMount);
+  useEffect(() => {
+    editorDidMountRef.current = editorDidMount;
+  }, [editorDidMount]);
 
   const { isDarkMode } = useThemeMode();
   const theme = useMemo(() => {
@@ -75,17 +70,10 @@ export const BaseMonacoEditor: React.FC<
   }, [isDarkMode, themeFromProps]);
 
   const [editorInstance, setEditorInstance] = useState<IEditorInstance>();
-  const handleEditorDidMount: BaseMonacoEditorProps['editorDidMount'] = (monaco, editor) => {
+  const handleEditorDidMount = useCallback((monaco: Monaco, editor: IEditorInstance) => {
     setEditorInstance(editor);
-    editorDidMount?.(monaco, editor);
-    // add onChange event for diff editor
-    if (type === 'diff') {
-      const { modified } = editor.getModel() as IEditor.IDiffEditorModel;
-      modified.onDidChangeContent(event => {
-        onChange?.(modified.getValue(), event);
-      });
-    }
-  };
+    editorDidMountRef.current?.(monaco, editor);
+  }, []);
 
   const editorOptions = useMemo(() => {
     const newOps = Object.assign({}, options, {
@@ -119,50 +107,30 @@ export const BaseMonacoEditor: React.FC<
     });
   }, [genCdnUrl, requireConfigFromProps, version]);
 
-  const [isFullScreen, setIsFullScreen] = useState(false);
-  const { styles, cx } = useStyles({ minimapEnabled, isFullScreen });
-
   if (type !== 'diff') {
     return (
       <SingleMonacoEditorComponent
-        className={cx(styles.base, className)}
+        className={className}
         editorDidMount={handleEditorDidMount}
-        height={height}
-        onChange={onChange}
         options={editorOptions}
         requireConfig={requireConfig}
         supportFullScreen={editorInstance && supportFullScreen}
         theme={theme}
-        width={width}
         {...otherProps}
       />
     );
   }
 
-  const fullScreen = () => {
-    setIsFullScreen(!isFullScreen);
-    editorInstance?.layout();
-  };
-  const fullScreenClassName = cx({
-    'base-monaco-full-screen-icon': !isFullScreen,
-    'base-monaco-full-screen-icon-cancel': isFullScreen,
-  });
   return (
-    <div className={cx(styles.diff, diffEditorWrapperClassName)}>
-      <SingleMonacoEditorComponent.MonacoDiffEditor
-        className={cx(styles.base, className)}
-        editorDidMount={handleEditorDidMount}
-        height={isFullScreen ? 'auto' : height}
-        options={editorOptions}
-        requireConfig={requireConfig}
-        theme={theme}
-        width={isFullScreen ? 'auto' : width}
-        {...otherProps}
-      />
-      {editorInstance && supportFullScreen && (
-        <div className={fullScreenClassName} onClick={fullScreen} />
-      )}
-    </div>
+    <SingleMonacoEditorComponent.MonacoDiffEditor
+      className={className}
+      editorDidMount={handleEditorDidMount}
+      options={editorOptions}
+      requireConfig={requireConfig}
+      supportFullScreen={editorInstance && supportFullScreen}
+      theme={theme}
+      {...otherProps}
+    />
   );
 };
 

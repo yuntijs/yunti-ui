@@ -73,11 +73,11 @@ const themeConfig = {
   sidebarGroupModePath: ['/components'],
   nav: [
     { link: '/components/chat-input-area', title: 'Components' },
+    { link: '/changelog', title: 'Changelog' },
+    { link: 'https://ui.lobehub.com/', title: 'LobeHub UI' },
     { link: 'https://ant.design/components/overview', title: 'Antd Components' },
-    // { link: '/colors', title: 'Colors' },
     { link: 'https://lucide.dev/icons', title: 'Lucide Icons' },
     { link: 'https://ant-design.github.io/antd-style', title: 'CSSinJS' },
-    { link: '/changelog', title: 'Changelog' },
   ],
   socialLinks: {
     // discord: 'https://discord.gg/AYFPHvv2jT',
@@ -113,7 +113,6 @@ export default defineConfig({
   }`,
   ],
   themeConfig,
-  title: 'Yunti UI',
   exportStatic: {
     // 忽略预渲染失败的错误
     ignorePreRenderError: true,

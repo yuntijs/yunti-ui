@@ -38,6 +38,7 @@ test-output
 .umi-production
 .umi-test
 .dumi/tmp*
+server
 
 # husky
 .husky/prepare-commit-msg
