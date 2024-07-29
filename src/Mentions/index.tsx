@@ -8,6 +8,8 @@ import type { EditorState } from 'lexical';
 import { $getRoot, TextNode } from 'lexical';
 import React, { useMemo } from 'react';
 
+import { isBrowser } from '@/utils/tools';
+
 import { CustomTextNode } from './plugins/custom-text/node';
 import {
   MentionNode,
@@ -96,6 +98,28 @@ export const Mentions: React.FC<MentionsProps> = ({
       return acc;
     }, {} as MentionsOptionsMap);
   }, [options]);
+
+  if (!isBrowser) {
+    return (
+      <div className={cx(styles.wrapper, wrapperClassname)}>
+        <div
+          className={cx(
+            {
+              [styles.root]: true,
+              [styles.filled]: variant === 'filled',
+              [styles.borderless]: variant === 'borderless',
+              [styles.disabled]: disabled,
+            },
+            className
+          )}
+          style={style || {}}
+        />
+        <div className={styles.placeholder}>
+          {placeholder || `输入 ${triggers.join(' 或 ')} 插入引用`}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <LexicalComposer initialConfig={{ ...initialConfig, editable }}>
