@@ -2,6 +2,33 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.54](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.53...v1.0.0-beta.54)
+
+<sup>Released on **2024-07-29**</sup>
+
+#### 🐛 Bug Fixes
+
+- **Mentions**: SSR failed.
+- **MonacoEditor**: SSR failed.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **Mentions**: SSR failed ([6af870a](https://github.com/yuntijs/yunti-ui/commit/6af870a))
+- **MonacoEditor**: SSR failed ([f3d36b9](https://github.com/yuntijs/yunti-ui/commit/f3d36b9))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.53](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.52...v1.0.0-beta.53)
 
 <sup>Released on **2024-07-26**</sup>
