@@ -7,26 +7,28 @@ export const useStyles = createStyles(({ css, token, prefixCls }) => {
       color: ${token.colorTextTertiary};
     `,
     list: css`
-      .${prefixCls}-table {
-        &-thead {
-          & > tr > th {
-            font-weight: normal;
-            color: ${token.colorTextTertiary};
-            background-color: unset;
-            &::before {
-              display: none;
+      &.${prefixCls}-table-wrapper {
+        .${prefixCls}-table {
+          &-thead {
+            & > tr > th {
+              font-weight: normal;
+              color: ${token.colorTextTertiary};
+              background-color: unset;
+              &::before {
+                display: none;
+              }
             }
           }
-        }
-        &-tbody {
-          & > tr:last-child {
-            & > td {
-              border-bottom-color: transparent;
+          &-tbody {
+            & > tr:last-child {
+              & > td {
+                border-bottom-color: transparent;
+              }
             }
           }
-        }
-        &-cell {
-          vertical-align: top;
+          &-cell {
+            vertical-align: top;
+          }
         }
       }
       .${prefixCls}-form {
