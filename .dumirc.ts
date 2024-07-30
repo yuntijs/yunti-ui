@@ -4,45 +4,9 @@ import { homepage, name } from './package.json';
 
 const isProduction = process.env.NODE_ENV === 'production';
 const isWin = process.platform === 'win32';
-console.log('isProduction', isProduction);
+
 const themeConfig = {
   logo: 'https://avatars.githubusercontent.com/u/148947838',
-  // footerConfig: {
-  //   resources: {
-  //     title: 'Resources',
-  //     items: [
-  //       {
-  //         description: 'CloudNative Components',
-  //         openExternal: true,
-  //         title: 'Yunti UI',
-  //         url: 'https://github.com/yuntijs/yunti-ui',
-  //       },
-  //       {
-  //         description: 'Awesome lint configs',
-  //         openExternal: true,
-  //         title: 'Yunti Lint',
-  //         url: 'https://github.com/yuntijs/yunti-lint',
-  //       },
-  //     ],
-  //   },
-  //   moreProducts: {
-  //     title: 'More Products',
-  //     items: [
-  //       {
-  //         description: 'Framework for k8s',
-  //         openExternal: true,
-  //         title: 'Kubebb',
-  //         url: 'https://github.com/kubebb',
-  //       },
-  //       {
-  //         description: 'One-stop LLMOps platform',
-  //         openExternal: true,
-  //         title: 'KubeAGI',
-  //         url: 'https://github.com/kubeagi',
-  //       },
-  //     ],
-  //   },
-  // },
   actions: [
     {
       link: homepage,

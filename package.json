@@ -116,7 +116,7 @@
     "commitlint": "^18",
     "dayjs": "^1.11.10",
     "dumi": "^2.4.6",
-    "dumi-theme-yunti": "^1.1.4",
+    "dumi-theme-yunti": "^1.1.5",
     "eslint": "^8.56.0",
     "father": "^4.3.8",
     "husky": "^8",

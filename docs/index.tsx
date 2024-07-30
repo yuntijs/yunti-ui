@@ -42,8 +42,8 @@ export default () => {
           The YuntiUI components are inspired by{' '}
           <a href={'(https://ui.lobehub.com'} rel="noreferrer" target={'_blank'}>
             LobeUI
-          </a>
-          {' '}and developed based on{' '}
+          </a>{' '}
+          and developed based on{' '}
           <a href={'https://ant.design/components/overview'} rel="noreferrer" target={'_blank'}>
             Antd components
           </a>
@@ -55,7 +55,7 @@ export default () => {
           as the default css-in-js styling solution.
         </div>
       </Center>
-      <Highlighter language={'tsx'} style={{ width: '100%' }} type={'ghost'}>
+      <Highlighter language={'tsx'} type={'ghost'}>
         {example}
       </Highlighter>
       <Features items={items} />
