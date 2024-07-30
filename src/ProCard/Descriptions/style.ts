@@ -11,22 +11,22 @@ export const useStyles = createStyles(
               padding-top: 4px !important;
               padding-bottom: 4px !important;
             }
-          }
-          .${prefixCls}-descriptions-item {
-            &-container {
-              .${prefixCls}-descriptions-item-label {
-                overflow: hidden;
-                width: ${lableWidth}px;
-                white-space: nowrap;
-              }
-              .${prefixCls}-descriptions-item-content {
-                overflow: hidden;
-                display: inline-block;
+            .${prefixCls}-descriptions-item {
+              &-container {
+                .${prefixCls}-descriptions-item-label {
+                  overflow: hidden;
+                  width: ${lableWidth}px;
+                  white-space: nowrap;
+                }
+                .${prefixCls}-descriptions-item-content {
+                  overflow: hidden;
+                  display: inline-block;
 
-                width: calc(100% - ${lableWidth}px);
+                  width: calc(100% - ${lableWidth}px);
 
-                text-overflow: ellipsis;
-                white-space: nowrap;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
               }
             }
           }
