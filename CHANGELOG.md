@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.56](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.55...v1.0.0-beta.56)
+
+<sup>Released on **2024-07-30**</sup>
+
+#### 🐛 Bug Fixes
+
+- **ProCard.Descriptions**: Overwrite style not work when specify hashPriority=high in StyleProvider.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **ProCard.Descriptions**: Overwrite style not work when specify hashPriority=high in StyleProvider ([ca2d3e1](https://github.com/yuntijs/yunti-ui/commit/ca2d3e1))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.55](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.54...v1.0.0-beta.55)
 
 <sup>Released on **2024-07-30**</sup>
