@@ -1,6 +1,6 @@
 import { Typography as AntdTypography, Tooltip } from 'antd';
-import { TextProps } from 'antd/es/typography/Text';
-import { TooltipPropsWithTitle } from 'antd/lib/tooltip';
+import type { TextProps } from 'antd/es/typography/Text';
+import type { TooltipPropsWithTitle } from 'antd/lib/tooltip';
 import dayjs from 'dayjs';
 import dayjsRelativeTime from 'dayjs/plugin/relativeTime';
 import { set } from 'lodash-es';
