@@ -54,7 +54,6 @@ const themeConfig = {
 };
 
 export default defineConfig({
-  apiParser: {},
   base: isProduction ? '/yunti-ui/' : '/',
   define: {
     'process.env': process.env,
@@ -81,5 +80,5 @@ export default defineConfig({
     // 忽略预渲染失败的错误
     ignorePreRenderError: true,
   },
-  ...(isProduction ? { ssr: { builder: 'webpack' } } : {}),
+  ...(isProduction ? { ssr: { builder: 'webpack' }, apiParser: {} } : {}),
 });

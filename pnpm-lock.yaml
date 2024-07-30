@@ -115,8 +115,8 @@ importers:
         specifier: ^2.4.6
         version: 2.4.7(@babel/core@7.23.6)(@swc/helpers@0.5.1)(@types/node@18.19.3)(@types/react@18.2.40)(eslint@8.56.0)(jest@27.5.1)(lightningcss@1.22.1)(prettier@3.1.1)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(rollup@3.29.4)(stylelint@15.11.0(typescript@5.3.3))(terser@5.26.0)(type-fest@4.8.3)(typescript@5.3.3)(webpack@5.89.0)
       dumi-theme-yunti:
-        specifier: ^1.1.5
-        version: 1.1.5(@giscus/react@3.0.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@lobehub/ui@1.147.0(@types/react-dom@18.2.18)(@types/react@18.2.40)(ahooks@3.8.0(react@18.2.0))(antd-style@3.6.2(@types/react@18.2.40)(antd@5.19.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(antd@5.19.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(lucide-react@0.400.0(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@types/react@18.2.40)(antd@5.19.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(dumi@2.4.7(@babel/core@7.23.6)(@swc/helpers@0.5.1)(@types/node@18.19.3)(@types/react@18.2.40)(eslint@8.56.0)(jest@27.5.1)(lightningcss@1.22.1)(prettier@3.1.1)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(rollup@3.29.4)(stylelint@15.11.0(typescript@5.3.3))(terser@5.26.0)(type-fest@4.8.3)(typescript@5.3.3)(webpack@5.89.0))(immer@10.1.1)(lucide-react@0.400.0(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react-layout-kit@1.7.4(react@18.2.0))(react@18.2.0)
+        specifier: ^1.1.7
+        version: 1.1.7(@giscus/react@3.0.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@lobehub/ui@1.147.0(@types/react-dom@18.2.18)(@types/react@18.2.40)(ahooks@3.8.0(react@18.2.0))(antd-style@3.6.2(@types/react@18.2.40)(antd@5.19.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(antd@5.19.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(lucide-react@0.400.0(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@types/react@18.2.40)(antd@5.19.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(dumi@2.4.7(@babel/core@7.23.6)(@swc/helpers@0.5.1)(@types/node@18.19.3)(@types/react@18.2.40)(eslint@8.56.0)(jest@27.5.1)(lightningcss@1.22.1)(prettier@3.1.1)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(rollup@3.29.4)(stylelint@15.11.0(typescript@5.3.3))(terser@5.26.0)(type-fest@4.8.3)(typescript@5.3.3)(webpack@5.89.0))(immer@10.1.1)(lucide-react@0.400.0(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react-layout-kit@1.7.4(react@18.2.0))(react@18.2.0)
       eslint:
         specifier: ^8.56.0
         version: 8.56.0
@@ -4480,8 +4480,8 @@ packages:
   dumi-assets-types@2.3.0:
     resolution: {integrity: sha512-mM6UoGTgTNoo8lA4dwaIwoeSGT+4PeQeiFylr2+kCB5z3/7NEf7lIM4tqrAsEyzecE/HX0+w7Z78hnFZQ9k5vQ==}
 
-  dumi-theme-yunti@1.1.5:
-    resolution: {integrity: sha512-m4JfLkIsujxZUcNQIhmSjZ46X/HIh0M1fUKtcCkfGSN537FDOnSIF3gX00HgYhdO4RiXmtItUXsp9DRalIf+vw==}
+  dumi-theme-yunti@1.1.7:
+    resolution: {integrity: sha512-vFklCHQyL95KGH/SlhxpWVm8i7CpxI7HHTy6UsFZomUHyOsgeynyPlrcKIc21ObyhtYr7P7ElHp6e5wbsTsfzQ==}
     peerDependencies:
       '@giscus/react': '>=3'
       '@lobehub/ui': '>=1'
@@ -16441,7 +16441,7 @@ snapshots:
 
   dumi-assets-types@2.3.0: {}
 
-  dumi-theme-yunti@1.1.5(@giscus/react@3.0.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@lobehub/ui@1.147.0(@types/react-dom@18.2.18)(@types/react@18.2.40)(ahooks@3.8.0(react@18.2.0))(antd-style@3.6.2(@types/react@18.2.40)(antd@5.19.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(antd@5.19.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(lucide-react@0.400.0(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@types/react@18.2.40)(antd@5.19.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(dumi@2.4.7(@babel/core@7.23.6)(@swc/helpers@0.5.1)(@types/node@18.19.3)(@types/react@18.2.40)(eslint@8.56.0)(jest@27.5.1)(lightningcss@1.22.1)(prettier@3.1.1)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(rollup@3.29.4)(stylelint@15.11.0(typescript@5.3.3))(terser@5.26.0)(type-fest@4.8.3)(typescript@5.3.3)(webpack@5.89.0))(immer@10.1.1)(lucide-react@0.400.0(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react-layout-kit@1.7.4(react@18.2.0))(react@18.2.0):
+  dumi-theme-yunti@1.1.7(@giscus/react@3.0.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@lobehub/ui@1.147.0(@types/react-dom@18.2.18)(@types/react@18.2.40)(ahooks@3.8.0(react@18.2.0))(antd-style@3.6.2(@types/react@18.2.40)(antd@5.19.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(antd@5.19.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(lucide-react@0.400.0(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@types/react@18.2.40)(antd@5.19.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(dumi@2.4.7(@babel/core@7.23.6)(@swc/helpers@0.5.1)(@types/node@18.19.3)(@types/react@18.2.40)(eslint@8.56.0)(jest@27.5.1)(lightningcss@1.22.1)(prettier@3.1.1)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(rollup@3.29.4)(stylelint@15.11.0(typescript@5.3.3))(terser@5.26.0)(type-fest@4.8.3)(typescript@5.3.3)(webpack@5.89.0))(immer@10.1.1)(lucide-react@0.400.0(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react-layout-kit@1.7.4(react@18.2.0))(react@18.2.0):
     dependencies:
       '@ant-design/cssinjs': 1.21.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@emotion/css': 11.13.0
