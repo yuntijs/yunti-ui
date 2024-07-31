@@ -55,7 +55,7 @@ export default () => {
           as the default css-in-js styling solution.
         </div>
       </Center>
-      <Highlighter language={'tsx'} type={'ghost'}>
+      <Highlighter language={'tsx'} style={{ maxWidth: '60%' }} type={'ghost'}>
         {example}
       </Highlighter>
       <Features items={items} />
