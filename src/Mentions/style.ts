@@ -2,8 +2,10 @@ import { createStyles } from 'antd-style';
 
 import { AutoSize } from './types';
 
+const inputHeight = 32;
+const lineHeight = 22;
 const calculateHeight = (rows: number) => {
-  return 32 + Math.max(rows - 1, 0) * 22;
+  return inputHeight + Math.max(rows - 1, 0) * lineHeight;
 };
 
 export const useStyles = createStyles(
@@ -20,9 +22,13 @@ export const useStyles = createStyles(
         user-select: none;
 
         position: absolute;
-        top: 4px;
-        left: 11px;
+        top: 0;
+        left: 13px;
 
+        height: ${inputHeight}px;
+
+        font-size: ${token.fontSize}px;
+        line-height: ${inputHeight}px;
         color: ${token.colorTextPlaceholder};
       `,
       root: css`
@@ -59,6 +65,7 @@ export const useStyles = createStyles(
         p {
           margin-bottom: 0;
           margin-block: 0 0;
+          line-height: ${lineHeight}px;
         }
       `,
       filled: css`

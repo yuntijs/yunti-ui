@@ -31,6 +31,10 @@ export default () => {
 
 <code src="./demos/index.tsx" center></code>
 
+### Single line
+
+<code src="./demos/SingleLine.tsx" center></code>
+
 ### Playground
 
 <code src="./demos/Playground.tsx" center></code>
