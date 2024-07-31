@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.57](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.56...v1.0.0-beta.57)
+
+<sup>Released on **2024-07-31**</sup>
+
+#### 🐛 Bug Fixes
+
+- **Mentions**: Style have issue when single line.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **Mentions**: Style have issue when single line ([a5f85ea](https://github.com/yuntijs/yunti-ui/commit/a5f85ea))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.56](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.55...v1.0.0-beta.56)
 
 <sup>Released on **2024-07-30**</sup>
