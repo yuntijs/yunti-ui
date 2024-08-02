@@ -15,7 +15,7 @@ import { ChatItemProps } from './type';
 
 const MOBILE_AVATAR_SIZE = 32;
 
-const ChatItem = memo<ChatItemProps>(
+export const ChatItem = memo<ChatItemProps>(
   ({
     avatarAddon,
     onAvatarClick,
@@ -117,7 +117,5 @@ const ChatItem = memo<ChatItemProps>(
     );
   }
 );
-
-export default ChatItem;
 
 export type { ChatItemProps } from './type';

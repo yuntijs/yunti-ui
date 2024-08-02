@@ -1,7 +1,7 @@
 import { ActionIconGroup, StoryBook, useControls, useCreateStore } from '@lobehub/ui';
+import { ChatItem, ChatItemProps } from '@yuntijs/ui';
 import { useState } from 'react';
 
-import ChatItem, { ChatItemProps } from '..';
 import { content } from '../../EditableMessage/demos/data';
 import { avatar, dropdownMenu, items } from './data';
 

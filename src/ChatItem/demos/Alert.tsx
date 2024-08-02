@@ -1,6 +1,6 @@
 import { Highlighter, StoryBook, useControls, useCreateStore } from '@lobehub/ui';
+import { ChatItem, ChatItemProps } from '@yuntijs/ui';
 
-import ChatItem, { ChatItemProps } from '..';
 import { avatar } from './data';
 
 const demoError = {
