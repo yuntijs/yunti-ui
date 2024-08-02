@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.59](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.58...v1.0.0-beta.59)
+
+<sup>Released on **2024-08-02**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: Export ChatItem & EditableMessage.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: Export ChatItem & EditableMessage ([eb0586f](https://github.com/yuntijs/yunti-ui/commit/eb0586f))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.58](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.57...v1.0.0-beta.58)
 
 <sup>Released on **2024-08-02**</sup>
