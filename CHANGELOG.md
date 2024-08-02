@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.58](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.57...v1.0.0-beta.58)
+
+<sup>Released on **2024-08-02**</sup>
+
+#### ✨ Features
+
+- **misc**: LobeUI ChatItem & EditableMessage.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **misc**: LobeUI ChatItem & EditableMessage ([f8c080a](https://github.com/yuntijs/yunti-ui/commit/f8c080a))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.57](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.56...v1.0.0-beta.57)
 
 <sup>Released on **2024-07-31**</sup>
