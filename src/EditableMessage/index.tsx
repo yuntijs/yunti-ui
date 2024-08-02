@@ -84,7 +84,7 @@ export interface EditableMessageProps {
   markdownProps?: MarkdownProps;
 }
 
-const EditableMessage = memo<EditableMessageProps>(
+export const EditableMessage = memo<EditableMessageProps>(
   ({
     value,
     onChange,
@@ -180,5 +180,3 @@ const EditableMessage = memo<EditableMessageProps>(
     );
   }
 );
-
-export default EditableMessage;

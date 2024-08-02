@@ -1,8 +1,8 @@
 import { StoryBook, useControls, useCreateStore } from '@lobehub/ui';
+import { EditableMessage } from '@yuntijs/ui';
 import { button } from 'leva';
 import { useState } from 'react';
 
-import EditableMessage from '..';
 import { content } from './data';
 
 export default () => {
