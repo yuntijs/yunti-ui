@@ -30,6 +30,8 @@ export * from './Typography';
 
 // ~ custom @lobehub/ui
 export * from './ChatInputArea';
+export * from './ChatItem';
+export * from './EditableMessage';
 export * from './Highlighter';
 export * from './styles';
 

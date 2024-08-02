@@ -100,7 +100,8 @@
     "react-layout-kit": "^1",
     "shiki": "^1.10.3",
     "swr": "^2.2.5",
-    "url-join": "^5.0.0"
+    "url-join": "^5.0.0",
+    "use-merge-value": "^1.2.0"
   },
   "devDependencies": {
     "@testing-library/react": "^14",
