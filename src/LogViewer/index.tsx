@@ -56,14 +56,10 @@ export const LogViewer: React.FC<LogViewerProps> = ({
 
   const url = useMemo(() => {
     // workaround for onLoad exec twice
-    if (setLoadingTimeout.current) {
-      clearTimeout(setLoadingTimeout.current);
-    } else {
-      setLoadingTimeout.current = setTimeout(() => {
-        setLoading(true);
-        setLoadingTimeout.current = undefined;
-      }, 50);
-    }
+    setLoadingTimeout.current = setTimeout(() => {
+      setLoading(true);
+      setLoadingTimeout.current = undefined;
+    }, 50);
 
     return `${urlFromProps}#${urlHash}`;
   }, [urlFromProps, urlHash]);

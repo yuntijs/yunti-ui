@@ -51,8 +51,8 @@ export const useStyles = createStyles(
         right: ${token.marginSM}px;
         bottom: ${token.marginSM}px;
 
-        font-size: ${token.fontSizeLG}px;
-        color: ${token.colorTextTertiary};
+        font-size: 18px;
+        color: #999;
       `,
     };
   },
