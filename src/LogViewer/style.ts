@@ -40,13 +40,23 @@ export const useStyles = createStyles(
           }
           .log-content {
             margin-left: 15px;
+            font-family: ${token.fontFamilyCode};
           }
         }
       `,
       searchBarIcon: css`
         font-size: 16px;
       `,
-      loader: css`
+      loaderText: css`
+        position: absolute;
+        top: 44px;
+        left: 15px;
+
+        font-family: ${token.fontFamilyCode};
+        font-size: 12px;
+        color: #fff;
+      `,
+      loaderIcon: css`
         position: absolute;
         right: ${token.marginSM}px;
         bottom: ${token.marginSM}px;

@@ -100,7 +100,12 @@ export const LogViewer: React.FC<LogViewerProps> = ({
         )}
         startFollowing
       />
-      {loading && <Icon className={styles.loader} icon={LoaderCircle} spin />}
+      {loading && (
+        <>
+          <div className={styles.loaderText}>loading ...</div>
+          <Icon className={styles.loaderIcon} icon={LoaderCircle} spin />
+        </>
+      )}
     </div>
   );
 };
