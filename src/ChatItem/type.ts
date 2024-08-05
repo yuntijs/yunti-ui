@@ -1,12 +1,7 @@
-import {
-  AlertProps,
-  AvatarProps,
-  DivProps,
-  EditableMessageProps,
-  MarkdownProps,
-  MetaData,
-} from '@lobehub/ui';
+import { AlertProps, AvatarProps, DivProps, MetaData } from '@lobehub/ui';
 import { ReactNode } from 'react';
+
+import type { EditableMessageProps } from '@/EditableMessage';
 
 export interface ChatItemProps {
   /**
@@ -81,7 +76,7 @@ export interface ChatItemProps {
   /**
    * @description The markdownProps of the chat item
    */
-  markdownProps?: MarkdownProps;
+  markdownProps?: EditableMessageProps['markdownProps'];
   /**
    * @description The markdownClassname of the chat item
    */

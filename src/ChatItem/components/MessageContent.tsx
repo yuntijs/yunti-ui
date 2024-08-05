@@ -1,9 +1,8 @@
-import { MarkdownProps } from '@lobehub/ui';
 import { useResponsive } from 'antd-style';
 import { type ReactNode, memo } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
-import { EditableMessage } from '@/EditableMessage';
+import { EditableMessage, EditableMessageProps } from '@/EditableMessage';
 
 import { useStyles } from '../style';
 import { ChatItemProps } from '../type';
@@ -21,7 +20,7 @@ export interface MessageContentProps {
   renderMessage?: ChatItemProps['renderMessage'];
   text?: ChatItemProps['text'];
   type?: ChatItemProps['type'];
-  markdownProps?: MarkdownProps;
+  markdownProps?: EditableMessageProps['markdownProps'];
   markdownClassname?: string;
 }
 
