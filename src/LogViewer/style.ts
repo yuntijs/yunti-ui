@@ -5,8 +5,10 @@ export const useStyles = createStyles(
     const bgColor = '#222222';
     return {
       root: css`
+        position: relative;
         background-color: ${bgColor};
         border-radius: ${token.borderRadiusLG}px;
+
         .react-lazylog-searchbar {
           margin-bottom: ${token.marginXXS}px;
           padding: ${token.paddingXS}px;
@@ -28,8 +30,11 @@ export const useStyles = createStyles(
           }
         }
         .react-lazylog {
+          scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+          scrollbar-width: auto;
           background-color: ${bgColor};
           border-radius: ${token.borderRadiusLG}px;
+
           .log-number {
             margin-right: 0;
           }
@@ -40,6 +45,14 @@ export const useStyles = createStyles(
       `,
       searchBarIcon: css`
         font-size: 16px;
+      `,
+      loader: css`
+        position: absolute;
+        right: ${token.marginSM}px;
+        bottom: ${token.marginSM}px;
+
+        font-size: ${token.fontSizeLG}px;
+        color: ${token.colorTextTertiary};
       `,
     };
   },

@@ -1,14 +1,17 @@
 import { Icon } from '@lobehub/ui';
 import { LazyLog, ScrollFollow } from '@melloware/react-logviewer';
-import { ArrowDown, ArrowUp, TextSearch } from 'lucide-react';
-import React, { useEffect, useMemo, useState } from 'react';
+import { ArrowDown, ArrowUp, LoaderCircle, TextSearch } from 'lucide-react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { DivProps } from 'react-layout-kit';
 
 import { useStyles } from './style';
 import type { LazyLogProps } from './types';
 
 export interface LogViewerProps
-  extends Omit<LazyLogProps, 'iconFilterLines' | 'iconFindNext' | 'iconFindPrevious'>,
+  extends Omit<
+      LazyLogProps,
+      'iconFilterLines' | 'iconFindNext' | 'iconFindPrevious' | 'loadingComponent'
+    >,
     Pick<DivProps, 'className' | 'id' | 'style'> {
   /**
    * Timed refresh, in ms, only takes effect when url is specified and not websocket
@@ -24,10 +27,20 @@ export const LogViewer: React.FC<LogViewerProps> = ({
   url: urlFromProps,
   websocket,
   refreshInterval,
+  onLoad,
+  onError,
   ...props
 }) => {
   const { cx, styles } = useStyles();
   const [urlHash, setUrlHash] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const setLoadingTimeout = useRef<NodeJS.Timeout>();
+
+  useEffect(() => {
+    return () => {
+      clearTimeout(setLoadingTimeout.current);
+    };
+  }, []);
 
   useEffect(() => {
     let intervalTimeout: NodeJS.Timeout;
@@ -41,7 +54,32 @@ export const LogViewer: React.FC<LogViewerProps> = ({
     };
   }, [refreshInterval, urlFromProps, websocket]);
 
-  const url = useMemo(() => `${urlFromProps}#${urlHash}`, [urlFromProps, urlHash]);
+  const url = useMemo(() => {
+    // workaround for onLoad exec twice
+    if (setLoadingTimeout.current) {
+      clearTimeout(setLoadingTimeout.current);
+    } else {
+      setLoadingTimeout.current = setTimeout(() => {
+        setLoading(true);
+        setLoadingTimeout.current = undefined;
+      }, 50);
+    }
+
+    return `${urlFromProps}#${urlHash}`;
+  }, [urlFromProps, urlHash]);
+
+  const handleOnLoad: LogViewerProps['onLoad'] = useCallback(() => {
+    setLoading(false);
+    onLoad?.();
+  }, [onLoad]);
+
+  const handleOnError: LogViewerProps['onError'] = useCallback(
+    (error: any) => {
+      setLoading(false);
+      onError?.(error);
+    },
+    [onError]
+  );
 
   return (
     <div className={cx(styles.root, className)} id={id} style={{ height, ...style }}>
@@ -56,6 +94,8 @@ export const LogViewer: React.FC<LogViewerProps> = ({
             iconFilterLines={<Icon className={styles.searchBarIcon} icon={TextSearch} />}
             iconFindNext={<Icon className={styles.searchBarIcon} icon={ArrowDown} />}
             iconFindPrevious={<Icon className={styles.searchBarIcon} icon={ArrowUp} />}
+            onError={handleOnError}
+            onLoad={handleOnLoad}
             onScroll={args => {
               onFollowScroll(args);
               onScroll?.(args);
@@ -64,6 +104,7 @@ export const LogViewer: React.FC<LogViewerProps> = ({
         )}
         startFollowing
       />
+      {loading && <Icon className={styles.loader} icon={LoaderCircle} spin />}
     </div>
   );
 };
