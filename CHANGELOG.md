@@ -2,6 +2,39 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.60](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.59...v1.0.0-beta.60)
+
+<sup>Released on **2024-08-05**</sup>
+
+#### ✨ Features
+
+- **LogViewer**: Add refreshInterval support.
+
+#### 🐛 Bug Fixes
+
+- **EditableMessage**: Remove unnecessary MarkdownProps.children.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **LogViewer**: Add refreshInterval support ([3872c5a](https://github.com/yuntijs/yunti-ui/commit/3872c5a))
+
+#### What's fixed
+
+- **EditableMessage**: Remove unnecessary MarkdownProps.children ([c6c15d5](https://github.com/yuntijs/yunti-ui/commit/c6c15d5))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.59](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.58...v1.0.0-beta.59)
 
 <sup>Released on **2024-08-02**</sup>
