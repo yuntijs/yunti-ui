@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.63](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.62...v1.0.0-beta.63)
+
+<sup>Released on **2024-08-05**</sup>
+
+#### ✨ Features
+
+- **LogViewer**: Add loading text.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **LogViewer**: Add loading text ([9eab5b2](https://github.com/yuntijs/yunti-ui/commit/9eab5b2))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.62](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.61...v1.0.0-beta.62)
 
 <sup>Released on **2024-08-05**</sup>
