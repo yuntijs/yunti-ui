@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.62](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.61...v1.0.0-beta.62)
+
+<sup>Released on **2024-08-05**</sup>
+
+#### 🐛 Bug Fixes
+
+- **LogViewer**: Loader do not appear.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **LogViewer**: Loader do not appear ([3fcbe47](https://github.com/yuntijs/yunti-ui/commit/3fcbe47))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.61](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.60...v1.0.0-beta.61)
 
 <sup>Released on **2024-08-05**</sup>
