@@ -81,7 +81,7 @@ export interface EditableMessageProps {
    * @title The current text value
    */
   value: string;
-  markdownProps?: MarkdownProps;
+  markdownProps?: Omit<MarkdownProps, 'children'>;
 }
 
 export const EditableMessage = memo<EditableMessageProps>(
