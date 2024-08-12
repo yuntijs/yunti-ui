@@ -47,6 +47,11 @@ export interface HighlighterProps extends DivProps {
    * @description The style of the code content
    */
   contentStyle?: React.CSSProperties;
+  /**
+   * @description Control text wrap
+   * @default false
+   */
+  wrap?: boolean;
 }
 
 export const Highlighter = memo<HighlighterProps>(
@@ -65,10 +70,11 @@ export const Highlighter = memo<HighlighterProps>(
     fileName,
     icon,
     contentStyle,
+    wrap,
     ...rest
   }) => {
     const { styles, cx } = useStyles(type);
-    const container = cx(styles.container, className);
+    const container = cx(styles.container, !wrap && styles.nowrap, className);
 
     if (fullFeatured)
       return (

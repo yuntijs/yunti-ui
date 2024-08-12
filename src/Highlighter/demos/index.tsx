@@ -34,6 +34,7 @@ export default () => {
         value: 'block',
       },
       fullFeatured: false,
+      wrap: false,
     },
     { store }
   );
