@@ -2,6 +2,34 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.64](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.63...v1.0.0-beta.64)
+
+<sup>Released on **2024-08-12**</sup>
+
+#### ✨ Features
+
+- **Highlighter**: Support wrap props.
+- **misc**: Add SelectCard, add SelectCard.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **Highlighter**: Support wrap props ([17b6edd](https://github.com/yuntijs/yunti-ui/commit/17b6edd))
+- **misc**: Add SelectCard ([ce8141b](https://github.com/yuntijs/yunti-ui/commit/ce8141b))
+- **misc**: Add SelectCard ([c6141a5](https://github.com/yuntijs/yunti-ui/commit/c6141a5))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.63](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.62...v1.0.0-beta.63)
 
 <sup>Released on **2024-08-05**</sup>
