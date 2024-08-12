@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.65](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.64...v1.0.0-beta.65)
+
+<sup>Released on **2024-08-12**</sup>
+
+#### ✨ Features
+
+- **SelectCard**: Support icon for option.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **SelectCard**: Support icon for option ([a6b83ee](https://github.com/yuntijs/yunti-ui/commit/a6b83ee))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.64](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.63...v1.0.0-beta.64)
 
 <sup>Released on **2024-08-12**</sup>
