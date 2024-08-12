@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.66](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.65...v1.0.0-beta.66)
+
+<sup>Released on **2024-08-12**</sup>
+
+#### 💄 Styles
+
+- **SelectCard**: Change default border color.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### Styles
+
+- **SelectCard**: Change default border color ([f47a2af](https://github.com/yuntijs/yunti-ui/commit/f47a2af))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.65](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.64...v1.0.0-beta.65)
 
 <sup>Released on **2024-08-12**</sup>
