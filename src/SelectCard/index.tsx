@@ -11,12 +11,13 @@ const { Text, Paragraph } = Typography;
 type RawValue = string | number;
 type Value = RawValue | RawValue[];
 export interface SelectCardOption {
-  className?: string;
   value: RawValue;
-  img?: string;
+  img?: React.ReactNode;
+  icon?: React.ReactNode;
+  iconStyle?: React.CSSProperties;
   label?: React.ReactNode;
   description?: React.ReactNode;
-  [name: string]: any;
+  style?: React.CSSProperties;
 }
 
 export interface SelectCardProps
@@ -35,9 +36,11 @@ export interface SelectCardProps
   ) => React.ReactNode;
   classNames?: {
     card?: string;
+    icon?: string;
   };
   styles?: {
     card?: React.CSSProperties;
+    icon?: React.CSSProperties;
   };
 }
 
@@ -55,7 +58,7 @@ export const SelectCard = React.forwardRef<HTMLDivElement, SelectCardProps>((pro
     optionRender,
     ...otherProps
   } = props;
-  const isImg = useMemo(() => options.some(o => !!o.img), [options]);
+  const isImg = useMemo(() => options.some(o => !!o.img || !!o.icon), [options]);
   const { cx, styles } = useStyles({ disabled, size });
   const { imgHeight } = useMemo(() => getNumberBySize(size), [size]);
 
@@ -107,19 +110,23 @@ export const SelectCard = React.forwardRef<HTMLDivElement, SelectCardProps>((pro
       const Option = (
         <Flex
           align={isImg ? 'center' : 'flex-start'}
-          className={cx(
-            styles.option,
-            selected && styles.optionSelected,
-            classNames?.card,
-            o.className
-          )}
+          className={cx(styles.option, selected && styles.optionSelected, classNames?.card)}
           gap="small"
           key={o.value}
           onClick={() => onSelect(o.value)}
-          style={stylesFromProps?.card}
+          style={{ ...stylesFromProps?.card, ...o.style }}
           vertical
         >
-          {isImg && <Avatar shape="square" size={imgHeight} src={o.img} />}
+          {isImg && (
+            <Avatar
+              className={classNames?.icon}
+              icon={o.icon}
+              shape="square"
+              size={imgHeight}
+              src={o.img}
+              style={{ ...stylesFromProps?.icon, ...o.iconStyle }}
+            />
+          )}
           {o.label && (
             <Text ellipsis strong>
               {o.label}
@@ -137,6 +144,7 @@ export const SelectCard = React.forwardRef<HTMLDivElement, SelectCardProps>((pro
     },
     [
       classNames?.card,
+      classNames?.icon,
       cx,
       imgHeight,
       isImg,
@@ -148,6 +156,7 @@ export const SelectCard = React.forwardRef<HTMLDivElement, SelectCardProps>((pro
       styles.option,
       styles.optionSelected,
       stylesFromProps?.card,
+      stylesFromProps?.icon,
     ]
   );
 

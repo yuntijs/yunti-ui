@@ -1,3 +1,4 @@
+import { AntDesignOutlined } from '@ant-design/icons';
 import { Flex, Segmented, SelectCard, SelectCardProps } from '@yuntijs/ui';
 import { useState } from 'react';
 
@@ -30,7 +31,12 @@ const SelectWithImgDemo = () => {
             img: 'https://avatars.githubusercontent.com/u/148947838',
             value: 'yunti-ui',
           },
-          { label: 'test', description: 'test desc', value: 'test' },
+          {
+            label: 'icon',
+            icon: <AntDesignOutlined />,
+            iconStyle: { backgroundColor: '#1677ff' },
+            value: 'icon',
+          },
         ]}
         size={size}
       />

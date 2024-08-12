@@ -12,7 +12,7 @@ A card display select, support multiple select and `optionRender`.
 
 <code src="./demos/index.tsx"></code>
 
-### Select with img
+### Select with img or icon
 
 <code src="./demos/SelectWithImg.tsx"></code>
 
