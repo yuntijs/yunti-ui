@@ -95,6 +95,7 @@
     "lodash-es": "^4",
     "lucide-react": "latest",
     "query-string": "^8",
+    "rc-util": "^5.43.0",
     "react-draggable": "^4.4.6",
     "react-error-boundary": "^4",
     "react-layout-kit": "^1",
