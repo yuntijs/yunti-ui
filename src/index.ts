@@ -7,6 +7,7 @@ export * from './Mentions';
 export * from './MonacoEditor';
 export * from './Page';
 export * from './ProCard';
+export * from './SelectCard';
 export * from './SliderInput';
 export * from './Status';
 
