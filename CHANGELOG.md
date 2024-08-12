@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.67](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.66...v1.0.0-beta.67)
+
+<sup>Released on **2024-08-12**</sup>
+
+#### ✨ Features
+
+- **LogViewer**: Support scroll to bottom when loaded and fix loading issue.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **LogViewer**: Support scroll to bottom when loaded and fix loading issue ([56e4262](https://github.com/yuntijs/yunti-ui/commit/56e4262))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.66](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.65...v1.0.0-beta.66)
 
 <sup>Released on **2024-08-12**</sup>
