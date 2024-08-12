@@ -34,11 +34,14 @@ export const LogViewer: React.FC<LogViewerProps> = ({
   const { cx, styles } = useStyles();
   const [urlHash, setUrlHash] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [followAfterLoaded, setFollowAfterLoaded] = useState(false);
   const setLoadingTimeout = useRef<NodeJS.Timeout>();
+  const setFollowAfterLoadedTimeout = useRef<NodeJS.Timeout>();
 
   useEffect(() => {
     return () => {
       clearTimeout(setLoadingTimeout.current);
+      clearTimeout(setFollowAfterLoadedTimeout.current);
     };
   }, []);
 
@@ -55,6 +58,9 @@ export const LogViewer: React.FC<LogViewerProps> = ({
   }, [refreshInterval, urlFromProps, websocket]);
 
   const url = useMemo(() => {
+    if (!urlFromProps) {
+      return urlFromProps;
+    }
     // workaround for onLoad exec twice
     setLoadingTimeout.current = setTimeout(() => {
       setLoading(true);
@@ -65,13 +71,23 @@ export const LogViewer: React.FC<LogViewerProps> = ({
   }, [urlFromProps, urlHash]);
 
   const handleOnLoad: LogViewerProps['onLoad'] = useCallback(() => {
+    // if has log line clear setLoading timeout
+    if (document.querySelector('.react-lazylog .log-line')) {
+      clearTimeout(setLoadingTimeout.current);
+    }
     setLoading(false);
+
+    // scroll to bottom
+    setFollowAfterLoaded(true);
+    setFollowAfterLoadedTimeout.current = setTimeout(() => setFollowAfterLoaded(false), 100);
+
     onLoad?.();
   }, [onLoad]);
 
   const handleOnError: LogViewerProps['onError'] = useCallback(
     (error: any) => {
       setLoading(false);
+      clearTimeout(setLoadingTimeout.current);
       onError?.(error);
     },
     [onError]
@@ -85,7 +101,7 @@ export const LogViewer: React.FC<LogViewerProps> = ({
             url={url}
             websocket={websocket}
             {...props}
-            follow={follow}
+            follow={followAfterLoaded || follow}
             height={height}
             iconFilterLines={<Icon className={styles.searchBarIcon} icon={TextSearch} />}
             iconFindNext={<Icon className={styles.searchBarIcon} icon={ArrowDown} />}
