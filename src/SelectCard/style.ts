@@ -33,7 +33,7 @@ export const useStyles = createStyles(
       option: css`
         position: relative;
 
-        border: 1px solid ${token.colorBorderSecondary};
+        border: 1px solid ${token.colorBorder};
         border-radius: ${token.borderRadius}px;
 
         cursor: ${disabled ? 'not-allowed' : 'pointer'};
