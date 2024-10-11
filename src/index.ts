@@ -181,5 +181,8 @@ export {
   type SyntaxHighlighterProps,
 } from '@lobehub/ui';
 
+// @lobehub/tts
+export { SpeechSynthesisTTS } from '@lobehub/tts';
+
 // ~ antd-style
 export { useResponsive, useTheme, useThemeMode } from 'antd-style';
