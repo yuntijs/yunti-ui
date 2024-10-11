@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.69](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.68...v1.0.0-beta.69)
+
+<sup>Released on **2024-10-11**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: Export SpeechSynthesisTTS.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: Export SpeechSynthesisTTS, closes [#21](https://github.com/yuntijs/yunti-ui/issues/21) ([2273655](https://github.com/yuntijs/yunti-ui/commit/2273655))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.68](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.67...v1.0.0-beta.68)
 
 <sup>Released on **2024-10-11**</sup>
