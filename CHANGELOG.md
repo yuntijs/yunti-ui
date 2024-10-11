@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.68](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.67...v1.0.0-beta.68)
+
+<sup>Released on **2024-10-11**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: @lobehub/tts useSpeechSynthes.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: @lobehub/tts useSpeechSynthes, closes [#20](https://github.com/yuntijs/yunti-ui/issues/20) ([50b42d3](https://github.com/yuntijs/yunti-ui/commit/50b42d3))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.67](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.66...v1.0.0-beta.67)
 
 <sup>Released on **2024-08-12**</sup>
