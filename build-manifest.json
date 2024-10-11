@@ -1,8 +1,8 @@
 {
   "assets": {
     "umi.css": "/yunti-ui/umi.af66d3d5.css",
-    "umi.js": "/yunti-ui/umi.d23debb6.js",
-    "meta__docs.js": "/yunti-ui/meta__docs.702f2cfe.async.js",
+    "umi.js": "/yunti-ui/umi.16ea8060.js",
+    "meta__docs.js": "/yunti-ui/meta__docs.5ff61541.async.js",
     "meta__Alert.js": "/yunti-ui/meta__Alert.bc51a62c.async.js",
     "meta__Breadcrumb.js": "/yunti-ui/meta__Breadcrumb.25fc5002.async.js",
     "meta__Card.js": "/yunti-ui/meta__Card.5eb2d985.async.js",
@@ -38,9 +38,9 @@
     "nm__dumi__dist__client__pages__404.js": "/yunti-ui/nm__dumi__dist__client__pages__404.3647ce56.async.js",
     "nm__dumi-theme-yunti__dist__layouts__GlobalLayout.js": "/yunti-ui/nm__dumi-theme-yunti__dist__layouts__GlobalLayout.e092d25f.async.js",
     "dumi__tmp-production__dumi__theme__ContextWrapper.js": "/yunti-ui/dumi__tmp-production__dumi__theme__ContextWrapper.5ba797a5.async.js",
-    "nm__dumi-theme-yunti__dist__layouts__DocLayout__index.js": "/yunti-ui/nm__dumi-theme-yunti__dist__layouts__DocLayout__index.7e05522c.async.js",
+    "nm__dumi-theme-yunti__dist__layouts__DocLayout__index.js": "/yunti-ui/nm__dumi-theme-yunti__dist__layouts__DocLayout__index.ebe84e5d.async.js",
     "nm__dumi-theme-yunti__dist__layouts__DemoLayout__index.js": "/yunti-ui/nm__dumi-theme-yunti__dist__layouts__DemoLayout__index.68217dae.async.js",
-    "docs__changelog.md.js": "/yunti-ui/docs__changelog.md.b9924f12.async.js",
+    "docs__changelog.md.js": "/yunti-ui/docs__changelog.md.59158ff6.async.js",
     "docs__index.md.js": "/yunti-ui/docs__index.md.d54d5f29.async.js",
     "Alert__index.md.js": "/yunti-ui/Alert__index.md.bb6b7f4e.async.js",
     "Breadcrumb__index.md.js": "/yunti-ui/Breadcrumb__index.md.19814c94.async.js",
