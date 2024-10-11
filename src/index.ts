@@ -36,6 +36,9 @@ export * from './EditableMessage';
 export * from './Highlighter';
 export * from './styles';
 
+// ~ custom @lobehub/tts
+export * from './useSpeechSynthes';
+
 // ~ antd
 export {
   Affix,
