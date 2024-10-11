@@ -1,1 +1,9 @@
-module.exports = require('@yuntijs/lint').commitlint;
+const commitlint = require('@yuntijs/lint').commitlint
+
+module.exports = {
+  ...commitlint,
+  rules: {
+    ...commitlint.rules,
+    'footer-max-line-length': [0],
+  }
+};
