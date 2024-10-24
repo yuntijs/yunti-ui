@@ -183,6 +183,7 @@ export {
 
 // @lobehub/tts
 export { SpeechSynthesisTTS } from '@lobehub/tts';
+export { AudioPlayer, useAudioPlayer, useSpeechRecognition } from '@lobehub/tts/react';
 
 // ~ antd-style
 export { useResponsive, useTheme, useThemeMode } from 'antd-style';
