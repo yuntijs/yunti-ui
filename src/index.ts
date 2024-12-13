@@ -38,6 +38,7 @@ export * from './styles';
 
 // ~ custom @lobehub/tts
 export * from './useSpeechSynthes';
+export * from './WaveformIcon';
 
 // ~ antd
 export {
