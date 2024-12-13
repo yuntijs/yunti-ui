@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.71](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.70...v1.0.0-beta.71)
+
+<sup>Released on **2024-12-13**</sup>
+
+#### ✨ Features
+
+- **misc**: Add WaveformIcon.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **misc**: Add WaveformIcon ([72b0992](https://github.com/yuntijs/yunti-ui/commit/72b0992))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.70](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.69...v1.0.0-beta.70)
 
 <sup>Released on **2024-10-24**</sup>
