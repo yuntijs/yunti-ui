@@ -1,11 +1,11 @@
 'use client';
 
-import Actions from '@lobehub/ui/es/ChatItem/components/Actions';
-import Avatar from '@lobehub/ui/es/ChatItem/components/Avatar';
-import BorderSpacing from '@lobehub/ui/es/ChatItem/components/BorderSpacing';
-import ErrorContent from '@lobehub/ui/es/ChatItem/components/ErrorContent';
-import Title from '@lobehub/ui/es/ChatItem/components/Title';
-import { useStyles } from '@lobehub/ui/es/ChatItem/style';
+import Actions from '@lobehub/ui/es/chat/ChatItem/components/Actions';
+import Avatar from '@lobehub/ui/es/chat/ChatItem/components/Avatar';
+import BorderSpacing from '@lobehub/ui/es/chat/ChatItem/components/BorderSpacing';
+import ErrorContent from '@lobehub/ui/es/chat/ChatItem/components/ErrorContent';
+import Title from '@lobehub/ui/es/chat/ChatItem/components/Title';
+import { useStyles } from '@lobehub/ui/es/chat/ChatItem/style';
 import { useResponsive } from 'antd-style';
 import { memo } from 'react';
 import { Flexbox } from 'react-layout-kit';
