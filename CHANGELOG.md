@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.72](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.71...v1.0.0-beta.72)
+
+<sup>Released on **2025-01-02**</sup>
+
+#### ✨ Features
+
+- **Page**: Support specify classNames for Header.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **Page**: Support specify classNames for Header ([40863ee](https://github.com/yuntijs/yunti-ui/commit/40863ee))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.71](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.70...v1.0.0-beta.71)
 
 <sup>Released on **2024-12-13**</sup>
