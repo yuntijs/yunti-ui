@@ -1,4 +1,5 @@
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
+import { escapeRegExp } from 'lodash-es';
 import { useMemo } from 'react';
 
 import type { MentionOption } from '../../types';
@@ -25,7 +26,7 @@ export const useOptions = (allOptions: MentionOption[], queryString: string | nu
     if (!queryString) {
       return menuOptions;
     }
-    const regex = new RegExp(queryString, 'i');
+    const regex = new RegExp(escapeRegExp(queryString), 'i');
     return menuOptions.filter(
       o => regex.test(o.label) || o.keywords?.some(keyword => regex.test(keyword))
     );

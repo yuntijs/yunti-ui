@@ -1,4 +1,5 @@
 import { Flex } from 'antd';
+import { escapeRegExp } from 'lodash-es';
 import React, { memo, useMemo } from 'react';
 
 import Typography from '@/Typography';
@@ -25,7 +26,7 @@ export const MentionMenuItem: React.FC<MentionMenuItemProps> = memo(
       let middle = '';
       let after = '';
       if (queryString) {
-        const regex = new RegExp(queryString, 'i');
+        const regex = new RegExp(escapeRegExp(queryString), 'i');
         const match = regex.exec(option.label);
 
         if (match) {
