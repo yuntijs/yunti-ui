@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.73](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.72...v1.0.0-beta.73)
+
+<sup>Released on **2025-01-02**</sup>
+
+#### 🐛 Bug Fixes
+
+- **Mentions**: May crash when input special characters.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **Mentions**: May crash when input special characters ([a9e1036](https://github.com/yuntijs/yunti-ui/commit/a9e1036))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.72](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.71...v1.0.0-beta.72)
 
 <sup>Released on **2025-01-02**</sup>
