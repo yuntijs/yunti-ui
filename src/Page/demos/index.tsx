@@ -31,6 +31,10 @@ const DetailPageDemo = () => {
     <Page className={styles.root} loading={loading}>
       <Breadcrumb items={[{ title: '插件列表', path: '/plugins' }, { title: '插件详情' }]} />
       <Header
+        // 支持指定 Header 各个模块的 className
+        classNames={{
+          titleWrapper: 'custom-title-wrapper',
+        }}
         descriptions={[
           {
             icon: {

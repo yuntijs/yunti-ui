@@ -43,11 +43,20 @@ export interface PageHeaderProps extends Omit<React.HTMLAttributes<HTMLDivElemen
   extraContentRender?: (buttonsElement: React.ReactNode) => React.ReactNode;
   /** 控制 header 与 content 的分割线，当 bordered 为 true 时，divider 自动设置为 false */
   divider?: boolean;
+  /** PageHeader 各个模块的 className */
+  classNames?: {
+    titleWrapper?: string;
+    title?: string;
+    subTitle?: string;
+    descriptions?: string;
+    extraContent?: string;
+  };
 }
 
 export const PageHeader: React.FC<PageHeaderProps> = props => {
   const {
     className,
+    classNames,
     icon,
     title,
     titleRender,
@@ -74,12 +83,12 @@ export const PageHeader: React.FC<PageHeaderProps> = props => {
   }, [icon, subTitle]);
 
   const TitleNode = useMemo(() => {
-    const titleElement = <span className={styles.title}>{title}</span>;
+    const titleElement = <span className={cx(styles.title, classNames?.title)}>{title}</span>;
     if (titleRender) {
       return titleRender(titleElement);
     }
     return titleElement;
-  }, [styles.title, title, titleRender]);
+  }, [classNames?.title, cx, styles.title, title, titleRender]);
 
   const DescriptionsNode = useMemo(() => {
     const descriptionsElement: React.ReactNode[] = [];
@@ -131,7 +140,7 @@ export const PageHeader: React.FC<PageHeaderProps> = props => {
           <div className={styles.titleBox}>
             <Skeleton.Input active size={25 as any} />
             {subTitle && (
-              <div className={styles.subTitle}>
+              <div className={cx(styles.subTitle, className)}>
                 <Skeleton.Input active size={18 as any} />
               </div>
             )}
@@ -157,21 +166,21 @@ export const PageHeader: React.FC<PageHeaderProps> = props => {
         </Flex>
       )}
       <Flex flex="2" justify="space-between" vertical>
-        <Flex className={styles.titleBox} vertical>
+        <Flex className={cx(styles.titleBox, classNames?.titleWrapper)} vertical>
           {TitleNode}
           {subTitle && (
-            <Paragraph className={styles.subTitle} ellipsis={{ rows: 2 }}>
+            <Paragraph className={cx(styles.subTitle, classNames?.subTitle)} ellipsis={{ rows: 2 }}>
               {subTitle}
             </Paragraph>
           )}
         </Flex>
         {/* @Todo: change to use https://ant.design/components/space-cn#space-demo-split */}
-        <Flex align="center" className={styles.descriptions} gap={4}>
+        <Flex align="center" className={cx(styles.descriptions, classNames?.descriptions)} gap={4}>
           {status && <Status {...status} />}
           {DescriptionsNode}
         </Flex>
       </Flex>
-      <Flex align="center" flex="1" justify="flex-end">
+      <Flex align="center" className={classNames?.extraContent} flex="1" justify="flex-end">
         {ExtraContentNode}
       </Flex>
     </Flex>
