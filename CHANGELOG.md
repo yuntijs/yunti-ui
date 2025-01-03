@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.74](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.73...v1.0.0-beta.74)
+
+<sup>Released on **2025-01-03**</sup>
+
+#### ✨ Features
+
+- **SelectCard**: Change selected card style.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **SelectCard**: Change selected card style ([5a670c1](https://github.com/yuntijs/yunti-ui/commit/5a670c1))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.73](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.72...v1.0.0-beta.73)
 
 <sup>Released on **2025-01-02**</sup>
