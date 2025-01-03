@@ -127,17 +127,19 @@ export const SelectCard = React.forwardRef<HTMLDivElement, SelectCardProps>((pro
               style={{ ...stylesFromProps?.icon, ...o.iconStyle }}
             />
           )}
-          {o.label && (
+          {/* @Todo: strong={selected} not work */}
+          {o.label && selected && (
             <Text ellipsis strong>
               {o.label}
             </Text>
           )}
+          {o.label && !selected && <Text ellipsis>{o.label}</Text>}
           {!isImg && o.description && (
             <Paragraph ellipsis={{ rows: 2 }} type="secondary">
               {o.description}
             </Paragraph>
           )}
-          {multiple && selected && <Icon className={styles.check} icon={Check} />}
+          {selected && <Icon className={styles.check} icon={Check} />}
         </Flex>
       );
       return optionRender ? optionRender(Option, o, index) : Option;
@@ -149,7 +151,6 @@ export const SelectCard = React.forwardRef<HTMLDivElement, SelectCardProps>((pro
       imgHeight,
       isImg,
       isSelected,
-      multiple,
       onSelect,
       optionRender,
       styles.check,
