@@ -56,15 +56,12 @@ const DetailPageDemo = () => {
             {
               key: 'edit',
               label: '编辑',
+              type: 'primary',
             },
             {
               key: 'delete',
               label: '删除',
               danger: true,
-            },
-            {
-              key: 'test',
-              label: '测试',
             },
           ],
           onClick: (key, e) => console.log('key', key, e),

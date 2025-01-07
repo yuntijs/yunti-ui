@@ -1,8 +1,9 @@
 import { Button, Dropdown, Space } from 'antd';
 import type { ButtonProps } from 'antd';
+import type { ItemType } from 'antd/es/menu/interface';
 import React from 'react';
 
-export interface ButtonItem {
+export type ButtonType = {
   key: string;
   label: string;
   icon?: React.ReactNode;
@@ -10,7 +11,9 @@ export interface ButtonItem {
   disabled?: boolean;
   loading?: boolean;
   type?: ButtonProps['type'];
-}
+};
+
+export type ButtonItem = ButtonType | ItemType;
 
 export interface HeaderButtonGroupProps
   extends Omit<React.HTMLAttributes<HTMLSpanElement>, 'onClick'> {
@@ -27,29 +30,24 @@ export const HeaderButtonGroup: React.FC<HeaderButtonGroupProps> = props => {
   if (items.length <= 2) {
     return (
       <Space align="end" size={12} {...otherProps}>
-        {items.map(({ key, label, ...btnProps }) => (
-          <Button key={key} onClick={e => onClick(key, e)} {...btnProps}>
+        {(items as ButtonType[]).map(({ key, label, ...btnProps }) => (
+          <Button key={key} onClick={e => onClick(key!, e)} {...btnProps}>
             {label}
           </Button>
         ))}
       </Space>
     );
   }
-  const [{ key: firstKey, label: firstLabel, ...btnProps }, ...menuItems] = items;
+  const [firstButton, ...menuItems] = items;
+  const { key: firstKey, label: firstLabel, ...btnProps } = firstButton as ButtonType;
   return (
     <Dropdown.Button
       key={firstKey}
-      onClick={e => onClick(firstKey, e)}
+      onClick={e => onClick(firstKey!, e)}
       {...btnProps}
       menu={{
         onClick: ({ key, domEvent }) => onClick(key, domEvent),
-        items: menuItems.map(({ key, label, icon, danger, disabled }) => ({
-          key,
-          label,
-          icon,
-          danger,
-          disabled,
-        })),
+        items: menuItems as ItemType[],
       }}
       overlayStyle={{
         minWidth: 100,

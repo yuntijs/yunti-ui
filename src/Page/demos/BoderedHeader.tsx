@@ -29,6 +29,39 @@ const PageBorderedHeaderDemo = () => {
         extraContent={{
           items: [
             {
+              key: 'debug',
+              label: '调试',
+            },
+            {
+              key: 'import',
+              label: '导入',
+            },
+            {
+              key: 'export',
+              label: '导出',
+            },
+            {
+              type: 'divider',
+            },
+            {
+              key: 'group',
+              label: 'group',
+              type: 'group',
+              children: [
+                {
+                  key: 'group-item-1',
+                  label: '1st menu item',
+                },
+                {
+                  key: 'group-item-2',
+                  label: '2nd menu item',
+                },
+              ],
+            },
+            {
+              type: 'divider',
+            },
+            {
               key: 'edit',
               label: '编辑',
             },
@@ -38,8 +71,21 @@ const PageBorderedHeaderDemo = () => {
               danger: true,
             },
             {
-              key: 'test',
-              label: '测试',
+              type: 'divider',
+            },
+            {
+              key: 'submenu',
+              label: 'sub menu',
+              children: [
+                {
+                  key: 'submenu-item-1',
+                  label: '1st menu item',
+                },
+                {
+                  key: 'submenu-item-2',
+                  label: '2nd menu item',
+                },
+              ],
             },
           ],
         }}
