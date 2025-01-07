@@ -1,12 +1,12 @@
 import { Flex, Skeleton, Tooltip } from 'antd';
 import React, { useContext, useMemo } from 'react';
 
+import { ButtonGroup, type ButtonGroupProps } from '@/ButtonGroup';
 import Divider from '@/Divider';
 import { Status, StatusProps } from '@/Status';
 import Typography from '@/Typography';
 
 import { PageContext } from '../PageContext';
-import { HeaderButtonGroup, type HeaderButtonGroupProps } from './ButtonGroup';
 import { HeaderIcon, HeaderIconProps, getIconSize } from './Icon';
 import { useStyles } from './style';
 
@@ -38,7 +38,7 @@ export interface PageHeaderProps extends Omit<React.HTMLAttributes<HTMLDivElemen
   /** 描述列表自定义渲染 */
   descriptionsRender?: (descriptionsElement: React.ReactNode) => React.ReactNode;
   /** 右侧扩展区域 */
-  extraContent?: HeaderButtonGroupProps;
+  extraContent?: ButtonGroupProps;
   /** 右侧扩展区域自定义渲染 */
   extraContentRender?: (buttonsElement: React.ReactNode) => React.ReactNode;
   /** 控制 header 与 content 的分割线，当 bordered 为 true 时，divider 自动设置为 false */
@@ -116,7 +116,7 @@ export const PageHeader: React.FC<PageHeaderProps> = props => {
     if (!extraContent && !extraContentRender) {
       return null;
     }
-    const buttons = <HeaderButtonGroup className={styles.rightButtons} {...extraContent} />;
+    const buttons = <ButtonGroup className={styles.rightButtons} {...extraContent} />;
     if (extraContentRender) {
       return extraContentRender(buttons);
     }

@@ -7,10 +7,8 @@ import { PageTitle } from './Title';
 
 export type { PageBreadcrumbProps } from './Breadcrumb';
 export type { PageContentProps } from './Content';
-export { HeaderButtonGroup } from './Header/ButtonGroup';
 // export type { } from './Footer';
 export type { PageHeaderProps } from './Header';
-export type { HeaderButtonGroupProps } from './Header/ButtonGroup';
 export type { PageProps } from './Page';
 export type { PageTitleProps } from './Title';
 
