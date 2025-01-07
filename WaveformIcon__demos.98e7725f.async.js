@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_yuntijs_ui=self.webpackChunk_yuntijs_ui||[]).push([[75470],{30974:function(s,n,u){u.r(n);var t=u(39776),i=u(52676);n.default=function(){var e=(0,t.useTheme)();return(0,i.jsx)(t.WaveformIcon,{height:25,lineColor:e.colorPrimary,width:40})}}}]);
