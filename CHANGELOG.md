@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.75](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.74...v1.0.0-beta.75)
+
+<sup>Released on **2025-01-07**</sup>
+
+#### ✨ Features
+
+- **ButtonGroup**: Support more props for items.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **ButtonGroup**: Support more props for items ([acd12ae](https://github.com/yuntijs/yunti-ui/commit/acd12ae))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.74](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.73...v1.0.0-beta.74)
 
 <sup>Released on **2025-01-03**</sup>
