@@ -18,6 +18,7 @@
   },
   "license": "MIT",
   "author": "Luobo Zhang <zhang.pc3@gmail.com>",
+  "sideEffects": false,
   "main": "es/index.js",
   "module": "es/index.js",
   "types": "es/index.d.ts",
