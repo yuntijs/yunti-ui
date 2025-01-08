@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.77](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.76...v1.0.0-beta.77)
+
+<sup>Released on **2025-01-08**</sup>
+
+#### ✨ Features
+
+- **misc**: Add sideEffects=false.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **misc**: Add sideEffects=false ([144e3b7](https://github.com/yuntijs/yunti-ui/commit/144e3b7))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.76](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.75...v1.0.0-beta.76)
 
 <sup>Released on **2025-01-07**</sup>
