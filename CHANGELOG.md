@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.78](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.77...v1.0.0-beta.78)
+
+<sup>Released on **2025-01-09**</sup>
+
+#### ✨ Features
+
+- **misc**: Remove hashPriority=low for flex change of antd\@5.23.0.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **misc**: Remove hashPriority=low for flex change of antd\@5.23.0 ([f06a8b3](https://github.com/yuntijs/yunti-ui/commit/f06a8b3))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.77](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.76...v1.0.0-beta.77)
 
 <sup>Released on **2025-01-08**</sup>
