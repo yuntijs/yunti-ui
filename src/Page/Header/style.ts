@@ -64,6 +64,5 @@ export const useStyles = createStyles(
         justify-content: flex-end;
       `,
     };
-  },
-  { hashPriority: 'low' }
+  }
 );
