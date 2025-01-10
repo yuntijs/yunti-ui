@@ -16,14 +16,20 @@ export const useStyles = createStyles(({ css, token, prefixCls }) => {
           }
         }
         &-expand-icon {
+          cursor: pointer;
           padding: ${token.padding}px 0 ${token.padding}px ${token.paddingSM}px;
         }
         &-extra {
           padding-right: ${token.paddingSM}px;
         }
-        &-content {
-          padding: ${token.paddingXS}px 0;
+        &-item > .${prefixCls}-collapse-content {
+          padding: ${token.paddingXXS}px 0;
           background-color: ${token.colorBgContainer};
+        }
+        &-content {
+          &-box {
+            padding: ${token.paddingXXS}px ${token.padding}px !important;
+          }
         }
       }
     `,

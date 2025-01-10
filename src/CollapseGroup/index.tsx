@@ -20,7 +20,7 @@ export const CollapseGroup: React.FC<CollapseGroupProps> = ({
   return (
     <FormGroup
       className={cx(styles.root, className)}
-      collapsible={variant === 'pure' ? 'icon' : 'header'}
+      collapsible={variant !== 'pure'}
       variant={variant}
       {...otherProps}
     />
