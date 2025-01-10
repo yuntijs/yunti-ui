@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.80](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.79...v1.0.0-beta.80)
+
+<sup>Released on **2025-01-10**</sup>
+
+#### 🐛 Bug Fixes
+
+- **CollapseGroup**: Content style issue.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **CollapseGroup**: Content style issue ([077fd68](https://github.com/yuntijs/yunti-ui/commit/077fd68))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.79](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.78...v1.0.0-beta.79)
 
 <sup>Released on **2025-01-10**</sup>
