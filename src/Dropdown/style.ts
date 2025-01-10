@@ -20,6 +20,5 @@ export const useStyles = createStyles(
             `)}
       `,
     };
-  },
-  { hashPriority: 'low' }
+  }
 );
