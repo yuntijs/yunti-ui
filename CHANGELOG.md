@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.79](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.78...v1.0.0-beta.79)
+
+<sup>Released on **2025-01-10**</sup>
+
+#### ✨ Features
+
+- **DropDown**: Remove hashPriority=low.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **DropDown**: Remove hashPriority=low ([457f6d9](https://github.com/yuntijs/yunti-ui/commit/457f6d9))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.78](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.77...v1.0.0-beta.78)
 
 <sup>Released on **2025-01-09**</sup>
