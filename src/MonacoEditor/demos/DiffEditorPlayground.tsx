@@ -8,6 +8,10 @@ export default () => {
   const control: MonacoDiffEditorProps | any = useControls(
     {
       readOnly: false,
+      variant: {
+        options: ['outlined', 'filled', 'borderless'],
+        value: 'outlined',
+      },
       lineNumbers: {
         options: ['on', 'off', 'relative', 'interval'],
         value: 'on',

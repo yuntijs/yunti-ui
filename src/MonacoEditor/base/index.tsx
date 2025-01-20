@@ -1,5 +1,6 @@
 import { Icon } from '@lobehub/ui';
 import { Button } from 'antd';
+import type { Variant } from 'antd/es/config-provider';
 import { Maximize2, Minimize2 } from 'lucide-react';
 import type { IDisposable, editor } from 'monaco-editor';
 import React, { LegacyRef, useEffect, useMemo, useRef } from 'react';
@@ -19,7 +20,7 @@ export * from './monaco';
 
 function noop() {}
 
-const SingleMonacoEditor: React.FC<ISingleMonacoEditorProps> = props => {
+const SingleMonacoEditor: React.FC<ISingleMonacoEditorProps & { variant?: Variant }> = props => {
   const { onChange, enableOutline, width, height, language, supportFullScreen } = props;
   const onChangeRef = useRef(onChange);
 
@@ -31,6 +32,7 @@ const SingleMonacoEditor: React.FC<ISingleMonacoEditorProps> = props => {
   const { cx, styles } = useStyles({
     isFullScreen,
     minimapEnabled: props.options?.minimap?.enabled,
+    variant: props.variant,
   });
 
   const className = cx(styles.base, props.className, {
@@ -101,7 +103,7 @@ const SingleMonacoEditor: React.FC<ISingleMonacoEditorProps> = props => {
   );
 };
 
-const DiffMonacoEditor: React.FC<IDiffMonacoEditorProps> = props => {
+const DiffMonacoEditor: React.FC<IDiffMonacoEditorProps & { variant?: Variant }> = props => {
   const { enableOutline, width, height, language, onChange, original, supportFullScreen } = props;
   const onChangeRef = useRef(onChange);
 
@@ -113,6 +115,7 @@ const DiffMonacoEditor: React.FC<IDiffMonacoEditorProps> = props => {
   const { cx, styles } = useStyles({
     isFullScreen,
     diff: true,
+    variant: props.variant,
   });
 
   const className = cx(styles.base, props.className, {

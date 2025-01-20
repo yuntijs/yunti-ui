@@ -1,5 +1,6 @@
 import type { Monaco } from '@monaco-editor/loader';
 import { useThemeMode } from 'antd-style';
+import type { Variant } from 'antd/es/config-provider';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { useCdnFn } from '../ConfigProvider';
@@ -29,6 +30,8 @@ export interface BaseMonacoEditorProps extends IGeneralManacoEditorProps {
   version?: string;
   /** An event emitted when the content of the current model has changed. */
   onChange?: (input: string, event: any) => void;
+  /** Variants of Editor, Defaults to outlined.  */
+  variant?: Variant;
 }
 
 export const BaseMonacoEditor: React.FC<

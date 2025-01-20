@@ -1,4 +1,5 @@
 import { createStyles, keyframes } from 'antd-style';
+import type { Variant } from 'antd/es/config-provider';
 
 /**
  * styles from https://github.com/alibaba/lowcode-plugins/blob/main/packages/base-monaco-editor/src/index.scss
@@ -10,7 +11,8 @@ export const useStyles = createStyles(
       minimapEnabled = false,
       isFullScreen = false,
       diff = false,
-    }: { minimapEnabled?: boolean; isFullScreen?: boolean; diff?: boolean }
+      variant = 'outlined',
+    }: { minimapEnabled?: boolean; isFullScreen?: boolean; diff?: boolean; variant?: Variant }
   ) => {
     const dots = keyframes`
       0% { content: '.'; }
@@ -20,6 +22,20 @@ export const useStyles = createStyles(
       80% { content: '.....'; }
     `;
 
+    const getBgColor = () => {
+      switch (variant) {
+        case 'outlined': {
+          return token.colorBgBase;
+        }
+        case 'filled': {
+          return token.colorFillTertiary;
+        }
+        default: {
+          return 'transparent';
+        }
+      }
+    };
+
     return {
       base: css`
         position: relative;
@@ -27,14 +43,26 @@ export const useStyles = createStyles(
         box-sizing: content-box;
         min-height: 100px;
 
-        border: 1px solid transparent;
-        border-radius: 3px;
+        background-color: ${getBgColor()};
+        border: 1px solid ${variant === 'outlined' ? token.colorBorder : 'transparent'};
+        border-radius: ${token.borderRadius}px;
         &:hover {
-          border-color: var(--color-field-border-hover, rgba(31, 56, 88, 0.1));
+          border-color: ${variant === 'outlined' ? token.colorPrimaryHover : 'transparent'};
+          ${variant === 'filled' &&
+          css`
+            background-color: ${token.colorFillSecondary};
+          `}
         }
 
         &.ve-focused {
-          border-color: var(--color-field-border-active, rgba(31, 56, 88, 0.15));
+          ${variant === 'filled' &&
+          css`
+            background-color: ${token.colorBgBase};
+          `}
+          ${variant !== 'borderless' &&
+          css`
+            border-color: ${token.colorPrimaryActive};
+          `}
         }
 
         &.ve-outline {
@@ -56,6 +84,13 @@ export const useStyles = createStyles(
             width: auto !important;
             height: auto !important;
           `}
+
+          .monaco-editor,
+          .monaco-editor-background,
+          .monaco-editor .inputarea.ime-input,
+          .monaco-editor .margin {
+            background-color: transparent;
+          }
 
           & > .monaco-editor {
             border-radius: ${token.borderRadius}px;
@@ -87,7 +122,7 @@ export const useStyles = createStyles(
           }
         }
 
-        ..syntaxTips {
+        .syntaxTips {
           position: absolute;
           bottom: 0;
           left: 0;
@@ -123,8 +158,8 @@ export const useStyles = createStyles(
       fullScreenBtn: css`
         &.${prefixCls}-btn {
           position: absolute;
-          color: ${token.colorTextSecondary};
           top: 20px;
+          color: ${token.colorTextSecondary};
           transition: none;
           ${isFullScreen
             ? css`
@@ -151,8 +186,8 @@ export const useStyles = createStyles(
 
         &::after {
           content: '';
-          /* width: 20px; */
-          display: inline;
+          width: 16px;
+          /* display: inline; */
           animation: ${dots} steps(3) 1s infinite;
         }
       `,
