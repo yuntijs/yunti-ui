@@ -1,12 +1,18 @@
-import { CollapseTable, Typography } from '@yuntijs/ui';
+import { CollapseTable, Space, Typography } from '@yuntijs/ui';
 import { VariableIcon } from 'lucide-react';
 import React from 'react';
 
 const { Text } = Typography;
 
+type DataType = {
+  key: string;
+  type: string;
+  desc: string;
+};
+
 export default () => {
   return (
-    <CollapseTable
+    <CollapseTable<DataType>
       columns={[
         {
           title: '变量名',
@@ -20,6 +26,12 @@ export default () => {
         {
           title: '描述',
           dataIndex: 'desc',
+          render: (text, row) => (
+            <Space>
+              <span>{row.key}</span>
+              <span>{text}</span>
+            </Space>
+          ),
         },
       ]}
       dataSource={[
