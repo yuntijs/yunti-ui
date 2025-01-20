@@ -2,6 +2,41 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.81](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.80...v1.0.0-beta.81)
+
+<sup>Released on **2025-01-20**</sup>
+
+#### ✨ Features
+
+- **CollapseGroup**: Change header text flex to 1.
+- **misc**: Add CopyButton.
+
+#### 💄 Styles
+
+- **Table**: Support generics of record type.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **CollapseGroup**: Change header text flex to 1 ([d1d9394](https://github.com/yuntijs/yunti-ui/commit/d1d9394))
+- **misc**: Add CopyButton ([266d859](https://github.com/yuntijs/yunti-ui/commit/266d859))
+
+#### Styles
+
+- **Table**: Support generics of record type ([d6d8133](https://github.com/yuntijs/yunti-ui/commit/d6d8133))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.80](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.79...v1.0.0-beta.80)
 
 <sup>Released on **2025-01-10**</sup>
