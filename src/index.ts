@@ -177,6 +177,8 @@ export {
 
 // ~ @lobehub/ui
 export {
+  CopyButton,
+  type CopyButtonProps,
   Markdown,
   type MarkdownProps,
   SyntaxHighlighter,
