@@ -2,7 +2,7 @@ import { PlusOutlined } from '@ant-design/icons';
 import { Icon } from '@lobehub/ui';
 import { Button, Flex, Form, Table, Tooltip } from 'antd';
 import type { FormItemProps, FormListFieldData, FormListOperation, TableColumnProps } from 'antd';
-import { FormListProps as AntFormListProps } from 'antd/es/form';
+import type { FormListProps as AntFormListProps } from 'antd/es/form';
 import { Trash2 } from 'lucide-react';
 import React, { useCallback, useEffect, useRef } from 'react';
 

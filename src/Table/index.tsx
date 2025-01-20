@@ -1,5 +1,5 @@
 import { Table as AntdTable, TableProps, Tooltip } from 'antd';
-import { AnyObject } from 'antd/es/_util/type';
+import type { AnyObject } from 'antd/es/_util/type';
 import React, { useMemo } from 'react';
 
 import { CollapseTable } from './collapse';

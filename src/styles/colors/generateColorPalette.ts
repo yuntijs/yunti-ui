@@ -1,4 +1,4 @@
-import { AliasToken } from 'antd/es/theme/interface';
+import type { AliasToken } from 'antd/es/theme/interface';
 import { capitalize } from 'lodash-es';
 
 import { ColorScaleItem } from '@/styles/colors/colors';

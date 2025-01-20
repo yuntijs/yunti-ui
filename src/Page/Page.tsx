@@ -1,5 +1,4 @@
-import { Flex } from 'antd';
-import { FlexProps } from 'antd/lib';
+import { Flex, type FlexProps } from 'antd';
 import React, { useState } from 'react';
 
 import { useLink } from '@/ConfigProvider';

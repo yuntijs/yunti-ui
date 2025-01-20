@@ -1,5 +1,4 @@
 import { Radio as AntdRadio, type RadioGroupProps as AntdRadioGroupProps, RadioProps } from 'antd';
-import AntdGroup from 'antd/es/radio/group';
 import type { RadioRef } from 'antd/es/radio/interface';
 import React from 'react';
 
@@ -46,7 +45,7 @@ const Group: React.FC<RadioGroupProps> = props => {
   }
   const { styles, cx } = useStyles(otherProps);
 
-  return <AntdGroup {...otherProps} className={cx(styles.custom, className)} />;
+  return <AntdRadio.Group {...otherProps} className={cx(styles.custom, className)} />;
 };
 Radio.Group = Group;
 

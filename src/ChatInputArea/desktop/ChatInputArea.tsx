@@ -5,7 +5,7 @@ import {
   type DraggablePanelProps,
 } from '@lobehub/ui';
 import { createStyles } from 'antd-style';
-import { TextAreaRef } from 'antd/es/input/TextArea';
+import type { TextAreaRef } from 'antd/es/input/TextArea';
 import { ReactNode, forwardRef, memo } from 'react';
 
 const useStyles = createStyles(({ css }) => {
