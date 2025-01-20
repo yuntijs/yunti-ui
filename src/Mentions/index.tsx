@@ -4,6 +4,7 @@ import { LexicalErrorBoundary } from '@lexical/react/LexicalErrorBoundary';
 import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin';
 import { OnChangePlugin } from '@lexical/react/LexicalOnChangePlugin';
 import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
+import { ConfigProvider } from 'antd';
 import type { EditorState } from 'lexical';
 import { $getRoot, TextNode } from 'lexical';
 import React, { useMemo } from 'react';
@@ -47,7 +48,7 @@ export const Mentions: React.FC<MentionsProps> = ({
   value,
   defaultValue,
   readOnly = false,
-  disabled = false,
+  disabled: customDisabled,
   onChange,
   onBlur,
   onFocus,
@@ -60,7 +61,9 @@ export const Mentions: React.FC<MentionsProps> = ({
   preTriggerChars,
   onSelect,
 }) => {
+  const { componentDisabled } = ConfigProvider.useConfig();
   const { styles, cx } = useStyles({ autoSize });
+  const disabled = customDisabled ?? componentDisabled;
   const editable = !readOnly && !disabled;
   const initialConfig = useMemo(
     () => ({
