@@ -8,6 +8,7 @@ export const useStyles = createStyles(({ css, token, prefixCls }) => {
         &-header {
           padding: 0 !important;
           &-text {
+            flex: 1 !important;
             padding: ${token.paddingSM}px ${token.paddingSM}px ${token.paddingSM}px 0;
             & > * {
               font-size: ${token.fontSize}px;
