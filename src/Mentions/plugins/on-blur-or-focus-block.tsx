@@ -30,7 +30,7 @@ const OnBlurBlock: FC<OnBlurBlockProps> = ({ onBlur, onFocus }) => {
       ),
       editor.registerCommand(
         BLUR_COMMAND,
-        () => {
+        (_payload, _editor) => {
           ref.current = setTimeout(() => {
             editor.dispatchCommand(
               KEY_ESCAPE_COMMAND,

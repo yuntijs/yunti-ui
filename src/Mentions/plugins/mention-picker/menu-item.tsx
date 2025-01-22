@@ -10,10 +10,10 @@ import { MentionMenuOption } from './utils';
 const { Text } = Typography;
 
 export interface MentionMenuItemProps {
-  index: number;
+  index?: number;
   isSelected: boolean;
-  onClick: (index: number, option: MentionMenuOption) => void;
-  onMouseEnter: (index: number, option: MentionMenuOption) => void;
+  onClick?: (index: number, option: MentionMenuOption) => void;
+  onMouseEnter?: (index: number, option: MentionMenuOption) => void;
   option: MentionMenuOption;
   queryString: string | null;
 }
@@ -48,8 +48,8 @@ export const MentionMenuItem: React.FC<MentionMenuItemProps> = memo(
         className={styles.menuItem}
         gap={4}
         key={option.key}
-        onClick={() => onClick(index, option)}
-        onMouseEnter={() => onMouseEnter(index, option)}
+        onClick={() => onClick?.(index!, option)}
+        onMouseEnter={() => onMouseEnter?.(index!, option)}
         ref={option.setRefElement}
         tabIndex={-1}
       >

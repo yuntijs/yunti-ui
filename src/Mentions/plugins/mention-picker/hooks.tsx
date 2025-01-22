@@ -4,25 +4,25 @@ import { useMemo } from 'react';
 
 import type { MentionOption } from '../../types';
 import { INSERT_MENTION_COMMAND } from '../mention-node';
-import { MentionMenuOption } from './utils';
+import { MentionMenuOption, MentionMenuOptionInitParams } from './utils';
 
 export const useOptions = (allOptions: MentionOption[], queryString: string | null) => {
   const [editor] = useLexicalComposerContext();
   const options = useMemo(() => {
-    const menuOptions = allOptions.map(
-      o =>
-        new MentionMenuOption(o.value, o.label, {
-          icon: o.icon,
-          onSelect: () => {
-            editor.dispatchCommand(INSERT_MENTION_COMMAND, o.value);
-          },
-          disabled: o.disabled,
-          data: o.data,
-          extraElement: o.extraElement,
-          keywords: o.keywords,
-          keyboardShortcut: o.keyboardShortcut,
-        })
-    );
+    const _addOnselect = (option: MentionOption) => {
+      const menuOption: MentionMenuOptionInitParams = {
+        ...option,
+        children: undefined,
+        onSelect: () => {
+          editor.dispatchCommand(INSERT_MENTION_COMMAND, option.value);
+        },
+      };
+      if (option.children) {
+        menuOption.children = option.children.map(o => _addOnselect(o));
+      }
+      return menuOption;
+    };
+    const menuOptions = allOptions.map(o => new MentionMenuOption(_addOnselect(o)));
     if (!queryString) {
       return menuOptions;
     }

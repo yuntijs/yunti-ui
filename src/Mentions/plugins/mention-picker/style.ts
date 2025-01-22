@@ -6,7 +6,7 @@ export const useStyles = createStyles(
     { isSelected, disabled }: { isSelected?: boolean; disabled?: boolean }
   ) => {
     const selectedBg = css`
-      background-color: ${token.colorFillTertiary};
+      background-color: ${token.colorFillSecondary};
     `;
     return {
       anchor: css`
@@ -18,19 +18,26 @@ export const useStyles = createStyles(
       menuOverlay: css`
         overflow: auto;
 
-        width: 240px;
-        max-height: 320px;
+        width: 260px;
+        max-height: 360px;
         margin-top: ${token.marginXXS}px;
+        padding: ${token.paddingXXS}px;
 
         background: ${token.colorBgElevated};
         border-radius: ${token.borderRadius}px;
         box-shadow: ${token.boxShadow};
+        .${prefixCls}-tree {
+          &-switcher {
+            margin: 2px 0;
+          }
+        }
       `,
       menuItem: css`
         cursor: ${disabled ? 'not-allowed' : 'pointer'};
         pointer-events: ${disabled ? 'none' : 'all'};
 
-        padding: ${token.paddingSM / 2}px ${token.paddingSM}px;
+        padding: 0 ${token.paddingXS}px;
+        margin: 2px;
 
         position: relative;
 
@@ -38,7 +45,7 @@ export const useStyles = createStyles(
 
         color: ${disabled ? token.colorTextDisabled : token.colorText};
         font-size: ${token.fontSize}px;
-        line-height: ${token.lineHeight};
+        line-height: 32px;
         ${isSelected && selectedBg}
         &:hover {
           ${selectedBg}

@@ -21,11 +21,15 @@ import { MentionPickerPlugin, type MentionPickerPluginProps } from './plugins/me
 import OnBlurBlock from './plugins/on-blur-or-focus-block';
 import { MentionsConfigProvider } from './provider';
 import { useStyles } from './style';
-import type { AutoSize, MentionsOptionsMap } from './types';
+import type { AutoSize, MentionOption, MentionsOptionsMap } from './types';
 import { textToEditorState } from './utils';
 
 export interface MentionsProps extends MentionPickerPluginProps {
   className?: string;
+  classNames?: {
+    wrapper?: string;
+    menuOverlay?: string;
+  };
   wrapperClassname?: string;
   placeholder?: string;
   style?: React.CSSProperties;
@@ -42,7 +46,7 @@ export interface MentionsProps extends MentionPickerPluginProps {
 
 export const Mentions: React.FC<MentionsProps> = ({
   className,
-  wrapperClassname,
+  classNames,
   placeholder,
   style,
   value,
@@ -96,15 +100,27 @@ export const Mentions: React.FC<MentionsProps> = ({
   // }, [value])
 
   const optionsMap = useMemo(() => {
-    return options.reduce((acc, option) => {
-      acc[option.value] = option;
-      return acc;
-    }, {} as MentionsOptionsMap);
+    const buildMap = (_options: MentionOption[], parentIcon?: JSX.Element) => {
+      return _options.reduce((acc, option) => {
+        acc[option.value] = option;
+        if (!acc[option.value].icon) {
+          acc[option.value].icon = parentIcon;
+        }
+
+        if (option.children && option.children.length > 0) {
+          const childrenMap = buildMap(option.children, option.icon);
+          Object.assign(acc, childrenMap);
+        }
+
+        return acc;
+      }, {} as MentionsOptionsMap);
+    };
+    return buildMap(options);
   }, [options]);
 
   if (!isBrowser) {
     return (
-      <div className={cx(styles.wrapper, wrapperClassname)}>
+      <div className={cx(styles.wrapper, classNames?.wrapper)}>
         <div
           className={cx(
             {
@@ -127,7 +143,7 @@ export const Mentions: React.FC<MentionsProps> = ({
   return (
     <LexicalComposer initialConfig={{ ...initialConfig, editable }}>
       <MentionsConfigProvider value={{ optionsMap }}>
-        <div className={cx(styles.wrapper, wrapperClassname)}>
+        <div className={cx(styles.wrapper, classNames?.wrapper)}>
           <RichTextPlugin
             ErrorBoundary={LexicalErrorBoundary}
             contentEditable={
@@ -154,6 +170,7 @@ export const Mentions: React.FC<MentionsProps> = ({
             allowSpaces={allowSpaces}
             onSelect={onSelect}
             options={options}
+            overlayClassName={classNames?.menuOverlay}
             preTriggerChars={preTriggerChars}
             punctuation={punctuation}
             triggers={triggers}

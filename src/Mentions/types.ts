@@ -1,13 +1,10 @@
-export interface MentionOption {
-  label: string;
-  value: string;
-  data?: any;
-  icon?: JSX.Element;
-  extraElement?: JSX.Element;
-  keywords?: Array<string>;
-  keyboardShortcut?: string;
+import { MentionMenuOptionInitParams } from './plugins/mention-picker/utils';
+
+export interface MentionOption extends Omit<MentionMenuOptionInitParams, 'onSelect' | 'children'> {
+  /** 选中后展示的 label 名称，不指定则直接使用 label */
+  selectedLabel?: string;
   error?: string;
-  disabled?: boolean;
+  children?: MentionOption[];
 }
 
 export type MentionsOptionsMap = Record<string, MentionOption>;

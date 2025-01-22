@@ -1,6 +1,10 @@
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
 import type { MenuRenderFn } from '@lexical/react/LexicalTypeaheadMenuPlugin';
 import { LexicalTypeaheadMenuPlugin } from '@lexical/react/LexicalTypeaheadMenuPlugin';
+import { ConfigProvider, Tree } from 'antd';
+// @Todo: 目前不支持上下键选中 children，后续支持可能需要定制 menu 和 plugin
+// import type { MenuRenderFn } from '../LexicalTypeaheadMenuPlugin';
+// import { LexicalTypeaheadMenuPlugin } from '../LexicalTypeaheadMenuPlugin';
 import type { TextNode } from 'lexical';
 import React, { memo, useCallback, useState } from 'react';
 import ReactDOM from 'react-dom';
@@ -9,12 +13,17 @@ import { DEFAULT_PUNCTUATION, PRE_TRIGGER_CHARS } from '@/Mentions/constants';
 
 import { useCheckForMentionMatch } from '../../hooks';
 import type { MentionOption } from '../../types';
+import { CLEAR_HIDE_MENU_TIMEOUT } from '../mention-node';
 import { useOptions } from './hooks';
 import { MentionMenu } from './menu';
+import { MentionMenuItem } from './menu-item';
 import { useStyles } from './style';
 import { type MentionMenuOption } from './utils';
 
 export interface MentionPickerPluginProps {
+  /** The className of menu overlay */
+  overlayClassName?: string;
+  /** The options of menu */
   options?: MentionOption[];
   /**
    * The characters that trigger the mention menu. Needed to tell the plugin
@@ -52,6 +61,7 @@ export interface MentionPickerPluginProps {
 }
 export const MentionPickerPlugin: React.FC<MentionPickerPluginProps> = memo(
   ({
+    overlayClassName,
     triggers,
     options: allOptions = [],
     allowSpaces = true,
@@ -59,7 +69,7 @@ export const MentionPickerPlugin: React.FC<MentionPickerPluginProps> = memo(
     preTriggerChars = PRE_TRIGGER_CHARS,
     onSelect,
   }: MentionPickerPluginProps) => {
-    const { styles } = useStyles({});
+    const { cx, styles } = useStyles({});
     const [editor] = useLexicalComposerContext();
     const { trigger, checkForMentionMatch } = useCheckForMentionMatch(triggers, {
       punctuation,
@@ -95,25 +105,72 @@ export const MentionPickerPlugin: React.FC<MentionPickerPluginProps> = memo(
       [editor, onSelect, queryString, trigger]
     );
 
+    const renderMenuTree = useCallback(
+      (itemProps: Parameters<MenuRenderFn<MentionMenuOption>>['1']) => {
+        const { selectedIndex, selectOptionAndCleanUp } = itemProps;
+        return (
+          <ConfigProvider
+            theme={{
+              components: {
+                Tree: {
+                  indentSize: 16,
+                  lineHeight: 32,
+                  titleHeight: 32,
+                  paddingXS: 0,
+                },
+              },
+            }}
+          >
+            <Tree
+              blockNode
+              defaultExpandAll
+              onExpand={(_keys, { nativeEvent }) => {
+                nativeEvent.stopPropagation();
+                // 阻止 menu-picker 隐藏
+                editor.dispatchCommand(CLEAR_HIDE_MENU_TIMEOUT, {});
+              }}
+              onSelect={(_keys, info) => {
+                selectOptionAndCleanUp(info.node);
+              }}
+              titleRender={option => (
+                <MentionMenuItem
+                  isSelected={options[selectedIndex!]?.value === option.value}
+                  option={option}
+                  queryString={queryString}
+                />
+              )}
+              treeData={options}
+            />
+          </ConfigProvider>
+        );
+      },
+      [options, editor, queryString]
+    );
+
     const renderMenu = useCallback<MenuRenderFn<MentionMenuOption>>(
-      (anchorElementRef, { selectedIndex, selectOptionAndCleanUp, setHighlightedIndex }) => {
+      (anchorElementRef, itemProps, _matchingString) => {
+        const { selectedIndex, selectOptionAndCleanUp, setHighlightedIndex } = itemProps;
         if (anchorElementRef.current) {
           return ReactDOM.createPortal(
-            <div className={styles.menuOverlay} role="menu">
-              <MentionMenu
-                onClick={(index, option) => {
-                  if (option.disabled) return;
-                  setHighlightedIndex(index);
-                  selectOptionAndCleanUp(option);
-                }}
-                onMouseEnter={(index, option) => {
-                  if (option.disabled) return;
-                  setHighlightedIndex(index);
-                }}
-                options={options}
-                queryString={queryString}
-                selectedIndex={selectedIndex}
-              />
+            <div className={cx(styles.menuOverlay, overlayClassName)} role="menu">
+              {options.some(o => (o.children || []).length > 0) ? (
+                renderMenuTree(itemProps)
+              ) : (
+                <MentionMenu
+                  onClick={(index, option) => {
+                    if (option.disabled) return;
+                    setHighlightedIndex(index);
+                    selectOptionAndCleanUp(option);
+                  }}
+                  onMouseEnter={(index, option) => {
+                    if (option.disabled) return;
+                    setHighlightedIndex(index);
+                  }}
+                  options={options}
+                  queryString={queryString}
+                  selectedIndex={selectedIndex}
+                />
+              )}
             </div>,
             anchorElementRef.current
           );
@@ -121,7 +178,7 @@ export const MentionPickerPlugin: React.FC<MentionPickerPluginProps> = memo(
 
         return null;
       },
-      [options, queryString, styles.menuOverlay]
+      [cx, options, overlayClassName, queryString, renderMenuTree, styles.menuOverlay]
     );
 
     return (
