@@ -100,15 +100,12 @@ export const Mentions: React.FC<MentionsProps> = ({
   // }, [value])
 
   const optionsMap = useMemo(() => {
-    const buildMap = (_options: MentionOption[], parentIcon?: JSX.Element) => {
+    const buildMap = (_options: MentionOption[]) => {
       return _options.reduce((acc, option) => {
         acc[option.value] = option;
-        if (!acc[option.value].icon) {
-          acc[option.value].icon = parentIcon;
-        }
 
         if (option.children && option.children.length > 0) {
-          const childrenMap = buildMap(option.children, option.icon);
+          const childrenMap = buildMap(option.children);
           Object.assign(acc, childrenMap);
         }
 

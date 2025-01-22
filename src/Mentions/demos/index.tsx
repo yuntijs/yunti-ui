@@ -64,7 +64,6 @@ export default () => {
               children: [
                 {
                   label: '[Array Item]',
-                  skip: true,
                   value: 'json.photoUrls.root',
                 },
               ],
@@ -76,7 +75,7 @@ export default () => {
                 {
                   label: '[Array Item]',
                   value: 'json.tags.root',
-                  skip: true,
+                  disabled: true,
                 },
                 {
                   label: 'id',
