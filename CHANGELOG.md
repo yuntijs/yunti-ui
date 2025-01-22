@@ -2,6 +2,35 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.82](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.81...v1.0.0-beta.82)
+
+<sup>Released on **2025-01-22**</sup>
+
+#### ✨ Features
+
+- **Mentions**: Bump lexical\@0.23.1, get disabled from ConfigProvider by default, support tree menu select.
+- **MonacoEditor**: Support variant.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **Mentions**: Bump lexical\@0.23.1 ([5d3bdd2](https://github.com/yuntijs/yunti-ui/commit/5d3bdd2))
+- **Mentions**: Get disabled from ConfigProvider by default ([e2849d4](https://github.com/yuntijs/yunti-ui/commit/e2849d4))
+- **Mentions**: Support tree menu select ([2c488c0](https://github.com/yuntijs/yunti-ui/commit/2c488c0))
+- **MonacoEditor**: Support variant ([8288455](https://github.com/yuntijs/yunti-ui/commit/8288455))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.81](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.80...v1.0.0-beta.81)
 
 <sup>Released on **2025-01-20**</sup>
