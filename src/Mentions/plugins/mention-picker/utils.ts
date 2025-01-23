@@ -10,6 +10,7 @@ export interface MentionMenuOptionInitParams {
   keyboardShortcut?: string;
   disabled?: boolean;
   onSelect: (queryString: string) => void;
+  isChild?: boolean;
   children?: MentionMenuOptionInitParams[];
 }
 
@@ -28,6 +29,7 @@ export class MentionMenuOption extends MenuOption {
   disabled?: boolean;
   data?: any;
   children?: MentionMenuOption[];
+  isChild?: boolean;
 
   constructor({
     label,
@@ -40,6 +42,7 @@ export class MentionMenuOption extends MenuOption {
     disabled,
     onSelect,
     children,
+    isChild,
   }: MentionMenuOptionInitParams) {
     super(value);
     this.value = value;
@@ -53,9 +56,12 @@ export class MentionMenuOption extends MenuOption {
     this.onSelect = onSelect.bind(this);
     this.disabled = disabled;
     this.data = data;
+    this.isChild = isChild ?? false;
     this.children = children?.map(m => {
-      // const
-      return new MentionMenuOption(m);
+      return new MentionMenuOption({
+        ...m,
+        isChild: true,
+      });
     });
   }
 }

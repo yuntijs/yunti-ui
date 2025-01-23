@@ -47,6 +47,7 @@ export const MentionNodePluginReplacement: React.FC<MentionNodePluginReplacement
 
     const transformListener = useCallback(
       (textNode: any) => {
+        MENTION_REGEX.lastIndex = 0;
         return decoratorTransform(textNode, getMatch, createMentionNode);
       },
       [createMentionNode, getMatch]

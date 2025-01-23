@@ -137,6 +137,7 @@ export const MentionPickerPlugin: React.FC<MentionPickerPluginProps> = memo(
                   isSelected={options[selectedIndex!]?.value === option.value}
                   option={option}
                   queryString={queryString}
+                  showIcon={!option.isChild}
                 />
               )}
               treeData={options}

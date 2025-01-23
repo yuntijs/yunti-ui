@@ -16,9 +16,10 @@ export interface MentionMenuItemProps {
   onMouseEnter?: (index: number, option: MentionMenuOption) => void;
   option: MentionMenuOption;
   queryString: string | null;
+  showIcon?: boolean;
 }
 export const MentionMenuItem: React.FC<MentionMenuItemProps> = memo(
-  ({ index, isSelected, onClick, onMouseEnter, option, queryString }) => {
+  ({ index, isSelected, onClick, onMouseEnter, option, queryString, showIcon = true }) => {
     const { styles } = useStyles({ isSelected, disabled: option.disabled });
     const label = option.label;
     const { before, middle, after } = useMemo(() => {
@@ -53,7 +54,7 @@ export const MentionMenuItem: React.FC<MentionMenuItemProps> = memo(
         ref={option.setRefElement}
         tabIndex={-1}
       >
-        <Flex className={styles.menuItemIcon}>{option.icon}</Flex>
+        {showIcon && <Flex className={styles.menuItemIcon}>{option.icon}</Flex>}
         <div className={styles.menuItemLabel} title={option.label}>
           {before}
           <Text mark>{middle}</Text>
