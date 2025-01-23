@@ -48,7 +48,9 @@ export default () => {
         }
         avatar={avatar}
         editing={edit}
+        isLatest={true}
         onEditingChange={setEdit}
+        type="pure"
       />
     </StoryBook>
   );
