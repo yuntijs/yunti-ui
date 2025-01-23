@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.85](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.84...v1.0.0-beta.85)
+
+<sup>Released on **2025-01-23**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: 对话列表最后一条常态化显示 action.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: 对话列表最后一条常态化显示 action, closes [#25](https://github.com/yuntijs/yunti-ui/issues/25) ([44119d2](https://github.com/yuntijs/yunti-ui/commit/44119d2))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.84](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.83...v1.0.0-beta.84)
 
 <sup>Released on **2025-01-23**</sup>
