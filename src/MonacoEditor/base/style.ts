@@ -89,7 +89,10 @@ export const useStyles = createStyles(
           .monaco-editor-background,
           .monaco-editor .inputarea.ime-input,
           .monaco-editor .margin {
-            background-color: transparent;
+            ${!isFullScreen &&
+            css`
+              background-color: transparent;
+            `}
           }
 
           & > .monaco-editor {
@@ -133,9 +136,9 @@ export const useStyles = createStyles(
           margin: 0;
           padding: 10px 30px;
 
-          color: red;
+          color: ${token.colorErrorText};
 
-          background: rgba(255, 234, 234, 0.8);
+          background: ${token.colorErrorBg};
 
           transition: 0.2s ease max-height;
         }
