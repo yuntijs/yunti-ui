@@ -2,6 +2,33 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.84](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.83...v1.0.0-beta.84)
+
+<sup>Released on **2025-01-23**</sup>
+
+#### 🐛 Bug Fixes
+
+- **Mentions**: Some mention nodes are not echoed.
+- **MonacoEditor**: The color of bg is transparent when fullscreen.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **Mentions**: Some mention nodes are not echoed ([5dc6a5c](https://github.com/yuntijs/yunti-ui/commit/5dc6a5c))
+- **MonacoEditor**: The color of bg is transparent when fullscreen ([20cf032](https://github.com/yuntijs/yunti-ui/commit/20cf032))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.83](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.82...v1.0.0-beta.83)
 
 <sup>Released on **2025-01-22**</sup>
