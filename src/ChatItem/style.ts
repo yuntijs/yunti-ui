@@ -12,6 +12,7 @@ export const useStyles = createStyles(
       avatarSize,
       editing,
       time,
+      isLatest,
     }: {
       avatarSize?: number;
       editing?: boolean;
@@ -21,6 +22,7 @@ export const useStyles = createStyles(
       time?: number;
       title?: string;
       type?: 'block' | 'pure';
+      isLatest?: boolean;
     }
   ) => {
     const blockStylish = css`
@@ -101,8 +103,8 @@ export const useStyles = createStyles(
 
           time,
           div[role='menubar'] {
-            pointer-events: none;
-            opacity: 0;
+            pointer-events: ${isLatest ? 'unset' : 'none'};
+            opacity: ${isLatest ? 1 : 0};
             transition: opacity 200ms ${token.motionEaseOut};
           }
 

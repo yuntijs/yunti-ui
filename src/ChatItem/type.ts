@@ -81,4 +81,8 @@ export interface ChatItemProps {
    * @description The markdownClassname of the chat item
    */
   markdownClassname?: string;
+  /**
+   * @description Whether this message is latest
+   */
+  isLatest?: boolean;
 }

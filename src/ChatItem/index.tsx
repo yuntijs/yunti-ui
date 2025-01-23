@@ -5,12 +5,12 @@ import Avatar from '@lobehub/ui/es/chat/ChatItem/components/Avatar';
 import BorderSpacing from '@lobehub/ui/es/chat/ChatItem/components/BorderSpacing';
 import ErrorContent from '@lobehub/ui/es/chat/ChatItem/components/ErrorContent';
 import Title from '@lobehub/ui/es/chat/ChatItem/components/Title';
-import { useStyles } from '@lobehub/ui/es/chat/ChatItem/style';
 import { useResponsive } from 'antd-style';
 import { memo } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
 import MessageContent from './components/MessageContent';
+import { useStyles } from './style';
 import { ChatItemProps } from './type';
 
 const MOBILE_AVATAR_SIZE = 32;
@@ -42,6 +42,7 @@ export const ChatItem = memo<ChatItemProps>(
     fontSize,
     markdownProps,
     markdownClassname,
+    isLatest,
     ...rest
   }) => {
     const { mobile } = useResponsive();
@@ -53,6 +54,7 @@ export const ChatItem = memo<ChatItemProps>(
       time,
       title: avatar.title,
       type,
+      isLatest,
     });
 
     return (
