@@ -11,14 +11,15 @@ import React, { useMemo } from 'react';
 
 import { isBrowser } from '@/utils/tools';
 
+import { OnBlurBlockPlugin } from './plugins/OnBlurBlockPlugin';
 import { CustomTextNode } from './plugins/custom-text/node';
+import { EditablePlugin } from './plugins/editable';
 import {
   MentionNode,
   MentionNodePlugin,
   MentionNodePluginReplacement,
 } from './plugins/mention-node';
 import { MentionPickerPlugin, type MentionPickerPluginProps } from './plugins/mention-picker';
-import OnBlurBlock from './plugins/on-blur-or-focus-block';
 import { MentionsConfigProvider } from './provider';
 import { useStyles } from './style';
 import type { AutoSize, MentionOption, MentionsOptionsMap } from './types';
@@ -67,8 +68,12 @@ export const Mentions: React.FC<MentionsProps> = ({
 }) => {
   const { componentDisabled } = ConfigProvider.useConfig();
   const { styles, cx } = useStyles({ autoSize });
-  const disabled = customDisabled ?? componentDisabled;
-  const editable = !readOnly && !disabled;
+
+  const disabled = useMemo(
+    () => customDisabled ?? componentDisabled,
+    [componentDisabled, customDisabled]
+  );
+  const editable = useMemo(() => !readOnly && !disabled, [disabled, readOnly]);
   const initialConfig = useMemo(
     () => ({
       namespace: 'mentions',
@@ -166,20 +171,23 @@ export const Mentions: React.FC<MentionsProps> = ({
               </div>
             }
           />
-          <MentionPickerPlugin
-            allowSpaces={allowSpaces}
-            onSelect={onSelect}
-            options={options}
-            overlayClassName={classNames?.menuOverlay}
-            preTriggerChars={preTriggerChars}
-            punctuation={punctuation}
-            triggers={triggers}
-          />
+          {editable && (
+            <MentionPickerPlugin
+              allowSpaces={allowSpaces}
+              onSelect={onSelect}
+              options={options}
+              overlayClassName={classNames?.menuOverlay}
+              preTriggerChars={preTriggerChars}
+              punctuation={punctuation}
+              triggers={triggers}
+            />
+          )}
           <MentionNodePlugin />
           <MentionNodePluginReplacement />
           <HistoryPlugin />
           <OnChangePlugin onChange={handleEditorChange} />
-          <OnBlurBlock onBlur={onBlur} onFocus={onFocus} />
+          <OnBlurBlockPlugin onBlur={onBlur} onFocus={onFocus} />
+          <EditablePlugin editable={editable} />
         </div>
       </MentionsConfigProvider>
     </LexicalComposer>

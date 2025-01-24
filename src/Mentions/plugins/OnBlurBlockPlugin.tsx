@@ -6,11 +6,11 @@ import { useEffect, useRef } from 'react';
 
 import { CLEAR_HIDE_MENU_TIMEOUT } from './mention-node';
 
-type OnBlurBlockProps = {
+type OnBlurBlockPluginProps = {
   onBlur?: () => void;
   onFocus?: () => void;
 };
-const OnBlurBlock: FC<OnBlurBlockProps> = ({ onBlur, onFocus }) => {
+export const OnBlurBlockPlugin: FC<OnBlurBlockPluginProps> = ({ onBlur, onFocus }) => {
   const [editor] = useLexicalComposerContext();
 
   const ref = useRef<any>(null);
@@ -57,5 +57,3 @@ const OnBlurBlock: FC<OnBlurBlockProps> = ({ onBlur, onFocus }) => {
 
   return null;
 };
-
-export default OnBlurBlock;
