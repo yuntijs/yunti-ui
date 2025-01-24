@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.86](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.85...v1.0.0-beta.86)
+
+<sup>Released on **2025-01-24**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: ChatItem 去除 block 分块样式.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: ChatItem 去除 block 分块样式，closes [#26](https://github.com/yuntijs/yunti-ui/issues/26) ([0fb48b1](https://github.com/yuntijs/yunti-ui/commit/0fb48b1))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.85](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.84...v1.0.0-beta.85)
 
 <sup>Released on **2025-01-23**</sup>
