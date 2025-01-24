@@ -81,14 +81,7 @@ export const ChatItem = memo<ChatItemProps>(
           <Flexbox
             align={placement === 'left' ? 'flex-start' : 'flex-end'}
             className={styles.messageContent}
-            direction={
-              // eslint-disable-next-line no-nested-ternary
-              type === 'block'
-                ? placement === 'left'
-                  ? 'horizontal'
-                  : 'horizontal-reverse'
-                : 'vertical'
-            }
+            direction={'vertical'}
             gap={8}
           >
             {error ? (

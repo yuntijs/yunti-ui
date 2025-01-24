@@ -62,11 +62,7 @@ export const useStyles = createStyles(
       actions: cx(
         css`
           flex: none;
-          align-self: ${type === 'block'
-            ? 'flex-end'
-            : placement === 'left'
-              ? 'flex-start'
-              : 'flex-end'};
+          align-self: ${placement === 'left' ? 'flex-start' : 'flex-end'};
           justify-content: ${placement === 'left' ? 'flex-end' : 'flex-start'};
         `,
         editing &&
