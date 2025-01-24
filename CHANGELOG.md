@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.88](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.87...v1.0.0-beta.88)
+
+<sup>Released on **2025-01-24**</sup>
+
+#### ✨ Features
+
+- **Mentions**: Add EditablePlugin.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **Mentions**: Add EditablePlugin ([0e71b47](https://github.com/yuntijs/yunti-ui/commit/0e71b47))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.87](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.86...v1.0.0-beta.87)
 
 <sup>Released on **2025-01-24**</sup>
