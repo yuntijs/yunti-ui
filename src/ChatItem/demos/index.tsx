@@ -50,7 +50,6 @@ export default () => {
         editing={edit}
         isLatest={true}
         onEditingChange={setEdit}
-        type="pure"
       />
     </StoryBook>
   );
