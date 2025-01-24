@@ -1,6 +1,5 @@
 'use client';
 
-import Actions from '@lobehub/ui/es/chat/ChatItem/components/Actions';
 import Avatar from '@lobehub/ui/es/chat/ChatItem/components/Avatar';
 import BorderSpacing from '@lobehub/ui/es/chat/ChatItem/components/BorderSpacing';
 import ErrorContent from '@lobehub/ui/es/chat/ChatItem/components/ErrorContent';
@@ -9,6 +8,7 @@ import { useResponsive } from 'antd-style';
 import { memo } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
+import Actions from './components/Actions';
 import MessageContent from './components/MessageContent';
 import { useStyles } from './style';
 import { ChatItemProps } from './type';
