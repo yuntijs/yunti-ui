@@ -25,7 +25,6 @@ export * from './Form';
 export * from './FormHelper';
 export * from './Modal';
 export * from './notification';
-export * from './Radio';
 export * from './Table';
 export * from './Tree';
 export * from './Typography';
@@ -114,6 +113,9 @@ export {
   type QRCodeProps,
   type QRPropsCanvas,
   type QRPropsSvg,
+  Radio,
+  type RadioGroupProps,
+  type RadioProps,
   Rate,
   type RateProps,
   type RefSelectProps,
