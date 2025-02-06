@@ -114,7 +114,9 @@ export const JsonViewer: React.FC<JsonViewerProps> = ({
         className={cx(styles.content, classNames?.content)}
         flex={1}
         style={
-          expand ? contentStyle : { ...contentStyle, height: 0, padding: 0, overflow: 'hidden' }
+          expand
+            ? contentStyle
+            : { ...contentStyle, height: 0, maxHeight: 0, padding: 0, overflow: 'hidden' }
         }
       >
         {JsonViewEle}
