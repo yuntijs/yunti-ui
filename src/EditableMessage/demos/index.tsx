@@ -3,7 +3,7 @@ import { EditableMessage } from '@yuntijs/ui';
 import { button } from 'leva';
 import { useState } from 'react';
 
-import { content } from './data';
+import { content2 } from './data';
 
 export default () => {
   const [openModal, setOpenModal] = useState(false);
@@ -29,7 +29,7 @@ export default () => {
         onEditingChange={setEdit}
         onOpenChange={setOpenModal}
         openModal={openModal}
-        value={content}
+        value={content2}
       />
     </StoryBook>
   );
