@@ -34,7 +34,11 @@ export const useStyles = createStyles(
         `
       ),
       content: css`
+        cursor: text;
+        user-select: text;
+
         overflow: auto;
+
         width: 100%;
         height: 100%;
         padding: ${type === 'pure' ? 0 : token.padding}px;
