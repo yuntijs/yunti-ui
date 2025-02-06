@@ -29,6 +29,14 @@ export interface JsonViewerProps extends JsonViewProps {
    * Only workded when fullFeatured=true
    */
   icon?: ReactNode;
+  /**
+   * The style of the json content
+   */
+  contentStyle?: React.CSSProperties;
+  classNames?: {
+    header?: string;
+    content?: string;
+  };
 }
 
 export const JsonViewer: React.FC<JsonViewerProps> = ({
@@ -36,6 +44,8 @@ export const JsonViewer: React.FC<JsonViewerProps> = ({
   fullFeatured = false,
   title = 'json',
   icon,
+  contentStyle,
+  classNames,
   className,
   collapseStringMode = 'directly',
   collapsed = 2,
@@ -70,7 +80,11 @@ export const JsonViewer: React.FC<JsonViewerProps> = ({
   return (
     <Flex className={cx(styles.container, className)} style={style} vertical>
       {fullFeatured && (
-        <Flex align={'center'} className={styles.header} justify={'space-between'}>
+        <Flex
+          align={'center'}
+          className={cx(styles.header, classNames?.header)}
+          justify={'space-between'}
+        >
           <ActionIcon
             icon={expand ? ChevronDown : ChevronRight}
             onClick={() => setExpand(!expand)}
@@ -97,9 +111,11 @@ export const JsonViewer: React.FC<JsonViewerProps> = ({
         </Flex>
       )}
       <Flex
-        className={styles.content}
+        className={cx(styles.content, classNames?.content)}
         flex={1}
-        style={expand ? {} : { height: 0, padding: 0, overflow: 'hidden' }}
+        style={
+          expand ? contentStyle : { ...contentStyle, height: 0, padding: 0, overflow: 'hidden' }
+        }
       >
         {JsonViewEle}
       </Flex>
