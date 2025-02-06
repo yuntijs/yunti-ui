@@ -76,9 +76,16 @@ export const JsonViewer: React.FC<JsonViewerProps> = ({
             onClick={() => setExpand(!expand)}
             size={{ blockSize: 24, fontSize: 14, strokeWidth: 3 }}
           />
-          <Flex align={'center'} className={styles.title} flex={1} gap={2}>
+          <Flex
+            align={'center'}
+            className={styles.title}
+            flex={1}
+            gap={2}
+            justify="center"
+            title={title}
+          >
             {icon}
-            <Flex className={styles.titleText} flex={1}>
+            <Flex className={styles.titleText}>
               <Text ellipsis>{title}</Text>
             </Flex>
           </Flex>

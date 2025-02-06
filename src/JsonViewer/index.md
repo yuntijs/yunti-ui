@@ -38,11 +38,11 @@ export default () => {
 
 <code src="./demos/index.tsx"></code>
 
-### Large JSON
+### Full Featured
 
 <code src="./demos/LargeJson.tsx"></code>
 
-### Playground
+## Playground
 
 <code src="./demos/Playground.tsx"></code>
 
