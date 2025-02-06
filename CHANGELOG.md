@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.90](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.89...v1.0.0-beta.90)
+
+<sup>Released on **2025-02-06**</sup>
+
+#### ✨ Features
+
+- **misc**: Add JsonViewer component.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **misc**: Add JsonViewer component ([188599d](https://github.com/yuntijs/yunti-ui/commit/188599d))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.89](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.88...v1.0.0-beta.89)
 
 <sup>Released on **2025-01-26**</sup>
