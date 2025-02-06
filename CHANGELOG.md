@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.93](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.92...v1.0.0-beta.93)
+
+<sup>Released on **2025-02-06**</sup>
+
+#### ✨ Features
+
+- **JsonView**: Support contentStyle and classNames.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **JsonView**: Support contentStyle and classNames ([28a2c8c](https://github.com/yuntijs/yunti-ui/commit/28a2c8c))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.92](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.91...v1.0.0-beta.92)
 
 <sup>Released on **2025-02-06**</sup>
