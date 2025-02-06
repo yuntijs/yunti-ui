@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.94](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.93...v1.0.0-beta.94)
+
+<sup>Released on **2025-02-06**</sup>
+
+#### 🐛 Bug Fixes
+
+- **JsonView**: Content not hide when unexpand.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **JsonView**: Content not hide when unexpand ([0080c1e](https://github.com/yuntijs/yunti-ui/commit/0080c1e))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.93](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.92...v1.0.0-beta.93)
 
 <sup>Released on **2025-02-06**</sup>
