@@ -13,6 +13,10 @@ description: ChatItem is a React component that represents a single item in a ch
 
 <code src="./demos/Tmarkdown.tsx" nopadding></code>
 
+## Markdown Think
+
+<code src="./demos/cMarkdown.tsx" nopadding></code>
+
 ## Alert
 
 <code src="./demos/Alert.tsx" nopadding></code>

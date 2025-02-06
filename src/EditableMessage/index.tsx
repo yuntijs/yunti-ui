@@ -1,8 +1,6 @@
 'use client';
 
 import {
-  Markdown,
-  MarkdownProps,
   MessageInput,
   type MessageInputProps,
   MessageModal,
@@ -10,6 +8,8 @@ import {
 } from '@lobehub/ui';
 import { CSSProperties, memo } from 'react';
 import useControlledState from 'use-merge-value';
+
+import { ChatMarkdown, ChatMarkdownProps } from '@/ChatMarkdown';
 
 export interface EditableMessageProps {
   /**
@@ -81,7 +81,7 @@ export interface EditableMessageProps {
    * @title The current text value
    */
   value: string;
-  markdownProps?: Omit<MarkdownProps, 'children'>;
+  markdownProps?: Omit<ChatMarkdownProps, 'children'>;
 }
 
 export const EditableMessage = memo<EditableMessageProps>(
@@ -144,7 +144,7 @@ export const EditableMessage = memo<EditableMessageProps>(
         {!expand && isEdit ? (
           input
         ) : (
-          <Markdown
+          <ChatMarkdown
             className={classNames?.markdown}
             fontSize={fontSize}
             fullFeaturedCodeBlock={fullFeaturedCodeBlock}
@@ -156,7 +156,7 @@ export const EditableMessage = memo<EditableMessageProps>(
             {...markdownProps}
           >
             {value || placeholder || ''}
-          </Markdown>
+          </ChatMarkdown>
         )}
         {expand && (
           <MessageModal
