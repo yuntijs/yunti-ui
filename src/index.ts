@@ -2,6 +2,7 @@ export * from './ButtonGroup';
 export * from './CollapseGroup';
 export * from './ConfigProvider';
 export * from './DragPanel';
+export * from './JsonViewer';
 export * from './Logo';
 export * from './LogViewer';
 export * from './Mentions';
