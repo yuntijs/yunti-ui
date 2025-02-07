@@ -1,4 +1,4 @@
-import { Icon } from '@lobehub/ui';
+import { Icon, Markdown } from '@lobehub/ui';
 import { createStyles } from 'antd-style';
 import { ChevronDown, ChevronRight, Sparkles } from 'lucide-react';
 import { PropsWithChildren, memo, useState } from 'react';
@@ -8,7 +8,6 @@ const useStyles = createStyles(({ css, token, isDarkMode }) => ({
   container: css`
     cursor: pointer;
     padding-block: 12px;
-    padding-block-end: 6px;
     color: ${token.colorTextTertiary};
   `,
   titlebox: css`
@@ -46,11 +45,9 @@ const Render = memo<PropsWithChildren<ThinkProps>>(({ children, second, done }) 
   return (
     <Flexbox
       className={styles.container}
-      gap={16}
       onClick={() => {
         setShowDetail(!showDetail);
       }}
-      width={'100%'}
     >
       <Flexbox className={styles.titlebox} distribution={'space-between'} flex={1} horizontal>
         <Flexbox gap={8} horizontal>
@@ -59,7 +56,7 @@ const Render = memo<PropsWithChildren<ThinkProps>>(({ children, second, done }) 
         </Flexbox>
         <Icon icon={showDetail ? ChevronDown : ChevronRight} />
       </Flexbox>
-      {showDetail && children}
+      {showDetail && <Markdown>{children as string}</Markdown>}
     </Flexbox>
   );
 });
