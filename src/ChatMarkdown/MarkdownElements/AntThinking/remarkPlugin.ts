@@ -46,7 +46,7 @@ export const remarkCaptureThink = () => {
         // 创建自定义节点
         const thinkNode = {
           data: {
-            hChildren: [{ type: 'text', value: content }],
+            hChildren: [{ type: 'text', value: content || '...' }],
             hName: 'think',
           },
           position: node.position,

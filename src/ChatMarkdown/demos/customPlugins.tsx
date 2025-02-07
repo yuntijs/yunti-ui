@@ -16,6 +16,8 @@ const code = `<think>
 
 3 + 3 = 6`;
 
+// const code1 = `<think>`;
+
 export default () => {
   const store = useCreateStore();
   const { children } = useControls(
