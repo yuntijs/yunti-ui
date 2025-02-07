@@ -6,11 +6,13 @@ import { Flexbox } from 'react-layout-kit';
 
 const useStyles = createStyles(({ css, token, isDarkMode }) => ({
   container: css`
-    cursor: pointer;
     padding-block: 12px;
     color: ${token.colorTextSecondary};
   `,
   titlebox: css`
+    cursor: pointer;
+
+    max-width: 230px;
     padding: 8px 12px;
 
     font-size: 12px;
@@ -39,13 +41,16 @@ const Render = memo<PropsWithChildren<ThinkProps>>(({ children, second, done }) 
   const [showDetail, setShowDetail] = useState(true);
 
   return (
-    <Flexbox
-      className={styles.container}
-      onClick={() => {
-        setShowDetail(!showDetail);
-      }}
-    >
-      <Flexbox className={styles.titlebox} distribution={'space-between'} flex={1} horizontal>
+    <Flexbox className={styles.container}>
+      <Flexbox
+        className={styles.titlebox}
+        distribution={'space-between'}
+        flex={1}
+        horizontal
+        onClick={() => {
+          setShowDetail(!showDetail);
+        }}
+      >
         <Flexbox gap={8} horizontal>
           <Icon color={theme.purple} icon={Sparkles} />
           {done ? `已深度思考${second ? '（用时 ' + second + ' s）' : ''} ` : '思考中...'}
