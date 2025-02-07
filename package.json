@@ -129,6 +129,7 @@
     "jest": "^27",
     "jsdom": "^22",
     "lint-staged": "^15",
+    "mdast-util-to-markdown": "^2.1.2",
     "monaco-editor": "^0.45.0",
     "prettier": "^3",
     "react": "^18",

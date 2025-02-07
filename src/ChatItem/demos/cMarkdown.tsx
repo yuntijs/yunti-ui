@@ -2,7 +2,7 @@ import { ActionIconGroup, StoryBook, useControls, useCreateStore } from '@lobehu
 import { ChatItem, ChatItemProps } from '@yuntijs/ui';
 import { useState } from 'react';
 
-import { content3 } from '../../EditableMessage/demos/data';
+import { content4 } from '../../EditableMessage/demos/data';
 import { avatar, dropdownMenu, items } from './data';
 
 export default () => {
@@ -13,7 +13,7 @@ export default () => {
       loading: false,
       message: {
         rows: true,
-        value: content3,
+        value: content4,
       },
       placement: {
         options: ['left', 'right'],

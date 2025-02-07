@@ -3,6 +3,7 @@ import React, { useMemo } from 'react';
 
 import { markdownElements } from './MarkdownElements';
 import { ThinkProps } from './MarkdownElements/AntThinking/Component';
+import { normalizeThinkTags } from './utils';
 
 export interface ChatMarkdownProps extends MarkdownProps {
   customComponentProps?: {
@@ -11,12 +12,13 @@ export interface ChatMarkdownProps extends MarkdownProps {
   };
 }
 
-const defaultRehypePlugins = markdownElements.map(element => element.rehypePlugin);
+const defaultRemarkPlugins = markdownElements.map(element => element.remarkPlugins);
 
 export const ChatMarkdown: React.FC<ChatMarkdownProps> = ({
   components = {},
-  rehypePlugins = [],
+  remarkPlugins = [],
   customComponentProps,
+  children,
   ...props
 }) => {
   const allComponents = useMemo(() => {
@@ -28,9 +30,13 @@ export const ChatMarkdown: React.FC<ChatMarkdownProps> = ({
     );
     return { ...defaultComponents, ...components };
   }, [components, customComponentProps]);
-  const allRehypePlugins = useMemo(
-    () => [...defaultRehypePlugins, ...rehypePlugins],
-    [rehypePlugins]
+  const allRemarkPlugins = useMemo(
+    () => [...defaultRemarkPlugins, ...remarkPlugins],
+    [remarkPlugins]
   );
-  return <Markdown components={allComponents} rehypePlugins={allRehypePlugins} {...props} />;
+  return (
+    <Markdown components={allComponents} remarkPlugins={allRemarkPlugins} {...props}>
+      {normalizeThinkTags(children)}
+    </Markdown>
+  );
 };
