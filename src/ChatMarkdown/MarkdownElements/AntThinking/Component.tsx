@@ -11,7 +11,7 @@ const useStyles = createStyles(({ css, token, isDarkMode }) => ({
     color: ${token.colorTextSecondary};
   `,
   titlebox: css`
-    padding: 8px;
+    padding: 8px 12px;
 
     font-size: 12px;
     color: ${token.colorText};
@@ -48,7 +48,7 @@ const Render = memo<PropsWithChildren<ThinkProps>>(({ children, second, done }) 
       <Flexbox className={styles.titlebox} distribution={'space-between'} flex={1} horizontal>
         <Flexbox gap={8} horizontal>
           <Icon color={theme.purple} icon={Sparkles} />
-          {done ? `已深度思考${second ? '（用时' + second + '秒）' : ''} ` : '思考中...'}
+          {done ? `已深度思考${second ? '（用时 ' + second + ' s）' : ''} ` : '思考中...'}
         </Flexbox>
         <Icon icon={showDetail ? ChevronDown : ChevronRight} />
       </Flexbox>
