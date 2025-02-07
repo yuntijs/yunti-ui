@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.98](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.97...v1.0.0-beta.98)
+
+<sup>Released on **2025-02-07**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: ChatMarkdown.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: ChatMarkdown, closes [#31](https://github.com/yuntijs/yunti-ui/issues/31) ([9425d9f](https://github.com/yuntijs/yunti-ui/commit/9425d9f))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.97](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.96...v1.0.0-beta.97)
 
 <sup>Released on **2025-02-07**</sup>
