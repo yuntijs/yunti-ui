@@ -8,27 +8,16 @@ const useStyles = createStyles(({ css, token, isDarkMode }) => ({
   container: css`
     cursor: pointer;
     padding-block: 12px;
-    color: ${token.colorTextTertiary};
+    color: ${token.colorTextSecondary};
   `,
   titlebox: css`
     padding: 8px;
-    color: ${token.colorTextSecondary};
-    background: ${token.colorFillTertiary};
-    border-radius: 8px;
-
-    &:hover {
-      background: ${isDarkMode ? '' : token.colorFillSecondary};
-    }
-  `,
-  title: css`
-    overflow: hidden;
-    display: box;
-    -webkit-box-orient: vertical;
 
     font-size: 12px;
-    text-overflow: ellipsis;
+    color: ${token.colorText};
 
-    -webkit-line-clamp: 1;
+    background: ${isDarkMode ? token.colorFillTertiary : '#f3f5fc'};
+    border-radius: 8px;
   `,
 }));
 
@@ -36,6 +25,13 @@ export interface ThinkProps {
   second?: number;
   done?: boolean;
 }
+
+const mProps = {
+  fontSize: 12,
+  lineHeight: 1.625,
+  headerMultiple: 0.2,
+  marginMultiple: 0.6,
+};
 
 const Render = memo<PropsWithChildren<ThinkProps>>(({ children, second, done }) => {
   const { styles, theme } = useStyles();
@@ -52,11 +48,11 @@ const Render = memo<PropsWithChildren<ThinkProps>>(({ children, second, done }) 
       <Flexbox className={styles.titlebox} distribution={'space-between'} flex={1} horizontal>
         <Flexbox gap={8} horizontal>
           <Icon color={theme.purple} icon={Sparkles} />
-          {done ? `已深度思考（用时 ${second || 0} 秒）` : '思考中...'}
+          {done ? `已深度思考${second ? '（用时' + second + '秒）' : ''} ` : '思考中...'}
         </Flexbox>
         <Icon icon={showDetail ? ChevronDown : ChevronRight} />
       </Flexbox>
-      {showDetail && <Markdown>{children as string}</Markdown>}
+      {showDetail && <Markdown {...mProps}>{children as string}</Markdown>}
     </Flexbox>
   );
 });
