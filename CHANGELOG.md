@@ -2,6 +2,33 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.101](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.100...v1.0.0-beta.101)
+
+<sup>Released on **2025-02-08**</sup>
+
+#### ✨ Features
+
+- **Form**: Support tree input for collapse-list.
+- **JsonViewer**: Export stringify from react18-json-view.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **Form**: Support tree input for collapse-list ([d0a336b](https://github.com/yuntijs/yunti-ui/commit/d0a336b))
+- **JsonViewer**: Export stringify from react18-json-view ([3175f68](https://github.com/yuntijs/yunti-ui/commit/3175f68))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.100](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.99...v1.0.0-beta.100)
 
 <sup>Released on **2025-02-07**</sup>
