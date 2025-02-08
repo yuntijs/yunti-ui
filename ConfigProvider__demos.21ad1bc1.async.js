@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_yuntijs_ui=self.webpackChunk_yuntijs_ui||[]).push([[56527],{78574:function(t,n,u){u.r(n);var i=u(94456),s=u(52625),_=u(52676);n.default=function(){return(0,_.jsx)(i.iV,{config:{proxy:"unpkg"},children:(0,_.jsx)(s.T,{})})}}}]);
