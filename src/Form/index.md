@@ -14,6 +14,8 @@ see <https://ant.design/components/form> .
 
 ### `Form.CollapseList`
 
+#### Simple usage
+
 ```tsx | pure
 import { Form, Input } from '@yuntijs/ui';
 import { VariableIcon } from 'lucide-react';
@@ -69,6 +71,43 @@ export default () => {
 ```
 
 <code src="./demos/index.tsx" center></code>
+
+#### Tree input usage
+
+支持树形展示和输入，叶子节点固定在 `children` 字段中，不支持自定义。在 column render 属性中返回了 operation，与 `Form.List` 的 operation 用法一致。
+
+可以通过设置 `indentSize` 以控制每一层的缩进宽度。
+
+设置 `defaultExpandAllRows` 可控制初始时，是否展开所有行。
+
+```tsx | pure
+<FormCollapseList
+  columns={[
+    {
+      render: (fieldName, index, operation, fieldPath) => {
+        return (
+          <Space size="small">
+            <Button
+              icon={<PlusOutlined />}
+              // 添加叶子节点
+              onClick={() => operation.add()}
+              type="text"
+            />
+            <Button
+              icon={<DeleteOutlined />}
+              // 删除当前节点
+              onClick={() => operation.remove(fieldName)}
+              type="text"
+            />
+          </Space>
+        );
+      },
+    },
+  ]}
+/>
+```
+
+<code src="./demos/Tree.tsx" center></code>
 
 ## Playground
 

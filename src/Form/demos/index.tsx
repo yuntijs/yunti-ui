@@ -64,7 +64,6 @@ export default () => {
       <Divider
         content="Form value 值"
         dashed
-        defaultOpen
         mode="expanded"
         orientation="left"
         orientationMargin={0}

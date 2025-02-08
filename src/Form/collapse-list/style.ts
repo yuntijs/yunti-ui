@@ -28,6 +28,9 @@ export const useStyles = createStyles(({ css, token, prefixCls }) => {
           }
           &-cell {
             vertical-align: top;
+            .${prefixCls}-table-row-expand-icon {
+              margin-top: ${token.marginXS}px;
+            }
           }
         }
       }
