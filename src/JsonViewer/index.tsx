@@ -12,6 +12,8 @@ import Typography from '@/Typography';
 
 import { useStyles } from './style';
 
+export { stringify } from 'react18-json-view';
+
 const { Text } = Typography;
 
 export interface JsonViewerProps extends JsonViewProps {
