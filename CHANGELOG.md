@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.103](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.102...v1.0.0-beta.103)
+
+<sup>Released on **2025-02-10**</sup>
+
+#### ✨ Features
+
+- **Form**: Change fieldPath to full path.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **Form**: Change fieldPath to full path ([2114784](https://github.com/yuntijs/yunti-ui/commit/2114784))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.102](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.101...v1.0.0-beta.102)
 
 <sup>Released on **2025-02-10**</sup>
