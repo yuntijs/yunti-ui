@@ -1,36 +1,68 @@
 import { Form, type FormListOperation } from 'antd';
 import type { StoreValue } from 'antd/es/form/interface';
-import React, { useCallback, useState } from 'react';
+import { cloneDeep } from 'lodash-es';
+import React, { useCallback, useMemo, useState } from 'react';
 
-import { FIELD_KEY_PATH, ListFieldValue, getFieldPath, toRowKey } from './utils';
+import type { FormCollapseListColumn } from '.';
+import { FIELD_KEY_PATH, FieldPath, ListFieldValue, toRowKey } from './utils';
 
-export const useFormCollapseListHooks = (name: string) => {
+export const useFormCollapseListHooks = (
+  name: string,
+  childrenColumnName: string,
+  columns: FormCollapseListColumn[]
+) => {
   const form = Form.useFormInstance();
   const [expandedRowKeys, setExpandedRowKeys] = useState<readonly React.Key[]>([]);
 
-  const fieldsToDataSource = useCallback((fields: [ListFieldValue]) => {
-    const allExpandRowKeys: React.Key[] = [];
-    const _setFieldPath = (field: ListFieldValue, index: number, path: number[]) => {
-      if (!field) {
-        // eslint-disable-next-line no-param-reassign
-        field = {
-          [FIELD_KEY_PATH]: [],
-        };
+  const firstColumnFormItemName = useMemo(
+    () => columns.find(item => !!item.name && !item.noStyle),
+    [columns]
+  )?.name;
+
+  const fieldsToDataSource = useCallback(
+    (fields: [ListFieldValue]) => {
+      const allExpandRowKeys: React.Key[] = [];
+      const _setFieldPath = (field: ListFieldValue, index: number, path: number[]) => {
+        let item = cloneDeep(field);
+        if (!item) {
+          item = {
+            [FIELD_KEY_PATH]: [],
+          };
+        }
+        item[FIELD_KEY_PATH] = [...path, index];
+        if (item[childrenColumnName] && Array.isArray(item[childrenColumnName])) {
+          allExpandRowKeys.push(toRowKey(item[FIELD_KEY_PATH]));
+          item[childrenColumnName] = (item[childrenColumnName] as ListFieldValue[]).map(
+            (child, index) => _setFieldPath(child, index, item[FIELD_KEY_PATH]!)
+          );
+        }
+        return item;
+      };
+      return {
+        dataSource: fields?.map((field, index) => _setFieldPath(field, index, [])) || [],
+        allExpandRowKeys,
+      };
+    },
+    [childrenColumnName]
+  );
+
+  const getFieldPath = useCallback(
+    (fieldKeyPath: number[], fieldName?: string) => {
+      const fieldPath: FieldPath = [];
+      for (const [index, key] of fieldKeyPath.entries()) {
+        if (index === fieldKeyPath.length - 1) {
+          fieldPath.push(key);
+          if (fieldName) {
+            fieldPath.push(fieldName);
+          }
+        } else {
+          fieldPath.push(key, childrenColumnName);
+        }
       }
-      field[FIELD_KEY_PATH] = [...path, index];
-      if (field.children && Array.isArray(field.children)) {
-        allExpandRowKeys.push(toRowKey(field[FIELD_KEY_PATH]));
-        field.children = field.children.map((item, index) =>
-          _setFieldPath(item, index, field[FIELD_KEY_PATH]!)
-        );
-      }
-      return field;
-    };
-    return {
-      dataSource: fields?.map((field, index) => _setFieldPath(field, index, [])) || [],
-      allExpandRowKeys,
-    };
-  }, []);
+      return fieldPath;
+    },
+    [childrenColumnName]
+  );
 
   const getFormListOperation = useCallback(
     (operation: FormListOperation, record: ListFieldValue): FormListOperation => {
@@ -38,11 +70,18 @@ export const useFormCollapseListHooks = (name: string) => {
       return {
         add: (defaultValue?: StoreValue, insertIndex?: number) => {
           const fieldPath = getFieldPath(fieldKeyPath);
-          const fieldName = [name, ...fieldPath, 'children'];
-          const fieldValue: any[] = form.getFieldValue(fieldName) || [];
-          fieldValue.push(undefined);
-          fieldValue.splice(insertIndex ?? fieldValue.length, defaultValue);
+          const fieldName = [name, ...fieldPath, childrenColumnName];
+          const fieldValue: any[] = cloneDeep(form.getFieldValue(fieldName)) || [];
+          const index = insertIndex ?? fieldValue.length;
+          fieldValue.splice(index, 0, defaultValue);
           form.setFieldValue(fieldName, fieldValue);
+          if (firstColumnFormItemName) {
+            const fileNamePath = [...fieldName, index, firstColumnFormItemName];
+            // Scroll and focus new item which is just added
+            setTimeout(() => {
+              form.focusField(fileNamePath);
+            }, 200);
+          }
           setExpandedRowKeys([...new Set([...expandedRowKeys, toRowKey(fieldKeyPath)])]);
         },
         remove: (index: number | number[]) => {
@@ -50,7 +89,7 @@ export const useFormCollapseListHooks = (name: string) => {
             return operation.remove(index);
           }
           const fieldName = [name, ...getFieldPath(fieldKeyPath).slice(0, -1)];
-          const fieldValue: any[] = form.getFieldValue(fieldName) || [];
+          const fieldValue: any[] = cloneDeep(form.getFieldValue(fieldName)) || [];
           const indexs: number[] = [];
           if (Array.isArray(index)) {
             indexs.push(...index);
@@ -65,7 +104,7 @@ export const useFormCollapseListHooks = (name: string) => {
             return operation.move(from, to);
           }
           const fieldName = [name, ...getFieldPath(fieldKeyPath).slice(0, -1)];
-          const fieldValue: any[] = form.getFieldValue(fieldName) || [];
+          const fieldValue: any[] = cloneDeep(form.getFieldValue(fieldName)) || [];
           // 检查索引是否有效
           if (from < 0 || to < 0 || from >= fieldValue.length || to >= fieldValue.length) {
             console.warn(new Error('索引超出数组范围'));
@@ -77,13 +116,16 @@ export const useFormCollapseListHooks = (name: string) => {
         },
       };
     },
-    [expandedRowKeys, form, name]
+    [childrenColumnName, expandedRowKeys, firstColumnFormItemName, form, getFieldPath, name]
   );
 
   return {
     expandedRowKeys,
     setExpandedRowKeys,
     fieldsToDataSource,
+    getFieldPath,
     getFormListOperation,
+    // 首个表单输入列 (用于新增表达后 foucs 等)
+    firstColumnFormItemName,
   };
 };

@@ -20,7 +20,7 @@ interface FieldType {
   outputs?: {
     name: string;
     value: string;
-    children?: FieldType['outputs'];
+    items?: FieldType['outputs'];
   }[];
 }
 
@@ -29,11 +29,11 @@ const initialValues: FieldType = {
     {
       name: 'class',
       value: 'claas1',
-      children: [
+      items: [
         {
           name: 'c1',
           value: 'c1',
-          children: [
+          items: [
             {
               name: 'c11',
               value: 'c11',
@@ -66,18 +66,22 @@ export default () => {
         variant="filled"
       >
         <FormCollapseList
+          childrenColumnName="items"
           columns={[
             {
-              dependencies: fieldPath => [['outputs', ...fieldPath, 'value']],
+              dependencies: parentFieldPath => [['outputs', ...parentFieldPath, 'value']],
               label: '变量名',
               name: 'name',
               render: () => <Input maxLength={30} placeholder="输入变量名" showCount />,
-              rules: (fieldPath, index) => [
+              rules: (parentFieldPath, index) => [
                 { whitespace: true, required: true, message: '请输入变量名' },
                 ({ getFieldValue }) => ({
                   validator(_rule, value) {
-                    const vars: FieldType['outputs'] = getFieldValue(['outputs', ...fieldPath]);
-                    if (vars?.some((v, vIndex) => vIndex !== index && v.name === value)) {
+                    const vars: FieldType['outputs'] = getFieldValue([
+                      'outputs',
+                      ...parentFieldPath,
+                    ]);
+                    if (vars?.some((v, vIndex) => vIndex !== index && v?.name === value)) {
                       return Promise.reject(new Error('变量名不能重复'));
                     }
                     return Promise.resolve();
@@ -88,19 +92,19 @@ export default () => {
             {
               label: '变量值',
               name: 'value',
-              render: () => <Input placeholder="输入变量值" style={{ width: 360 }} />,
+              render: () => <Input placeholder="输入变量值" />,
               rules: [{ required: true, message: '请输入变量值' }],
             },
             {
               className: styles.operation,
-              render: (fieldName, index, operation, fieldPath) => {
+              render: (fieldName, _index, operation, fieldPath) => {
                 return (
                   <Space size="small">
                     <Tooltip title="添加叶子节点">
                       <Button
                         icon={<PlusOutlined />}
                         onClick={() => {
-                          operation.add();
+                          operation.add({ name: 'key' });
                         }}
                         type="text"
                       />
@@ -114,7 +118,7 @@ export default () => {
                             }
                           }}
                         >
-                          <Form.Item name={['outputs', ...fieldPath, index, 'desc']}>
+                          <Form.Item name={['outputs', ...fieldPath, 'desc']}>
                             <Input.TextArea placeholder="请输入描述" />
                           </Form.Item>
                         </Form>
@@ -125,7 +129,7 @@ export default () => {
                       <Button icon={<FileDoneOutlined />} type="text" />
                     </Popover>
                     <Button
-                      disabled={outputs.length === 1}
+                      disabled={outputs.length === 1 && fieldPath.lengh === 1}
                       icon={<DeleteOutlined />}
                       onClick={() => operation.remove(fieldName)}
                       type="text"

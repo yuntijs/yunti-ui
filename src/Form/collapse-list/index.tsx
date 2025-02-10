@@ -9,7 +9,7 @@ import React, { useCallback, useEffect, useMemo, useRef } from 'react';
 import { CollapseGroup, CollapseGroupProps } from '../../CollapseGroup';
 import { useFormCollapseListHooks } from './hooks';
 import { useStyles } from './style';
-import { FIELD_KEY_PATH, FieldPath, ListFieldValue, getFieldPath, toRowKey } from './utils';
+import { FIELD_KEY_PATH, FieldPath, ListFieldValue, toRowKey } from './utils';
 
 export interface FormCollapseListColumnItem
   extends Omit<
@@ -20,14 +20,15 @@ export interface FormCollapseListColumnItem
     fieldName: number,
     index: number,
     operation: FormListOperation,
+    /** 当前 item 的 path */
     fieldPath: FieldPath
   ) => React.ReactElement;
   rules?:
     | FormItemProps['rules']
-    | ((fieldPath: FieldPath, index: number) => FormItemProps['rules']);
+    | ((parentFieldPath: FieldPath, index: number) => FormItemProps['rules']);
   dependencies?:
     | FormItemProps['dependencies']
-    | ((fieldPath: FieldPath, index: number) => FormItemProps['dependencies']);
+    | ((parentFieldPath: FieldPath, index: number) => FormItemProps['dependencies']);
 }
 
 export interface FormListOperationAddParams {
@@ -79,8 +80,10 @@ export interface FormCollapseListProps
   fieldRemoveButton?: boolean;
   /** [树形数据] 初始时，是否展开所有行 */
   defaultExpandAllRows?: boolean;
-  /** [树形数据] 每层缩进的宽度，以 px 为单位, 默认为 15 */
+  /** [树形数据] 每层缩进的宽度，以 px 为单位, 默认为 16 */
   indentSize?: number;
+  /** [树形数据] 指定树形结构的列名，默认为 children */
+  childrenColumnName?: string;
   /** 表格行是否开启 hover 交互, 默认为启用 */
   rowHoverable?: boolean;
 }
@@ -106,7 +109,8 @@ export const FormCollapseList: React.FC<FormCollapseListProps> = ({
   fieldRemoveButton = true,
   style,
   defaultExpandAllRows,
-  indentSize,
+  indentSize = 16,
+  childrenColumnName = 'children',
   rowHoverable = true,
   ...formListProps
 }) => {
@@ -114,8 +118,14 @@ export const FormCollapseList: React.FC<FormCollapseListProps> = ({
   const listAdd = useRef<FormListOperation['add']>();
   const form = Form.useFormInstance();
   const fieldsWatch = Form.useWatch<[ListFieldValue]>(name, form);
-  const { expandedRowKeys, setExpandedRowKeys, fieldsToDataSource, getFormListOperation } =
-    useFormCollapseListHooks(name);
+  const {
+    expandedRowKeys,
+    setExpandedRowKeys,
+    fieldsToDataSource,
+    getFormListOperation,
+    getFieldPath,
+    firstColumnFormItemName,
+  } = useFormCollapseListHooks(name, childrenColumnName, columns);
   const { dataSource } = useMemo(
     () => fieldsToDataSource(fieldsWatch),
     [fieldsWatch, fieldsToDataSource]
@@ -151,8 +161,12 @@ export const FormCollapseList: React.FC<FormCollapseListProps> = ({
       (!form?.getFieldValue(name) || form?.getFieldValue(name)?.length === 0)
     ) {
       listAdd.current?.(...getAddParams());
+      // Scroll and focus new item which is just added
+      setTimeout(() => {
+        form.focusField([name, 0, firstColumnFormItemName]);
+      }, 200);
     }
-  }, [addOneFieldDefault, getAddParams, form, name]);
+  }, [addOneFieldDefault, getAddParams, form, name, firstColumnFormItemName]);
 
   return (
     <CollapseGroup
@@ -167,6 +181,14 @@ export const FormCollapseList: React.FC<FormCollapseListProps> = ({
                   onClick={e => {
                     e.stopPropagation();
                     listAdd.current?.(...getAddParams());
+                    // Scroll and focus new item which is just added
+                    setTimeout(() => {
+                      form.focusField([
+                        name,
+                        form.getFieldValue(name).length - 1,
+                        firstColumnFormItemName,
+                      ]);
+                    }, 200);
                   }}
                   size="small"
                   type="text"
@@ -217,7 +239,8 @@ export const FormCollapseList: React.FC<FormCollapseListProps> = ({
                           const field = fields[index] || {};
                           const fieldName = field.name;
                           const fieldKeyPath = record[FIELD_KEY_PATH];
-                          const fieldPath = getFieldPath(fieldKeyPath).slice(0, -1);
+                          const fieldPath = getFieldPath(fieldKeyPath);
+                          const parentFieldPath = fieldPath.slice(0, -1);
                           const { key, ...restField } = field;
                           const children = fieldRender?.(
                             fieldName ?? fieldKeyPath.at(-1),
@@ -255,12 +278,14 @@ export const FormCollapseList: React.FC<FormCollapseListProps> = ({
                               {...restField}
                               dependencies={
                                 typeof dependencies === 'function'
-                                  ? dependencies(fieldPath, index)
+                                  ? dependencies(parentFieldPath, index)
                                   : dependencies
                               }
                               name={getFieldPath(fieldKeyPath, itemName)}
                               // label={getFieldPath(fieldKeyPath, itemName).join('/')}
-                              rules={typeof rules === 'function' ? rules(fieldPath, index) : rules}
+                              rules={
+                                typeof rules === 'function' ? rules(parentFieldPath, index) : rules
+                              }
                               {...itemProps}
                             >
                               {children && React.cloneElement(children, chidrenProps)}
@@ -303,7 +328,7 @@ export const FormCollapseList: React.FC<FormCollapseListProps> = ({
                 dataSource={dataSource}
                 expandable={{
                   expandedRowKeys,
-                  columnTitle: <h1>columnTitle</h1>,
+                  childrenColumnName,
                   onExpandedRowsChange: expandedKeys => {
                     setExpandedRowKeys(expandedKeys);
                   },

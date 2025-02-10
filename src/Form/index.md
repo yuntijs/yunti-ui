@@ -74,7 +74,7 @@ export default () => {
 
 #### Tree input usage
 
-支持树形展示和输入，叶子节点固定在 `children` 字段中，不支持自定义。在 column render 属性中返回了 operation，与 `Form.List` 的 operation 用法一致。
+支持树形展示和输入，当数据中有 `children` 字段时会自动展示为树形表格，，如果不需要或配置为其他字段可以用 `childrenColumnName` 进行配置。在 column render 属性中返回了 operation，与 `Form.List` 的 operation 用法一致。
 
 可以通过设置 `indentSize` 以控制每一层的缩进宽度。
 
