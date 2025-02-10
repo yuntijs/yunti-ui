@@ -69,7 +69,7 @@ export default () => {
           childrenColumnName="items"
           columns={[
             {
-              dependencies: parentFieldPath => [['outputs', ...parentFieldPath, 'value']],
+              dependencies: parentFieldPath => [[...parentFieldPath, 'value']],
               label: '变量名',
               name: 'name',
               render: () => <Input maxLength={30} placeholder="输入变量名" showCount />,
@@ -77,10 +77,7 @@ export default () => {
                 { whitespace: true, required: true, message: '请输入变量名' },
                 ({ getFieldValue }) => ({
                   validator(_rule, value) {
-                    const vars: FieldType['outputs'] = getFieldValue([
-                      'outputs',
-                      ...parentFieldPath,
-                    ]);
+                    const vars: FieldType['outputs'] = getFieldValue(parentFieldPath);
                     if (vars?.some((v, vIndex) => vIndex !== index && v?.name === value)) {
                       return Promise.reject(new Error('变量名不能重复'));
                     }
@@ -118,7 +115,7 @@ export default () => {
                             }
                           }}
                         >
-                          <Form.Item name={['outputs', ...fieldPath, 'desc']}>
+                          <Form.Item name={[...fieldPath, 'desc']}>
                             <Input.TextArea placeholder="请输入描述" />
                           </Form.Item>
                         </Form>
@@ -129,7 +126,7 @@ export default () => {
                       <Button icon={<FileDoneOutlined />} type="text" />
                     </Popover>
                     <Button
-                      disabled={outputs.length === 1 && fieldPath.lengh === 1}
+                      disabled={outputs.length === 1 && fieldPath.lengh === 2}
                       icon={<DeleteOutlined />}
                       onClick={() => operation.remove(fieldName)}
                       type="text"

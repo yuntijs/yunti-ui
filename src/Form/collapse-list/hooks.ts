@@ -21,6 +21,12 @@ export const useFormCollapseListHooks = (
 
   const fieldsToDataSource = useCallback(
     (fields: [ListFieldValue]) => {
+      if (!name) {
+        return {
+          dataSource: [],
+          allExpandRowKeys: [],
+        };
+      }
       const allExpandRowKeys: React.Key[] = [];
       const _setFieldPath = (field: ListFieldValue, index: number, path: number[]) => {
         let item = cloneDeep(field);
@@ -43,7 +49,7 @@ export const useFormCollapseListHooks = (
         allExpandRowKeys,
       };
     },
-    [childrenColumnName]
+    [childrenColumnName, name]
   );
 
   const getFieldPath = useCallback(
