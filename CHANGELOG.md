@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.105](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.104...v1.0.0-beta.105)
+
+<sup>Released on **2025-02-11**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: Bot 对话思考中.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: Bot 对话思考中，closes [#34](https://github.com/yuntijs/yunti-ui/issues/34) ([e3ea4cb](https://github.com/yuntijs/yunti-ui/commit/e3ea4cb))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.104](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.103...v1.0.0-beta.104)
 
 <sup>Released on **2025-02-11**</sup>
