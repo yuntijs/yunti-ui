@@ -44,5 +44,9 @@ export const useStyles = createStyles(({ css, token, prefixCls }) => {
       height: ${token.controlHeight}px;
       color: ${token.colorTextTertiary};
     `,
+    readOnlyItem: css`
+      height: ${token.controlHeight}px;
+      color: ${token.colorTextBase};
+    `,
   };
 });

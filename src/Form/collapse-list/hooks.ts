@@ -12,15 +12,17 @@ export const useFormCollapseListHooks = (
   columns: FormCollapseListColumn[]
 ) => {
   const form = Form.useFormInstance();
+  const [values, _setValues] = useState<ListFieldValue[]>([]);
   const [expandedRowKeys, setExpandedRowKeys] = useState<readonly React.Key[]>([]);
+  const updateValues = useCallback(() => _setValues(form.getFieldValue(name)), [form, name]);
 
   const firstColumnFormItemName = useMemo(
     () => columns.find(item => !!item.name && !item.noStyle),
     [columns]
   )?.name;
 
-  const fieldsToDataSource = useCallback(
-    (fields: [ListFieldValue]) => {
+  const fieldValuesToDataSource = useCallback(
+    (fields: ListFieldValue[]) => {
       if (!name) {
         return {
           dataSource: [],
@@ -89,10 +91,13 @@ export const useFormCollapseListHooks = (
             }, 200);
           }
           setExpandedRowKeys([...new Set([...expandedRowKeys, toRowKey(fieldKeyPath)])]);
+          updateValues();
         },
         remove: (index: number | number[]) => {
           if (fieldKeyPath.length <= 1) {
-            return operation.remove(index);
+            operation.remove(index);
+            updateValues();
+            return;
           }
           const fieldName = [name, ...getFieldPath(fieldKeyPath).slice(0, -1)];
           const fieldValue: any[] = cloneDeep(form.getFieldValue(fieldName)) || [];
@@ -104,6 +109,7 @@ export const useFormCollapseListHooks = (
           }
           const newFieldValue = fieldValue.filter((_, _index) => !indexs.includes(_index));
           form.setFieldValue(fieldName, newFieldValue.length > 0 ? newFieldValue : undefined);
+          updateValues();
         },
         move: (from: number, to: number) => {
           if (fieldKeyPath.length <= 1) {
@@ -119,16 +125,27 @@ export const useFormCollapseListHooks = (
           // 使用数组解构交换两个元素
           [fieldValue[from], fieldValue[to]] = [fieldValue[to], fieldValue[from]];
           form.setFieldValue(fieldName, fieldValue);
+          updateValues();
         },
       };
     },
-    [childrenColumnName, expandedRowKeys, firstColumnFormItemName, form, getFieldPath, name]
+    [
+      childrenColumnName,
+      expandedRowKeys,
+      firstColumnFormItemName,
+      form,
+      getFieldPath,
+      name,
+      updateValues,
+    ]
   );
 
   return {
+    values,
+    updateValues,
     expandedRowKeys,
     setExpandedRowKeys,
-    fieldsToDataSource,
+    fieldValuesToDataSource,
     getFieldPath,
     getFormListOperation,
     // 首个表单输入列 (用于新增表达后 foucs 等)

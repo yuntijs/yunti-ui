@@ -1,6 +1,6 @@
 import { StoryBook, useControls, useCreateStore } from '@lobehub/ui';
 import { FormCollapseList, FormCollapseListProps, Input } from '@yuntijs/ui';
-import { Form } from 'antd';
+import { Form, Select } from 'antd';
 import { VariableIcon } from 'lucide-react';
 
 export default () => {
@@ -21,6 +21,7 @@ export default () => {
         options: ['default', 'block', 'ghost', 'pure'],
         value: 'default',
       },
+      collapsible: true,
     },
     { store }
   );
@@ -32,13 +33,17 @@ export default () => {
             {
               label: '变量名',
               name: 'key',
-              width: '40%',
               render: () => <Input maxLength={30} placeholder="输入变量名" showCount />,
+            },
+            {
+              label: '类型',
+              name: 'type',
+              width: 120,
+              render: () => <Select options={[{ value: 'string' }, { value: 'number' }]} />,
             },
             {
               label: '变量值',
               name: 'value',
-              width: '45%',
               render: () => <Input placeholder="输入变量值" />,
               rules: [{ required: true, message: '请输入变量值' }],
             },

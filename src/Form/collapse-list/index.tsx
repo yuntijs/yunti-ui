@@ -3,15 +3,20 @@ import { Icon } from '@lobehub/ui';
 import { Button, Flex, Form, Table, Tooltip } from 'antd';
 import type { FormItemProps, FormListOperation, TableColumnProps } from 'antd';
 import type { FormListProps as AntFormListProps } from 'antd/es/form';
+import type { StoreValue } from 'antd/es/form/interface';
 import { Trash2 } from 'lucide-react';
-import React, { useCallback, useEffect, useMemo, useRef } from 'react';
+import React, { memo, useCallback, useEffect, useMemo, useRef } from 'react';
+
+import Typography from '@/Typography';
 
 import { CollapseGroup, CollapseGroupProps } from '../../CollapseGroup';
 import { useFormCollapseListHooks } from './hooks';
 import { useStyles } from './style';
 import { FIELD_KEY_PATH, FieldPath, ListFieldValue, toRowKey } from './utils';
 
-export interface FormCollapseListColumnItem
+const { Text } = Typography;
+
+interface FormCollapseListColumnItem
   extends Omit<
     FormItemProps,
     'dependencies' | 'rules' | 'tooltip' | 'labelAlign' | 'labelCol' | 'colon' | 'children'
@@ -48,6 +53,7 @@ export interface FormCollapseListProps
     Pick<
       CollapseGroupProps,
       | 'className'
+      | 'collapsible'
       | 'extra'
       | 'expandIcon'
       | 'icon'
@@ -88,264 +94,282 @@ export interface FormCollapseListProps
   rowHoverable?: boolean;
 }
 
-export const FormCollapseList: React.FC<FormCollapseListProps> = ({
-  extra,
-  expandIcon,
-  icon,
-  title,
-  variant,
-  defaultActive,
-  empty = '点击右上角 + 添加 ',
-  columns = [],
-  disabled,
-  readOnly,
-  addOneFieldDefault,
-  disableRemoveWhenOneField,
-  maxFileds,
-  name,
-  addParams,
-  className,
-  onRemove,
-  fieldRemoveButton = true,
-  style,
-  defaultExpandAllRows,
-  indentSize = 16,
-  childrenColumnName = 'children',
-  rowHoverable = true,
-  ...formListProps
-}) => {
-  const { cx, styles } = useStyles();
-  const listAdd = useRef<FormListOperation['add']>();
-  const form = Form.useFormInstance();
-  const fieldsWatch = Form.useWatch<[ListFieldValue]>(name, form);
-  const {
-    expandedRowKeys,
-    setExpandedRowKeys,
-    fieldsToDataSource,
-    getFormListOperation,
-    getFieldPath,
-    firstColumnFormItemName,
-  } = useFormCollapseListHooks(name, childrenColumnName, columns);
-  const { dataSource } = useMemo(
-    () => fieldsToDataSource(fieldsWatch),
-    [fieldsWatch, fieldsToDataSource]
-  );
+export const FormCollapseList: React.FC<FormCollapseListProps> = memo(
+  ({
+    collapsible,
+    extra,
+    expandIcon,
+    icon,
+    title,
+    variant,
+    defaultActive,
+    empty = '点击右上角 + 添加 ',
+    columns = [],
+    disabled,
+    readOnly,
+    addOneFieldDefault,
+    disableRemoveWhenOneField,
+    maxFileds,
+    name,
+    addParams,
+    className,
+    onRemove,
+    fieldRemoveButton = true,
+    style,
+    defaultExpandAllRows,
+    indentSize = 16,
+    childrenColumnName = 'children',
+    rowHoverable = true,
+    ...formListProps
+  }) => {
+    const { cx, styles } = useStyles();
+    const listAdd = useRef<FormListOperation['add']>();
+    const form = Form.useFormInstance();
+    const {
+      values,
+      updateValues,
+      expandedRowKeys,
+      setExpandedRowKeys,
+      fieldValuesToDataSource,
+      getFormListOperation,
+      getFieldPath,
+      firstColumnFormItemName,
+    } = useFormCollapseListHooks(name, childrenColumnName, columns);
+    const { dataSource } = useMemo(
+      () => fieldValuesToDataSource(values),
+      [fieldValuesToDataSource, values]
+    );
+    // 设置初始值以及在 readOnly 变化时更新 values
+    useEffect(() => {
+      updateValues();
+    }, [updateValues, readOnly]);
 
-  useEffect(() => {
-    const fields = form.getFieldValue(name);
-    const { allExpandRowKeys } = fieldsToDataSource(fields);
-    if (defaultExpandAllRows) {
-      setExpandedRowKeys(allExpandRowKeys);
-    }
-  }, [defaultExpandAllRows, fieldsToDataSource, form, name, setExpandedRowKeys]);
-
-  const getAddParams = useCallback<() => Parameters<FormListOperation['add']>>(() => {
-    if (!addParams) {
-      return [];
-    }
-    const params = typeof addParams === 'function' ? addParams() : addParams;
-    return [params.defaultValue, params.insertIndex];
-  }, [addParams]);
-
-  const handleOnRemove = useCallback(
-    (fieldName: number) => {
-      const values = form.getFieldValue([name, fieldName]);
-      return onRemove?.(values);
-    },
-    [form, name, onRemove]
-  );
-
-  useEffect(() => {
-    if (
-      addOneFieldDefault &&
-      (!form?.getFieldValue(name) || form?.getFieldValue(name)?.length === 0)
-    ) {
-      listAdd.current?.(...getAddParams());
-      // Scroll and focus new item which is just added
-      setTimeout(() => {
-        form.focusField([name, 0, firstColumnFormItemName]);
-      }, 200);
-    }
-  }, [addOneFieldDefault, getAddParams, form, name, firstColumnFormItemName]);
-
-  return (
-    <CollapseGroup
-      extra={
-        extra === undefined
-          ? name &&
-            !readOnly && (
-              <Tooltip title={maxFileds && `最多添加 ${maxFileds} 项`}>
-                <Button
-                  disabled={disabled || !!(maxFileds && fieldsWatch?.length === maxFileds)}
-                  icon={<PlusOutlined />}
-                  onClick={e => {
-                    e.stopPropagation();
-                    listAdd.current?.(...getAddParams());
-                    // Scroll and focus new item which is just added
-                    setTimeout(() => {
-                      form.focusField([
-                        name,
-                        form.getFieldValue(name).length - 1,
-                        firstColumnFormItemName,
-                      ]);
-                    }, 200);
-                  }}
-                  size="small"
-                  type="text"
-                />
-              </Tooltip>
-            )
-          : extra
+    // 设置默认展开的 keys
+    useEffect(() => {
+      const fields = form.getFieldValue(name);
+      const { allExpandRowKeys } = fieldValuesToDataSource(fields);
+      if (defaultExpandAllRows) {
+        setExpandedRowKeys(allExpandRowKeys);
       }
-      {...{ className, expandIcon, icon, title, variant, defaultActive, style }}
-    >
-      {name ? (
-        <Form.List name={name} {...formListProps}>
-          {(fields, operation) => {
-            const { add, remove } = operation;
-            listAdd.current = add;
+    }, [defaultExpandAllRows, fieldValuesToDataSource, form, name, setExpandedRowKeys]);
 
-            // @Todo: support sort
-            return (
-              <Table<ListFieldValue>
-                className={styles.list}
-                columns={
-                  [
-                    ...columns.map(
-                      ({
-                        label,
-                        name: itemName,
-                        render: fieldRender,
-                        dependencies,
-                        rules,
-                        align,
-                        ellipsis,
-                        fixed,
-                        responsive,
-                        shouldCellUpdate,
-                        width,
-                        className,
-                        ...itemProps
-                      }) => ({
-                        title: label,
-                        dataIndex: itemName,
-                        align,
-                        ellipsis,
-                        fixed,
-                        responsive,
-                        shouldCellUpdate,
-                        width,
-                        render: (_text: string, record: ListFieldValue, index: number) => {
-                          const field = fields[index] || {};
-                          const fieldName = field.name;
-                          const fieldKeyPath = record[FIELD_KEY_PATH];
-                          const fieldPath = [name, ...getFieldPath(fieldKeyPath)];
-                          const parentFieldPath = fieldPath.slice(0, -1);
-                          const { key, ...restField } = field;
-                          const children = fieldRender?.(
-                            fieldName ?? fieldKeyPath.at(-1),
-                            index,
-                            getFormListOperation(operation, record),
-                            fieldPath
-                          );
-                          if (!children && !itemProps.noStyle) {
-                            return (
-                              <Flex align="center" className={cx(styles.noFormItem, className)}>
-                                无需设置
-                              </Flex>
+    const getAddParams = useCallback<() => Parameters<FormListOperation['add']>>(() => {
+      if (!addParams) {
+        return [];
+      }
+      const params = typeof addParams === 'function' ? addParams() : addParams;
+      return [params.defaultValue, params.insertIndex];
+    }, [addParams]);
+
+    const handleOnRemove = useCallback(
+      (fieldName: number) => {
+        const value = form.getFieldValue([name, fieldName]);
+        return onRemove?.(value);
+      },
+      [form, name, onRemove]
+    );
+
+    // 默认增加一行的处理
+    useEffect(() => {
+      if (
+        addOneFieldDefault &&
+        (!form?.getFieldValue(name) || form?.getFieldValue(name)?.length === 0)
+      ) {
+        listAdd.current?.(...getAddParams());
+        // Scroll and focus new item which is just added
+        setTimeout(() => {
+          form.focusField([name, 0, firstColumnFormItemName]);
+        }, 200);
+      }
+    }, [addOneFieldDefault, getAddParams, form, name, firstColumnFormItemName, updateValues]);
+
+    return (
+      <CollapseGroup
+        extra={
+          extra === undefined
+            ? name &&
+              !readOnly && (
+                <Tooltip title={maxFileds && `最多添加 ${maxFileds} 项`}>
+                  <Button
+                    disabled={disabled || !!(maxFileds && values?.length === maxFileds)}
+                    icon={<PlusOutlined />}
+                    onClick={e => {
+                      e.stopPropagation();
+                      listAdd.current?.(...getAddParams());
+                      // Scroll and focus new item which is just added
+                      setTimeout(() => {
+                        form.focusField([
+                          name,
+                          form.getFieldValue(name).length - 1,
+                          firstColumnFormItemName,
+                        ]);
+                      }, 200);
+                    }}
+                    size="small"
+                    type="text"
+                  />
+                </Tooltip>
+              )
+            : extra
+        }
+        {...{ className, collapsible, expandIcon, icon, title, variant, defaultActive, style }}
+      >
+        {name ? (
+          <Form.List name={name} {...formListProps}>
+            {(fields, operation) => {
+              const { add, remove } = operation;
+              listAdd.current = (defaultValue?: StoreValue, insertIndex?: number) => {
+                add(defaultValue, insertIndex);
+                updateValues();
+              };
+
+              // @Todo: support sort
+              return (
+                <Table<ListFieldValue>
+                  className={styles.list}
+                  columns={
+                    [
+                      ...columns.map(
+                        ({
+                          label,
+                          name: itemName,
+                          render: fieldRender,
+                          dependencies,
+                          rules,
+                          align,
+                          ellipsis,
+                          fixed,
+                          responsive,
+                          shouldCellUpdate,
+                          width,
+                          className,
+                          ...itemProps
+                        }) => ({
+                          title: label,
+                          dataIndex: itemName,
+                          align,
+                          ellipsis,
+                          fixed,
+                          responsive,
+                          shouldCellUpdate,
+                          width,
+                          render: (text: any, record: ListFieldValue, index: number) => {
+                            const field = fields[index] || {};
+                            const fieldName = field.name;
+                            const fieldKeyPath = record[FIELD_KEY_PATH];
+                            const fieldPath = [name, ...getFieldPath(fieldKeyPath)];
+                            const parentFieldPath = fieldPath.slice(0, -1);
+                            const { key, ...restField } = field;
+                            const children = fieldRender?.(
+                              fieldName ?? fieldKeyPath.at(-1),
+                              index,
+                              getFormListOperation(operation, record),
+                              fieldPath
                             );
-                          }
-                          if (!itemName) {
+                            if (!children && !itemProps.noStyle) {
+                              return (
+                                <Flex align="center" className={cx(styles.noFormItem, className)}>
+                                  无需设置
+                                </Flex>
+                              );
+                            }
+                            if (!itemName) {
+                              return (
+                                <Flex align="center" className={cx(styles.noFormItem, className)}>
+                                  {children}
+                                </Flex>
+                              );
+                            }
+                            const chidrenProps: Record<string, any> = {};
+                            if (disabled !== undefined) {
+                              chidrenProps.disabled = disabled;
+                            }
+                            if (readOnly === true) {
+                              return (
+                                <Flex align="center" className={cx(styles.readOnlyItem, className)}>
+                                  {text ?? <Text type="secondary">-</Text>}
+                                </Flex>
+                              );
+                            }
                             return (
-                              <Flex align="center" className={cx(styles.noFormItem, className)}>
-                                {children}
-                              </Flex>
-                            );
-                          }
-                          const chidrenProps: Record<string, any> = {
-                            readOnly,
-                            disabled,
-                          };
-                          if (readOnly === true) {
-                            chidrenProps.showCount = false;
-                            chidrenProps.variant = 'borderless';
-                            chidrenProps.placeholder = '-';
-                          }
-                          return (
-                            <Form.Item
-                              className={className}
-                              key={key}
-                              {...restField}
-                              dependencies={
-                                typeof dependencies === 'function'
-                                  ? dependencies(parentFieldPath, index)
-                                  : dependencies
-                              }
-                              name={getFieldPath(fieldKeyPath, itemName)}
-                              // label={getFieldPath(fieldKeyPath, itemName).join('/')}
-                              rules={
-                                typeof rules === 'function' ? rules(parentFieldPath, index) : rules
-                              }
-                              {...itemProps}
-                            >
-                              {children && React.cloneElement(children, chidrenProps)}
-                            </Form.Item>
-                          );
-                        },
-                      })
-                    ),
-                    !readOnly &&
-                      fieldRemoveButton !== false && {
-                        title: '',
-                        dataIndex: 'del',
-                        render: (_text: string, _record: any, index: number) => {
-                          const field = fields[index];
-                          if (!field) {
-                            return;
-                          }
-                          const { name: fieldName } = field;
-                          return (
-                            <Form.Item>
-                              <Button
-                                disabled={
-                                  disabled || (disableRemoveWhenOneField && fields.length === 1)
+                              <Form.Item
+                                className={className}
+                                key={key}
+                                {...restField}
+                                dependencies={
+                                  typeof dependencies === 'function'
+                                    ? dependencies(parentFieldPath, index)
+                                    : dependencies
                                 }
-                                icon={<Icon icon={Trash2} />}
-                                onClick={async () => {
-                                  const isRemove = await handleOnRemove(fieldName);
-                                  if (isRemove !== false) {
-                                    remove(fieldName);
+                                name={getFieldPath(fieldKeyPath, itemName)}
+                                // label={getFieldPath(fieldKeyPath, itemName).join('/')}
+                                rules={
+                                  typeof rules === 'function'
+                                    ? rules(parentFieldPath, index)
+                                    : rules
+                                }
+                                {...itemProps}
+                              >
+                                {children && React.cloneElement(children, chidrenProps)}
+                              </Form.Item>
+                            );
+                          },
+                        })
+                      ),
+                      !readOnly &&
+                        fieldRemoveButton !== false && {
+                          title: '',
+                          dataIndex: 'del',
+                          render: (_text: string, _record: any, index: number) => {
+                            const field = fields[index];
+                            if (!field) {
+                              return;
+                            }
+                            const { name: fieldName } = field;
+                            return (
+                              <Form.Item>
+                                <Button
+                                  disabled={
+                                    disabled || (disableRemoveWhenOneField && fields.length === 1)
                                   }
-                                }}
-                                type="text"
-                              />
-                            </Form.Item>
-                          );
+                                  icon={<Icon icon={Trash2} />}
+                                  onClick={async () => {
+                                    const isRemove = await handleOnRemove(fieldName);
+                                    if (isRemove !== false) {
+                                      remove(fieldName);
+                                      updateValues();
+                                    }
+                                  }}
+                                  type="text"
+                                />
+                              </Form.Item>
+                            );
+                          },
                         },
-                      },
-                  ].filter(c => !!c) as TableColumnProps<any>[]
-                }
-                dataSource={dataSource}
-                expandable={{
-                  expandedRowKeys,
-                  childrenColumnName,
-                  onExpandedRowsChange: expandedKeys => {
-                    setExpandedRowKeys(expandedKeys);
-                  },
-                }}
-                indentSize={indentSize}
-                locale={{ emptyText: empty }}
-                pagination={false}
-                rowHoverable={rowHoverable}
-                rowKey={row => toRowKey(row[FIELD_KEY_PATH])}
-                size="small"
-              />
-            );
-          }}
-        </Form.List>
-      ) : (
-        <div className={styles.empty}>{empty}</div>
-      )}
-    </CollapseGroup>
-  );
-};
+                    ].filter(c => !!c) as TableColumnProps<any>[]
+                  }
+                  dataSource={dataSource}
+                  expandable={{
+                    expandedRowKeys,
+                    childrenColumnName,
+                    onExpandedRowsChange: expandedKeys => {
+                      setExpandedRowKeys(expandedKeys);
+                    },
+                  }}
+                  indentSize={indentSize}
+                  locale={{ emptyText: empty }}
+                  pagination={false}
+                  rowHoverable={rowHoverable}
+                  rowKey={row => toRowKey(row[FIELD_KEY_PATH])}
+                  size="small"
+                />
+              );
+            }}
+          </Form.List>
+        ) : (
+          <div className={styles.empty}>{empty}</div>
+        )}
+      </CollapseGroup>
+    );
+  }
+);
