@@ -8,6 +8,7 @@ export default () => {
     {
       title: '输出变量',
       defaultActive: true,
+      collapsible: true,
       variant: {
         options: ['default', 'block', 'ghost', 'pure'],
         value: 'default',

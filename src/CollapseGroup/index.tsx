@@ -1,4 +1,5 @@
-import { FormGroupProps, Form as LobeForm } from '@lobehub/ui';
+import { ActionIcon, FormGroupProps, Form as LobeForm } from '@lobehub/ui';
+import { ChevronDown, ChevronRight } from 'lucide-react';
 import React from 'react';
 
 import { useStyles } from './style';
@@ -13,14 +14,22 @@ export type CollapseGroupProps = Omit<
 export const CollapseGroup: React.FC<CollapseGroupProps> = ({
   className,
   variant,
+  collapsible,
+  expandIcon = panelProps => (
+    <ActionIcon
+      icon={panelProps.isActive ? ChevronDown : ChevronRight}
+      size={{ blockSize: 24, fontSize: 14, strokeWidth: 3 }}
+    />
+  ),
   ...otherProps
 }) => {
-  const { styles, cx } = useStyles();
+  const { styles, cx } = useStyles({ collapsible });
 
   return (
     <FormGroup
       className={cx(styles.root, className)}
-      collapsible={variant !== 'pure'}
+      collapsible={variant === 'pure' ? false : collapsible}
+      expandIcon={expandIcon}
       variant={variant}
       {...otherProps}
     />
