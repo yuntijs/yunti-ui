@@ -12,6 +12,7 @@ const useStyles = createStyles(({ css, token, isDarkMode }) => ({
   titlebox: css`
     cursor: pointer;
 
+    min-width: 140px;
     max-width: 230px;
     padding: 8px 12px;
 
@@ -29,7 +30,7 @@ export interface ThinkProps {
 }
 
 const mProps = {
-  fontSize: 12,
+  fontSize: 13,
   lineHeight: 1.625,
   headerMultiple: 0.2,
   marginMultiple: 0.6,
