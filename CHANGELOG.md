@@ -2,6 +2,33 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.104](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.103...v1.0.0-beta.104)
+
+<sup>Released on **2025-02-11**</sup>
+
+#### ✨ Features
+
+- **CollapseGroup**: Support specify collapsible.
+- **Form**: Improve performance of collapse-list.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **CollapseGroup**: Support specify collapsible ([6210e4b](https://github.com/yuntijs/yunti-ui/commit/6210e4b))
+- **Form**: Improve performance of collapse-list ([54e6de3](https://github.com/yuntijs/yunti-ui/commit/54e6de3))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.103](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.102...v1.0.0-beta.103)
 
 <sup>Released on **2025-02-10**</sup>
