@@ -6,6 +6,11 @@ import React, { useCallback, useMemo, useState } from 'react';
 import type { FormCollapseListColumn } from '.';
 import { FIELD_KEY_PATH, FieldPath, ListFieldValue, toRowKey } from './utils';
 
+export interface FormCollapseListOperation extends FormListOperation {
+  // 更新视图
+  update: () => void;
+}
+
 export const useFormCollapseListHooks = (
   name: string,
   childrenColumnName: string,
@@ -73,7 +78,7 @@ export const useFormCollapseListHooks = (
   );
 
   const getFormListOperation = useCallback(
-    (operation: FormListOperation, record: ListFieldValue): FormListOperation => {
+    (operation: FormListOperation, record: ListFieldValue): FormCollapseListOperation => {
       const fieldKeyPath = record[FIELD_KEY_PATH];
       return {
         add: (defaultValue?: StoreValue, insertIndex?: number) => {
@@ -127,6 +132,7 @@ export const useFormCollapseListHooks = (
           form.setFieldValue(fieldName, fieldValue);
           updateValues();
         },
+        update: () => updateValues(),
       };
     },
     [

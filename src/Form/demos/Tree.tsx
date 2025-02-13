@@ -93,6 +93,8 @@ export default () => {
                   icon={<PlusOutlined />}
                   onClick={() => {
                     operation.add({ name: 'key' });
+                    // 如果有手动设置 form 表单，可能会出现没有渲染的问题，可以用 update 方法手动触发
+                    // operation.update();
                   }}
                   type="text"
                 />

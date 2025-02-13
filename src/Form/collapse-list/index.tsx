@@ -10,7 +10,7 @@ import React, { memo, useCallback, useEffect, useMemo, useRef } from 'react';
 import Typography from '@/Typography';
 
 import { CollapseGroup, CollapseGroupProps } from '../../CollapseGroup';
-import { useFormCollapseListHooks } from './hooks';
+import { FormCollapseListOperation, useFormCollapseListHooks } from './hooks';
 import { useStyles } from './style';
 import { FIELD_KEY_PATH, FieldPath, ListFieldValue, toRowKey } from './utils';
 
@@ -24,7 +24,7 @@ interface FormCollapseListColumnItem
   render?: (
     fieldName: number,
     index: number,
-    operation: FormListOperation,
+    operation: FormCollapseListOperation,
     /** 当前 item 的 path */
     fieldPath: FieldPath
   ) => React.ReactElement;
