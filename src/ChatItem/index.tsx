@@ -35,6 +35,7 @@ export const ChatItem = memo<ChatItemProps>(
     onChange,
     onEditingChange,
     messageExtra,
+    affixation,
     renderMessage,
     text,
     errorMessage,
@@ -104,6 +105,7 @@ export const ChatItem = memo<ChatItemProps>(
                 type={type}
               />
             )}
+            {affixation ? <div className="affixation">{affixation}</div> : null}
             <Actions actions={actions} editing={editing} placement={placement} type={type} />
           </Flexbox>
         </Flexbox>
