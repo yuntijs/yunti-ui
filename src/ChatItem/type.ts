@@ -37,6 +37,7 @@ export interface ChatItemProps {
    */
   message?: ReactNode;
   messageExtra?: ReactNode;
+  affixation?: ReactNode;
   onAvatarClick?: () => void;
   /**
    * @description Callback when the message content changes
