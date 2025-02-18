@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.109](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.108...v1.0.0-beta.109)
+
+<sup>Released on **2025-02-18**</sup>
+
+#### ✨ Features
+
+- **misc**: CodeEditor.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **misc**: CodeEditor, closes [#38](https://github.com/yuntijs/yunti-ui/issues/38) ([288bb4f](https://github.com/yuntijs/yunti-ui/commit/288bb4f))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.108](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.107...v1.0.0-beta.108)
 
 <sup>Released on **2025-02-18**</sup>
