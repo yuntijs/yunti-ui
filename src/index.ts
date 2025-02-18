@@ -34,6 +34,7 @@ export * from './Typography';
 export * from './ChatInputArea';
 export * from './ChatItem';
 export * from './ChatMarkdown';
+export * from './CodeEditor';
 export * from './EditableMessage';
 export * from './Highlighter';
 export * from './styles';

@@ -30,7 +30,7 @@ const initHighlighter = async (lang: string): Promise<Highlighter> => {
 
   highlighter = await createHighlighter({
     langs: FALLBACK_LANGS,
-    themes: [themeConfig(true), themeConfig(false)],
+    themes: [themeConfig(true), themeConfig(false), 'catppuccin-latte', 'catppuccin-mocha'],
   });
 
   cacheHighlighter = highlighter;
@@ -44,10 +44,14 @@ export const useHighlight = (text: string, lang: string, isDarkMode: boolean) =>
     async () => {
       try {
         const language = lang.toLowerCase();
+        let theme = isDarkMode ? 'dark' : 'light';
+        if (language === 'md') {
+          theme = isDarkMode ? 'catppuccin-mocha' : 'catppuccin-latte';
+        }
         const highlighter = await initHighlighter(language);
         const html = highlighter?.codeToHtml(text, {
           lang: languageMap.includes(language as any) ? language : FALLBACK_LANG,
-          theme: isDarkMode ? 'dark' : 'light',
+          theme,
           transformers: [
             transformerNotationDiff(),
             transformerNotationHighlight(),
