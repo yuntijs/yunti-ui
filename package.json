@@ -1,0 +1,173 @@
+{
+  "name": "@yuntijs/ui",
+  "version": "1.0.0-beta.110",
+  "description": "☁️ Yunti UI - an open-source UI component library for building Cloud Native web apps",
+  "keywords": [
+    "yuntijs",
+    "react",
+    "cloud-native",
+    "components"
+  ],
+  "homepage": "https://github.com/yuntijs/yunti-ui#readme",
+  "bugs": {
+    "url": "https://github.com/yuntijs/yunti-ui/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yuntijs/yunti-ui.git"
+  },
+  "license": "MIT",
+  "author": "Luobo Zhang <zhang.pc3@gmail.com>",
+  "sideEffects": false,
+  "main": "es/index.js",
+  "module": "es/index.js",
+  "types": "es/index.d.ts",
+  "files": [
+    "es",
+    "umd"
+  ],
+  "scripts": {
+    "build": "father build",
+    "ci": "npm run lint && npm run type-check",
+    "clean": "rm -r es umd lib dist coverage .dumi/tmp .eslintcache node_modules/.cache",
+    "dev": "dumi dev",
+    "dev:father": "father dev",
+    "docs:build": "dumi build",
+    "docs:build-analyze": "ANALYZE=1 dumi build",
+    "docs:build-nc": "COMPRESS=none dumi build",
+    "docs:dev": "dumi dev",
+    "docs:preview": "dumi preview --port 9000",
+    "doctor": "father doctor",
+    "lint": "npm run lint:es && npm run lint:style && npm run lint:md",
+    "lint-fix": "npm run lint-fix:es && npm run lint-fix:style",
+    "lint-fix:es": "eslint --ext .jsx,.js,.tsx,.ts src --fix",
+    "lint-fix:style": "stylelint \"{src,tests}/**/*.{css,less,js,jsx,ts,tsx}\" --fix",
+    "lint:es": "eslint --ext .jsx,.js,.tsx,.ts src",
+    "lint:md": "remark . --quiet --output",
+    "lint:style": "stylelint \"{src,tests}/**/*.{css,less,js,jsx,ts,tsx}\"",
+    "prepare": "husky install",
+    "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
+    "pull": "git pull",
+    "release": "semantic-release",
+    "setup": "dumi setup",
+    "start": "npm run docs:dev",
+    "test": "vitest --passWithNoTests",
+    "test:coverage": "vitest run --coverage  --passWithNoTests",
+    "test:update": "vitest -u",
+    "type-check": "tsc -p tsconfig-check.json"
+  },
+  "lint-staged": {
+    "*.md": [
+      "remark --quiet --output --",
+      "prettier --write --no-error-on-unmatched-pattern"
+    ],
+    "*.json": [
+      "prettier --write --no-error-on-unmatched-pattern"
+    ],
+    "*.{css,less}": [
+      "stylelint --fix --allow-empty-input",
+      "prettier --write"
+    ],
+    "*.{js,jsx}": [
+      "stylelint --fix --allow-empty-input",
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{ts,tsx}": [
+      "stylelint --fix",
+      "eslint --fix",
+      "prettier --parser=typescript --write"
+    ]
+  },
+  "dependencies": {
+    "@alilc/lowcode-plugin-base-monaco-editor": "^1.1.2",
+    "@ant-design/icons": "^5",
+    "@babel/runtime": "^7",
+    "@lexical/react": "^0.23.1",
+    "@lexical/selection": "^0.23.1",
+    "@lexical/text": "^0.23.1",
+    "@lexical/utils": "^0.23.1",
+    "@lobehub/tts": "^1.25.1",
+    "@lobehub/ui": "^1.164.2",
+    "@melloware/react-logviewer": "^5.2.0",
+    "@monaco-editor/loader": "^1.4.0",
+    "@shikijs/transformers": "^1.10.3",
+    "leva": "^0",
+    "lexical": "^0.23.1",
+    "lodash-es": "^4",
+    "lucide-react": "latest",
+    "query-string": "^8",
+    "rc-util": "^5.43.0",
+    "react-draggable": "^4.4.6",
+    "react-error-boundary": "^4",
+    "react-layout-kit": "^1",
+    "react18-json-view": "^0.2.8",
+    "shiki": "^1.10.3",
+    "swr": "^2.2.5",
+    "url-join": "^5.0.0",
+    "use-merge-value": "^1.2.0"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^14",
+    "@types/lodash-es": "^4",
+    "@types/query-string": "^6",
+    "@types/react": "18.2.40",
+    "@types/react-dom": "^18",
+    "@types/unist": "^3.0.3",
+    "@vitest/coverage-v8": "latest",
+    "@yuntijs/lint": "^1.7.0",
+    "antd": "^5.23.4",
+    "antd-style": "^3.7.1",
+    "babel-plugin-antd-style": "latest",
+    "commitlint": "^18",
+    "dayjs": "^1.11.10",
+    "dumi": "^2.4.17",
+    "dumi-theme-yunti": "^1.7.3",
+    "eslint": "^8.56.0",
+    "father": "^4.3.8",
+    "husky": "^8",
+    "jest": "^27",
+    "jsdom": "^22",
+    "lint-staged": "^15",
+    "mdast-util-to-markdown": "^2.1.2",
+    "monaco-editor": "^0.45.0",
+    "prettier": "^3",
+    "react": "^18",
+    "react-dom": "^18",
+    "remark": "^14",
+    "remark-cli": "^11",
+    "semantic-release": "^21",
+    "stylelint": "^15",
+    "typescript": "^5",
+    "unist-util-visit": "^5.0.0",
+    "vitest": "latest"
+  },
+  "peerDependencies": {
+    "antd": ">=5",
+    "antd-style": ">=3",
+    "dayjs": ">=1",
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "engines": {
+    "node": ">=18.12.0",
+    "pnpm": ">=8.1.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "yunti": {
+    "umd": {
+      "library": "YuntiUI",
+      "entry": [
+        "/umd/index.min.js"
+      ],
+      "externals": {
+        "antd": ">=5",
+        "antd-style": ">=3",
+        "react": ">=18"
+      }
+    }
+  }
+}
