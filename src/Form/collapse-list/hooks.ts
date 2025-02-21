@@ -1,4 +1,4 @@
-import { Form, type FormListOperation } from 'antd';
+import { Form, type FormItemProps, type FormListOperation } from 'antd';
 import type { StoreValue } from 'antd/es/form/interface';
 import { cloneDeep } from 'lodash-es';
 import React, { useCallback, useMemo, useState } from 'react';
@@ -12,7 +12,7 @@ export interface FormCollapseListOperation extends FormListOperation {
 }
 
 export const useFormCollapseListHooks = (
-  name: string,
+  name: FormItemProps['name'],
   childrenColumnName: string,
   columns: FormCollapseListColumn[]
 ) => {

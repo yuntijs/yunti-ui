@@ -10,6 +10,7 @@ import React, { memo, useCallback, useEffect, useMemo, useRef } from 'react';
 import Typography from '@/Typography';
 
 import { CollapseGroup, CollapseGroupProps } from '../../CollapseGroup';
+import { FormCollapseListFieldsWatcher } from './FieldsWatcher';
 import { FormCollapseListOperation, useFormCollapseListHooks } from './hooks';
 import { useStyles } from './style';
 import { FIELD_KEY_PATH, FieldPath, ListFieldValue, toRowKey } from './utils';
@@ -27,7 +28,7 @@ interface FormCollapseListColumnItem
     operation: FormCollapseListOperation,
     /** 当前 item 的 path */
     fieldPath: FieldPath
-  ) => React.ReactElement;
+  ) => React.ReactNode;
   rules?:
     | FormItemProps['rules']
     | ((parentFieldPath: FieldPath, index: number) => FormItemProps['rules']);
@@ -94,6 +95,15 @@ export interface FormCollapseListProps
   rowHoverable?: boolean;
 }
 
+const FieldText = (props: { value?: any; id?: string }) => {
+  const { id, value } = props;
+  if (typeof value === 'object') {
+    console.warn(`${id} => ${value}`);
+    return '-';
+  }
+  return <span>{value}</span>;
+};
+
 export const FormCollapseList: React.FC<FormCollapseListProps> = memo(
   ({
     collapsible,
@@ -138,6 +148,10 @@ export const FormCollapseList: React.FC<FormCollapseListProps> = memo(
     const { dataSource } = useMemo(
       () => fieldValuesToDataSource(values),
       [fieldValuesToDataSource, values]
+    );
+    const isTreeMode = useMemo(
+      () => dataSource?.some(d => d[childrenColumnName]),
+      [childrenColumnName, dataSource]
     );
     // 设置初始值以及在 readOnly 变化时更新 values
     useEffect(() => {
@@ -214,6 +228,8 @@ export const FormCollapseList: React.FC<FormCollapseListProps> = memo(
         }
         {...{ className, collapsible, expandIcon, icon, title, variant, defaultActive, style }}
       >
+        {/* 如果不是树形数据，则动态监听 name 对应的 value 长度，使得 table 实时更新；如果是树形数据，为了页面渲染性能则改为手动通过 update 实现 */}
+        {!isTreeMode && <FormCollapseListFieldsWatcher name={name} update={updateValues} />}
         {name ? (
           <Form.List name={name} {...formListProps}>
             {(fields, operation) => {
@@ -266,17 +282,17 @@ export const FormCollapseList: React.FC<FormCollapseListProps> = memo(
                               getFormListOperation(operation, record),
                               fieldPath
                             );
-                            if (!children && !itemProps.noStyle) {
-                              return (
-                                <Flex align="center" className={cx(styles.noFormItem, className)}>
-                                  无需设置
-                                </Flex>
-                              );
-                            }
                             if (!itemName) {
                               return (
                                 <Flex align="center" className={cx(styles.noFormItem, className)}>
                                   {children}
+                                </Flex>
+                              );
+                            }
+                            if (children !== undefined && typeof children !== 'object') {
+                              return (
+                                <Flex align="center" className={cx(styles.noFormItem, className)}>
+                                  {children.toString()}
                                 </Flex>
                               );
                             }
@@ -310,7 +326,11 @@ export const FormCollapseList: React.FC<FormCollapseListProps> = memo(
                                 }
                                 {...itemProps}
                               >
-                                {children && React.cloneElement(children, chidrenProps)}
+                                {children ? (
+                                  React.cloneElement(children as React.ReactElement, chidrenProps)
+                                ) : (
+                                  <FieldText />
+                                )}
                               </Form.Item>
                             );
                           },

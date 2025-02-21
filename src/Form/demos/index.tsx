@@ -7,6 +7,7 @@ interface FieldType {
   outputs?: {
     key: string;
     value: string;
+    test: string;
   }[];
 }
 
@@ -15,18 +16,21 @@ export default () => {
     {
       key: 'class',
       value: 'claas1',
+      test: 'test1',
     },
     {
       key: 'namespace',
       value: 'ns1',
+      test: 'test2',
     },
   ];
 
   const [values, setValues] = useState<FieldType>({ outputs });
+  const [form] = Form.useForm();
 
   return (
     <Flex gap={6} style={{ width: '100%' }} vertical>
-      <Form onValuesChange={(_, values) => setValues(values)} variant="filled">
+      <Form form={form} onValuesChange={(_, values) => setValues(values)} variant="filled">
         <FormCollapseList
           columns={[
             {
@@ -52,6 +56,15 @@ export default () => {
               name: 'value',
               render: () => <Input placeholder="输入变量值" style={{ width: 360 }} />,
               rules: [{ required: true, message: '请输入变量值' }],
+            },
+            {
+              label: 'test',
+              name: 'test',
+            },
+            {
+              label: 'test2',
+              name: 'test2',
+              render: () => '无需设置',
             },
           ]}
           icon={VariableIcon}
