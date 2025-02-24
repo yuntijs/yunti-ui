@@ -2,6 +2,32 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.111](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.110...v1.0.0-beta.111)
+
+<sup>Released on **2025-02-24**</sup>
+
+#### ✨ Features
+
+- **Mentions**: Suppor code mode, support select child props by keyboard up and down.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **Mentions**: Suppor code mode ([4b028e4](https://github.com/yuntijs/yunti-ui/commit/4b028e4))
+- **Mentions**: Support select child props by keyboard up and down ([b0bebab](https://github.com/yuntijs/yunti-ui/commit/b0bebab))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.110](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.109...v1.0.0-beta.110)
 
 <sup>Released on **2025-02-21**</sup>
