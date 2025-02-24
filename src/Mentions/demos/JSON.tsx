@@ -11,7 +11,7 @@ export default () => {
       code
       defaultValue={`{
   "key1": {{2.luobo}},
-  “key2": "{{1.zhang}}"
+  "key2": "{{1.zhang}}"
 }
 `}
       options={[
