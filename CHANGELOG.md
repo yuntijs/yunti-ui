@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.112](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.111...v1.0.0-beta.112)
+
+<sup>Released on **2025-02-24**</sup>
+
+#### ✨ Features
+
+- **Mentions**: Bump lexical\@0.25.0.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **Mentions**: Bump lexical\@0.25.0 ([c1ee79e](https://github.com/yuntijs/yunti-ui/commit/c1ee79e))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.111](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.110...v1.0.0-beta.111)
 
 <sup>Released on **2025-02-24**</sup>
