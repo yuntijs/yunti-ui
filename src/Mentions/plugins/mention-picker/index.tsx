@@ -2,11 +2,9 @@ import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext
 import type { MenuRenderFn } from '@lexical/react/LexicalTypeaheadMenuPlugin';
 import { LexicalTypeaheadMenuPlugin } from '@lexical/react/LexicalTypeaheadMenuPlugin';
 import { ConfigProvider, Tree } from 'antd';
-// @Todo: 目前不支持上下键选中 children，后续支持可能需要定制 menu 和 plugin
-// import type { MenuRenderFn } from '../LexicalTypeaheadMenuPlugin';
-// import { LexicalTypeaheadMenuPlugin } from '../LexicalTypeaheadMenuPlugin';
 import type { TextNode } from 'lexical';
-import React, { memo, useCallback, useState } from 'react';
+import { flatMap } from 'lodash-es';
+import React, { memo, useCallback, useMemo, useState } from 'react';
 import ReactDOM from 'react-dom';
 
 import { DEFAULT_PUNCTUATION, PRE_TRIGGER_CHARS } from '@/Mentions/constants';
@@ -81,6 +79,16 @@ export const MentionPickerPlugin: React.FC<MentionPickerPluginProps> = memo(
 
     const { options } = useOptions(allOptions, queryString);
 
+    const flatOptions = useMemo(() => {
+      const _flattenTree = (nodes: MentionMenuOption[]): MentionMenuOption[] => {
+        return flatMap(nodes, node => [
+          node,
+          ...(node.children ? _flattenTree(node.children) : []),
+        ]);
+      };
+      return _flattenTree(options);
+    }, [options]);
+
     const onSelectOption = useCallback(
       (
         selectedOption: MentionMenuOption,
@@ -117,6 +125,7 @@ export const MentionPickerPlugin: React.FC<MentionPickerPluginProps> = memo(
                   lineHeight: 32,
                   titleHeight: 32,
                   paddingXS: 0,
+                  nodeHoverBg: 'transparent',
                 },
               },
             }}
@@ -134,7 +143,7 @@ export const MentionPickerPlugin: React.FC<MentionPickerPluginProps> = memo(
               }}
               titleRender={option => (
                 <MentionMenuItem
-                  isSelected={options[selectedIndex!]?.value === option.value}
+                  isSelected={flatOptions[selectedIndex!]?.value === option.value}
                   option={option}
                   queryString={queryString}
                   showIcon={!option.isChild}
@@ -145,7 +154,7 @@ export const MentionPickerPlugin: React.FC<MentionPickerPluginProps> = memo(
           </ConfigProvider>
         );
       },
-      [options, editor, queryString]
+      [options, editor, flatOptions, queryString]
     );
 
     const renderMenu = useCallback<MenuRenderFn<MentionMenuOption>>(
@@ -188,7 +197,7 @@ export const MentionPickerPlugin: React.FC<MentionPickerPluginProps> = memo(
         menuRenderFn={renderMenu}
         onQueryChange={setQueryString}
         onSelectOption={onSelectOption}
-        options={options}
+        options={flatOptions}
         triggerFn={checkForMentionMatch}
       />
     );

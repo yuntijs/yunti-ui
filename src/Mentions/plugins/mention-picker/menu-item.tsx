@@ -53,9 +53,10 @@ export const MentionMenuItem: React.FC<MentionMenuItemProps> = memo(
         onMouseEnter={() => onMouseEnter?.(index!, option)}
         ref={option.setRefElement}
         tabIndex={-1}
+        title={option.htmlTitle || option.label}
       >
         {showIcon && <Flex className={styles.menuItemIcon}>{option.icon}</Flex>}
-        <div className={styles.menuItemLabel} title={option.label}>
+        <div className={styles.menuItemLabel}>
           {before}
           <Text mark>{middle}</Text>
           {after}

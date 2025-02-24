@@ -3,6 +3,7 @@ import { MenuOption } from '@lexical/react/LexicalTypeaheadMenuPlugin';
 export interface MentionMenuOptionInitParams {
   label: string;
   value: string;
+  title?: string;
   data?: any;
   icon?: JSX.Element;
   extraElement?: JSX.Element;
@@ -17,6 +18,7 @@ export interface MentionMenuOptionInitParams {
 export class MentionMenuOption extends MenuOption {
   label: string;
   value: string;
+  htmlTitle?: string;
   // for Tree, the same as label
   title: string;
   // for Tree, the same as value
@@ -34,6 +36,7 @@ export class MentionMenuOption extends MenuOption {
   constructor({
     label,
     value,
+    title,
     data,
     icon,
     extraElement,
@@ -47,6 +50,7 @@ export class MentionMenuOption extends MenuOption {
     super(value);
     this.value = value;
     this.label = label;
+    this.htmlTitle = title;
     this.title = label;
     this.key = value;
     this.keywords = keywords || [];

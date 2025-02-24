@@ -6,7 +6,7 @@ export const useStyles = createStyles(
     { isSelected, disabled }: { isSelected?: boolean; disabled?: boolean }
   ) => {
     const selectedBg = css`
-      background-color: ${token.colorFillSecondary};
+      background-color: ${token.colorFillTertiary};
     `;
     return {
       anchor: css`
