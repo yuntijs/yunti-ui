@@ -43,6 +43,7 @@ export interface MentionsProps extends MentionPickerPluginProps {
   onFocus?: () => void;
   variant?: 'outlined' | 'filled' | 'borderless';
   autoSize?: AutoSize;
+  code?: boolean;
 }
 
 export const Mentions: React.FC<MentionsProps> = ({
@@ -65,9 +66,10 @@ export const Mentions: React.FC<MentionsProps> = ({
   punctuation,
   preTriggerChars,
   onSelect,
+  code = false,
 }) => {
   const { componentDisabled } = ConfigProvider.useConfig();
-  const { styles, cx } = useStyles({ autoSize });
+  const { styles, cx } = useStyles({ autoSize, code });
 
   const disabled = useMemo(
     () => customDisabled ?? componentDisabled,
