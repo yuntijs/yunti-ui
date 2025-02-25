@@ -2,6 +2,32 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.113](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.112...v1.0.0-beta.113)
+
+<sup>Released on **2025-02-25**</sup>
+
+#### ✨ Features
+
+- **Mentions**: Downgrade lexical\@0.23.1, support auto scroll and skip disabled item when use up and down by keyboard.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **Mentions**: Downgrade lexical\@0.23.1 ([392aade](https://github.com/yuntijs/yunti-ui/commit/392aade))
+- **Mentions**: Support auto scroll and skip disabled item when use up and down by keyboard ([9a43cd7](https://github.com/yuntijs/yunti-ui/commit/9a43cd7))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.112](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.111...v1.0.0-beta.112)
 
 <sup>Released on **2025-02-24**</sup>
