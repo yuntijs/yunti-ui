@@ -4,7 +4,7 @@ import { LexicalTypeaheadMenuPlugin } from '@lexical/react/LexicalTypeaheadMenuP
 import { ConfigProvider, Tree } from 'antd';
 import type { TextNode } from 'lexical';
 import { flatMap } from 'lodash-es';
-import React, { memo, useCallback, useMemo, useState } from 'react';
+import React, { memo, useCallback, useMemo, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
 
 import { DEFAULT_PUNCTUATION, PRE_TRIGGER_CHARS } from '@/Mentions/constants';
@@ -113,9 +113,38 @@ export const MentionPickerPlugin: React.FC<MentionPickerPluginProps> = memo(
       [editor, onSelect, queryString, trigger]
     );
 
+    const preSelectedIndex = useRef<number>();
+    const handleDisabledItem = useCallback(
+      (itemProps: Parameters<MenuRenderFn<MentionMenuOption>>['1']) => {
+        const { selectedIndex, setHighlightedIndex } = itemProps;
+        if (selectedIndex !== null) {
+          if (flatOptions[selectedIndex]?.disabled) {
+            let newIndex: number | null = selectedIndex;
+            // 如果是最后一项，则回到第一项
+            if (selectedIndex === flatOptions.length - 1) {
+              newIndex = flatOptions.length === 1 ? null : 0;
+              // @ts-ignore
+              setHighlightedIndex(newIndex);
+            } else if (selectedIndex !== preSelectedIndex.current) {
+              if (selectedIndex > (preSelectedIndex.current ?? 0)) {
+                newIndex++;
+              } else {
+                newIndex--;
+              }
+              setHighlightedIndex(newIndex);
+            }
+          }
+          preSelectedIndex.current = selectedIndex;
+        }
+      },
+      [flatOptions]
+    );
+
     const renderMenuTree = useCallback(
       (itemProps: Parameters<MenuRenderFn<MentionMenuOption>>['1']) => {
         const { selectedIndex, selectOptionAndCleanUp } = itemProps;
+        handleDisabledItem(itemProps);
+
         return (
           <ConfigProvider
             theme={{
@@ -154,12 +183,14 @@ export const MentionPickerPlugin: React.FC<MentionPickerPluginProps> = memo(
           </ConfigProvider>
         );
       },
-      [options, editor, flatOptions, queryString]
+      [handleDisabledItem, options, editor, flatOptions, queryString]
     );
 
     const renderMenu = useCallback<MenuRenderFn<MentionMenuOption>>(
       (anchorElementRef, itemProps, _matchingString) => {
         const { selectedIndex, selectOptionAndCleanUp, setHighlightedIndex } = itemProps;
+        handleDisabledItem(itemProps);
+
         if (anchorElementRef.current) {
           return ReactDOM.createPortal(
             <div className={cx(styles.menuOverlay, overlayClassName)} role="menu">
@@ -188,7 +219,15 @@ export const MentionPickerPlugin: React.FC<MentionPickerPluginProps> = memo(
 
         return null;
       },
-      [cx, options, overlayClassName, queryString, renderMenuTree, styles.menuOverlay]
+      [
+        cx,
+        handleDisabledItem,
+        options,
+        overlayClassName,
+        queryString,
+        renderMenuTree,
+        styles.menuOverlay,
+      ]
     );
 
     return (

@@ -19,6 +19,7 @@ export default () => {
           label: 'luobo',
           value: '2.luobo',
           icon: <Icon icon={Carrot} />,
+          disabled: true,
         },
         {
           label: 'yunti',

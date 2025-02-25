@@ -1,6 +1,6 @@
 import { Flex } from 'antd';
 import { escapeRegExp } from 'lodash-es';
-import React, { memo, useMemo } from 'react';
+import React, { memo, useEffect, useMemo, useRef } from 'react';
 
 import Typography from '@/Typography';
 
@@ -43,6 +43,23 @@ export const MentionMenuItem: React.FC<MentionMenuItemProps> = memo(
       };
     }, [option.label, queryString, label]);
 
+    const ref = useRef<HTMLDivElement>(null);
+
+    // 自动滚动
+    useEffect(() => {
+      if (isSelected) {
+        ref?.current?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
+        });
+      }
+    }, [isSelected]);
+
+    useEffect(() => {
+      option.setRefElement(ref?.current);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
     return (
       <Flex
         align="center"
@@ -51,7 +68,7 @@ export const MentionMenuItem: React.FC<MentionMenuItemProps> = memo(
         key={option.key}
         onClick={() => onClick?.(index!, option)}
         onMouseEnter={() => onMouseEnter?.(index!, option)}
-        ref={option.setRefElement}
+        ref={ref}
         tabIndex={-1}
         title={option.htmlTitle || option.label}
       >

@@ -11,7 +11,7 @@ export default () => {
       code
       defaultValue={`{
   "key1": {{2.luobo}},
-  "key2": "{{1.zhang}}"
+  “key2": "{{1.zhang}}"
 }
 `}
       options={[
@@ -19,6 +19,7 @@ export default () => {
           label: 'zhang',
           value: '1.zhang',
           icon: <Icon icon={Smile} />,
+          disabled: true,
         },
         {
           label: 'luobo',
