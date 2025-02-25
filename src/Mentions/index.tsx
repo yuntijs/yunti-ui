@@ -5,6 +5,7 @@ import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin';
 import { OnChangePlugin } from '@lexical/react/LexicalOnChangePlugin';
 import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
 import { ConfigProvider } from 'antd';
+// @Todo: 升级 0.25.0 后，ops-console 使用的时候出现了只输入 / 无法触发的问题
 import type { EditorState } from 'lexical';
 import { $getRoot, TextNode } from 'lexical';
 import React, { useMemo } from 'react';
