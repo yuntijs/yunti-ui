@@ -37,7 +37,7 @@ export const useOptions = (allOptions: MentionOption[], queryString: string | nu
     const _addOnselect = (option: MentionOption) => {
       const menuOption: MentionMenuOptionInitParams = {
         ...option,
-        title: option.selectedLabel,
+        title: option.title || option.selectedLabel,
         children: undefined,
         onSelect: () => {
           editor.dispatchCommand(INSERT_MENTION_COMMAND, option.value);

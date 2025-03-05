@@ -35,6 +35,7 @@ export default () => {
               label: 'id',
               selectedLabel: 'json.id',
               value: 'json.id',
+              title: 'json.id (json 的 id 属性)',
             },
             {
               label: 'name',
