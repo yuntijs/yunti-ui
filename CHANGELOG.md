@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.114](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.113...v1.0.0-beta.114)
+
+<sup>Released on **2025-03-05**</sup>
+
+#### ✨ Features
+
+- **Mentions**: Support title for option.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **Mentions**: Support title for option ([dc8572a](https://github.com/yuntijs/yunti-ui/commit/dc8572a))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.113](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.112...v1.0.0-beta.113)
 
 <sup>Released on **2025-02-25**</sup>
