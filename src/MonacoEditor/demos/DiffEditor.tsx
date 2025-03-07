@@ -11,6 +11,9 @@ export default () => {
         // eslint-disable-next-line no-console
         console.log(input);
       }}
+      onFullScreenChange={isFullScreen => {
+        console.warn('MonacoDiffEditor', isFullScreen);
+      }}
       original={original}
       supportFullScreen
       value={value}

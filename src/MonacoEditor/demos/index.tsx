@@ -12,6 +12,9 @@ export default () => {
         // eslint-disable-next-line no-console
         console.log(next);
       }}
+      onFullScreenChange={isFullScreen => {
+        console.warn(isFullScreen);
+      }}
       supportFullScreen={true}
       width={740}
     />
