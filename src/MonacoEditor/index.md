@@ -26,6 +26,9 @@ export default () => {
         // eslint-disable-next-line no-console
         console.log(next);
       }}
+      onFullScreenChange={isFullScreen => {
+        console.log(isFullScreen);
+      }}
       supportFullScreen={true}
       width={740}
     />
@@ -88,6 +91,8 @@ export default () => {
 - `overrideServices` refer to [Monaco Interface IEditorOverrideServices](https://microsoft.github.io/monaco-editor/docs.html#interfaces/editor.IEditorOverrideServices.html). It depends on Monaco's internal implementations and may change over time, check github [issue](https://github.com/Microsoft/monaco-editor/issues/935#issuecomment-402174095) for more details.
 
 - `onChange(input, event)` an event emitted when the content of the current model has changed.
+
+- `onFullScreenChange(isFullScreen)` an event emitted when the full-screen of the current model has changed.
 
 - `editorWillMount(monaco)` an event emitted before the editor mounted (similar to `componentWillMount` of React).
 

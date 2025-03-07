@@ -52,11 +52,13 @@ export interface IGeneralManacoEditorProps {
 export interface ISingleMonacoEditorProps extends IGeneralManacoEditorProps {
   onChange?: (input: string, event: IEditor.IModelContentChangedEvent) => void;
   supportFullScreen?: boolean;
+  onFullScreenChange?: (isFullScreen: boolean) => void;
 }
 
 export interface IDiffMonacoEditorProps extends IGeneralManacoEditorProps {
   onChange?: (input: string, event: IEditor.IModelContentChangedEvent) => void;
   supportFullScreen?: boolean;
+  onFullScreenChange?: (isFullScreen: boolean) => void;
   original?: string;
 }
 
