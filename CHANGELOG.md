@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.115](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.114...v1.0.0-beta.115)
+
+<sup>Released on **2025-03-07**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: Add full screen change for monaco-editor.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: Add full screen change for monaco-editor, closes [#41](https://github.com/yuntijs/yunti-ui/issues/41) ([d398c94](https://github.com/yuntijs/yunti-ui/commit/d398c94))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.114](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.113...v1.0.0-beta.114)
 
 <sup>Released on **2025-03-05**</sup>
