@@ -3,7 +3,7 @@ import { Button } from 'antd';
 import type { Variant } from 'antd/es/config-provider';
 import { Maximize2, Minimize2 } from 'lucide-react';
 import type { IDisposable, editor } from 'monaco-editor';
-import React, { LegacyRef, useEffect, useMemo, useRef } from 'react';
+import React, { LegacyRef, useCallback, useEffect, useMemo, useRef } from 'react';
 
 import {
   IDiffMonacoEditorProps,
@@ -21,7 +21,15 @@ export * from './monaco';
 function noop() {}
 
 const SingleMonacoEditor: React.FC<ISingleMonacoEditorProps & { variant?: Variant }> = props => {
-  const { onChange, enableOutline, width, height, language, supportFullScreen } = props;
+  const {
+    onChange,
+    enableOutline,
+    width,
+    height,
+    language,
+    supportFullScreen,
+    onFullScreenChange,
+  } = props;
   const onChangeRef = useRef(onChange);
 
   const { isEditorReady, focused, loading, containerRef, monacoRef, editorRef, valueRef } =
@@ -81,6 +89,11 @@ const SingleMonacoEditor: React.FC<ISingleMonacoEditorProps & { variant?: Varian
     }
   }, [editorRef, isEditorReady, language, monacoRef]);
 
+  const fullScreenChange = useCallback(() => {
+    onFullScreenChange?.(!isFullScreen);
+    fullScreen();
+  }, [fullScreen, isFullScreen, onFullScreenChange]);
+
   return (
     <div className={className} style={props.style}>
       {loading && <span className={cx(styles.loading, 'loading')}>{WORD_EDITOR_INITIALIZING}</span>}
@@ -93,7 +106,7 @@ const SingleMonacoEditor: React.FC<ISingleMonacoEditorProps & { variant?: Varian
           <Button
             className={styles.fullScreenBtn}
             icon={<Icon icon={isFullScreen ? Minimize2 : Maximize2} />}
-            onClick={fullScreen}
+            onClick={fullScreenChange}
             size="small"
             type="text"
           />
@@ -104,7 +117,16 @@ const SingleMonacoEditor: React.FC<ISingleMonacoEditorProps & { variant?: Varian
 };
 
 const DiffMonacoEditor: React.FC<IDiffMonacoEditorProps & { variant?: Variant }> = props => {
-  const { enableOutline, width, height, language, onChange, original, supportFullScreen } = props;
+  const {
+    enableOutline,
+    width,
+    height,
+    language,
+    onChange,
+    original,
+    supportFullScreen,
+    onFullScreenChange,
+  } = props;
   const onChangeRef = useRef(onChange);
 
   const { isEditorReady, focused, loading, containerRef, monacoRef, editorRef, valueRef } =
@@ -164,6 +186,11 @@ const DiffMonacoEditor: React.FC<IDiffMonacoEditorProps & { variant?: Variant }>
     monacoRef.current?.editor.setModelLanguage(modifiedModel!, language!);
   }, [editorRef, isEditorReady, language, monacoRef]);
 
+  const fullScreenChange = useCallback(() => {
+    onFullScreenChange?.(!isFullScreen);
+    fullScreen();
+  }, [fullScreen, isFullScreen, onFullScreenChange]);
+
   return (
     <div className={className} style={props.style}>
       {loading && <span className={cx(styles.loading, 'loading')}>{WORD_EDITOR_INITIALIZING}</span>}
@@ -176,7 +203,7 @@ const DiffMonacoEditor: React.FC<IDiffMonacoEditorProps & { variant?: Variant }>
           <Button
             className={styles.fullScreenBtn}
             icon={<Icon icon={isFullScreen ? Minimize2 : Maximize2} />}
-            onClick={fullScreen}
+            onClick={fullScreenChange}
             size="small"
             type="text"
           />
