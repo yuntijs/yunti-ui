@@ -23,6 +23,7 @@ function noop() {}
 const SingleMonacoEditor: React.FC<ISingleMonacoEditorProps & { variant?: Variant }> = props => {
   const {
     onChange,
+    onBlur,
     enableOutline,
     width,
     height,
@@ -31,10 +32,12 @@ const SingleMonacoEditor: React.FC<ISingleMonacoEditorProps & { variant?: Varian
     onFullScreenChange,
   } = props;
   const onChangeRef = useRef(onChange);
+  const onBlurRef = useRef(onBlur);
 
   const { isEditorReady, focused, loading, containerRef, monacoRef, editorRef, valueRef } =
     useEditor<editor.IStandaloneCodeEditor>('single', props);
   const subscriptionRef = useRef<IDisposable>();
+  const subscriptionBlurRef = useRef<IDisposable>();
 
   const { isFullScreen, fullScreen } = useFullScreen(editorRef?.current);
   const { cx, styles } = useStyles({
@@ -55,6 +58,10 @@ const SingleMonacoEditor: React.FC<ISingleMonacoEditorProps & { variant?: Varian
   }, [onChange]);
 
   useEffect(() => {
+    onBlurRef.current = onBlur;
+  }, [onBlur]);
+
+  useEffect(() => {
     if (isEditorReady) {
       const editorInstance = editorRef.current;
       subscriptionRef.current?.dispose();
@@ -65,6 +72,11 @@ const SingleMonacoEditor: React.FC<ISingleMonacoEditorProps & { variant?: Varian
           onChangeRef.current?.(editorValue!, event);
         }
       });
+      subscriptionBlurRef.current?.dispose();
+      subscriptionBlurRef.current = editorInstance?.onDidBlurEditorText(event => {
+        const editorValue = editorInstance?.getModel()?.getValue();
+        onBlurRef.current?.(editorValue!, event);
+      });
     }
   }, [editorRef, isEditorReady, subscriptionRef, valueRef]);
 
@@ -72,6 +84,7 @@ const SingleMonacoEditor: React.FC<ISingleMonacoEditorProps & { variant?: Varian
     return () => {
       const editorInstance = editorRef.current;
       subscriptionRef.current?.dispose();
+      subscriptionBlurRef.current?.dispose();
       editorInstance?.getModel()?.dispose();
       // eslint-disable-next-line react-hooks/exhaustive-deps
       editorRef.current?.dispose();
@@ -239,6 +252,7 @@ export const SingleMonacoEditorComponent = Object.assign(SingleMonacoEditor, {
     editorDidMount: noop,
     editorWillMount: noop,
     onChange: noop,
+
     requireConfig: {},
   },
   MonacoDiffEditor: DiffMonacoEditorComponent,

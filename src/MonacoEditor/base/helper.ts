@@ -51,6 +51,7 @@ export interface IGeneralManacoEditorProps {
 
 export interface ISingleMonacoEditorProps extends IGeneralManacoEditorProps {
   onChange?: (input: string, event: IEditor.IModelContentChangedEvent) => void;
+  onBlur?: (input: string, event: any) => void;
   supportFullScreen?: boolean;
   onFullScreenChange?: (isFullScreen: boolean) => void;
 }
