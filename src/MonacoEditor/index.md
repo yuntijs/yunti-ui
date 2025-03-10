@@ -38,6 +38,10 @@ export default () => {
 
 <code src="./demos/index.tsx" center></code>
 
+### Markdown
+
+<code src="./demos/markdownEditor.tsx" center></code>
+
 ### Specify monaco version to 0.19.3
 
 <code src="./demos/SpecifyVersion.tsx" center></code>

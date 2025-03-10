@@ -21,7 +21,7 @@ export default () => {
       contextmenu: true,
       minimapEnabled: false,
       language: {
-        options: ['css', 'html', 'javascript', 'json', 'typescript', 'yaml'],
+        options: ['css', 'html', 'javascript', 'json', 'typescript', 'yaml', 'markdown'],
         value: 'json',
       },
       theme: {
