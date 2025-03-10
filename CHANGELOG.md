@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.116](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.115...v1.0.0-beta.116)
+
+<sup>Released on **2025-03-10**</sup>
+
+#### ✨ Features
+
+- **misc**: Add onblur in MonacoEditor.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **misc**: Add onblur in MonacoEditor, closes [#42](https://github.com/yuntijs/yunti-ui/issues/42) ([a4c47ed](https://github.com/yuntijs/yunti-ui/commit/a4c47ed))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.115](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.114...v1.0.0-beta.115)
 
 <sup>Released on **2025-03-07**</sup>
