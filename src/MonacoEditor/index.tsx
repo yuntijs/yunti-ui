@@ -51,7 +51,7 @@ export const BaseMonacoEditor: React.FC<
     contextmenu = true,
     theme: themeFromProps,
     minimapEnabled = false,
-    version = '0.45.0',
+    version = '0.52.2',
     requireConfig: requireConfigFromProps = {},
     options,
     className,
