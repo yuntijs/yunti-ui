@@ -47,6 +47,7 @@ export interface IGeneralManacoEditorProps {
   /** style of wrapper */
   style?: CSSProperties;
   enhancers?: EditorEnhancer[];
+  placeholder?: string;
 }
 
 export interface ISingleMonacoEditorProps extends IGeneralManacoEditorProps {
@@ -157,6 +158,7 @@ export const useEditor = <T = IEditorInstance>(
     saveViewState,
     defaultValue,
     enhancers,
+    placeholder,
   } = props;
 
   const [isEditorReady, setIsEditorReady] = useState(false);
@@ -237,6 +239,7 @@ export const useEditor = <T = IEditorInstance>(
           editor = monaco.editor.create(containerRef.current, {
             automaticLayout: true,
             ...INITIAL_OPTIONS,
+            placeholder,
             ...optionRef.current,
           });
           editor.setModel(model);
@@ -248,6 +251,7 @@ export const useEditor = <T = IEditorInstance>(
           editor = monaco.editor.createDiffEditor(containerRef.current, {
             automaticLayout: true,
             ...DIFF_EDITOR_INITIAL_OPTIONS,
+            placeholder,
             ...optionRef.current,
           });
 

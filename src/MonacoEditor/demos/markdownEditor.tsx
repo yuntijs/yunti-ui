@@ -24,6 +24,7 @@ export default () => {
         selectionHighlight: false,
         matchBrackets: 'never',
       }}
+      placeholder="### this is placeholder"
       supportFullScreen={false}
       theme="vs"
       variant="borderless"

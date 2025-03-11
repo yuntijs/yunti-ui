@@ -228,7 +228,7 @@ const DiffMonacoEditor: React.FC<IDiffMonacoEditorProps & { variant?: Variant }>
 
 const DiffMonacoEditorComponent = Object.assign(DiffMonacoEditor, {
   displayName: 'DiffMonacoEditor',
-  defaultProps: {
+  default: {
     width: '100%',
     height: 150,
     defaultValue: '',
@@ -243,7 +243,7 @@ const DiffMonacoEditorComponent = Object.assign(DiffMonacoEditor, {
 
 export const SingleMonacoEditorComponent = Object.assign(SingleMonacoEditor, {
   displayName: 'SingleMonacoEditor',
-  defaultProps: {
+  default: {
     width: '100%',
     height: 150,
     defaultValue: '',
