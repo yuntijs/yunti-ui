@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.0.0-beta.118](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.117...v1.0.0-beta.118)
+
+<sup>Released on **2025-03-12**</sup>
+
+#### ✨ Features
+
+- **Mentions**: Support getPopContainer for menu picker in props.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **Mentions**: Support getPopContainer for menu picker in props ([99a2913](https://github.com/yuntijs/yunti-ui/commit/99a2913))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.0.0-beta.117](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.116...v1.0.0-beta.117)
 
 <sup>Released on **2025-03-11**</sup>
