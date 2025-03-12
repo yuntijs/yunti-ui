@@ -7,6 +7,7 @@ export default () => {
     <Mentions
       autoSize={{
         minRows: 3,
+        maxRows: 5,
       }}
       defaultValue="👋，I'm {{1.zhang}}"
       options={[

@@ -45,6 +45,7 @@ export interface MentionsProps extends MentionPickerPluginProps {
   variant?: 'outlined' | 'filled' | 'borderless';
   autoSize?: AutoSize;
   code?: boolean;
+  getPopContainer?: () => HTMLElement;
 }
 
 export const Mentions: React.FC<MentionsProps> = ({
@@ -68,6 +69,7 @@ export const Mentions: React.FC<MentionsProps> = ({
   preTriggerChars,
   onSelect,
   code = false,
+  getPopContainer,
 }) => {
   const { componentDisabled } = ConfigProvider.useConfig();
   const { styles, cx } = useStyles({ autoSize, code });
@@ -126,6 +128,15 @@ export const Mentions: React.FC<MentionsProps> = ({
     return buildMap(options);
   }, [options]);
 
+  const parent = useMemo(() => {
+    if (!isBrowser) {
+      return;
+    }
+    if (document.fullscreenElement) {
+      return document.fullscreenElement as HTMLElement;
+    }
+  }, []);
+
   if (!isBrowser) {
     return (
       <div className={cx(styles.wrapper, classNames?.wrapper)}>
@@ -180,6 +191,7 @@ export const Mentions: React.FC<MentionsProps> = ({
               onSelect={onSelect}
               options={options}
               overlayClassName={classNames?.menuOverlay}
+              parent={parent}
               preTriggerChars={preTriggerChars}
               punctuation={punctuation}
               triggers={triggers}

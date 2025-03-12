@@ -56,6 +56,10 @@ export interface MentionPickerPluginProps {
     trigger: string | null,
     queryString: string | null
   ) => void;
+  /**
+   * Parent element
+   */
+  parent?: HTMLElement;
 }
 export const MentionPickerPlugin: React.FC<MentionPickerPluginProps> = memo(
   ({
@@ -66,6 +70,7 @@ export const MentionPickerPlugin: React.FC<MentionPickerPluginProps> = memo(
     punctuation = DEFAULT_PUNCTUATION,
     preTriggerChars = PRE_TRIGGER_CHARS,
     onSelect,
+    parent,
   }: MentionPickerPluginProps) => {
     const { cx, styles } = useStyles({});
     const [editor] = useLexicalComposerContext();
@@ -237,6 +242,7 @@ export const MentionPickerPlugin: React.FC<MentionPickerPluginProps> = memo(
         onQueryChange={setQueryString}
         onSelectOption={onSelectOption}
         options={flatOptions}
+        parent={parent}
         triggerFn={checkForMentionMatch}
       />
     );
