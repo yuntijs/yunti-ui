@@ -84,6 +84,66 @@
 #### 🐛 Bug Fixes
 
 - **misc**: Add full screen change for monaco-editor.
+## Version 1.0.0
+
+<sup>Released on **2025-02-21**</sup>
+
+#### ♻ Code Refactoring
+
+- **Descriptions**: Delete itemStyle prop.
+- **Page**: Add subTitle, icon detail config and change style.
+- **misc**: Move dayjs to peer deps.
+
+#### ✨ Features
+
+- **ButtonGroup**: PageHeaderButtonGroup => ButtonGroup, support more props for items.
+- **CollapseGroup**: Change header text flex to 1, support specify collapsible.
+- **components**: Add ConfigProvider, add MonacoEditor.
+- **ConfigProvider**: Add Link to config.
+- **Divider**: Change mode default to line and fix children issue.
+- **DropDown**: Remove hashPriority=low.
+- **Form**: Add fieds watcher for collapse-list, add update in operation for collapse-list, change fieldPath to full path.
+- **FormCollapseList**: Support extra, expandIcon and fieldRemoveButton.
+- **Form**: Improve performance of collapse-list, support focus new added item and fix some issues, support tree input for collapse-list.
+- **Highlighter**: Support contentStyle, support wrap props.
+- **JsonViewer**: Export stringify from react18-json-view.
+- **JsonView**: Set text style for content, support contentStyle and classNames.
+- **LogViewer**: Add loading text, add refreshInterval support, support scroll to bottom when loaded and fix loading issue.
+- **Mentions**: Add EditablePlugin, bump lexical\@0.23.1, change regex of mention node, fix copy paste and support history, get disabled from ConfigProvider by default, support tree menu select.
+- **ModelFineTuning**: Add loading and scrollbar.
+- **monaco-editor**: Support auto-switch light/dark theme, support fullscreen toggle.
+- **MonacoEditor**: Support variant.
+- **Page**: Add gap Props support for Page, add Title, handle Breadcrumb href, support page status and header bordered, support specify classNames for Header.
+- **SelectCard**: Change selected card style, support icon for option.
+- **misc**: Add Alert component, add Breadcrumb component, add Card component, add CollapseGroup component, add CollapseTable component, add component: FormHelper, add CopyButton, add Description component, add Divider Component, add DragPanel component, add Drawer component, add Dropdown Component custom, add FormCollapseList component, add Highlighter Component custom, add JsonViewer component, add Logo component, add LogViewer Component, add Mentions component, add Modal component, add Notification component, add Page component, add ProCard component, add Radio component, add SelectCard, add SelectCard, add sideEffects=false, add SliderInput component, add Status component, add Table component, add Tree component, add types, add Typography component, add utils, add WaveformIcon, ChatInputArea, chatMarkdown, CodeEditor, export some hooks from antd-style, export useSpeechRecognition, lobeUI ChatItem & EditableMessage, remove hashPriority=low for flex change of antd\@5.23.0.
+
+#### 🐛 Bug Fixes
+
+- **ChatItem**: Remove unnecessary MarkdownProps.children.
+- **CollapseGroup**: Content style issue.
+- **EditableMessage**: Remove unnecessary MarkdownProps.children.
+- **FormCollapseList**: Overwrite style not work when specify hashPriority=high in StyleProvider.
+- **Highlighter**: Lang may be undefined.
+- **JsonView**: Content not hide when unexpand, title is not centered.
+- **LogViewer**: Loader do not appear.
+- **Mentions**: May crash when input special characters, some mention nodes are not echoed, SSR failed, style have issue when single line.
+- **MonacoEditor**: Fix fullscreeen icon z-index issue, SSR failed, the color of bg is transparent when fullscreen.
+- **Page**: Add align center for descriptions item, change font size of descriptions text to 14, change some style, custom style not work, Descriptions may not rerender when descriptions props change, fix divider issue for descriptions, fix icon loading.
+- **ProCard.Descriptions**: Overwrite style not work when specify hashPriority=high in StyleProvider.
+- **ProCard**: Change border radius and more icon, change Descriptions padding to 4px, change margin bottom for title, change some style and add stopPropagation for extra, remove min widh.
+- **Radio**: Page crash when use RadioGroup.
+- **SliderInput**: InitialValue not work when specify to 0.
+- **Table**: Render not work.
+- **tree**: Split type import and export separately to fix build issue.
+- **misc**: @lobehub/tts useSpeechSynthes, add `affixation` prop to chatItem, add hooks deps, bot 对话，bot 对话思考中，chatItem Action, chatItem 去除 block 分块样式，ChatMarkdown, chatMarkdown, chatMarkdown, chatMarkdown fontsize, declaration files build failed, export ChatItem & EditableMessage, export SpeechSynthesisTTS, 对话列表最后一条常态化显示 action, 正则兼容 ios.
+
+#### 💄 Styles
+
+- **Modal**: Add default classname.
+- **MonacoEditor**: Change border style.
+- **Page**: Change icon loading style, change padding and margin, remove header background and border.
+- **SelectCard**: Change default border color.
+- **Table**: Support generics of record type.
 
 <br/>
 
@@ -195,6 +255,157 @@
 
 - **Mentions**: Suppor code mode ([4b028e4](https://github.com/yuntijs/yunti-ui/commit/4b028e4))
 - **Mentions**: Support select child props by keyboard up and down ([b0bebab](https://github.com/yuntijs/yunti-ui/commit/b0bebab))
+#### Code refactoring
+
+- **Descriptions**: Delete itemStyle prop ([c1904b9](https://github.com/yuntijs/yunti-ui/commit/c1904b9))
+- **Page**: Add subTitle, icon detail config and change style ([a9b1ae8](https://github.com/yuntijs/yunti-ui/commit/a9b1ae8))
+- **misc**: Move dayjs to peer deps ([4e7bb35](https://github.com/yuntijs/yunti-ui/commit/4e7bb35))
+
+#### What's improved
+
+- **ButtonGroup**: PageHeaderButtonGroup => ButtonGroup ([6adcbcb](https://github.com/yuntijs/yunti-ui/commit/6adcbcb))
+- **ButtonGroup**: Support more props for items ([acd12ae](https://github.com/yuntijs/yunti-ui/commit/acd12ae))
+- **CollapseGroup**: Change header text flex to 1 ([d1d9394](https://github.com/yuntijs/yunti-ui/commit/d1d9394))
+- **CollapseGroup**: Support specify collapsible ([6210e4b](https://github.com/yuntijs/yunti-ui/commit/6210e4b))
+- **components**: Add ConfigProvider ([fcb449c](https://github.com/yuntijs/yunti-ui/commit/fcb449c))
+- **components**: Add MonacoEditor ([1005ecc](https://github.com/yuntijs/yunti-ui/commit/1005ecc))
+- **ConfigProvider**: Add Link to config ([e123f31](https://github.com/yuntijs/yunti-ui/commit/e123f31))
+- **Divider**: Change mode default to line and fix children issue ([6afc272](https://github.com/yuntijs/yunti-ui/commit/6afc272))
+- **DropDown**: Remove hashPriority=low ([457f6d9](https://github.com/yuntijs/yunti-ui/commit/457f6d9))
+- **Form**: Add fieds watcher for collapse-list ([22e6b06](https://github.com/yuntijs/yunti-ui/commit/22e6b06))
+- **Form**: Add update in operation for collapse-list ([e6b27c4](https://github.com/yuntijs/yunti-ui/commit/e6b27c4))
+- **Form**: Change fieldPath to full path ([2114784](https://github.com/yuntijs/yunti-ui/commit/2114784))
+- **FormCollapseList**: Support extra, expandIcon and fieldRemoveButton ([4814160](https://github.com/yuntijs/yunti-ui/commit/4814160))
+- **Form**: Improve performance of collapse-list ([54e6de3](https://github.com/yuntijs/yunti-ui/commit/54e6de3))
+- **Form**: Support focus new added item and fix some issues ([d23d92b](https://github.com/yuntijs/yunti-ui/commit/d23d92b))
+- **Form**: Support tree input for collapse-list ([d0a336b](https://github.com/yuntijs/yunti-ui/commit/d0a336b))
+- **Highlighter**: Support contentStyle ([5963ed6](https://github.com/yuntijs/yunti-ui/commit/5963ed6))
+- **Highlighter**: Support wrap props ([17b6edd](https://github.com/yuntijs/yunti-ui/commit/17b6edd))
+- **JsonViewer**: Export stringify from react18-json-view ([3175f68](https://github.com/yuntijs/yunti-ui/commit/3175f68))
+- **JsonView**: Set text style for content ([07b13df](https://github.com/yuntijs/yunti-ui/commit/07b13df))
+- **JsonView**: Support contentStyle and classNames ([28a2c8c](https://github.com/yuntijs/yunti-ui/commit/28a2c8c))
+- **LogViewer**: Add loading text ([9eab5b2](https://github.com/yuntijs/yunti-ui/commit/9eab5b2))
+- **LogViewer**: Add refreshInterval support ([3872c5a](https://github.com/yuntijs/yunti-ui/commit/3872c5a))
+- **LogViewer**: Support scroll to bottom when loaded and fix loading issue ([56e4262](https://github.com/yuntijs/yunti-ui/commit/56e4262))
+- **Mentions**: Add EditablePlugin ([0e71b47](https://github.com/yuntijs/yunti-ui/commit/0e71b47))
+- **Mentions**: Bump lexical\@0.23.1 ([5d3bdd2](https://github.com/yuntijs/yunti-ui/commit/5d3bdd2))
+- **Mentions**: Change regex of mention node ([0985b68](https://github.com/yuntijs/yunti-ui/commit/0985b68))
+- **Mentions**: Fix copy paste and support history ([a7d91fa](https://github.com/yuntijs/yunti-ui/commit/a7d91fa))
+- **Mentions**: Get disabled from ConfigProvider by default ([e2849d4](https://github.com/yuntijs/yunti-ui/commit/e2849d4))
+- **Mentions**: Support tree menu select ([2c488c0](https://github.com/yuntijs/yunti-ui/commit/2c488c0))
+- **ModelFineTuning**: Add loading and scrollbar ([c787bd1](https://github.com/yuntijs/yunti-ui/commit/c787bd1))
+- **monaco-editor**: Support auto-switch light/dark theme ([e1e4969](https://github.com/yuntijs/yunti-ui/commit/e1e4969))
+- **monaco-editor**: Support fullscreen toggle ([bea77d9](https://github.com/yuntijs/yunti-ui/commit/bea77d9))
+- **MonacoEditor**: Support variant ([8288455](https://github.com/yuntijs/yunti-ui/commit/8288455))
+- **Page**: Add gap Props support for Page ([fa60447](https://github.com/yuntijs/yunti-ui/commit/fa60447))
+- **Page**: Add Title ([84d6cb0](https://github.com/yuntijs/yunti-ui/commit/84d6cb0))
+- **Page**: Handle Breadcrumb href ([ba753d7](https://github.com/yuntijs/yunti-ui/commit/ba753d7))
+- **Page**: Support page status and header bordered ([b9ceefd](https://github.com/yuntijs/yunti-ui/commit/b9ceefd))
+- **Page**: Support specify classNames for Header ([40863ee](https://github.com/yuntijs/yunti-ui/commit/40863ee))
+- **SelectCard**: Change selected card style ([5a670c1](https://github.com/yuntijs/yunti-ui/commit/5a670c1))
+- **SelectCard**: Support icon for option ([a6b83ee](https://github.com/yuntijs/yunti-ui/commit/a6b83ee))
+- **misc**: Add Alert component ([c66b6c9](https://github.com/yuntijs/yunti-ui/commit/c66b6c9))
+- **misc**: Add Breadcrumb component ([e12d1f6](https://github.com/yuntijs/yunti-ui/commit/e12d1f6))
+- **misc**: Add Card component ([5dab5f6](https://github.com/yuntijs/yunti-ui/commit/5dab5f6))
+- **misc**: Add CollapseGroup component ([ddc88df](https://github.com/yuntijs/yunti-ui/commit/ddc88df))
+- **misc**: Add CollapseTable component ([10f100d](https://github.com/yuntijs/yunti-ui/commit/10f100d))
+- **misc**: Add component: FormHelper ([b28cae4](https://github.com/yuntijs/yunti-ui/commit/b28cae4))
+- **misc**: Add CopyButton ([266d859](https://github.com/yuntijs/yunti-ui/commit/266d859))
+- **misc**: Add Description component ([9754f53](https://github.com/yuntijs/yunti-ui/commit/9754f53))
+- **misc**: Add Divider Component ([5c56228](https://github.com/yuntijs/yunti-ui/commit/5c56228))
+- **misc**: Add DragPanel component ([294cefc](https://github.com/yuntijs/yunti-ui/commit/294cefc))
+- **misc**: Add Drawer component ([baeb103](https://github.com/yuntijs/yunti-ui/commit/baeb103))
+- **misc**: Add Dropdown Component custom ([99e63d3](https://github.com/yuntijs/yunti-ui/commit/99e63d3))
+- **misc**: Add FormCollapseList component ([5b7ede2](https://github.com/yuntijs/yunti-ui/commit/5b7ede2))
+- **misc**: Add Highlighter Component custom ([98439cc](https://github.com/yuntijs/yunti-ui/commit/98439cc))
+- **misc**: Add JsonViewer component ([188599d](https://github.com/yuntijs/yunti-ui/commit/188599d))
+- **misc**: Add Logo component ([9e185c6](https://github.com/yuntijs/yunti-ui/commit/9e185c6))
+- **misc**: Add LogViewer Component ([3d8b4c2](https://github.com/yuntijs/yunti-ui/commit/3d8b4c2))
+- **misc**: Add Mentions component ([e92fbdd](https://github.com/yuntijs/yunti-ui/commit/e92fbdd))
+- **misc**: Add Modal component ([395fc9d](https://github.com/yuntijs/yunti-ui/commit/395fc9d))
+- **misc**: Add Notification component ([1e5a0cf](https://github.com/yuntijs/yunti-ui/commit/1e5a0cf))
+- **misc**: Add Page component ([a1d3fea](https://github.com/yuntijs/yunti-ui/commit/a1d3fea))
+- **misc**: Add ProCard component ([7fb0065](https://github.com/yuntijs/yunti-ui/commit/7fb0065))
+- **misc**: Add Radio component ([14ae57c](https://github.com/yuntijs/yunti-ui/commit/14ae57c))
+- **misc**: Add SelectCard ([ce8141b](https://github.com/yuntijs/yunti-ui/commit/ce8141b))
+- **misc**: Add SelectCard ([c6141a5](https://github.com/yuntijs/yunti-ui/commit/c6141a5))
+- **misc**: Add sideEffects=false ([144e3b7](https://github.com/yuntijs/yunti-ui/commit/144e3b7))
+- **misc**: Add SliderInput component ([52fdc85](https://github.com/yuntijs/yunti-ui/commit/52fdc85))
+- **misc**: Add Status component ([ed765a9](https://github.com/yuntijs/yunti-ui/commit/ed765a9))
+- **misc**: Add Table component ([9360db4](https://github.com/yuntijs/yunti-ui/commit/9360db4))
+- **misc**: Add Tree component ([614e778](https://github.com/yuntijs/yunti-ui/commit/614e778))
+- **misc**: Add types ([2241824](https://github.com/yuntijs/yunti-ui/commit/2241824))
+- **misc**: Add Typography component ([86d2497](https://github.com/yuntijs/yunti-ui/commit/86d2497))
+- **misc**: Add utils ([3a831ba](https://github.com/yuntijs/yunti-ui/commit/3a831ba))
+- **misc**: Add WaveformIcon ([72b0992](https://github.com/yuntijs/yunti-ui/commit/72b0992))
+- **misc**: ChatInputArea ([da2aa3a](https://github.com/yuntijs/yunti-ui/commit/da2aa3a))
+- **misc**: ChatMarkdown, closes [#28](https://github.com/yuntijs/yunti-ui/issues/28) ([ecf525f](https://github.com/yuntijs/yunti-ui/commit/ecf525f))
+- **misc**: CodeEditor, closes [#38](https://github.com/yuntijs/yunti-ui/issues/38) ([288bb4f](https://github.com/yuntijs/yunti-ui/commit/288bb4f))
+- **misc**: Export some hooks from antd-style ([7d6bddd](https://github.com/yuntijs/yunti-ui/commit/7d6bddd))
+- **misc**: Export useSpeechRecognition, closes [#22](https://github.com/yuntijs/yunti-ui/issues/22) ([73d9fa9](https://github.com/yuntijs/yunti-ui/commit/73d9fa9))
+- **misc**: LobeUI ChatItem & EditableMessage ([f8c080a](https://github.com/yuntijs/yunti-ui/commit/f8c080a))
+- **misc**: Remove hashPriority=low for flex change of antd\@5.23.0 ([f06a8b3](https://github.com/yuntijs/yunti-ui/commit/f06a8b3))
+
+#### What's fixed
+
+- **ChatItem**: Remove unnecessary MarkdownProps.children ([96d6b95](https://github.com/yuntijs/yunti-ui/commit/96d6b95))
+- **CollapseGroup**: Content style issue ([077fd68](https://github.com/yuntijs/yunti-ui/commit/077fd68))
+- **EditableMessage**: Remove unnecessary MarkdownProps.children ([c6c15d5](https://github.com/yuntijs/yunti-ui/commit/c6c15d5))
+- **FormCollapseList**: Overwrite style not work when specify hashPriority=high in StyleProvider ([8a8dc07](https://github.com/yuntijs/yunti-ui/commit/8a8dc07))
+- **Highlighter**: Lang may be undefined ([3a755c2](https://github.com/yuntijs/yunti-ui/commit/3a755c2))
+- **JsonView**: Content not hide when unexpand ([0080c1e](https://github.com/yuntijs/yunti-ui/commit/0080c1e))
+- **JsonView**: Title is not centered ([cd41f7d](https://github.com/yuntijs/yunti-ui/commit/cd41f7d))
+- **LogViewer**: Loader do not appear ([3fcbe47](https://github.com/yuntijs/yunti-ui/commit/3fcbe47))
+- **Mentions**: May crash when input special characters ([a9e1036](https://github.com/yuntijs/yunti-ui/commit/a9e1036))
+- **Mentions**: Some mention nodes are not echoed ([5dc6a5c](https://github.com/yuntijs/yunti-ui/commit/5dc6a5c))
+- **Mentions**: SSR failed ([6af870a](https://github.com/yuntijs/yunti-ui/commit/6af870a))
+- **Mentions**: Style have issue when single line ([a5f85ea](https://github.com/yuntijs/yunti-ui/commit/a5f85ea))
+- **MonacoEditor**: Fix fullscreeen icon z-index issue ([0bd617e](https://github.com/yuntijs/yunti-ui/commit/0bd617e))
+- **MonacoEditor**: SSR failed ([f3d36b9](https://github.com/yuntijs/yunti-ui/commit/f3d36b9))
+- **MonacoEditor**: The color of bg is transparent when fullscreen ([20cf032](https://github.com/yuntijs/yunti-ui/commit/20cf032))
+- **Page**: Add align center for descriptions item ([dd4ae6a](https://github.com/yuntijs/yunti-ui/commit/dd4ae6a))
+- **Page**: Change font size of descriptions text to 14 ([6563223](https://github.com/yuntijs/yunti-ui/commit/6563223))
+- **Page**: Change some style ([26eb500](https://github.com/yuntijs/yunti-ui/commit/26eb500))
+- **Page**: Custom style not work ([d43891a](https://github.com/yuntijs/yunti-ui/commit/d43891a))
+- **Page**: Descriptions may not rerender when descriptions props change ([8fc35ee](https://github.com/yuntijs/yunti-ui/commit/8fc35ee))
+- **Page**: Fix divider issue for descriptions ([e77b58c](https://github.com/yuntijs/yunti-ui/commit/e77b58c))
+- **Page**: Fix icon loading ([c63776b](https://github.com/yuntijs/yunti-ui/commit/c63776b))
+- **ProCard.Descriptions**: Overwrite style not work when specify hashPriority=high in StyleProvider ([ca2d3e1](https://github.com/yuntijs/yunti-ui/commit/ca2d3e1))
+- **ProCard**: Change border radius and more icon ([6ab5a23](https://github.com/yuntijs/yunti-ui/commit/6ab5a23))
+- **ProCard**: Change Descriptions padding to 4px ([18e1b41](https://github.com/yuntijs/yunti-ui/commit/18e1b41))
+- **ProCard**: Change margin bottom for title ([08440c1](https://github.com/yuntijs/yunti-ui/commit/08440c1))
+- **ProCard**: Change some style and add stopPropagation for extra ([a8fcf43](https://github.com/yuntijs/yunti-ui/commit/a8fcf43))
+- **ProCard**: Remove min widh ([6b7a9ef](https://github.com/yuntijs/yunti-ui/commit/6b7a9ef))
+- **Radio**: Page crash when use RadioGroup ([e7378cd](https://github.com/yuntijs/yunti-ui/commit/e7378cd))
+- **SliderInput**: InitialValue not work when specify to 0 ([cb8d581](https://github.com/yuntijs/yunti-ui/commit/cb8d581))
+- **Table**: Render not work ([21d610f](https://github.com/yuntijs/yunti-ui/commit/21d610f))
+- **tree**: Split type import and export separately to fix build issue ([e139633](https://github.com/yuntijs/yunti-ui/commit/e139633))
+- **misc**: @lobehub/tts useSpeechSynthes, closes [#20](https://github.com/yuntijs/yunti-ui/issues/20) ([50b42d3](https://github.com/yuntijs/yunti-ui/commit/50b42d3))
+- **misc**: Add `affixation` prop to chatItem, closes [#37](https://github.com/yuntijs/yunti-ui/issues/37) ([0173e65](https://github.com/yuntijs/yunti-ui/commit/0173e65))
+- **misc**: Add hooks deps ([6063f6a](https://github.com/yuntijs/yunti-ui/commit/6063f6a))
+- **misc**: Bot 对话，closes [#33](https://github.com/yuntijs/yunti-ui/issues/33) ([f190ec5](https://github.com/yuntijs/yunti-ui/commit/f190ec5))
+- **misc**: Bot 对话思考中，closes [#34](https://github.com/yuntijs/yunti-ui/issues/34) ([e3ea4cb](https://github.com/yuntijs/yunti-ui/commit/e3ea4cb))
+- **misc**: ChatItem Action, closes [#27](https://github.com/yuntijs/yunti-ui/issues/27) ([859f7cd](https://github.com/yuntijs/yunti-ui/commit/859f7cd))
+- **misc**: ChatItem 去除 block 分块样式，closes [#26](https://github.com/yuntijs/yunti-ui/issues/26) ([0fb48b1](https://github.com/yuntijs/yunti-ui/commit/0fb48b1))
+- **misc**: ChatMarkdown, closes [#32](https://github.com/yuntijs/yunti-ui/issues/32) ([cfb996e](https://github.com/yuntijs/yunti-ui/commit/cfb996e))
+- **misc**: ChatMarkdown, closes [#31](https://github.com/yuntijs/yunti-ui/issues/31) ([9425d9f](https://github.com/yuntijs/yunti-ui/commit/9425d9f))
+- **misc**: ChatMarkdown, closes [#29](https://github.com/yuntijs/yunti-ui/issues/29) ([439dac8](https://github.com/yuntijs/yunti-ui/commit/439dac8))
+- **misc**: ChatMarkdown fontsize, closes [#30](https://github.com/yuntijs/yunti-ui/issues/30) ([29618d7](https://github.com/yuntijs/yunti-ui/commit/29618d7))
+- **misc**: Declaration files build failed ([a83e02e](https://github.com/yuntijs/yunti-ui/commit/a83e02e))
+- **misc**: Export ChatItem & EditableMessage ([eb0586f](https://github.com/yuntijs/yunti-ui/commit/eb0586f))
+- **misc**: Export SpeechSynthesisTTS, closes [#21](https://github.com/yuntijs/yunti-ui/issues/21) ([2273655](https://github.com/yuntijs/yunti-ui/commit/2273655))
+- **misc**: 对话列表最后一条常态化显示 action, closes [#25](https://github.com/yuntijs/yunti-ui/issues/25) ([44119d2](https://github.com/yuntijs/yunti-ui/commit/44119d2))
+- **misc**: 正则兼容 ios, closes [#36](https://github.com/yuntijs/yunti-ui/issues/36) ([895c53e](https://github.com/yuntijs/yunti-ui/commit/895c53e))
+
+#### Styles
+
+- **Modal**: Add default classname ([c6985e3](https://github.com/yuntijs/yunti-ui/commit/c6985e3))
+- **MonacoEditor**: Change border style ([9e28f71](https://github.com/yuntijs/yunti-ui/commit/9e28f71))
+- **Page**: Change icon loading style ([9e67a53](https://github.com/yuntijs/yunti-ui/commit/9e67a53))
+- **Page**: Change padding and margin ([75dcbdf](https://github.com/yuntijs/yunti-ui/commit/75dcbdf))
+- **Page**: Remove header background and border ([ebc3110](https://github.com/yuntijs/yunti-ui/commit/ebc3110))
+- **SelectCard**: Change default border color ([f47a2af](https://github.com/yuntijs/yunti-ui/commit/f47a2af))
+- **Table**: Support generics of record type ([d6d8133](https://github.com/yuntijs/yunti-ui/commit/d6d8133))
 
 </details>
 
