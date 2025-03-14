@@ -3,7 +3,7 @@ import { Button } from 'antd';
 import type { Variant } from 'antd/es/config-provider';
 import { Maximize2, Minimize2 } from 'lucide-react';
 import type { IDisposable, editor } from 'monaco-editor';
-import React, { LegacyRef, useEffect, useMemo, useRef } from 'react';
+import React, { LegacyRef, useCallback, useEffect, useMemo, useRef } from 'react';
 
 import {
   IDiffMonacoEditorProps,
@@ -21,12 +21,23 @@ export * from './monaco';
 function noop() {}
 
 const SingleMonacoEditor: React.FC<ISingleMonacoEditorProps & { variant?: Variant }> = props => {
-  const { onChange, enableOutline, width, height, language, supportFullScreen } = props;
+  const {
+    onChange,
+    onBlur,
+    enableOutline,
+    width,
+    height,
+    language,
+    supportFullScreen,
+    onFullScreenChange,
+  } = props;
   const onChangeRef = useRef(onChange);
+  const onBlurRef = useRef(onBlur);
 
   const { isEditorReady, focused, loading, containerRef, monacoRef, editorRef, valueRef } =
     useEditor<editor.IStandaloneCodeEditor>('single', props);
   const subscriptionRef = useRef<IDisposable>();
+  const subscriptionBlurRef = useRef<IDisposable>();
 
   const { isFullScreen, fullScreen } = useFullScreen(editorRef?.current);
   const { cx, styles } = useStyles({
@@ -47,6 +58,10 @@ const SingleMonacoEditor: React.FC<ISingleMonacoEditorProps & { variant?: Varian
   }, [onChange]);
 
   useEffect(() => {
+    onBlurRef.current = onBlur;
+  }, [onBlur]);
+
+  useEffect(() => {
     if (isEditorReady) {
       const editorInstance = editorRef.current;
       subscriptionRef.current?.dispose();
@@ -57,6 +72,11 @@ const SingleMonacoEditor: React.FC<ISingleMonacoEditorProps & { variant?: Varian
           onChangeRef.current?.(editorValue!, event);
         }
       });
+      subscriptionBlurRef.current?.dispose();
+      subscriptionBlurRef.current = editorInstance?.onDidBlurEditorText(event => {
+        const editorValue = editorInstance?.getModel()?.getValue();
+        onBlurRef.current?.(editorValue!, event);
+      });
     }
   }, [editorRef, isEditorReady, subscriptionRef, valueRef]);
 
@@ -64,6 +84,7 @@ const SingleMonacoEditor: React.FC<ISingleMonacoEditorProps & { variant?: Varian
     return () => {
       const editorInstance = editorRef.current;
       subscriptionRef.current?.dispose();
+      subscriptionBlurRef.current?.dispose();
       editorInstance?.getModel()?.dispose();
       // eslint-disable-next-line react-hooks/exhaustive-deps
       editorRef.current?.dispose();
@@ -81,6 +102,11 @@ const SingleMonacoEditor: React.FC<ISingleMonacoEditorProps & { variant?: Varian
     }
   }, [editorRef, isEditorReady, language, monacoRef]);
 
+  const fullScreenChange = useCallback(() => {
+    onFullScreenChange?.(!isFullScreen);
+    fullScreen();
+  }, [fullScreen, isFullScreen, onFullScreenChange]);
+
   return (
     <div className={className} style={props.style}>
       {loading && <span className={cx(styles.loading, 'loading')}>{WORD_EDITOR_INITIALIZING}</span>}
@@ -93,7 +119,7 @@ const SingleMonacoEditor: React.FC<ISingleMonacoEditorProps & { variant?: Varian
           <Button
             className={styles.fullScreenBtn}
             icon={<Icon icon={isFullScreen ? Minimize2 : Maximize2} />}
-            onClick={fullScreen}
+            onClick={fullScreenChange}
             size="small"
             type="text"
           />
@@ -104,7 +130,16 @@ const SingleMonacoEditor: React.FC<ISingleMonacoEditorProps & { variant?: Varian
 };
 
 const DiffMonacoEditor: React.FC<IDiffMonacoEditorProps & { variant?: Variant }> = props => {
-  const { enableOutline, width, height, language, onChange, original, supportFullScreen } = props;
+  const {
+    enableOutline,
+    width,
+    height,
+    language,
+    onChange,
+    original,
+    supportFullScreen,
+    onFullScreenChange,
+  } = props;
   const onChangeRef = useRef(onChange);
 
   const { isEditorReady, focused, loading, containerRef, monacoRef, editorRef, valueRef } =
@@ -164,6 +199,11 @@ const DiffMonacoEditor: React.FC<IDiffMonacoEditorProps & { variant?: Variant }>
     monacoRef.current?.editor.setModelLanguage(modifiedModel!, language!);
   }, [editorRef, isEditorReady, language, monacoRef]);
 
+  const fullScreenChange = useCallback(() => {
+    onFullScreenChange?.(!isFullScreen);
+    fullScreen();
+  }, [fullScreen, isFullScreen, onFullScreenChange]);
+
   return (
     <div className={className} style={props.style}>
       {loading && <span className={cx(styles.loading, 'loading')}>{WORD_EDITOR_INITIALIZING}</span>}
@@ -176,7 +216,7 @@ const DiffMonacoEditor: React.FC<IDiffMonacoEditorProps & { variant?: Variant }>
           <Button
             className={styles.fullScreenBtn}
             icon={<Icon icon={isFullScreen ? Minimize2 : Maximize2} />}
-            onClick={fullScreen}
+            onClick={fullScreenChange}
             size="small"
             type="text"
           />
@@ -188,7 +228,7 @@ const DiffMonacoEditor: React.FC<IDiffMonacoEditorProps & { variant?: Variant }>
 
 const DiffMonacoEditorComponent = Object.assign(DiffMonacoEditor, {
   displayName: 'DiffMonacoEditor',
-  defaultProps: {
+  default: {
     width: '100%',
     height: 150,
     defaultValue: '',
@@ -203,7 +243,7 @@ const DiffMonacoEditorComponent = Object.assign(DiffMonacoEditor, {
 
 export const SingleMonacoEditorComponent = Object.assign(SingleMonacoEditor, {
   displayName: 'SingleMonacoEditor',
-  defaultProps: {
+  default: {
     width: '100%',
     height: 150,
     defaultValue: '',
@@ -212,6 +252,7 @@ export const SingleMonacoEditorComponent = Object.assign(SingleMonacoEditor, {
     editorDidMount: noop,
     editorWillMount: noop,
     onChange: noop,
+
     requireConfig: {},
   },
   MonacoDiffEditor: DiffMonacoEditorComponent,

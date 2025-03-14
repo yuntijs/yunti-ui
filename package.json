@@ -1,6 +1,6 @@
 {
   "name": "@yuntijs/ui",
-  "version": "1.0.0",
+  "version": "1.1.0-beta.1",
   "description": "☁️ Yunti UI - an open-source UI component library for building Cloud Native web apps",
   "keywords": [
     "yuntijs",
@@ -130,7 +130,7 @@
     "jsdom": "^22",
     "lint-staged": "^15",
     "mdast-util-to-markdown": "^2.1.2",
-    "monaco-editor": "^0.45.0",
+    "monaco-editor": "^0.52.2",
     "prettier": "^3",
     "react": "^18",
     "react-dom": "^18",

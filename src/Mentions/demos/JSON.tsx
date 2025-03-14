@@ -6,20 +6,26 @@ export default () => {
   return (
     <Mentions
       autoSize={{
-        minRows: 1,
+        minRows: 5,
       }}
-      defaultValue="👋，I'm {{1.zhang}}"
+      code
+      defaultValue={`{
+  "key1": {{2.luobo}},
+  “key2": "{{1.zhang}}"
+}
+`}
       options={[
         {
           label: 'zhang',
           value: '1.zhang',
           icon: <Icon icon={Smile} />,
+          disabled: true,
         },
         {
           label: 'luobo',
           value: '2.luobo',
           icon: <Icon icon={Carrot} />,
-          disabled: true,
+          error: 'err',
         },
         {
           label: 'yunti',

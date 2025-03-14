@@ -35,6 +35,10 @@ export default () => {
 
 <code src="./demos/SingleLine.tsx" center></code>
 
+### JSON input
+
+<code src="./demos/JSON.tsx" center></code>
+
 ### Playground
 
 <code src="./demos/Playground.tsx" center></code>

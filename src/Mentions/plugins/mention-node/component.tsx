@@ -35,7 +35,11 @@ export const MentionNodeComponent: React.FC<MentionNodeComponentProps> = memo(
         <Flex align="center" gap={2}>
           {(!option || option.error) && <Icon className={styles.error} icon={CircleAlert} />}
           {option?.icon && <Flex>{option.icon}</Flex>}
-          <Flex className={styles.text} gap={2} title={option?.label || variable}>
+          <Flex
+            className={styles.text}
+            gap={2}
+            title={option?.selectedLabel || option?.label || variable}
+          >
             <span>{option?.selectedLabel || option?.label || variable}</span>
           </Flex>
         </Flex>

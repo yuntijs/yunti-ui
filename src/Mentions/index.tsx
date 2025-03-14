@@ -5,6 +5,7 @@ import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin';
 import { OnChangePlugin } from '@lexical/react/LexicalOnChangePlugin';
 import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
 import { ConfigProvider } from 'antd';
+// @Todo: 升级 0.25.0 后，ops-console 使用的时候出现了只输入 / 无法触发的问题
 import type { EditorState } from 'lexical';
 import { $getRoot, TextNode } from 'lexical';
 import React, { useMemo } from 'react';
@@ -43,6 +44,8 @@ export interface MentionsProps extends MentionPickerPluginProps {
   onFocus?: () => void;
   variant?: 'outlined' | 'filled' | 'borderless';
   autoSize?: AutoSize;
+  code?: boolean;
+  getPopContainer?: () => HTMLElement;
 }
 
 export const Mentions: React.FC<MentionsProps> = ({
@@ -65,9 +68,11 @@ export const Mentions: React.FC<MentionsProps> = ({
   punctuation,
   preTriggerChars,
   onSelect,
+  code = false,
+  getPopContainer,
 }) => {
   const { componentDisabled } = ConfigProvider.useConfig();
-  const { styles, cx } = useStyles({ autoSize });
+  const { styles, cx } = useStyles({ autoSize, code });
 
   const disabled = useMemo(
     () => customDisabled ?? componentDisabled,
@@ -123,6 +128,15 @@ export const Mentions: React.FC<MentionsProps> = ({
     return buildMap(options);
   }, [options]);
 
+  const parent = useMemo(() => {
+    if (!isBrowser) {
+      return;
+    }
+    if (document.fullscreenElement) {
+      return document.fullscreenElement as HTMLElement;
+    }
+  }, []);
+
   if (!isBrowser) {
     return (
       <div className={cx(styles.wrapper, classNames?.wrapper)}>
@@ -177,6 +191,7 @@ export const Mentions: React.FC<MentionsProps> = ({
               onSelect={onSelect}
               options={options}
               overlayClassName={classNames?.menuOverlay}
+              parent={parent}
               preTriggerChars={preTriggerChars}
               punctuation={punctuation}
               triggers={triggers}

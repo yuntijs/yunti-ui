@@ -7,6 +7,7 @@ export default () => {
     <Mentions
       autoSize={{
         minRows: 3,
+        maxRows: 5,
       }}
       defaultValue="👋，I'm {{1.zhang}}"
       options={[
@@ -35,6 +36,7 @@ export default () => {
               label: 'id',
               selectedLabel: 'json.id',
               value: 'json.id',
+              title: 'json.id (json 的 id 属性)',
             },
             {
               label: 'name',

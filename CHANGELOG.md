@@ -2,6 +2,131 @@
 
 # Changelog
 
+## [Version 1.1.0-beta.1](https://github.com/yuntijs/yunti-ui/compare/v1.0.0...v1.1.0-beta.1)
+
+<sup>Released on **2025-03-13**</sup>
+
+#### ✨ Features
+
+- **Mentions**: Bump lexical\@0.25.0, downgrade lexical\@0.23.1, suppor code mode, support auto scroll and skip disabled item when use up and down by keyboard, support getPopContainer for menu picker in props, support select child props by keyboard up and down, support title for option.
+- **misc**: Add onblur in MonacoEditor.
+
+#### 🐛 Bug Fixes
+
+- **misc**: Add full screen change for monaco-editor, markdown monacoEditor.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **Mentions**: Bump lexical\@0.25.0 ([c1ee79e](https://github.com/yuntijs/yunti-ui/commit/c1ee79e))
+- **Mentions**: Downgrade lexical\@0.23.1 ([392aade](https://github.com/yuntijs/yunti-ui/commit/392aade))
+- **Mentions**: Suppor code mode ([4b028e4](https://github.com/yuntijs/yunti-ui/commit/4b028e4))
+- **Mentions**: Support auto scroll and skip disabled item when use up and down by keyboard ([9a43cd7](https://github.com/yuntijs/yunti-ui/commit/9a43cd7))
+- **Mentions**: Support getPopContainer for menu picker in props ([99a2913](https://github.com/yuntijs/yunti-ui/commit/99a2913))
+- **Mentions**: Support select child props by keyboard up and down ([b0bebab](https://github.com/yuntijs/yunti-ui/commit/b0bebab))
+- **Mentions**: Support title for option ([dc8572a](https://github.com/yuntijs/yunti-ui/commit/dc8572a))
+- **misc**: Add onblur in MonacoEditor, closes [#42](https://github.com/yuntijs/yunti-ui/issues/42) ([a4c47ed](https://github.com/yuntijs/yunti-ui/commit/a4c47ed))
+
+#### What's fixed
+
+- **misc**: Add full screen change for monaco-editor, closes [#41](https://github.com/yuntijs/yunti-ui/issues/41) ([d398c94](https://github.com/yuntijs/yunti-ui/commit/d398c94))
+- **misc**: Markdown monacoEditor, closes [#43](https://github.com/yuntijs/yunti-ui/issues/43) ([20d0af2](https://github.com/yuntijs/yunti-ui/commit/20d0af2))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
+## [Version 1.0.0-beta.118](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.117...v1.0.0-beta.118)
+
+<sup>Released on **2025-03-12**</sup>
+
+#### ✨ Features
+
+- **Mentions**: Support getPopContainer for menu picker in props.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **Mentions**: Support getPopContainer for menu picker in props ([99a2913](https://github.com/yuntijs/yunti-ui/commit/99a2913))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
+## [Version 1.0.0-beta.117](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.116...v1.0.0-beta.117)
+
+<sup>Released on **2025-03-11**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: Markdown monacoEditor.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: Markdown monacoEditor, closes [#43](https://github.com/yuntijs/yunti-ui/issues/43) ([20d0af2](https://github.com/yuntijs/yunti-ui/commit/20d0af2))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
+## [Version 1.0.0-beta.116](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.115...v1.0.0-beta.116)
+
+<sup>Released on **2025-03-10**</sup>
+
+#### ✨ Features
+
+- **misc**: Add onblur in MonacoEditor.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **misc**: Add onblur in MonacoEditor, closes [#42](https://github.com/yuntijs/yunti-ui/issues/42) ([a4c47ed](https://github.com/yuntijs/yunti-ui/commit/a4c47ed))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
+## [Version 1.0.0-beta.115](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.114...v1.0.0-beta.115)
+
+<sup>Released on **2025-03-07**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: Add full screen change for monaco-editor.
+
 ## Version 1.0.0
 
 <sup>Released on **2025-02-21**</sup>
@@ -67,6 +192,112 @@
 
 <details>
 <summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: Add full screen change for monaco-editor, closes [#41](https://github.com/yuntijs/yunti-ui/issues/41) ([d398c94](https://github.com/yuntijs/yunti-ui/commit/d398c94))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
+## [Version 1.0.0-beta.114](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.113...v1.0.0-beta.114)
+
+<sup>Released on **2025-03-05**</sup>
+
+#### ✨ Features
+
+- **Mentions**: Support title for option.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **Mentions**: Support title for option ([dc8572a](https://github.com/yuntijs/yunti-ui/commit/dc8572a))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
+## [Version 1.0.0-beta.113](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.112...v1.0.0-beta.113)
+
+<sup>Released on **2025-02-25**</sup>
+
+#### ✨ Features
+
+- **Mentions**: Downgrade lexical\@0.23.1, support auto scroll and skip disabled item when use up and down by keyboard.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **Mentions**: Downgrade lexical\@0.23.1 ([392aade](https://github.com/yuntijs/yunti-ui/commit/392aade))
+- **Mentions**: Support auto scroll and skip disabled item when use up and down by keyboard ([9a43cd7](https://github.com/yuntijs/yunti-ui/commit/9a43cd7))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
+## [Version 1.0.0-beta.112](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.111...v1.0.0-beta.112)
+
+<sup>Released on **2025-02-24**</sup>
+
+#### ✨ Features
+
+- **Mentions**: Bump lexical\@0.25.0.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **Mentions**: Bump lexical\@0.25.0 ([c1ee79e](https://github.com/yuntijs/yunti-ui/commit/c1ee79e))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
+## [Version 1.0.0-beta.111](https://github.com/yuntijs/yunti-ui/compare/v1.0.0-beta.110...v1.0.0-beta.111)
+
+<sup>Released on **2025-02-24**</sup>
+
+#### ✨ Features
+
+- **Mentions**: Suppor code mode, support select child props by keyboard up and down.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **Mentions**: Suppor code mode ([4b028e4](https://github.com/yuntijs/yunti-ui/commit/4b028e4))
+- **Mentions**: Support select child props by keyboard up and down ([b0bebab](https://github.com/yuntijs/yunti-ui/commit/b0bebab))
 
 #### Code refactoring
 

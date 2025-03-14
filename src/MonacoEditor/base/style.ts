@@ -97,6 +97,7 @@ export const useStyles = createStyles(
 
           & > .monaco-editor {
             border-radius: ${token.borderRadius}px;
+            outline: none;
             .overflow-guard,
             .margin {
               border-top-left-radius: ${token.borderRadius}px;

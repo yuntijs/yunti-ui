@@ -47,16 +47,20 @@ export interface IGeneralManacoEditorProps {
   /** style of wrapper */
   style?: CSSProperties;
   enhancers?: EditorEnhancer[];
+  placeholder?: string;
 }
 
 export interface ISingleMonacoEditorProps extends IGeneralManacoEditorProps {
   onChange?: (input: string, event: IEditor.IModelContentChangedEvent) => void;
+  onBlur?: (input: string, event: any) => void;
   supportFullScreen?: boolean;
+  onFullScreenChange?: (isFullScreen: boolean) => void;
 }
 
 export interface IDiffMonacoEditorProps extends IGeneralManacoEditorProps {
   onChange?: (input: string, event: IEditor.IModelContentChangedEvent) => void;
   supportFullScreen?: boolean;
+  onFullScreenChange?: (isFullScreen: boolean) => void;
   original?: string;
 }
 
@@ -154,6 +158,7 @@ export const useEditor = <T = IEditorInstance>(
     saveViewState,
     defaultValue,
     enhancers,
+    placeholder,
   } = props;
 
   const [isEditorReady, setIsEditorReady] = useState(false);
@@ -234,6 +239,7 @@ export const useEditor = <T = IEditorInstance>(
           editor = monaco.editor.create(containerRef.current, {
             automaticLayout: true,
             ...INITIAL_OPTIONS,
+            placeholder,
             ...optionRef.current,
           });
           editor.setModel(model);
@@ -245,6 +251,7 @@ export const useEditor = <T = IEditorInstance>(
           editor = monaco.editor.createDiffEditor(containerRef.current, {
             automaticLayout: true,
             ...DIFF_EDITOR_INITIAL_OPTIONS,
+            placeholder,
             ...optionRef.current,
           });
 

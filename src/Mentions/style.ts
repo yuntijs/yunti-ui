@@ -9,7 +9,7 @@ const calculateHeight = (rows: number) => {
 };
 
 export const useStyles = createStyles(
-  ({ css, token, prefixCls }, { autoSize }: { autoSize?: AutoSize }) => {
+  ({ css, token }, { autoSize, code }: { autoSize?: AutoSize; code: boolean }) => {
     return {
       wrapper: css`
         position: relative;
@@ -41,7 +41,10 @@ export const useStyles = createStyles(
 
         color: ${token.colorText};
         font-size: ${token.fontSize}px;
-        font-family: ${token.fontFamily};
+        .align-middle {
+          vertical-align: middle;
+        }
+        font-family: ${code ? token.fontFamilyCode : token.fontFamily};
 
         display: inline-block;
 
