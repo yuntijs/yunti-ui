@@ -134,7 +134,7 @@ export const SelectCard = React.forwardRef<HTMLDivElement, SelectCardProps>((pro
             </Text>
           )}
           {o.label && !selected && <Text ellipsis>{o.label}</Text>}
-          {!isImg && o.description && (
+          {o.description && (
             <Paragraph ellipsis={{ rows: 2 }} type="secondary">
               {o.description}
             </Paragraph>
