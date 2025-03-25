@@ -2,6 +2,41 @@
 
 # Changelog
 
+## [Version 1.1.0-beta.3](https://github.com/yuntijs/yunti-ui/compare/v1.1.0-beta.2...v1.1.0-beta.3)
+
+<sup>Released on **2025-03-25**</sup>
+
+#### ✨ Features
+
+- **Highlighter**: Bump shiki\@3.2.1.
+- **MonacoEditor**: Remove outline style for diff editor.
+
+#### 🐛 Bug Fixes
+
+- **Mentions**: GetPopContainer prop not work.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **Highlighter**: Bump shiki\@3.2.1 ([40bc00d](https://github.com/yuntijs/yunti-ui/commit/40bc00d))
+- **MonacoEditor**: Remove outline style for diff editor ([5d141a7](https://github.com/yuntijs/yunti-ui/commit/5d141a7))
+
+#### What's fixed
+
+- **Mentions**: GetPopContainer prop not work ([933dd0b](https://github.com/yuntijs/yunti-ui/commit/933dd0b))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.1.0-beta.2](https://github.com/yuntijs/yunti-ui/compare/v1.1.0-beta.1...v1.1.0-beta.2)
 
 <sup>Released on **2025-03-17**</sup>
