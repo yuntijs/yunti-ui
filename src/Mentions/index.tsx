@@ -132,10 +132,13 @@ export const Mentions: React.FC<MentionsProps> = ({
     if (!isBrowser) {
       return;
     }
+    if (getPopContainer) {
+      return getPopContainer();
+    }
     if (document.fullscreenElement) {
       return document.fullscreenElement as HTMLElement;
     }
-  }, []);
+  }, [getPopContainer]);
 
   if (!isBrowser) {
     return (
