@@ -110,18 +110,26 @@ export const useStyles = createStyles(
           }
           .monaco-diff-editor {
             border-radius: ${token.borderRadius}px;
+            & > .gutter {
+              outline: none;
+            }
             & > .original > .monaco-editor {
               border-top-left-radius: ${token.borderRadius}px;
               border-bottom-left-radius: ${token.borderRadius}px;
+              outline: none;
               .overflow-guard,
               .margin {
                 border-top-left-radius: ${token.borderRadius}px;
                 border-bottom-left-radius: ${token.borderRadius}px;
               }
             }
+            & > .modified > .monaco-editor {
+              outline: none;
+            }
             .diffViewport {
               border-top-right-radius: ${token.borderRadius - 1}px;
               border-bottom-right-radius: ${token.borderRadius - 1}px;
+              outline: none;
             }
           }
         }
