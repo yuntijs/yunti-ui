@@ -91,7 +91,7 @@
     "@lobehub/ui": "^1.164.2",
     "@melloware/react-logviewer": "^5.2.0",
     "@monaco-editor/loader": "^1.4.0",
-    "@shikijs/transformers": "^1.10.3",
+    "@shikijs/transformers": "^3.2.1",
     "leva": "^0",
     "lexical": "^0.23.1",
     "lodash-es": "^4",
@@ -102,7 +102,7 @@
     "react-error-boundary": "^4",
     "react-layout-kit": "^1",
     "react18-json-view": "^0.2.8",
-    "shiki": "^1.10.3",
+    "shiki": "^3.2.1",
     "swr": "^2.2.5",
     "url-join": "^5.0.0",
     "use-merge-value": "^1.2.0"
