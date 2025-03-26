@@ -140,28 +140,6 @@ export const Mentions: React.FC<MentionsProps> = ({
     }
   }, [getPopContainer]);
 
-  if (!isBrowser) {
-    return (
-      <div className={cx(styles.wrapper, classNames?.wrapper)}>
-        <div
-          className={cx(
-            {
-              [styles.root]: true,
-              [styles.filled]: variant === 'filled',
-              [styles.borderless]: variant === 'borderless',
-              [styles.disabled]: disabled,
-            },
-            className
-          )}
-          style={style || {}}
-        />
-        <div className={styles.placeholder}>
-          {placeholder || `输入 ${triggers.join(' 或 ')} 插入引用`}
-        </div>
-      </div>
-    );
-  }
-
   return (
     <LexicalComposer initialConfig={{ ...initialConfig, editable }}>
       <MentionsConfigProvider value={{ optionsMap }}>
