@@ -2,6 +2,33 @@
 
 # Changelog
 
+## [Version 1.1.0-beta.7](https://github.com/yuntijs/yunti-ui/compare/v1.1.0-beta.6...v1.1.0-beta.7)
+
+<sup>Released on **2025-03-27**</sup>
+
+#### ✨ Features
+
+- **Mentions**: Support ref.
+- **MonacoEditor**: Add miss deps for hooks and remove unuse deps in package.json.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **Mentions**: Support ref ([779531a](https://github.com/yuntijs/yunti-ui/commit/779531a))
+- **MonacoEditor**: Add miss deps for hooks and remove unuse deps in package.json ([55d4034](https://github.com/yuntijs/yunti-ui/commit/55d4034))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.1.0-beta.6](https://github.com/yuntijs/yunti-ui/compare/v1.1.0-beta.5...v1.1.0-beta.6)
 
 <sup>Released on **2025-03-27**</sup>
