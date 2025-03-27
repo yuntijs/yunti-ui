@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.1.0-beta.6](https://github.com/yuntijs/yunti-ui/compare/v1.1.0-beta.5...v1.1.0-beta.6)
+
+<sup>Released on **2025-03-27**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: Fix the monaco-editor in strict-mode bug.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: Fix the monaco-editor in strict-mode bug, closes [#47](https://github.com/yuntijs/yunti-ui/issues/47) ([088ac29](https://github.com/yuntijs/yunti-ui/commit/088ac29))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.1.0-beta.5](https://github.com/yuntijs/yunti-ui/compare/v1.1.0-beta.4...v1.1.0-beta.5)
 
 <sup>Released on **2025-03-26**</sup>
