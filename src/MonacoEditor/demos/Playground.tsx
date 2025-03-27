@@ -1,5 +1,7 @@
 import { StoryBook, useControls, useCreateStore } from '@lobehub/ui';
-import { MonacoEditor, MonacoEditorProps } from '@yuntijs/ui';
+import { StrictMode } from 'react';
+
+import { MonacoEditor, MonacoEditorProps } from '../index';
 
 export default () => {
   const store = useCreateStore();
@@ -64,8 +66,10 @@ export default () => {
     { store }
   );
   return (
-    <StoryBook levaStore={store}>
-      <MonacoEditor {...control} />
-    </StoryBook>
+    <StrictMode>
+      <StoryBook levaStore={store}>
+        <MonacoEditor {...control} />
+      </StoryBook>
+    </StrictMode>
   );
 };

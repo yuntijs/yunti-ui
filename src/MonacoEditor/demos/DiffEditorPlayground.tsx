@@ -1,6 +1,7 @@
 import { StoryBook, useControls, useCreateStore } from '@lobehub/ui';
-import { MonacoDiffEditor, MonacoDiffEditorProps } from '@yuntijs/ui';
+import { StrictMode } from 'react';
 
+import { MonacoDiffEditor, MonacoDiffEditorProps } from '../index';
 import { original, value } from './data/diff';
 
 export default () => {
@@ -50,8 +51,10 @@ export default () => {
     { store }
   );
   return (
-    <StoryBook levaStore={store}>
-      <MonacoDiffEditor {...control} />
-    </StoryBook>
+    <StrictMode>
+      <StoryBook levaStore={store}>
+        <MonacoDiffEditor {...control} />
+      </StoryBook>
+    </StrictMode>
   );
 };

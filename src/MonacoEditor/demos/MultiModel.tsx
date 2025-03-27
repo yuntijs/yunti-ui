@@ -1,6 +1,7 @@
-import { MonacoEditor } from '@yuntijs/ui';
 import { Segmented, Space } from 'antd';
-import { useState } from 'react';
+import { StrictMode, useState } from 'react';
+
+import { MonacoEditor } from '../index';
 
 export default () => {
   const [files, setFiles] = useState<
@@ -26,29 +27,31 @@ export default () => {
   const file = files[fileName];
 
   return (
-    <Space direction="vertical" size="large">
-      <Segmented
-        onChange={value => setFileName(value as string)}
-        options={Object.keys(files)}
-        value={fileName}
-      />
-      <MonacoEditor
-        defaultValue={file.value}
-        height={40}
-        language={file.language}
-        onChange={next => {
-          setFiles(v => ({
-            ...v,
-            [file.name]: {
-              ...v[file.name],
-              value: next,
-            },
-          }));
-        }}
-        path={file.name}
-        saveViewState={true}
-        width={600}
-      />
-    </Space>
+    <StrictMode>
+      <Space direction="vertical" size="large">
+        <Segmented
+          onChange={value => setFileName(value as string)}
+          options={Object.keys(files)}
+          value={fileName}
+        />
+        <MonacoEditor
+          defaultValue={file.value}
+          height={40}
+          language={file.language}
+          onChange={next => {
+            setFiles(v => ({
+              ...v,
+              [file.name]: {
+                ...v[file.name],
+                value: next,
+              },
+            }));
+          }}
+          path={file.name}
+          saveViewState={true}
+          width={600}
+        />
+      </Space>
+    </StrictMode>
   );
 };
