@@ -13,3 +13,5 @@ export interface AutoSize {
   minRows?: number;
   maxRows?: number;
 }
+
+export type { LexicalEditor as MentionsEditor, EditorState as MentionsEditorState } from 'lexical';
