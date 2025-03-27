@@ -80,7 +80,6 @@
     ]
   },
   "dependencies": {
-    "@alilc/lowcode-plugin-base-monaco-editor": "^1.1.2",
     "@ant-design/icons": "^5",
     "@babel/runtime": "^7",
     "@lexical/react": "^0.23.1",

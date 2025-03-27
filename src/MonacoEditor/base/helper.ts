@@ -279,7 +279,7 @@ export const useEditor = <T = IEditorInstance>(
           setLoading(false);
         }
       });
-  }, []);
+  }, [placeholder]);
 
   useEffect(() => {
     if (!isEditorReady) {

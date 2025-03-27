@@ -54,6 +54,10 @@ export default () => {
 
 <code src="./demos/MultiModel.tsx" center></code>
 
+### Tabs
+
+<code src="./demos/Tabs.tsx" center></code>
+
 ## Playground
 
 ### BaseMonacoEditor
