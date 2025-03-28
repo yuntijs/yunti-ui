@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.1.0-beta.8](https://github.com/yuntijs/yunti-ui/compare/v1.1.0-beta.7...v1.1.0-beta.8)
+
+<sup>Released on **2025-03-28**</sup>
+
+#### ✨ Features
+
+- **Mentions**: Support onPressEnter.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **Mentions**: Support onPressEnter ([9d1ff7a](https://github.com/yuntijs/yunti-ui/commit/9d1ff7a))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.1.0-beta.7](https://github.com/yuntijs/yunti-ui/compare/v1.1.0-beta.6...v1.1.0-beta.7)
 
 <sup>Released on **2025-03-27**</sup>
