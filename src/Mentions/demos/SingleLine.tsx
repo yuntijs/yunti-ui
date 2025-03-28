@@ -48,7 +48,14 @@ export default () => {
             ref.current?.update(textToEditorState("👋，I'm {{3.yunti}}", ['@']));
           }}
         >
-          change value
+          set
+        </Button>
+        <Button
+          onClick={() => {
+            ref.current?.update(textToEditorState('', []));
+          }}
+        >
+          clear
         </Button>
       </Flex>
     </Flex>

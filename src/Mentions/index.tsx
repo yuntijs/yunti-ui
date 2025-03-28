@@ -21,6 +21,7 @@ import {
 } from './plugins/mention-node';
 import { MentionPickerPlugin, type MentionPickerPluginProps } from './plugins/mention-picker';
 import { OnBlurBlockPlugin } from './plugins/on-blur-block';
+import { ShiftEnterKeyPlugin } from './plugins/shift-enter-key';
 import { MentionsConfigProvider } from './provider';
 import { useStyles } from './style';
 import {
@@ -51,6 +52,10 @@ export interface MentionsProps extends MentionPickerPluginProps {
   onChange?: (text: string) => void;
   onBlur?: () => void;
   onFocus?: () => void;
+  /**
+   * 按下回车的回调，指定后会改变回车的默认行为，换行需要使用 shift + enter
+   */
+  onPressEnter?: (value: string, { event }: { event: KeyboardEvent | null }) => void;
   variant?: 'outlined' | 'filled' | 'borderless';
   autoSize?: AutoSize;
   code?: boolean;
@@ -81,6 +86,7 @@ export const Mentions = forwardRef<MentionsEditor, MentionsProps>(
       onSelect,
       code = false,
       getPopContainer,
+      onPressEnter,
     },
     ref
   ) => {
@@ -198,6 +204,7 @@ export const Mentions = forwardRef<MentionsEditor, MentionsProps>(
             <OnBlurBlockPlugin onBlur={onBlur} onFocus={onFocus} />
             <EditablePlugin editable={editable} />
             <EditorRefPlugin editorRef={ref} />
+            {onPressEnter && <ShiftEnterKeyPlugin onPressEnter={onPressEnter} />}
           </div>
         </MentionsConfigProvider>
       </LexicalComposer>

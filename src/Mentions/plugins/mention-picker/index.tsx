@@ -2,7 +2,7 @@ import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext
 import type { MenuRenderFn } from '@lexical/react/LexicalTypeaheadMenuPlugin';
 import { LexicalTypeaheadMenuPlugin } from '@lexical/react/LexicalTypeaheadMenuPlugin';
 import { ConfigProvider, Tree } from 'antd';
-import type { TextNode } from 'lexical';
+import { COMMAND_PRIORITY_NORMAL, type TextNode } from 'lexical';
 import { flatMap } from 'lodash-es';
 import React, { memo, useCallback, useMemo, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
@@ -238,6 +238,8 @@ export const MentionPickerPlugin: React.FC<MentionPickerPluginProps> = memo(
     return (
       <LexicalTypeaheadMenuPlugin
         anchorClassName={styles.anchor}
+        // 优先级要高于 ShiftEnterKeyPlugin
+        commandPriority={COMMAND_PRIORITY_NORMAL}
         menuRenderFn={renderMenu}
         onQueryChange={setQueryString}
         onSelectOption={onSelectOption}
