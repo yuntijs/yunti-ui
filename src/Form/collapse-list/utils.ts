@@ -12,3 +12,17 @@ export type ListFieldValue<K extends string = 'children'> = {
 export type FieldPath = NamePath<any>;
 
 export const toRowKey = (keyPath: number[]) => keyPath.join('-');
+
+export const TEXT_INPUT_COMPOENT_TYPES = [
+  'Input',
+  'InputNumber',
+  'AutoComplete',
+  'Mentions',
+  'Radio',
+  'RadioGroup',
+  'CheckBox',
+  'CheckBoxGroup',
+  'Rate',
+  'Slider',
+  'Switch',
+];

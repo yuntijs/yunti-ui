@@ -13,7 +13,13 @@ import { CollapseGroup, CollapseGroupProps } from '../../CollapseGroup';
 import { FormCollapseListFieldsWatcher } from './FieldsWatcher';
 import { FormCollapseListOperation, useFormCollapseListHooks } from './hooks';
 import { useStyles } from './style';
-import { FIELD_KEY_PATH, FieldPath, ListFieldValue, toRowKey } from './utils';
+import {
+  FIELD_KEY_PATH,
+  FieldPath,
+  ListFieldValue,
+  TEXT_INPUT_COMPOENT_TYPES,
+  toRowKey,
+} from './utils';
 
 const { Text } = Typography;
 
@@ -301,11 +307,24 @@ export const FormCollapseList: React.FC<FormCollapseListProps> = memo(
                               chidrenProps.disabled = disabled;
                             }
                             if (readOnly === true) {
-                              return (
-                                <Flex align="center" className={cx(styles.readOnlyItem, className)}>
-                                  {text ?? <Text type="secondary">-</Text>}
-                                </Flex>
-                              );
+                              chidrenProps.disabled = true;
+                              if ((children as any)?.props?.showCount) {
+                                chidrenProps.showCount = undefined;
+                              }
+                              if (
+                                TEXT_INPUT_COMPOENT_TYPES.includes(
+                                  (children as any)?.type?.displayName
+                                )
+                              ) {
+                                return (
+                                  <Flex
+                                    align="center"
+                                    className={cx(styles.readOnlyItem, className)}
+                                  >
+                                    {text ?? <Text type="secondary">-</Text>}
+                                  </Flex>
+                                );
+                              }
                             }
                             return (
                               <Form.Item
