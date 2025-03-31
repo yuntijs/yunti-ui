@@ -26,8 +26,8 @@ export const useStyles = createStyles(
     }
   ) => {
     const blockStylish = css`
-      /* padding-block: 8px;
-      padding-inline: 12px; */
+      padding-block: 4px;
+      padding-inline: 8px;
 
       background-color: ${primary
         ? isDarkMode
@@ -36,7 +36,8 @@ export const useStyles = createStyles(
         : isDarkMode
           ? token.colorFillSecondary
           : token.colorBgContainer};
-      border-radius: ${token.borderRadiusLG}px;
+      border-radius: ${token.borderRadius}px;
+
       transition: background-color 100ms ${token.motionEaseOut};
     `;
 
@@ -84,17 +85,19 @@ export const useStyles = createStyles(
         type === 'pure' && pureContainerStylish,
         css`
           position: relative;
-          width: 100%;
-          max-width: 100vw;
+          width: 94%;
+          max-width: 94vw;
           padding: 16px;
 
           time {
             display: inline-block;
+            padding: 0 8px;
             white-space: nowrap;
           }
 
           div[role='menubar'] {
             display: flex;
+            padding-inline: 8px;
           }
 
           time,
