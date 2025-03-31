@@ -44,6 +44,7 @@ export const ChatItem = memo<ChatItemProps>(
     markdownProps,
     markdownClassname,
     isLatest,
+    hideAvatar,
     ...rest
   }) => {
     const { mobile } = useResponsive();
@@ -65,15 +66,17 @@ export const ChatItem = memo<ChatItemProps>(
         gap={mobile ? 6 : 12}
         {...rest}
       >
-        <Avatar
-          {...avatarProps}
-          addon={avatarAddon}
-          avatar={avatar}
-          loading={loading}
-          onClick={onAvatarClick}
-          placement={placement}
-          size={mobile ? MOBILE_AVATAR_SIZE : undefined}
-        />
+        {hideAvatar ? null : (
+          <Avatar
+            {...avatarProps}
+            addon={avatarAddon}
+            avatar={avatar}
+            loading={loading}
+            onClick={onAvatarClick}
+            placement={placement}
+            size={mobile ? MOBILE_AVATAR_SIZE : undefined}
+          />
+        )}
         <Flexbox
           align={placement === 'left' ? 'flex-start' : 'flex-end'}
           className={styles.messageContainer}
