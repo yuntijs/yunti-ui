@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.1.0-beta.9](https://github.com/yuntijs/yunti-ui/compare/v1.1.0-beta.8...v1.1.0-beta.9)
+
+<sup>Released on **2025-03-31**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: Hide avatar for ChatItem.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: Hide avatar for ChatItem, closes [#48](https://github.com/yuntijs/yunti-ui/issues/48) ([2fd12e0](https://github.com/yuntijs/yunti-ui/commit/2fd12e0))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.1.0-beta.8](https://github.com/yuntijs/yunti-ui/compare/v1.1.0-beta.7...v1.1.0-beta.8)
 
 <sup>Released on **2025-03-28**</sup>
