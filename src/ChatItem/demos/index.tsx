@@ -48,6 +48,7 @@ export default () => {
         }
         avatar={avatar}
         editing={edit}
+        hideAvatar={true}
         isLatest={true}
         onEditingChange={setEdit}
       />

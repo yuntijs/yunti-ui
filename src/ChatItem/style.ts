@@ -26,8 +26,8 @@ export const useStyles = createStyles(
     }
   ) => {
     const blockStylish = css`
-      padding-block: 8px;
-      padding-inline: 12px;
+      /* padding-block: 8px;
+      padding-inline: 12px; */
 
       background-color: ${primary
         ? isDarkMode
@@ -37,7 +37,6 @@ export const useStyles = createStyles(
           ? token.colorFillSecondary
           : token.colorBgContainer};
       border-radius: ${token.borderRadiusLG}px;
-
       transition: background-color 100ms ${token.motionEaseOut};
     `;
 
@@ -58,6 +57,7 @@ export const useStyles = createStyles(
         width: 100%;
       `;
 
+    const insetInline = placement === 'right' ? '-4px unset' : 'unset -4px';
     return {
       actions: cx(
         css`
@@ -148,8 +148,7 @@ export const useStyles = createStyles(
       loading: css`
         position: absolute;
         inset-block-end: 0;
-        inset-inline: ${placement === 'right' ? '-4px' : 'unset'}
-          ${placement === 'left' ? '-4px' : 'unset'};
+        inset-inline: ${insetInline};
 
         width: 16px;
         height: 16px;
