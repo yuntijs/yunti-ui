@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.1.0-beta.10](https://github.com/yuntijs/yunti-ui/compare/v1.1.0-beta.9...v1.1.0-beta.10)
+
+<sup>Released on **2025-03-31**</sup>
+
+#### ✨ Features
+
+- **FormCollapseList**: Change shown when readOnly.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **FormCollapseList**: Change shown when readOnly ([d014ff0](https://github.com/yuntijs/yunti-ui/commit/d014ff0))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.1.0-beta.9](https://github.com/yuntijs/yunti-ui/compare/v1.1.0-beta.8...v1.1.0-beta.9)
 
 <sup>Released on **2025-03-31**</sup>
