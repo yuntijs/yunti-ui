@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.1.0-beta.12](https://github.com/yuntijs/yunti-ui/compare/v1.1.0-beta.11...v1.1.0-beta.12)
+
+<sup>Released on **2025-03-31**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: The max width of ChatItem.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: The max width of ChatItem, closes [#50](https://github.com/yuntijs/yunti-ui/issues/50) ([0a17d4c](https://github.com/yuntijs/yunti-ui/commit/0a17d4c))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.1.0-beta.11](https://github.com/yuntijs/yunti-ui/compare/v1.1.0-beta.10...v1.1.0-beta.11)
 
 <sup>Released on **2025-03-31**</sup>
