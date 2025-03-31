@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.1.0-beta.11](https://github.com/yuntijs/yunti-ui/compare/v1.1.0-beta.10...v1.1.0-beta.11)
+
+<sup>Released on **2025-03-31**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: ChatItem.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: ChatItem, closes [#49](https://github.com/yuntijs/yunti-ui/issues/49) ([3b4c7ba](https://github.com/yuntijs/yunti-ui/commit/3b4c7ba))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.1.0-beta.10](https://github.com/yuntijs/yunti-ui/compare/v1.1.0-beta.9...v1.1.0-beta.10)
 
 <sup>Released on **2025-03-31**</sup>
