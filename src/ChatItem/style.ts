@@ -85,8 +85,8 @@ export const useStyles = createStyles(
         type === 'pure' && pureContainerStylish,
         css`
           position: relative;
-          width: 94%;
-          max-width: 94vw;
+          width: 100%;
+          max-width: 100vw;
           padding: 16px;
 
           time {
@@ -178,7 +178,7 @@ export const useStyles = createStyles(
         css`
           position: relative;
           overflow: hidden;
-          max-width: 100%;
+          max-width: 96%;
           margin-block-start: ${time ? -16 : 0}px;
 
           ${responsive.mobile} {
