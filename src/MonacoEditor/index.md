@@ -38,6 +38,10 @@ export default () => {
 
 <code src="./demos/index.tsx" center></code>
 
+### Markdown2
+
+<code src="./demos/mdEditor2.tsx" center></code>
+
 ### Markdown
 
 <code src="./demos/markdownEditor.tsx" center></code>

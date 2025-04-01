@@ -7,6 +7,7 @@ export * from './Logo';
 export * from './LogViewer';
 export * from './Mentions';
 export * from './MonacoEditor';
+export * from './MonacoEditor/MonacoEditor2';
 export * from './Page';
 export * from './ProCard';
 export * from './SelectCard';
