@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.1.0-beta.14](https://github.com/yuntijs/yunti-ui/compare/v1.1.0-beta.13...v1.1.0-beta.14)
+
+<sup>Released on **2025-04-01**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: Background for user chatItem.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: Background for user chatItem, closes [#52](https://github.com/yuntijs/yunti-ui/issues/52) ([3a04f79](https://github.com/yuntijs/yunti-ui/commit/3a04f79))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.1.0-beta.13](https://github.com/yuntijs/yunti-ui/compare/v1.1.0-beta.12...v1.1.0-beta.13)
 
 <sup>Released on **2025-04-01**</sup>
