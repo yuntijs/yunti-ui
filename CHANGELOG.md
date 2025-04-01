@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.1.0-beta.13](https://github.com/yuntijs/yunti-ui/compare/v1.1.0-beta.12...v1.1.0-beta.13)
+
+<sup>Released on **2025-04-01**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: MonacoEditor2.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: MonacoEditor2, closes [#51](https://github.com/yuntijs/yunti-ui/issues/51) ([7eefb7e](https://github.com/yuntijs/yunti-ui/commit/7eefb7e))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.1.0-beta.12](https://github.com/yuntijs/yunti-ui/compare/v1.1.0-beta.11...v1.1.0-beta.12)
 
 <sup>Released on **2025-03-31**</sup>
