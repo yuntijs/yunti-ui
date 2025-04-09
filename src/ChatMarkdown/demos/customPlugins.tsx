@@ -14,7 +14,7 @@ const code = `<think>
 
 </think>
 
-3 + 3 = 6`;
+3 + 3 = 6 <refer>Alex</refer>`;
 
 // const code1 = `<think>`;
 
