@@ -56,6 +56,10 @@ export interface MentionsProps extends MentionPickerPluginProps {
    * 按下回车的回调，指定后会改变回车的默认行为，换行需要使用 shift + enter
    */
   onPressEnter?: (value: string, { event }: { event: KeyboardEvent | null }) => void;
+  /**
+   * 用户输入 trigger 后的回调
+   */
+  onTrigger?: (trigger: string) => void;
   variant?: 'outlined' | 'filled' | 'borderless';
   autoSize?: AutoSize;
   code?: boolean;
@@ -87,6 +91,7 @@ export const Mentions = forwardRef<MentionsEditor, MentionsProps>(
       code = false,
       getPopContainer,
       onPressEnter,
+      onTrigger,
     },
     ref
   ) => {
@@ -188,6 +193,9 @@ export const Mentions = forwardRef<MentionsEditor, MentionsProps>(
             {editable && (
               <MentionPickerPlugin
                 allowSpaces={allowSpaces}
+                onOpen={resolution =>
+                  onTrigger?.(resolution.match?.replaceableString ?? triggers[0])
+                }
                 onSelect={onSelect}
                 options={options}
                 overlayClassName={classNames?.menuOverlay}

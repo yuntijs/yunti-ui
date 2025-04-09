@@ -1,5 +1,9 @@
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
-import type { MenuRenderFn } from '@lexical/react/LexicalTypeaheadMenuPlugin';
+import type {
+  MenuOption,
+  MenuRenderFn,
+  TypeaheadMenuPluginProps,
+} from '@lexical/react/LexicalTypeaheadMenuPlugin';
 import { LexicalTypeaheadMenuPlugin } from '@lexical/react/LexicalTypeaheadMenuPlugin';
 import { ConfigProvider, Tree } from 'antd';
 import { COMMAND_PRIORITY_NORMAL, type TextNode } from 'lexical';
@@ -18,7 +22,8 @@ import { MentionMenuItem } from './menu-item';
 import { useStyles } from './style';
 import { type MentionMenuOption } from './utils';
 
-export interface MentionPickerPluginProps {
+export interface MentionPickerPluginProps
+  extends Pick<TypeaheadMenuPluginProps<MenuOption>, 'onOpen'> {
   /** The className of menu overlay */
   overlayClassName?: string;
   /** The options of menu */
@@ -70,6 +75,7 @@ export const MentionPickerPlugin: React.FC<MentionPickerPluginProps> = memo(
     punctuation = DEFAULT_PUNCTUATION,
     preTriggerChars = PRE_TRIGGER_CHARS,
     onSelect,
+    onOpen,
     parent,
   }: MentionPickerPluginProps) => {
     const { cx, styles } = useStyles({});
@@ -195,7 +201,6 @@ export const MentionPickerPlugin: React.FC<MentionPickerPluginProps> = memo(
       (anchorElementRef, itemProps, _matchingString) => {
         const { selectedIndex, selectOptionAndCleanUp, setHighlightedIndex } = itemProps;
         handleDisabledItem(itemProps);
-
         if (anchorElementRef.current) {
           return ReactDOM.createPortal(
             <div className={cx(styles.menuOverlay, overlayClassName)} role="menu">
@@ -241,6 +246,7 @@ export const MentionPickerPlugin: React.FC<MentionPickerPluginProps> = memo(
         // 优先级要高于 ShiftEnterKeyPlugin
         commandPriority={COMMAND_PRIORITY_NORMAL}
         menuRenderFn={renderMenu}
+        onOpen={onOpen}
         onQueryChange={setQueryString}
         onSelectOption={onSelectOption}
         options={flatOptions}
