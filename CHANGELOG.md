@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.1.0-beta.15](https://github.com/yuntijs/yunti-ui/compare/v1.1.0-beta.14...v1.1.0-beta.15)
+
+<sup>Released on **2025-04-09**</sup>
+
+#### ✨ Features
+
+- **Mentions**: Support onTrigger.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **Mentions**: Support onTrigger ([c09746c](https://github.com/yuntijs/yunti-ui/commit/c09746c))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.1.0-beta.14](https://github.com/yuntijs/yunti-ui/compare/v1.1.0-beta.13...v1.1.0-beta.14)
 
 <sup>Released on **2025-04-01**</sup>
