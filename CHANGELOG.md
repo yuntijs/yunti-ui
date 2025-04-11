@@ -2,6 +2,66 @@
 
 # Changelog
 
+## [Version 1.2.0](https://github.com/yuntijs/yunti-ui/compare/v1.1.0...v1.2.0)
+
+<sup>Released on **2025-04-11**</sup>
+
+#### ♻ Code Refactoring
+
+- **useHighlight**: Merge from lobehub/ui.
+
+#### ✨ Features
+
+- **FormCollapseList**: Change shown when readOnly.
+- **Highlighter**: Bump shiki\@3.2.1.
+- **Mentions**: Remove SSR special handling, support onPressEnter, support onTrigger, support ref.
+- **MonacoEditor**: Add miss deps for hooks and remove unuse deps in package.json, remove outline style for diff editor.
+
+#### 🐛 Bug Fixes
+
+- **Mentions**: Clear input not work in onPressEnter, getPopContainer prop not work.
+- **misc**: Background for user chatItem, ChatItem, fix the monaco-editor in strict-mode bug, hide avatar for ChatItem, MonacoEditor2, selectedCard, the max width of ChatItem.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### Code refactoring
+
+- **useHighlight**: Merge from lobehub/ui ([ae8a301](https://github.com/yuntijs/yunti-ui/commit/ae8a301))
+
+#### What's improved
+
+- **FormCollapseList**: Change shown when readOnly ([d014ff0](https://github.com/yuntijs/yunti-ui/commit/d014ff0))
+- **Highlighter**: Bump shiki\@3.2.1 ([40bc00d](https://github.com/yuntijs/yunti-ui/commit/40bc00d))
+- **Mentions**: Remove SSR special handling ([c484657](https://github.com/yuntijs/yunti-ui/commit/c484657))
+- **Mentions**: Support onPressEnter ([9d1ff7a](https://github.com/yuntijs/yunti-ui/commit/9d1ff7a))
+- **Mentions**: Support onTrigger ([c09746c](https://github.com/yuntijs/yunti-ui/commit/c09746c))
+- **Mentions**: Support ref ([779531a](https://github.com/yuntijs/yunti-ui/commit/779531a))
+- **MonacoEditor**: Add miss deps for hooks and remove unuse deps in package.json ([55d4034](https://github.com/yuntijs/yunti-ui/commit/55d4034))
+- **MonacoEditor**: Remove outline style for diff editor ([5d141a7](https://github.com/yuntijs/yunti-ui/commit/5d141a7))
+
+#### What's fixed
+
+- **Mentions**: Clear input not work in onPressEnter ([2701831](https://github.com/yuntijs/yunti-ui/commit/2701831))
+- **Mentions**: GetPopContainer prop not work ([933dd0b](https://github.com/yuntijs/yunti-ui/commit/933dd0b))
+- **misc**: Background for user chatItem, closes [#52](https://github.com/yuntijs/yunti-ui/issues/52) ([3a04f79](https://github.com/yuntijs/yunti-ui/commit/3a04f79))
+- **misc**: ChatItem, closes [#49](https://github.com/yuntijs/yunti-ui/issues/49) ([3b4c7ba](https://github.com/yuntijs/yunti-ui/commit/3b4c7ba))
+- **misc**: Fix the monaco-editor in strict-mode bug, closes [#47](https://github.com/yuntijs/yunti-ui/issues/47) ([088ac29](https://github.com/yuntijs/yunti-ui/commit/088ac29))
+- **misc**: Hide avatar for ChatItem, closes [#48](https://github.com/yuntijs/yunti-ui/issues/48) ([2fd12e0](https://github.com/yuntijs/yunti-ui/commit/2fd12e0))
+- **misc**: MonacoEditor2, closes [#51](https://github.com/yuntijs/yunti-ui/issues/51) ([7eefb7e](https://github.com/yuntijs/yunti-ui/commit/7eefb7e))
+- **misc**: SelectedCard, closes [#45](https://github.com/yuntijs/yunti-ui/issues/45) ([6f5d6ad](https://github.com/yuntijs/yunti-ui/commit/6f5d6ad))
+- **misc**: The max width of ChatItem, closes [#50](https://github.com/yuntijs/yunti-ui/issues/50) ([0a17d4c](https://github.com/yuntijs/yunti-ui/commit/0a17d4c))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.2.0-beta.1](https://github.com/yuntijs/yunti-ui/compare/v1.1.0...v1.2.0-beta.1)
 
 <sup>Released on **2025-04-11**</sup>
