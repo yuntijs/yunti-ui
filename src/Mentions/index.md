@@ -31,6 +31,12 @@ export default () => {
 
 <code src="./demos/index.tsx" center></code>
 
+### Chat input
+
+Press shift + enter for line break, press enter to send and clear input.
+
+<code src="./demos/ChatInput.tsx" center></code>
+
 ### Single line
 
 <code src="./demos/SingleLine.tsx" center></code>

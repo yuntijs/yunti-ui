@@ -5,67 +5,81 @@ import {
   transformerNotationHighlight,
   transformerNotationWordHighlight,
 } from '@shikijs/transformers';
-import { type Highlighter, createHighlighter } from 'shiki';
+import { useTheme, useThemeMode } from 'antd-style';
+import { useMemo } from 'react';
+import { codeToHtml } from 'shiki';
 import useSWR from 'swr';
-
-import { themeConfig } from '@/Highlighter/theme';
+import { Md5 } from 'ts-md5';
 
 import { languageMap } from './languageMap';
 
 export const FALLBACK_LANG = 'txt';
 
-const FALLBACK_LANGS = [FALLBACK_LANG];
-
-let cacheHighlighter: Highlighter;
-
-const initHighlighter = async (lang: string): Promise<Highlighter> => {
-  let highlighter = cacheHighlighter;
+// @Todo: use worker to improve performance
+export const useHighlight = (text: string, lang: string, enableTransformer?: boolean) => {
+  const { isDarkMode } = useThemeMode();
   const language = lang.toLowerCase();
-
-  if (highlighter && FALLBACK_LANGS.includes(language)) return highlighter;
-
-  if (languageMap.includes(language as any) && !FALLBACK_LANGS.includes(language)) {
-    FALLBACK_LANGS.push(language);
-  }
-
-  highlighter = await createHighlighter({
-    langs: FALLBACK_LANGS,
-    themes: [themeConfig(true), themeConfig(false), 'catppuccin-latte', 'catppuccin-mocha'],
-  });
-
-  cacheHighlighter = highlighter;
-
-  return highlighter;
-};
-
-export const useHighlight = (text: string, lang: string, isDarkMode: boolean) =>
-  useSWR(
-    [lang?.toLowerCase(), isDarkMode ? 'dark' : 'light', text].join('-'),
-    async () => {
-      try {
-        const language = lang.toLowerCase();
-        let theme = isDarkMode ? 'dark' : 'light';
-        if (language === 'md') {
-          theme = isDarkMode ? 'catppuccin-mocha' : 'catppuccin-latte';
-        }
-        const highlighter = await initHighlighter(language);
-        const html = highlighter?.codeToHtml(text, {
-          lang: languageMap.includes(language as any) ? language : FALLBACK_LANG,
-          theme,
-          transformers: [
-            transformerNotationDiff(),
-            transformerNotationHighlight(),
-            transformerNotationWordHighlight(),
-            transformerNotationFocus(),
-            transformerNotationErrorLevel(),
-          ],
-        });
-        return html;
-      } catch {
-        return '';
-      }
-    },
-    { revalidateOnFocus: false }
+  const matchedLanguage = useMemo(
+    () => (languageMap.includes(language as any) ? language : FALLBACK_LANG),
+    [language]
   );
+  const theme = useTheme();
+  const transformers = useMemo(() => {
+    if (!enableTransformer) return;
+    return [
+      transformerNotationDiff(),
+      transformerNotationHighlight(),
+      transformerNotationWordHighlight(),
+      transformerNotationFocus(),
+      transformerNotationErrorLevel(),
+    ];
+  }, [enableTransformer]);
+
+  const key = useMemo(() => Md5.hashStr(text), [text]);
+
+  const shikiTheme = useMemo(() => {
+    if (language === 'md') {
+      return isDarkMode ? 'catppuccin-mocha' : 'catppuccin-latte';
+    }
+    return isDarkMode ? 'slack-dark' : 'slack-ochin';
+  }, [isDarkMode, language]);
+
+  return useSWR([matchedLanguage, isDarkMode ? 'd' : 'l', key].join('-'), async () => {
+    try {
+      return codeToHtml(text, {
+        colorReplacements: {
+          'slack-dark': {
+            '#4ec9b0': theme.yellow,
+            '#569cd6': theme.colorError,
+            '#6a9955': theme.gray,
+            '#9cdcfe': theme.colorText,
+            '#b5cea8': theme.purple10,
+            '#c586c0': theme.colorInfo,
+            '#ce9178': theme.colorSuccess,
+            '#dcdcaa': theme.colorWarning,
+            '#e6e6e6': theme.colorText,
+          },
+          'slack-ochin': {
+            '#002339': theme.colorText,
+            '#0991b6': theme.colorError,
+            '#174781': theme.purple10,
+            '#2f86d2': theme.colorText,
+            '#357b42': theme.gray,
+            '#7b30d0': theme.colorInfo,
+            '#7eb233': theme.colorWarningTextActive,
+            '#a44185': theme.colorSuccess,
+            '#dc3eb7': theme.yellow11,
+          },
+        },
+        lang: matchedLanguage,
+        theme: shikiTheme,
+        transformers,
+      });
+    } catch (error) {
+      console.warn('shiki Highlight error:', error);
+      return text;
+    }
+  });
+};
 
 export { languageMap } from './languageMap';

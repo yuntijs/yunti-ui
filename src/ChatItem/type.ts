@@ -86,4 +86,8 @@ export interface ChatItemProps {
    * @description Whether this message is latest
    */
   isLatest?: boolean;
+  /**
+   * @description Hide avatar
+   */
+  hideAvatar?: boolean;
 }

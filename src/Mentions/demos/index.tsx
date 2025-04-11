@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { Icon } from '@lobehub/ui';
 import { Mentions, Typography } from '@yuntijs/ui';
 import { Braces, Carrot, Cloud, Smile } from 'lucide-react';
@@ -10,6 +11,7 @@ export default () => {
         maxRows: 5,
       }}
       defaultValue="👋，I'm {{1.zhang}}"
+      onTrigger={trigger => console.log('trigger =>', trigger)}
       options={[
         {
           label: 'zhang',
@@ -97,7 +99,7 @@ export default () => {
         },
       ]}
       preTriggerChars=".*"
-      triggers={['@']}
+      triggers={['@', '#']}
     />
   );
 };

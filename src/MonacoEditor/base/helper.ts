@@ -228,6 +228,10 @@ export const useEditor = <T = IEditorInstance>(
         if (!containerRef.current) {
           return;
         }
+        if (editorRef.current) {
+          editorRef.current.dispose();
+          decomposeRef.current = false;
+        }
         let editor: IEditor.IStandaloneCodeEditor | IEditor.IStandaloneDiffEditor;
         if (typeRef.current === 'single') {
           const model = getOrCreateModel(
@@ -275,7 +279,7 @@ export const useEditor = <T = IEditorInstance>(
           setLoading(false);
         }
       });
-  }, []);
+  }, [placeholder]);
 
   useEffect(() => {
     if (!isEditorReady) {

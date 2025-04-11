@@ -1,8 +1,9 @@
 import type { EntityMatch } from '@lexical/text';
 import type { LexicalNode, TextNode } from 'lexical';
-import { $isTextNode, createCommand } from 'lexical';
+import { $createParagraphNode, $getRoot, $isTextNode, createCommand } from 'lexical';
 
 import { CustomTextNode } from './plugins/custom-text/node';
+import { $convertToMentionNodes } from './plugins/mention-converter';
 
 export const INSERT_MENTION_COMMAND = createCommand('INSERT_MENTION_COMMAND');
 export const DELETE_MENTION_COMMAND = createCommand('DELETE_MENTION_COMMAND');
@@ -77,36 +78,12 @@ export const decoratorTransform = (
   }
 };
 
-export function textToEditorState(text: string) {
-  const paragraph = text.split('\n');
-
-  return JSON.stringify({
-    root: {
-      children: paragraph.map(p => {
-        return {
-          children: [
-            {
-              detail: 0,
-              format: 0,
-              mode: 'normal',
-              style: '',
-              text: p,
-              type: 'custom-text',
-              version: 1,
-            },
-          ],
-          direction: 'ltr',
-          format: '',
-          indent: 0,
-          type: 'paragraph',
-          version: 1,
-        };
-      }),
-      direction: 'ltr',
-      format: '',
-      indent: 0,
-      type: 'root',
-      version: 1,
-    },
-  });
+export function textToEditorState(initialValue: string, triggers: string[]) {
+  return () => {
+    const root = $getRoot();
+    root.clear();
+    const paragraph = $createParagraphNode();
+    paragraph.append(...$convertToMentionNodes(initialValue, triggers));
+    root.append(paragraph);
+  };
 }
