@@ -1,3 +1,4 @@
+import { ClearEditorPlugin } from '@lexical/react/LexicalClearEditorPlugin';
 import { type InitialConfigType, LexicalComposer } from '@lexical/react/LexicalComposer';
 import { ContentEditable } from '@lexical/react/LexicalContentEditable';
 import { LexicalErrorBoundary } from '@lexical/react/LexicalErrorBoundary';
@@ -35,6 +36,7 @@ import { textToEditorState } from './utils';
 
 export * from './types';
 export * from './utils';
+export { CLEAR_EDITOR_COMMAND } from 'lexical';
 
 export interface MentionsProps extends MentionPickerPluginProps {
   className?: string;
@@ -212,6 +214,7 @@ export const Mentions = forwardRef<MentionsEditor, MentionsProps>(
             <OnBlurBlockPlugin onBlur={onBlur} onFocus={onFocus} />
             <EditablePlugin editable={editable} />
             <EditorRefPlugin editorRef={ref} />
+            <ClearEditorPlugin />
             {onPressEnter && <ShiftEnterKeyPlugin onPressEnter={onPressEnter} />}
           </div>
         </MentionsConfigProvider>

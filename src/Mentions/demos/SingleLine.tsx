@@ -1,5 +1,12 @@
 import { Icon } from '@lobehub/ui';
-import { Button, Flex, Mentions, MentionsEditor, textToEditorState } from '@yuntijs/ui';
+import {
+  Button,
+  CLEAR_EDITOR_COMMAND,
+  Flex,
+  Mentions,
+  MentionsEditor,
+  textToEditorState,
+} from '@yuntijs/ui';
 import { Carrot, Cloud, Smile } from 'lucide-react';
 import { useRef } from 'react';
 
@@ -52,7 +59,7 @@ export default () => {
         </Button>
         <Button
           onClick={() => {
-            ref.current?.update(textToEditorState('', []));
+            ref.current?.dispatchCommand(CLEAR_EDITOR_COMMAND, void 0);
           }}
         >
           clear

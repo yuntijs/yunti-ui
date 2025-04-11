@@ -46,7 +46,16 @@ export const ShiftEnterKeyPlugin: React.FC<ShiftEnterKeyPluginProps> = ({ onPres
         event?.preventDefault();
         const text = editor.read(() => $getRoot().getTextContent());
         const value = text.replaceAll('\n\n', '\n');
-        onPressEnter(value, { event });
+        // 这里把 onPressEnter 放在下一次事件循环中触发，是为了避免跟 Lexical 还未结束的输入等事务发生冲突
+        if (window.queueMicrotask === undefined) {
+          setTimeout(() => {
+            onPressEnter(value, { event });
+          }, 0);
+        } else {
+          queueMicrotask(() => {
+            onPressEnter(value, { event });
+          });
+        }
         return true;
       },
       // 优先级要低于 MentionPickerPlugin
