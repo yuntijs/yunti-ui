@@ -8,7 +8,7 @@ import {
   INSERT_PARAGRAPH_COMMAND,
   KEY_ENTER_COMMAND,
 } from 'lexical';
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import type { MentionsProps } from '..';
 
@@ -17,6 +17,11 @@ export interface ShiftEnterKeyPluginProps {
 }
 export const ShiftEnterKeyPlugin: React.FC<ShiftEnterKeyPluginProps> = ({ onPressEnter }) => {
   const [editor] = useLexicalComposerContext();
+  const onPressEnterRef = useRef(onPressEnter);
+
+  useEffect(() => {
+    onPressEnterRef.current = onPressEnter;
+  }, [onPressEnter]);
 
   useEffect(() => {
     // https://github.com/facebook/lexical/discussions/4464#discussioncomment-5833227
@@ -49,11 +54,11 @@ export const ShiftEnterKeyPlugin: React.FC<ShiftEnterKeyPluginProps> = ({ onPres
         // 这里把 onPressEnter 放在下一次事件循环中触发，是为了避免跟 Lexical 还未结束的输入等事务发生冲突
         if (window.queueMicrotask === undefined) {
           setTimeout(() => {
-            onPressEnter(value, { event });
+            onPressEnterRef.current(value, { event });
           }, 0);
         } else {
           queueMicrotask(() => {
-            onPressEnter(value, { event });
+            onPressEnterRef.current(value, { event });
           });
         }
         return true;
@@ -61,7 +66,7 @@ export const ShiftEnterKeyPlugin: React.FC<ShiftEnterKeyPluginProps> = ({ onPres
       // 优先级要低于 MentionPickerPlugin
       COMMAND_PRIORITY_LOW
     );
-  }, [editor, onPressEnter]);
+  }, [editor]);
 
   return null;
 };
