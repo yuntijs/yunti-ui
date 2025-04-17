@@ -22,6 +22,7 @@ import {
 } from './plugins/mention-node';
 import { MentionPickerPlugin, type MentionPickerPluginProps } from './plugins/mention-picker';
 import { OnBlurBlockPlugin } from './plugins/on-blur-block';
+import { OnKeyDownPlugin } from './plugins/on-key-down';
 import { ShiftEnterKeyPlugin } from './plugins/shift-enter-key';
 import { MentionsConfigProvider } from './provider';
 import { useStyles } from './style';
@@ -61,6 +62,13 @@ export interface MentionsProps extends MentionPickerPluginProps {
   /**
    * 用户输入 trigger 后的回调
    */
+  /**
+   * 按下键盘的回调
+   */
+  onKeyDown?: (event: KeyboardEvent | null) => void;
+  /**
+   * 用户输入 trigger 后的回调
+   */
   onTrigger?: (trigger: string) => void;
   variant?: 'outlined' | 'filled' | 'borderless';
   autoSize?: AutoSize;
@@ -93,6 +101,7 @@ export const Mentions = forwardRef<MentionsEditor, MentionsProps>(
       code = false,
       getPopContainer,
       onPressEnter,
+      onKeyDown,
       onTrigger,
     },
     ref
@@ -216,6 +225,7 @@ export const Mentions = forwardRef<MentionsEditor, MentionsProps>(
             <EditorRefPlugin editorRef={ref} />
             <ClearEditorPlugin />
             {onPressEnter && <ShiftEnterKeyPlugin onPressEnter={onPressEnter} />}
+            {onKeyDown && <OnKeyDownPlugin onKeyDown={onKeyDown} />}
           </div>
         </MentionsConfigProvider>
       </LexicalComposer>

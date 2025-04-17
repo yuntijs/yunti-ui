@@ -1,6 +1,6 @@
 import type { EntityMatch } from '@lexical/text';
 import type { LexicalNode, TextNode } from 'lexical';
-import { $createParagraphNode, $getRoot, $isTextNode, createCommand } from 'lexical';
+import { $createParagraphNode, $getRoot, $isTextNode, $selectAll, createCommand } from 'lexical';
 
 import { CustomTextNode } from './plugins/custom-text/node';
 import { $convertToMentionNodes } from './plugins/mention-converter';
@@ -78,12 +78,32 @@ export const decoratorTransform = (
   }
 };
 
-export function textToEditorState(initialValue: string, triggers: string[]) {
+export interface TextToEditorStateOptions {
+  /** 光标位置，默认为 end */
+  cursor?: 'start' | 'end' | 'all';
+}
+export function textToEditorState(
+  initialValue: string,
+  triggers: string[],
+  options?: TextToEditorStateOptions
+) {
   return () => {
     const root = $getRoot();
     root.clear();
     const paragraph = $createParagraphNode();
     paragraph.append(...$convertToMentionNodes(initialValue, triggers));
     root.append(paragraph);
+
+    const { cursor } = options || { cursor: 'end' };
+    if (!cursor || cursor === 'end') {
+      // 👇 把光标移动到文本末尾
+      const lastNode = paragraph.getLastDescendant();
+      if ($isTextNode(lastNode)) {
+        lastNode.select(); // 选中并聚焦尾部
+      }
+    }
+    if (cursor === 'all') {
+      $selectAll();
+    }
   };
 }
