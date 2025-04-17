@@ -9,4 +9,4 @@ export const CLEAR_HIDE_MENU_TIMEOUT = createCommand('CLEAR_HIDE_MENU_TIMEOUT');
 // {{plugin-m67m66l8-794.json."id"}}
 // {{plugin-m67m66l8-794.json."tags"[0]."id"}}
 // export const MENTION_REGEX = /{{([\w-]{1,50}(\."?[_a-z][\w"[\]]*){1,10})}}/gi;
-export const MENTION_REGEX = /{{[^.}]+\.(.+)}}/gi;
+export const MENTION_REGEX = /{{[^.}]+\.(.+?)}}/gi;
