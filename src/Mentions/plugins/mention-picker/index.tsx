@@ -88,7 +88,7 @@ export const MentionPickerPlugin: React.FC<MentionPickerPluginProps> = memo(
 
     const [queryString, setQueryString] = useState<string | null>(null);
 
-    const { options } = useOptions(allOptions, queryString);
+    const { options } = useOptions(allOptions, queryString, trigger);
 
     const flatOptions = useMemo(() => {
       const _flattenTree = (nodes: MentionMenuOption[]): MentionMenuOption[] => {

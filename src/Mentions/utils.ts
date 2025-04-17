@@ -81,6 +81,7 @@ export const decoratorTransform = (
 export interface TextToEditorStateOptions {
   /** 光标位置，默认为 end */
   cursor?: 'start' | 'end' | 'all';
+  punctuation?: string;
 }
 export function textToEditorState(
   initialValue: string,
@@ -88,13 +89,13 @@ export function textToEditorState(
   options?: TextToEditorStateOptions
 ) {
   return () => {
+    const { punctuation, cursor } = options || { cursor: 'end' };
+
     const root = $getRoot();
     root.clear();
     const paragraph = $createParagraphNode();
-    paragraph.append(...$convertToMentionNodes(initialValue, triggers));
+    paragraph.append(...$convertToMentionNodes(initialValue, triggers, punctuation));
     root.append(paragraph);
-
-    const { cursor } = options || { cursor: 'end' };
     if (!cursor || cursor === 'end') {
       // 👇 把光标移动到文本末尾
       const lastNode = paragraph.getLastDescendant();

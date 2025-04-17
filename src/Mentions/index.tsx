@@ -8,7 +8,7 @@ import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
 import { ConfigProvider } from 'antd';
 // @Todo: 升级 0.25.0 后，ops-console 使用的时候出现了只输入 / 无法触发的问题
 import { $getRoot, TextNode } from 'lexical';
-import React, { forwardRef, useMemo } from 'react';
+import React, { forwardRef, useCallback, useMemo } from 'react';
 
 import { isBrowser } from '@/utils/tools';
 
@@ -175,6 +175,14 @@ export const Mentions = forwardRef<MentionsEditor, MentionsProps>(
       }
     }, [getPopContainer]);
 
+    const onMentionPickerOpen = useCallback<Required<MentionPickerPluginProps>['onOpen']>(
+      resolution => {
+        const _trigger = resolution.match?.replaceableString ?? triggers[0];
+        onTrigger?.(_trigger);
+      },
+      [onTrigger, triggers]
+    );
+
     return (
       <LexicalComposer initialConfig={{ ...initialConfig, editable }}>
         <MentionsConfigProvider value={{ optionsMap }}>
@@ -204,9 +212,7 @@ export const Mentions = forwardRef<MentionsEditor, MentionsProps>(
             {editable && (
               <MentionPickerPlugin
                 allowSpaces={allowSpaces}
-                onOpen={resolution =>
-                  onTrigger?.(resolution.match?.replaceableString ?? triggers[0])
-                }
+                onOpen={onMentionPickerOpen}
                 onSelect={onSelect}
                 options={options}
                 overlayClassName={classNames?.menuOverlay}
