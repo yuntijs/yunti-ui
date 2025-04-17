@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.2.0-beta.4](https://github.com/yuntijs/yunti-ui/compare/v1.2.0-beta.3...v1.2.0-beta.4)
+
+<sup>Released on **2025-04-17**</sup>
+
+#### ✨ Features
+
+- **Mentions**: Support triggers in option and change mention regex.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **Mentions**: Support triggers in option and change mention regex ([0f0220d](https://github.com/yuntijs/yunti-ui/commit/0f0220d))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.2.0-beta.3](https://github.com/yuntijs/yunti-ui/compare/v1.2.0-beta.2...v1.2.0-beta.3)
 
 <sup>Released on **2025-04-17**</sup>
