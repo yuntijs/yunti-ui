@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.2.0-beta.3](https://github.com/yuntijs/yunti-ui/compare/v1.2.0-beta.2...v1.2.0-beta.3)
+
+<sup>Released on **2025-04-17**</sup>
+
+#### ✨ Features
+
+- **Mentions**: Support onKeyDown.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **Mentions**: Support onKeyDown ([593e804](https://github.com/yuntijs/yunti-ui/commit/593e804))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.2.0-beta.2](https://github.com/yuntijs/yunti-ui/compare/v1.2.0-beta.1...v1.2.0-beta.2)
 
 <sup>Released on **2025-04-11**</sup>
