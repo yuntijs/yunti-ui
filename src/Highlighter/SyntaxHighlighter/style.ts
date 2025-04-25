@@ -27,10 +27,12 @@ export const useStyles = createStyles(
         `${prefix}-shiki`,
         css`
           overflow: hidden;
+          height: 100%;
           margin: 0;
           padding: 0;
 
           & > pre {
+            height: 100%;
             overflow: auto;
             margin: 0;
             padding: 0;

@@ -108,6 +108,9 @@ export const useHighlight = (
     if (language === 'md') {
       return isDarkMode ? 'catppuccin-mocha' : 'catppuccin-latte';
     }
+    if (language === 'shellsession') {
+      return isDarkMode ? 'material-theme-darker' : 'material-theme-lighter';
+    }
     return isDarkMode ? 'slack-dark' : 'slack-ochin';
   }, [isDarkMode, language, matchedTheme]);
 

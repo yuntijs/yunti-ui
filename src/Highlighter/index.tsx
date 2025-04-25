@@ -77,7 +77,7 @@ export const Highlighter = memo<HighlighterProps>(
     theme,
     ...rest
   }) => {
-    const { styles, cx } = useStyles(type);
+    const { styles, cx } = useStyles({ type });
     const container = cx(styles.container, wrap && styles.wrap, className);
 
     if (fullFeatured)

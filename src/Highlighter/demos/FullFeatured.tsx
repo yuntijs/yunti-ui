@@ -1,8 +1,6 @@
 import { StoryBook, useControls, useCreateStore } from '@lobehub/ui';
 import { FullFeaturedHighlighterProps, Highlighter } from '@yuntijs/ui';
 
-import { themeMap } from '@/hooks/themeMap';
-
 const code = `export default ({ children, className }: MarkdownProps) => {
   const { styles } = useStyles();
   return (
@@ -26,10 +24,10 @@ export default () => {
       },
       language: 'tsx',
       allowChangeLanguage: false,
-      theme: {
-        options: themeMap,
-        value: 'slack-ochin',
-      },
+      // theme: {
+      //   options: themeMap,
+      //   value: 'slack-ochin',
+      // },
     },
     { store }
   );

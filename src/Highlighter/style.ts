@@ -1,7 +1,10 @@
 import { createStyles } from 'antd-style';
 
 export const useStyles = createStyles(
-  ({ token, css, cx, prefixCls, stylish }, type: 'ghost' | 'block' | 'pure') => {
+  (
+    { token, css, cx, prefixCls, stylish },
+    { type, expand }: { type: 'ghost' | 'block' | 'pure'; expand?: boolean }
+  ) => {
     const prefix = `${prefixCls}-highlighter`;
     const buttonHoverCls = `${prefix}-hover-btn`;
     const langHoverCls = `${prefix}-hover-lang`;
@@ -33,8 +36,13 @@ export const useStyles = createStyles(
         type !== 'pure' && typeStylish,
         css`
           position: relative;
+
           overflow: hidden;
+
+          height: ${expand ? '100%' : 'auto'};
+
           border-radius: ${token.borderRadius}px;
+
           transition: background-color 100ms ${token.motionEaseOut};
 
           &:hover {
@@ -52,6 +60,7 @@ export const useStyles = createStyles(
           }
 
           pre {
+            height: 100%;
             margin: 0 !important;
             padding: ${type === 'pure' ? 0 : `16px`} !important;
           }
