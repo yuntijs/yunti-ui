@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.2.0-beta.6](https://github.com/yuntijs/yunti-ui/compare/v1.2.0-beta.5...v1.2.0-beta.6)
+
+<sup>Released on **2025-04-25**</sup>
+
+#### ✨ Features
+
+- **Highlighter**: Support theme config and refactor useHighlight by lobe-ui.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **Highlighter**: Support theme config and refactor useHighlight by lobe-ui ([b892825](https://github.com/yuntijs/yunti-ui/commit/b892825))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.2.0-beta.5](https://github.com/yuntijs/yunti-ui/compare/v1.2.0-beta.4...v1.2.0-beta.5)
 
 <sup>Released on **2025-04-17**</sup>
