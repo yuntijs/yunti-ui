@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.2.0-beta.7](https://github.com/yuntijs/yunti-ui/compare/v1.2.0-beta.6...v1.2.0-beta.7)
+
+<sup>Released on **2025-04-25**</sup>
+
+#### ✨ Features
+
+- **Highlighter**: Add default theme for shellsession.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **Highlighter**: Add default theme for shellsession ([f51474c](https://github.com/yuntijs/yunti-ui/commit/f51474c))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.2.0-beta.6](https://github.com/yuntijs/yunti-ui/compare/v1.2.0-beta.5...v1.2.0-beta.6)
 
 <sup>Released on **2025-04-25**</sup>
