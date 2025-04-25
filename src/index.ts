@@ -38,6 +38,7 @@ export * from './ChatMarkdown';
 export * from './CodeEditor';
 export * from './EditableMessage';
 export * from './Highlighter';
+export * from './hooks/useHighlight';
 export * from './styles';
 
 // ~ custom @lobehub/tts

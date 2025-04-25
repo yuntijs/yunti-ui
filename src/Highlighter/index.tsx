@@ -52,6 +52,8 @@ export interface HighlighterProps extends DivProps {
    * @default false
    */
   wrap?: boolean;
+  enableTransformer?: boolean;
+  theme?: string;
 }
 
 export const Highlighter = memo<HighlighterProps>(
@@ -71,10 +73,12 @@ export const Highlighter = memo<HighlighterProps>(
     icon,
     contentStyle,
     wrap,
+    enableTransformer,
+    theme,
     ...rest
   }) => {
     const { styles, cx } = useStyles(type);
-    const container = cx(styles.container, !wrap && styles.nowrap, className);
+    const container = cx(styles.container, wrap && styles.wrap, className);
 
     if (fullFeatured)
       return (
@@ -86,6 +90,7 @@ export const Highlighter = memo<HighlighterProps>(
           icon={icon}
           language={language}
           style={style}
+          theme={theme}
           {...rest}
         >
           {children}
@@ -105,7 +110,12 @@ export const Highlighter = memo<HighlighterProps>(
         )}
         {showLanguage && language && <Tag className={styles.lang}>{language.toLowerCase()}</Tag>}
         <div className={styles.scroller}>
-          <SyntaxHighlighter language={language?.toLowerCase()} style={contentStyle}>
+          <SyntaxHighlighter
+            enableTransformer={enableTransformer}
+            language={language?.toLowerCase()}
+            style={contentStyle}
+            theme={theme}
+          >
             {children}
           </SyntaxHighlighter>
         </div>

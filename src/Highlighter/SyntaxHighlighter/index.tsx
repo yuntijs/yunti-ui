@@ -1,5 +1,4 @@
 import { Icon } from '@lobehub/ui';
-import { useThemeMode } from 'antd-style';
 import { Loader2 } from 'lucide-react';
 import { memo } from 'react';
 import { Flexbox } from 'react-layout-kit';
@@ -12,19 +11,20 @@ import { useStyles } from './style';
 export interface SyntaxHighlighterProps extends DivProps {
   children: string;
   language: string;
+  enableTransformer?: boolean;
+  theme?: string;
 }
 
 export const SyntaxHighlighter = memo<SyntaxHighlighterProps>(
-  ({ children, language, className, style }) => {
-    const { styles, cx } = useStyles();
-    const { isDarkMode } = useThemeMode();
+  ({ children, language, enableTransformer, theme, className, style }) => {
+    const { styles, cx } = useStyles({ theme });
 
-    const { data, isLoading } = useHighlight(children.trim(), language, isDarkMode);
+    const { data, isLoading } = useHighlight(children.trim(), language, enableTransformer, theme);
 
     return (
       <>
         {isLoading || !data ? (
-          <div className={cx(styles.unshiki, className)} style={style}>
+          <div className={cx(styles.shiki, className)} style={style}>
             <pre>
               <div>{children.trim()}</div>
             </pre>

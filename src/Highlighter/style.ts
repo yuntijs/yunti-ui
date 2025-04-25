@@ -52,18 +52,8 @@ export const useStyles = createStyles(
           }
 
           pre {
-            overflow: auto hidden;
-
             margin: 0 !important;
             padding: ${type === 'pure' ? 0 : `16px`} !important;
-
-            white-space: break-spaces;
-
-            background: none !important;
-          }
-
-          code {
-            background: transparent !important;
           }
         `
       ),
@@ -89,9 +79,9 @@ export const useStyles = createStyles(
           transition: opacity 0.1s;
         `
       ),
-      nowrap: css`
-        code {
-          text-wrap: nowrap !important;
+      wrap: css`
+        pre {
+          white-space: break-spaces;
         }
       `,
       scroller: css`

@@ -1,120 +1,119 @@
 import { createStyles } from 'antd-style';
 
-export const useStyles = createStyles(({ css, token, cx, prefixCls, stylish }) => {
-  const prefix = `${prefixCls}-highlighter`;
+export const useStyles = createStyles(
+  ({ css, token, cx, prefixCls, stylish }, { theme }: { theme?: string }) => {
+    const prefix = `${prefixCls}-highlighter`;
 
-  return {
-    loading: cx(
-      stylish.blur,
-      css`
-        position: absolute;
-        z-index: 10;
-        inset-block-start: 0;
-        inset-inline-end: 0;
+    return {
+      loading: cx(
+        stylish.blur,
+        css`
+          position: absolute;
+          z-index: 10;
+          inset-block-start: 0;
+          inset-inline-end: 0;
 
-        height: 34px;
-        padding-block: 0;
-        padding-inline: 8px;
+          height: 34px;
+          padding-block: 0;
+          padding-inline: 8px;
 
-        font-family: ${token.fontFamilyCode};
-        color: ${token.colorTextTertiary};
+          font-family: ${token.fontFamilyCode};
+          color: ${token.colorTextTertiary};
 
-        border-radius: ${token.borderRadius};
-      `
-    ),
-    shiki: cx(
-      `${prefix}-shiki`,
-      css`
-        overflow: auto;
-        margin: 0;
-        padding: 0;
-
-        .shiki {
-          overflow: unset;
+          border-radius: ${token.borderRadius};
+        `
+      ),
+      shiki: cx(
+        `${prefix}-shiki`,
+        css`
+          overflow: hidden;
           margin: 0;
           padding: 0;
-          background: none !important;
 
-          code {
-            display: block;
+          & > pre {
+            overflow: auto;
+            margin: 0;
+            padding: 0;
+            ${!theme &&
+            css`
+              background: none !important;
+            `}
 
-            .line {
-              display: inline-block;
+            code {
+              display: block;
 
-              width: calc(100% + 32px);
-              margin-block: 0;
-              margin-inline: -16px;
-              padding-block: 0;
-              padding-inline: 16px;
-            }
-          }
-
-          &.has-focused {
-            .line:not(.focused) {
-              opacity: 0.5;
-            }
-          }
-
-          .highlighted {
-            background: ${token.colorFillTertiary};
-
-            &.warning {
-              background: ${token.colorWarningBg};
-            }
-
-            &.error {
-              background: ${token.colorErrorBg};
-            }
-          }
-
-          .highlighted-word {
-            padding-block: 0.1em;
-            padding-inline: 0.2em;
-
-            background: ${token.colorFillTertiary};
-            border: 1px solid ${token.colorBorderSecondary};
-            border-radius: ${token.borderRadius}px;
-          }
-
-          .diff {
-            &.remove {
-              background: ${token.colorErrorBg};
-
-              &::before {
-                content: '-';
-
-                position: absolute;
-                inset-inline-start: 4px;
-
+              .line {
                 display: inline-block;
 
-                color: ${token.colorErrorText};
+                width: calc(100% + 32px);
+                margin-block: 0;
+                margin-inline: -16px;
+                padding-block: 0;
+                padding-inline: 16px;
               }
             }
 
-            &.add {
-              background: ${token.colorSuccessBg};
+            &.has-focused {
+              .line:not(.focused) {
+                opacity: 0.5;
+              }
+            }
 
-              &::before {
-                content: '+';
+            .highlighted {
+              background: ${token.colorFillTertiary};
 
-                position: absolute;
-                inset-inline-start: 4px;
+              &.warning {
+                background: ${token.colorWarningBg};
+              }
 
-                display: inline-block;
+              &.error {
+                background: ${token.colorErrorBg};
+              }
+            }
 
-                color: ${token.colorSuccessText};
+            .highlighted-word {
+              padding-block: 0.1em;
+              padding-inline: 0.2em;
+
+              background: ${token.colorFillTertiary};
+              border: 1px solid ${token.colorBorderSecondary};
+              border-radius: ${token.borderRadius}px;
+            }
+
+            .diff {
+              &.remove {
+                background: ${token.colorErrorBg};
+
+                &::before {
+                  content: '-';
+
+                  position: absolute;
+                  inset-inline-start: 4px;
+
+                  display: inline-block;
+
+                  color: ${token.colorErrorText};
+                }
+              }
+
+              &.add {
+                background: ${token.colorSuccessBg};
+
+                &::before {
+                  content: '+';
+
+                  position: absolute;
+                  inset-inline-start: 4px;
+
+                  display: inline-block;
+
+                  color: ${token.colorSuccessText};
+                }
               }
             }
           }
-        }
-      `
-    ),
-    unshiki: css`
-      overflow: auto;
-      margin: 0;
-      padding: 0;
-      color: ${token.colorTextDescription};
-    `,
-  };
-});
+        `
+      ),
+    };
+  }
+);
