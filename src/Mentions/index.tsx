@@ -1,3 +1,4 @@
+import { AutoFocusPlugin } from '@lexical/react/LexicalAutoFocusPlugin';
 import { ClearEditorPlugin } from '@lexical/react/LexicalClearEditorPlugin';
 import { type InitialConfigType, LexicalComposer } from '@lexical/react/LexicalComposer';
 import { ContentEditable } from '@lexical/react/LexicalContentEditable';
@@ -74,6 +75,7 @@ export interface MentionsProps extends MentionPickerPluginProps {
   autoSize?: AutoSize;
   code?: boolean;
   getPopContainer?: () => HTMLElement;
+  autoFocus?: 'rootStart' | 'rootEnd';
 }
 
 export const Mentions = forwardRef<MentionsEditor, MentionsProps>(
@@ -103,6 +105,7 @@ export const Mentions = forwardRef<MentionsEditor, MentionsProps>(
       onPressEnter,
       onKeyDown,
       onTrigger,
+      autoFocus,
     },
     ref
   ) => {
@@ -125,7 +128,7 @@ export const Mentions = forwardRef<MentionsEditor, MentionsProps>(
           },
           MentionNode,
         ],
-        editorState: textToEditorState(value || defaultValue || '', triggers),
+        editorState: textToEditorState(value || defaultValue || '', triggers, { punctuation }),
         onError: (error: Error) => {
           throw error;
         },
@@ -232,6 +235,7 @@ export const Mentions = forwardRef<MentionsEditor, MentionsProps>(
             <ClearEditorPlugin />
             {onPressEnter && <ShiftEnterKeyPlugin onPressEnter={onPressEnter} />}
             {onKeyDown && <OnKeyDownPlugin onKeyDown={onKeyDown} />}
+            {autoFocus && <AutoFocusPlugin defaultSelection={autoFocus} />}
           </div>
         </MentionsConfigProvider>
       </LexicalComposer>

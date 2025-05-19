@@ -17,6 +17,7 @@ export default () => {
   return (
     <Flex style={{ width: '100%' }} vertical>
       <Mentions
+        autoFocus="rootEnd"
         autoSize={{
           minRows: 1,
         }}
