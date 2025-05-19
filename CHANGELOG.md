@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version 1.2.0-beta.8](https://github.com/yuntijs/yunti-ui/compare/v1.2.0-beta.7...v1.2.0-beta.8)
+
+<sup>Released on **2025-05-19**</sup>
+
+#### ✨ Features
+
+- **Mentions**: Support autoFocus.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **Mentions**: Support autoFocus ([9dcc4c1](https://github.com/yuntijs/yunti-ui/commit/9dcc4c1))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.2.0-beta.7](https://github.com/yuntijs/yunti-ui/compare/v1.2.0-beta.6...v1.2.0-beta.7)
 
 <sup>Released on **2025-04-25**</sup>
