@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version&nbsp;2.0.0-beta.1](https://github.com/yuntijs/yunti-ui/compare/v1.2.0-beta.8...v2.0.0-beta.1)
+
+<sup>Released on **2025-05-26**</sup>
+
+#### ✨ Features
+
+- **misc**: Bump v2 [force major].
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **misc**: Bump v2 [force major] ([cff8c87](https://github.com/yuntijs/yunti-ui/commit/cff8c87))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.2.0-beta.8](https://github.com/yuntijs/yunti-ui/compare/v1.2.0-beta.7...v1.2.0-beta.8)
 
 <sup>Released on **2025-05-19**</sup>
