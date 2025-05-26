@@ -6,7 +6,7 @@ export const useStyles = createStyles(
     { cx, css, token, isDarkMode, responsive },
     {
       placement,
-      type,
+      variant,
       title,
       primary,
       avatarSize,
@@ -21,7 +21,7 @@ export const useStyles = createStyles(
       showTitle?: boolean;
       time?: number;
       title?: string;
-      type?: 'block' | 'pure';
+      variant?: 'bubble' | 'docs';
       isLatest?: boolean;
     }
   ) => {
@@ -50,7 +50,7 @@ export const useStyles = createStyles(
       transition: background-color 100ms ${token.motionEaseOut};
     `;
 
-    const typeStylish = type === 'block' ? blockStylish : pureStylish;
+    const typeStylish = variant === 'bubble' ? blockStylish : pureStylish;
 
     const editingStylish =
       editing &&
@@ -82,7 +82,7 @@ export const useStyles = createStyles(
         width: ${avatarSize}px;
       `,
       container: cx(
-        type === 'pure' && pureContainerStylish,
+        variant === 'docs' && pureContainerStylish,
         css`
           position: relative;
           width: 100%;
@@ -116,7 +116,7 @@ export const useStyles = createStyles(
           }
 
           ${responsive.mobile} {
-            padding-block: ${type === 'pure' ? '12px' : '6px'};
+            padding-block: ${variant === 'docs' ? '12px' : '6px'};
             padding-inline: 8px;
           }
         `
@@ -133,7 +133,7 @@ export const useStyles = createStyles(
             border-color: ${token.colorBorder};
           }
         `,
-        type === 'pure' &&
+        variant === 'docs' &&
           css`
             background: ${token.colorFillQuaternary};
             border-radius: ${token.borderRadius}px;

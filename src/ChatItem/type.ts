@@ -1,5 +1,6 @@
-import { AlertProps, AvatarProps, DivProps, MetaData } from '@lobehub/ui';
-import { ReactNode } from 'react';
+import type { AlertProps, AvatarProps, DivProps } from '@lobehub/ui';
+import type { MetaData } from '@lobehub/ui/chat';
+import type { ReactNode } from 'react';
 
 import type { EditableMessageProps } from '@/EditableMessage';
 
@@ -70,10 +71,10 @@ export interface ChatItemProps {
    */
   time?: number;
   /**
-   * @description The type of the chat item
-   * @default 'block'
+   * @description The variant of the chat item
+   * @default 'bubble'
    */
-  type?: 'block' | 'pure';
+  variant?: 'bubble' | 'docs';
   /**
    * @description The markdownProps of the chat item
    */

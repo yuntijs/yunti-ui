@@ -5,7 +5,7 @@ export * from './customToken';
 
 export type DivProps = HTMLAttributes<HTMLDivElement>;
 
-export type SvgProps = HTMLAttributes<SVGSVGElement>;
+export type SvgProps = HTMLAttributes<SVGElement>;
 
 export type ImgProps = HTMLAttributes<HTMLImageElement>;
 

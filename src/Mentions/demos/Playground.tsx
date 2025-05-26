@@ -1,4 +1,5 @@
-import { Icon, StoryBook, useControls, useCreateStore } from '@lobehub/ui';
+import { Icon } from '@lobehub/ui';
+import { StoryBook, useControls, useCreateStore } from '@lobehub/ui/storybook';
 import { Mentions, MentionsProps } from '@yuntijs/ui';
 import { Carrot, Cloud, Smile } from 'lucide-react';
 

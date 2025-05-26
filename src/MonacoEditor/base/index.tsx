@@ -36,8 +36,8 @@ const SingleMonacoEditor: React.FC<ISingleMonacoEditorProps & { variant?: Varian
 
   const { isEditorReady, focused, loading, containerRef, monacoRef, editorRef, valueRef } =
     useEditor<editor.IStandaloneCodeEditor>('single', props);
-  const subscriptionRef = useRef<IDisposable>();
-  const subscriptionBlurRef = useRef<IDisposable>();
+  const subscriptionRef = useRef<IDisposable>(null);
+  const subscriptionBlurRef = useRef<IDisposable>(null);
 
   const { isFullScreen, fullScreen } = useFullScreen(editorRef?.current);
   const { cx, styles } = useStyles({

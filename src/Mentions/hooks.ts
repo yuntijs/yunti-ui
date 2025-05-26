@@ -21,7 +21,7 @@ import { LENGTH_LIMIT, TRIGGERS, VALID_CHARS, VALID_JOINS } from './constants';
 export type UseSelectOrDeleteHanlder = (
   nodeKey: string,
   command: LexicalCommand<undefined>
-) => [RefObject<HTMLDivElement>, boolean];
+) => [RefObject<HTMLDivElement | null>, boolean];
 export const useSelectOrDelete: UseSelectOrDeleteHanlder = (
   nodeKey: string,
   command: LexicalCommand<undefined>
@@ -85,7 +85,7 @@ export const useSelectOrDelete: UseSelectOrDeleteHanlder = (
 };
 
 export type UseTriggerHandler = () => [
-  RefObject<HTMLDivElement>,
+  RefObject<HTMLDivElement | null>,
   boolean,
   Dispatch<SetStateAction<boolean>>,
 ];

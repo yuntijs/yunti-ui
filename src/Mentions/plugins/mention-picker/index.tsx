@@ -124,7 +124,7 @@ export const MentionPickerPlugin: React.FC<MentionPickerPluginProps> = memo(
       [editor, onSelect, queryString, trigger]
     );
 
-    const preSelectedIndex = useRef<number>();
+    const preSelectedIndex = useRef<number>(0);
     const handleDisabledItem = useCallback(
       (itemProps: Parameters<MenuRenderFn<MentionMenuOption>>['1']) => {
         const { selectedIndex, setHighlightedIndex } = itemProps;

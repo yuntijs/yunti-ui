@@ -1,4 +1,4 @@
-import { StoryBook, useControls, useCreateStore } from '@lobehub/ui';
+import { StoryBook, useControls, useCreateStore } from '@lobehub/ui/storybook';
 import type { TypographyProps } from '@yuntijs/ui';
 import { Typography } from '@yuntijs/ui';
 

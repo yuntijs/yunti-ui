@@ -1,8 +1,17 @@
 import { createStyles } from 'antd-style';
 
 export const useStyles = createStyles(
-  ({ css, token }, { divider, position }: { divider?: boolean; position?: 'top' | 'bottom' }) => {
+  (
+    { css, token, prefixCls },
+    { divider, position }: { divider?: boolean; position?: 'top' | 'bottom' }
+  ) => {
     return {
+      menu: css`
+        &.${prefixCls}-dropdown-menu {
+          border: none;
+          box-shadow: none !important;
+        }
+      `,
       menuWrapper: css`
         background-color: ${token.colorBgElevated};
         border-radius: ${token.borderRadiusLG}px;

@@ -8,11 +8,11 @@ export interface ActionsProps {
   actions: ChatItemProps['actions'];
   editing?: boolean;
   placement?: ChatItemProps['placement'];
-  type?: ChatItemProps['type'];
+  variant?: ChatItemProps['variant'];
 }
 
-const Actions = memo<ActionsProps>(({ actions, placement, type, editing }) => {
-  const { styles } = useStyles({ editing, placement, type });
+const Actions = memo<ActionsProps>(({ actions, placement, variant, editing }) => {
+  const { styles } = useStyles({ editing, placement, variant });
 
   return (
     <Flexbox align={'flex-start'} className={styles.actions} role="menubar">

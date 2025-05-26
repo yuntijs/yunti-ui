@@ -1,4 +1,4 @@
-import { StoryBook, useControls, useCreateStore } from '@lobehub/ui';
+import { StoryBook, useControls, useCreateStore } from '@lobehub/ui/storybook';
 import type { DividerProps } from '@yuntijs/ui';
 import { Divider } from '@yuntijs/ui';
 

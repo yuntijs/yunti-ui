@@ -1,4 +1,4 @@
-import { StoryBook, useControls, useCreateStore } from '@lobehub/ui';
+import { StoryBook, useControls, useCreateStore } from '@lobehub/ui/storybook';
 import { MonacoDiffEditor, MonacoDiffEditorProps } from '@yuntijs/ui';
 
 import { original, value } from './data/diff';

@@ -35,13 +35,17 @@ export const LogViewer: React.FC<LogViewerProps> = ({
   const [urlHash, setUrlHash] = useState(0);
   const [loading, setLoading] = useState(false);
   const [followAfterLoaded, setFollowAfterLoaded] = useState(false);
-  const setLoadingTimeout = useRef<NodeJS.Timeout>();
-  const setFollowAfterLoadedTimeout = useRef<NodeJS.Timeout>();
+  const setLoadingTimeout = useRef<NodeJS.Timeout>(null);
+  const setFollowAfterLoadedTimeout = useRef<NodeJS.Timeout>(null);
 
   useEffect(() => {
     return () => {
-      clearTimeout(setLoadingTimeout.current);
-      clearTimeout(setFollowAfterLoadedTimeout.current);
+      if (setLoadingTimeout.current) {
+        clearTimeout(setLoadingTimeout.current);
+      }
+      if (setFollowAfterLoadedTimeout.current) {
+        clearTimeout(setFollowAfterLoadedTimeout.current);
+      }
     };
   }, []);
 
@@ -64,7 +68,7 @@ export const LogViewer: React.FC<LogViewerProps> = ({
     // workaround for onLoad exec twice
     setLoadingTimeout.current = setTimeout(() => {
       setLoading(true);
-      setLoadingTimeout.current = undefined;
+      setLoadingTimeout.current = null;
     }, 50);
 
     return `${urlFromProps}#${urlHash}`;
@@ -72,7 +76,7 @@ export const LogViewer: React.FC<LogViewerProps> = ({
 
   const handleOnLoad: LogViewerProps['onLoad'] = useCallback(() => {
     // if has log line clear setLoading timeout
-    if (document.querySelector('.react-lazylog .log-line')) {
+    if (document.querySelector('.react-lazylog .log-line') && setLoadingTimeout.current) {
       clearTimeout(setLoadingTimeout.current);
     }
     setLoading(false);
@@ -87,7 +91,9 @@ export const LogViewer: React.FC<LogViewerProps> = ({
   const handleOnError: LogViewerProps['onError'] = useCallback(
     (error: any) => {
       setLoading(false);
-      clearTimeout(setLoadingTimeout.current);
+      if (setLoadingTimeout.current) {
+        clearTimeout(setLoadingTimeout.current);
+      }
       onError?.(error);
     },
     [onError]

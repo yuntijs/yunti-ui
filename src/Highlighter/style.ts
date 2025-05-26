@@ -3,18 +3,20 @@ import { createStyles } from 'antd-style';
 export const useStyles = createStyles(
   (
     { token, css, cx, prefixCls, stylish },
-    { type, expand }: { type: 'ghost' | 'block' | 'pure'; expand?: boolean }
+    { variant, expand }: { variant: 'filled' | 'outlined' | 'borderless'; expand?: boolean }
   ) => {
     const prefix = `${prefixCls}-highlighter`;
     const buttonHoverCls = `${prefix}-hover-btn`;
     const langHoverCls = `${prefix}-hover-lang`;
 
-    const typeStylish = css`
-      background-color: ${type === 'block' ? token.colorFillTertiary : 'transparent'};
-      border: 1px solid ${type === 'block' ? 'transparent' : token.colorBorder};
+    const variantStylish = css`
+      background-color: ${variant === 'filled' ? token.colorFillTertiary : 'transparent'};
+      border: 1px solid ${variant === 'filled' ? 'transparent' : token.colorBorder};
 
       &:hover {
-        background-color: ${type === 'block' ? token.colorFillTertiary : token.colorFillQuaternary};
+        background-color: ${variant === 'filled'
+          ? token.colorFillTertiary
+          : token.colorFillQuaternary};
       }
     `;
 
@@ -24,8 +26,8 @@ export const useStyles = createStyles(
         css`
           position: absolute;
           z-index: 2;
-          inset-block-start: ${type === 'pure' ? 0 : '12px'};
-          inset-inline-end: ${type === 'pure' ? 0 : '12px'};
+          inset-block-start: ${variant === 'borderless' ? 0 : '12px'};
+          inset-inline-end: ${variant === 'borderless' ? 0 : '12px'};
 
           opacity: 0;
         `
@@ -33,13 +35,13 @@ export const useStyles = createStyles(
 
       container: cx(
         prefix,
-        type !== 'pure' && typeStylish,
+        variant !== 'borderless' && variantStylish,
         css`
           position: relative;
 
           overflow: hidden;
 
-          height: ${expand ? '100%' : 'auto'};
+          height: ${expand ? '100%' : 'auto !important'};
 
           border-radius: ${token.borderRadius}px;
 
@@ -62,7 +64,7 @@ export const useStyles = createStyles(
           pre {
             height: 100%;
             margin: 0 !important;
-            padding: ${type === 'pure' ? 0 : `16px`} !important;
+            padding: ${variant === 'borderless' ? 0 : `16px`} !important;
           }
         `
       ),
