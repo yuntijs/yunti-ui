@@ -1,5 +1,6 @@
 import { SpeechSynthesisTTS } from '@lobehub/tts';
-import { Icon, StoryBook, useControls, useCreateStore } from '@lobehub/ui';
+import { Icon } from '@lobehub/ui';
+import { StoryBook, useControls, useCreateStore } from '@lobehub/ui/storybook';
 import { useSpeechSynthes } from '@yuntijs/ui';
 import { Button, Input, SelectProps } from 'antd';
 import { StopCircle, Volume2 } from 'lucide-react';

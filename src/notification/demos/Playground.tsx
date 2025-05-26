@@ -1,4 +1,4 @@
-import { StoryBook, useControls, useCreateStore } from '@lobehub/ui';
+import { StoryBook, useControls, useCreateStore } from '@lobehub/ui/storybook';
 import { App, Button, NotificationArgsProps, notification } from '@yuntijs/ui';
 
 export default () => {

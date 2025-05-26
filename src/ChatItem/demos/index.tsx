@@ -1,4 +1,5 @@
-import { ActionIconGroup, StoryBook, useControls, useCreateStore } from '@lobehub/ui';
+import { ActionIconGroup } from '@lobehub/ui';
+import { StoryBook, useControls, useCreateStore } from '@lobehub/ui/storybook';
 import { ChatItem, ChatItemProps } from '@yuntijs/ui';
 import { useState } from 'react';
 
@@ -22,9 +23,9 @@ export default () => {
       primary: false,
       showTitle: false,
       time: 1_686_538_950_084,
-      type: {
-        options: ['block', 'pure'],
-        value: 'block',
+      variant: {
+        options: ['bubble', 'docs'],
+        value: 'bubble',
       },
     },
     { store }
@@ -36,14 +37,14 @@ export default () => {
         {...control}
         actions={
           <ActionIconGroup
-            dropdownMenu={dropdownMenu}
             items={items}
+            menu={dropdownMenu}
             onActionClick={action => {
               if (action.key === 'edit') {
                 setEdit(true);
               }
             }}
-            type="ghost"
+            variant="outlined"
           />
         }
         avatar={avatar}
@@ -56,14 +57,14 @@ export default () => {
         {...control}
         actions={
           <ActionIconGroup
-            dropdownMenu={dropdownMenu}
             items={items}
+            menu={dropdownMenu}
             onActionClick={action => {
               if (action.key === 'edit') {
                 setEdit(true);
               }
             }}
-            type="ghost"
+            variant="outlined"
           />
         }
         avatar={avatar}

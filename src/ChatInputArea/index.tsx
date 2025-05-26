@@ -1,6 +1,12 @@
 export { default as ChatInputArea, type ChatInputAreaProps } from './desktop/ChatInputArea';
-export { ChatInputActionBar, type ChatInputActionBarProps } from '@lobehub/ui';
-export { ChatInputAreaInner, type ChatInputAreaInnerProps } from '@lobehub/ui';
-export { ChatSendButton, type ChatSendButtonProps } from '@lobehub/ui';
-export { MobileChatInputArea, type MobileChatInputAreaProps } from '@lobehub/ui';
-export { MobileChatSendButton, type MobileChatSendButtonProps } from '@lobehub/ui';
+export { ChatInputActionBar, type ChatInputActionBarProps } from '@lobehub/ui/chat';
+export { ChatInputAreaInner, type ChatInputAreaInnerProps } from '@lobehub/ui/chat';
+export { ChatSendButton, type ChatSendButtonProps } from '@lobehub/ui/chat';
+export {
+  ChatInputArea as MobileChatInputArea,
+  type ChatInputAreaProps as MobileChatInputAreaProps,
+} from '@lobehub/ui/mobile';
+export {
+  ChatSendButton as MobileChatSendButton,
+  type ChatSendButtonProps as MobileChatSendButtonProps,
+} from '@lobehub/ui/mobile';

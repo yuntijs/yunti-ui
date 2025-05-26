@@ -1,4 +1,4 @@
-import { StoryBook, useControls, useCreateStore } from '@lobehub/ui';
+import { StoryBook, useControls, useCreateStore } from '@lobehub/ui/storybook';
 import { Dropdown, Table, TableProps, Tag } from '@yuntijs/ui';
 import { useState } from 'react';
 

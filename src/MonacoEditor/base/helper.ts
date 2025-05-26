@@ -126,7 +126,7 @@ const DIFF_EDITOR_INITIAL_OPTIONS: IEditor.IStandaloneDiffEditorConstructionOpti
 };
 
 function usePrevious<T>(value: T) {
-  const ref = useRef<T>();
+  const ref = useRef<T>(null);
   useEffect(() => {
     ref.current = value;
   }, [value]);
@@ -171,12 +171,12 @@ export const useEditor = <T = IEditorInstance>(
   const previousPath = usePrevious(path);
   const requireConfigRef = useRef(props.requireConfig);
   const optionRef = useRef(props.options);
-  const monacoRef = useRef<Monaco>();
-  const editorRef = useRef<IEditorInstance>();
-  const containerRef = useRef<HTMLDivElement>();
+  const monacoRef = useRef<Monaco>(null);
+  const editorRef = useRef<IEditorInstance>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const typeRef = useRef(type);
-  const editorDidMountRef = useRef<ISingleMonacoEditorProps['editorDidMount']>();
-  const editorWillMountRef = useRef<ISingleMonacoEditorProps['editorWillMount']>();
+  const editorDidMountRef = useRef<ISingleMonacoEditorProps['editorDidMount']>(null);
+  const editorWillMountRef = useRef<ISingleMonacoEditorProps['editorWillMount']>(null);
 
   const decomposeRef = useRef(false);
   const viewStatusRef = useRef<Map<any, IEditor.ICodeEditorViewState>>(new Map());

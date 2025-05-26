@@ -55,9 +55,9 @@ export default () => {
 
 <code src="./demos/index.tsx" center></code>
 
-### use `dropdownRender`
+### use `popupRender`
 
-<code src="./demos/DropdownRender.tsx" center></code>
+<code src="./demos/PopupRender.tsx" center></code>
 
 ## APIs
 

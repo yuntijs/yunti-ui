@@ -1,9 +1,5 @@
-import {
-  ChatInputAreaInner,
-  type ChatInputAreaInnerProps,
-  DraggablePanel,
-  type DraggablePanelProps,
-} from '@lobehub/ui';
+import { DraggablePanel, type DraggablePanelProps } from '@lobehub/ui';
+import { ChatInputAreaInner, type ChatInputAreaInnerProps } from '@lobehub/ui/chat';
 import { createStyles } from 'antd-style';
 import type { TextAreaRef } from 'antd/es/input/TextArea';
 import { ReactNode, forwardRef, memo } from 'react';
@@ -90,7 +86,7 @@ const ChatInputArea = forwardRef<TextAreaRef, ChatInputAreaProps>(
                 setExpand?.(false);
               }}
               ref={ref}
-              type={'pure'}
+              variant="borderless"
               {...rest}
             />
           </div>

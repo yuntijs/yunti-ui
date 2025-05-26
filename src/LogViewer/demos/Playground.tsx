@@ -1,7 +1,7 @@
 /**
  * compact: true
  */
-import { StoryBook, useControls, useCreateStore } from '@lobehub/ui';
+import { StoryBook, useControls, useCreateStore } from '@lobehub/ui/storybook';
 import { LogViewer, LogViewerProps } from '@yuntijs/ui';
 
 export default () => {

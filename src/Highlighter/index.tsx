@@ -1,6 +1,7 @@
 'use client';
 
-import { CopyButton, type CopyButtonProps, Spotlight, Tag } from '@lobehub/ui';
+import { CopyButton, type CopyButtonProps, Tag } from '@lobehub/ui';
+import { Spotlight } from '@lobehub/ui/awesome';
 import React, { ReactNode, memo } from 'react';
 
 import { DivProps } from '@/types';
@@ -39,10 +40,10 @@ export interface HighlighterProps extends DivProps {
    */
   spotlight?: boolean;
   /**
-   * @description The type of the code block
-   * @default 'block'
+   * @description The variant of the code block
+   * @default 'filled'
    */
-  type?: 'ghost' | 'block' | 'pure';
+  variant?: 'filled' | 'outlined' | 'borderless';
   /**
    * @description The style of the code content
    */
@@ -59,14 +60,14 @@ export interface HighlighterProps extends DivProps {
 export const Highlighter = memo<HighlighterProps>(
   ({
     fullFeatured,
-    copyButtonSize = 'site',
+    copyButtonSize = 'small',
     children,
     language,
     className,
     style,
     copyable = true,
     showLanguage = true,
-    type = 'block',
+    variant = 'filled',
     spotlight,
     allowChangeLanguage,
     fileName,
@@ -77,7 +78,7 @@ export const Highlighter = memo<HighlighterProps>(
     theme,
     ...rest
   }) => {
-    const { styles, cx } = useStyles({ type });
+    const { styles, cx } = useStyles({ variant });
     const container = cx(styles.container, wrap && styles.wrap, className);
 
     if (fullFeatured)
@@ -101,12 +102,7 @@ export const Highlighter = memo<HighlighterProps>(
       <div className={container} data-code-type="highlighter" style={style} {...rest}>
         {spotlight && <Spotlight size={240} />}
         {copyable && (
-          <CopyButton
-            className={styles.button}
-            content={children}
-            placement="left"
-            size={copyButtonSize}
-          />
+          <CopyButton className={styles.button} content={children} size={copyButtonSize} />
         )}
         {showLanguage && language && <Tag className={styles.lang}>{language.toLowerCase()}</Tag>}
         <div className={styles.scroller}>

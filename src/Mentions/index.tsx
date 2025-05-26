@@ -148,7 +148,7 @@ export const Mentions = forwardRef<MentionsEditor, MentionsProps>(
     // }, [value])
 
     const optionsMap = useMemo(() => {
-      const buildMap = (_options: MentionOption[], parentIcon?: JSX.Element) => {
+      const buildMap = (_options: MentionOption[], parentIcon?: React.ReactElement) => {
         return _options.reduce((acc, option) => {
           acc[option.value] = option;
           if (!acc[option.value].icon) {

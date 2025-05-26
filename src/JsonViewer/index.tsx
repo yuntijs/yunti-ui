@@ -18,10 +18,10 @@ const { Text } = Typography;
 
 export interface JsonViewerProps extends JsonViewProps {
   /**
-   * @description The type of the json block
-   * @default 'block'
+   * @description The variant of the code block
+   * @default 'filled'
    */
-  type?: 'ghost' | 'block' | 'pure';
+  variant?: 'filled' | 'outlined' | 'borderless';
   fullFeatured?: boolean;
   /**
    * Only workded when fullFeatured=true
@@ -42,7 +42,7 @@ export interface JsonViewerProps extends JsonViewProps {
 }
 
 export const JsonViewer: React.FC<JsonViewerProps> = ({
-  type = 'block',
+  variant = 'filled',
   fullFeatured = false,
   title = 'json',
   icon,
@@ -52,7 +52,7 @@ export const JsonViewer: React.FC<JsonViewerProps> = ({
   collapseStringMode = 'directly',
   collapsed = 2,
   dark,
-  // displayArrayIndex = true,
+  displayArrayIndex = false,
   displaySize = 'collapsed',
   ignoreLargeArray = false,
   matchesURL = true,
@@ -62,15 +62,15 @@ export const JsonViewer: React.FC<JsonViewerProps> = ({
   ...props
 }) => {
   const { isDarkMode } = useThemeMode();
-  const { styles, cx } = useStyles(fullFeatured ? 'block' : type);
   const [expand, setExpand] = useState(true);
+  const { styles, cx } = useStyles({ expand, variant: fullFeatured ? 'filled' : variant });
   const jsonString = useMemo(() => stringify(src), [src]);
   const JsonViewEle = (
     <JsonView
       collapseStringMode={collapseStringMode}
       collapsed={collapsed}
       dark={dark ?? isDarkMode}
-      // displayArrayIndex={displayArrayIndex}
+      displayArrayIndex={displayArrayIndex}
       displaySize={displaySize}
       ignoreLargeArray={ignoreLargeArray}
       matchesURL={matchesURL}
@@ -90,7 +90,7 @@ export const JsonViewer: React.FC<JsonViewerProps> = ({
           <ActionIcon
             icon={expand ? ChevronDown : ChevronRight}
             onClick={() => setExpand(!expand)}
-            size={{ blockSize: 24, fontSize: 14, strokeWidth: 3 }}
+            size="small"
           />
           <Flex
             align={'center'}
@@ -105,11 +105,7 @@ export const JsonViewer: React.FC<JsonViewerProps> = ({
               <Text ellipsis>{title}</Text>
             </Flex>
           </Flex>
-          <CopyButton
-            content={jsonString}
-            placement="left"
-            size={{ blockSize: 24, fontSize: 14, strokeWidth: 2 }}
-          />
+          <CopyButton content={jsonString} size="small" />
         </Flex>
       )}
       <Flex

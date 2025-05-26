@@ -1,4 +1,4 @@
-import { StoryBook, useControls, useCreateStore } from '@lobehub/ui';
+import { StoryBook, useControls, useCreateStore } from '@lobehub/ui/storybook';
 import { CollapseGroup, CollapseGroupProps } from '@yuntijs/ui';
 import { VariableIcon } from 'lucide-react';
 
@@ -10,8 +10,8 @@ export default () => {
       defaultActive: true,
       collapsible: true,
       variant: {
-        options: ['default', 'block', 'ghost', 'pure'],
-        value: 'default',
+        options: ['filled', 'outlined', 'borderless'],
+        value: 'filled',
       },
     },
     { store }

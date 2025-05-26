@@ -1,4 +1,4 @@
-import { StoryBook, useControls, useCreateStore } from '@lobehub/ui';
+import { StoryBook, useControls, useCreateStore } from '@lobehub/ui/storybook';
 import { Divider, SelectCard, SelectCardProps } from '@yuntijs/ui';
 import { useState } from 'react';
 

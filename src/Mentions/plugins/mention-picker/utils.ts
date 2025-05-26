@@ -1,12 +1,13 @@
 import { MenuOption } from '@lexical/react/LexicalTypeaheadMenuPlugin';
+import React from 'react';
 
 export interface MentionMenuOptionInitParams {
   label: string;
   value: string;
   title?: string;
   data?: any;
-  icon?: JSX.Element;
-  extraElement?: JSX.Element;
+  icon?: React.ReactElement;
+  extraElement?: React.ReactElement;
   keywords?: Array<string>;
   keyboardShortcut?: string;
   disabled?: boolean;
@@ -25,8 +26,8 @@ export class MentionMenuOption extends MenuOption {
   title: string;
   // for Tree, the same as value
   key: string;
-  icon?: JSX.Element;
-  extraElement?: JSX.Element;
+  icon?: React.ReactElement;
+  extraElement?: React.ReactElement;
   keywords: Array<string>;
   keyboardShortcut?: string;
   onSelect: (queryString: string) => void;

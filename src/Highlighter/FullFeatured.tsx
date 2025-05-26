@@ -48,7 +48,7 @@ export const FullFeaturedHighlighter = memo<FullFeaturedHighlighterProps>(
   }) => {
     const [expand, setExpand] = useState(true);
     const [lang, setLang] = useState(language || 'markdown');
-    const { styles, cx } = useStyles({ type: 'block', expand });
+    const { styles, cx } = useStyles({ variant: 'filled', expand });
     const container = cx(styles.container, className);
 
     useEffect(() => {
@@ -61,7 +61,7 @@ export const FullFeaturedHighlighter = memo<FullFeaturedHighlighterProps>(
           <ActionIcon
             icon={expand ? ChevronDown : ChevronRight}
             onClick={() => setExpand(!expand)}
-            size={{ blockSize: 24, fontSize: 14, strokeWidth: 3 }}
+            size="small"
           />
           {allowChangeLanguage && !fileName ? (
             <Select
@@ -80,11 +80,7 @@ export const FullFeaturedHighlighter = memo<FullFeaturedHighlighterProps>(
             </Flexbox>
           )}
 
-          <CopyButton
-            content={children}
-            placement="left"
-            size={{ blockSize: 24, fontSize: 14, strokeWidth: 2 }}
-          />
+          <CopyButton content={children} size="small" />
         </Flexbox>
         <SyntaxHighlighter
           enableTransformer={enableTransformer}

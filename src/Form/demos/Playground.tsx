@@ -1,4 +1,4 @@
-import { StoryBook, useControls, useCreateStore } from '@lobehub/ui';
+import { StoryBook, useControls, useCreateStore } from '@lobehub/ui/storybook';
 import { FormCollapseList, FormCollapseListProps, Input } from '@yuntijs/ui';
 import { Form, Select } from 'antd';
 import { VariableIcon } from 'lucide-react';
@@ -18,8 +18,8 @@ export default () => {
       maxFileds: 10,
       empty: '点击右上角 + 添加',
       variant: {
-        options: ['default', 'block', 'ghost', 'pure'],
-        value: 'default',
+        options: ['filled', 'outlined', 'borderless'],
+        value: 'filled',
       },
       collapsible: true,
     },

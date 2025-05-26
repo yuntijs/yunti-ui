@@ -1,4 +1,4 @@
-import { StoryBook, useControls, useCreateStore } from '@lobehub/ui';
+import { StoryBook, useControls, useCreateStore } from '@lobehub/ui/storybook';
 import type { ModalProps } from '@yuntijs/ui';
 import { Button, Modal } from '@yuntijs/ui';
 import { useState } from 'react';

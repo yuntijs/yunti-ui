@@ -2,7 +2,7 @@ import { memo } from 'react';
 
 import { SvgProps } from '@/types';
 
-export const Divider = memo<SvgProps | any>(({ ...rest }) => (
+export const Divider = memo(({ ...rest }: SvgProps | any) => (
   <svg
     fill="none"
     shapeRendering="geometricPrecision"

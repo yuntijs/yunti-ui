@@ -9,7 +9,7 @@ export type SerializedNode = SerializedLexicalNode & {
   variable: string;
 };
 
-export class MentionNode extends DecoratorNode<JSX.Element> {
+export class MentionNode extends DecoratorNode<React.ReactElement> {
   __variable: string;
 
   static getType(): string {
@@ -43,7 +43,7 @@ export class MentionNode extends DecoratorNode<JSX.Element> {
     return false;
   }
 
-  decorate(): JSX.Element {
+  decorate(): React.ReactElement {
     return <MentionNodeComponent nodeKey={this.getKey()} variable={this.__variable} />;
   }
 

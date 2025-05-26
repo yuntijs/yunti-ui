@@ -11,19 +11,24 @@ export interface DropdownProps extends AntDropDownProps {
   };
 }
 
-const YuntiDropdown: React.FC<DropdownProps> = ({ menuExtra, dropdownRender, ...props }) => {
+const YuntiDropdown: React.FC<DropdownProps> = ({ menuExtra, popupRender, ...props }) => {
   const { position = 'top', divider = false, content } = menuExtra || {};
-  const { styles } = useStyles({ divider, position });
-  const handleDropdownRender = useCallback(
+  const { styles, cx } = useStyles({ divider, position });
+  const handlePopupRender = useCallback(
     (menu: React.ReactNode) => {
-      const borderLessMenu = React.cloneElement(menu as React.ReactElement, {
-        style: { boxShadow: 'none', border: 'none' },
-      });
+      const borderLessMenu = React.cloneElement(
+        menu as React.ReactElement<{
+          className?: string;
+        }>,
+        {
+          className: cx(styles.menu),
+        }
+      );
       if (!content) {
-        if (dropdownRender) {
+        if (popupRender) {
           return (
             <Flex className={styles.menuWrapper} vertical>
-              {dropdownRender(borderLessMenu)}
+              {popupRender(borderLessMenu)}
             </Flex>
           );
         }
@@ -42,10 +47,10 @@ const YuntiDropdown: React.FC<DropdownProps> = ({ menuExtra, dropdownRender, ...
         </Flex>
       );
     },
-    [content, dropdownRender, position, styles.menuExtra, styles.menuWrapper]
+    [content, cx, popupRender, position, styles.menu, styles.menuExtra, styles.menuWrapper]
   );
 
-  return <AntDropdown dropdownRender={handleDropdownRender} {...props} />;
+  return <AntDropdown popupRender={handlePopupRender} {...props} />;
 };
 
 export type DropDownProps = DropdownProps;

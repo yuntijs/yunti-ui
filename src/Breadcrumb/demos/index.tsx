@@ -1,4 +1,4 @@
-import { StoryBook, useControls, useCreateStore } from '@lobehub/ui';
+import { StoryBook, useControls, useCreateStore } from '@lobehub/ui/storybook';
 import type { BreadcrumbProps } from '@yuntijs/ui';
 import { Breadcrumb } from '@yuntijs/ui';
 

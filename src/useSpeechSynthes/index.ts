@@ -1,4 +1,4 @@
-import { type SsmlOptions } from '@lobehub/tts/core/utils/genSSML';
+import type { SsmlOptions } from '@lobehub/tts/es/core/utils/genSSML';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { SpeechSynthesis, SpeechSynthesisUtterance } from './const/polyfill';

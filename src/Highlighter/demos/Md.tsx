@@ -1,4 +1,4 @@
-import { StoryBook, useControls, useCreateStore } from '@lobehub/ui';
+import { StoryBook, useControls, useCreateStore } from '@lobehub/ui/storybook';
 import { Highlighter, HighlighterProps } from '@yuntijs/ui';
 
 import { content } from '../../EditableMessage/demos/data';
@@ -13,15 +13,15 @@ export default () => {
       },
       copyable: true,
       copyButtonSize: {
-        options: ['site', 'large', 'normal', 'small'],
-        value: 'site',
+        options: ['large', 'normal', 'small'],
+        value: 'small',
       },
       language: 'md',
       showLanguage: true,
       spotlight: false,
-      type: {
-        options: ['ghost', 'block', 'pure'],
-        value: 'block',
+      variant: {
+        options: ['filled', 'outlined', 'borderless'],
+        value: 'filled',
       },
       fullFeatured: false,
       wrap: false,

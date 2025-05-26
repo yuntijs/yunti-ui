@@ -1,4 +1,4 @@
-import { StoryBook, useControls, useCreateStore } from '@lobehub/ui';
+import { StoryBook, useControls, useCreateStore } from '@lobehub/ui/storybook';
 import { EditableMessage } from '@yuntijs/ui';
 import { button } from 'leva';
 import { useState } from 'react';
