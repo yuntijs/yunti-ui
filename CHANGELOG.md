@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version&nbsp;2.0.0-beta.2](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.1...v2.0.0-beta.2)
+
+<sup>Released on **2025-06-11**</sup>
+
+#### ✨ Features
+
+- **CollapseGroup**: Add style overwrite back.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **CollapseGroup**: Add style overwrite back ([9ecf60a](https://github.com/yuntijs/yunti-ui/commit/9ecf60a))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;2.0.0-beta.1](https://github.com/yuntijs/yunti-ui/compare/v1.2.0-beta.8...v2.0.0-beta.1)
 
 <sup>Released on **2025-05-26**</sup>
