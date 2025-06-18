@@ -4,6 +4,7 @@ import { CopyButton, type CopyButtonProps, Tag } from '@lobehub/ui';
 import { Spotlight } from '@lobehub/ui/awesome';
 import React, { ReactNode, memo } from 'react';
 
+import { ThemeProps } from '@/hooks/useHighlight';
 import { DivProps } from '@/types';
 
 import { FullFeaturedHighlighter } from './FullFeatured';
@@ -54,7 +55,7 @@ export interface HighlighterProps extends DivProps {
    */
   wrap?: boolean;
   enableTransformer?: boolean;
-  theme?: string;
+  theme?: ThemeProps;
 }
 
 export const Highlighter = memo<HighlighterProps>(

@@ -1,6 +1,8 @@
 import { StoryBook, useControls, useCreateStore } from '@lobehub/ui/storybook';
 import { MonacoDiffEditor, MonacoDiffEditorProps } from '@yuntijs/ui';
 
+import { themeMap } from '@/hooks/themeMap';
+
 import { original, value } from './data/diff';
 
 export default () => {
@@ -27,7 +29,7 @@ export default () => {
         value: 'javascript',
       },
       theme: {
-        options: ['vs', 'vs-dark', 'hc-light', 'hc-black'],
+        options: themeMap,
         value: '',
       },
       supportFullScreen: true,

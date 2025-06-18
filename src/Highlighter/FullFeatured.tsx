@@ -4,7 +4,7 @@ import { ChevronDown, ChevronRight } from 'lucide-react';
 import { ReactNode, memo, useEffect, useState } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
-import { languageMap } from '@/hooks/useHighlight';
+import { ThemeProps, languageMap } from '@/hooks/useHighlight';
 import { DivProps } from '@/types';
 
 import { SyntaxHighlighter } from './SyntaxHighlighter';
@@ -24,7 +24,7 @@ export interface FullFeaturedHighlighterProps extends DivProps {
   language: string;
   contentStyle?: React.CSSProperties;
   enableTransformer?: boolean;
-  theme?: string;
+  theme?: ThemeProps;
 }
 
 const options: SelectProps['options'] = languageMap.map(item => ({

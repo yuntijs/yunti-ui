@@ -1,6 +1,8 @@
 import { StoryBook, useControls, useCreateStore } from '@lobehub/ui/storybook';
 import { MonacoEditor, MonacoEditorProps } from '@yuntijs/ui';
 
+import { themeMap } from '@/hooks/themeMap';
+
 export default () => {
   const store = useCreateStore();
   const control: MonacoEditorProps | any = useControls(
@@ -25,7 +27,7 @@ export default () => {
         value: 'json',
       },
       theme: {
-        options: ['vs', 'vs-dark', 'hc-light', 'hc-black'],
+        options: themeMap,
         value: '',
       },
       supportFullScreen: true,

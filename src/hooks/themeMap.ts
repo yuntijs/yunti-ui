@@ -59,4 +59,4 @@ export const themeMap = [
   'vesper',
   'vitesse-black',
   'vitesse-dark',
-];
+] as const;

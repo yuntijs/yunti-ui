@@ -3,7 +3,7 @@ import { Loader2 } from 'lucide-react';
 import { memo } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
-import { useHighlight } from '@/hooks/useHighlight';
+import { ThemeProps, useHighlight } from '@/hooks/useHighlight';
 import { DivProps } from '@/types';
 
 import { useStyles } from './style';
@@ -12,7 +12,7 @@ export interface SyntaxHighlighterProps extends DivProps {
   children: string;
   language: string;
   enableTransformer?: boolean;
-  theme?: string;
+  theme?: ThemeProps;
 }
 
 export const SyntaxHighlighter = memo<SyntaxHighlighterProps>(
