@@ -5,7 +5,7 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  '@lobehub/tts>@lobehub/ui': ^2.1.6
+  '@lobehub/tts>@lobehub/ui': ^2.6.0
   lucide-react: ^0.511.0
   react: ^19.1.0
   react-dom: ^19.1.0
@@ -36,8 +36,8 @@ importers:
         specifier: ^2.0.1
         version: 2.0.1(@babel/core@7.27.1)(@types/react@19.1.4)(acorn@8.14.1)(antd@5.25.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(framer-motion@11.18.2(@emotion/is-prop-valid@1.2.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(ws@8.18.2)(zod@3.24.4)
       '@lobehub/ui':
-        specifier: ^2.1.6
-        version: 2.1.6(@babel/core@7.27.1)(@types/react@19.1.4)(acorn@8.14.1)(antd@5.25.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(framer-motion@11.18.2(@emotion/is-prop-valid@1.2.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        specifier: ^2.6.0
+        version: 2.6.0(@babel/core@7.27.1)(@types/react@19.1.4)(acorn@8.14.1)(antd@5.25.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(framer-motion@11.18.2(@emotion/is-prop-valid@1.2.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@melloware/react-logviewer':
         specifier: ^6.2.0
         version: 6.2.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -1700,10 +1700,10 @@ packages:
       react: ^19.1.0
       react-dom: ^19.1.0
 
-  '@lobehub/ui@2.1.6':
-    resolution: {integrity: sha512-wAPdpm27P0fWYheXSfBviYB7sj7J27S+bqlmFlHepQKKOUVzUypMrQGqpUQpG/BaSUcP4KuB8ivyyic/RvVL+w==}
+  '@lobehub/ui@2.6.0':
+    resolution: {integrity: sha512-oZWMspe9Y2CHhOQUShbzFkXmofwBOEK8oAuz1VcRNFaRPd4iP6HYHm+fWJRgbvjl1SpGygxgW/YeOHhqiZxdKA==}
     peerDependencies:
-      antd: ^5.23.0
+      antd: ^5.25.0
       framer-motion: ^12.0.0
       react: ^19.1.0
       react-dom: ^19.1.0
@@ -13371,7 +13371,7 @@ snapshots:
   '@lobehub/fluent-emoji@2.0.0(@babel/core@7.27.1)(@types/react@19.1.4)(acorn@8.14.1)(antd@5.25.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(framer-motion@11.18.2(@emotion/is-prop-valid@1.2.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:
       '@lobehub/emojilib': 1.0.0
-      '@lobehub/ui': 2.1.6(@babel/core@7.27.1)(@types/react@19.1.4)(acorn@8.14.1)(antd@5.25.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(framer-motion@11.18.2(@emotion/is-prop-valid@1.2.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@lobehub/ui': 2.6.0(@babel/core@7.27.1)(@types/react@19.1.4)(acorn@8.14.1)(antd@5.25.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(framer-motion@11.18.2(@emotion/is-prop-valid@1.2.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       antd: 5.25.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       antd-style: 3.7.1(@types/react@19.1.4)(antd@5.25.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       emoji-regex: 10.4.0
@@ -13390,7 +13390,7 @@ snapshots:
 
   '@lobehub/icons@2.0.0(@babel/core@7.27.1)(@types/react@19.1.4)(acorn@8.14.1)(antd@5.25.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(framer-motion@11.18.2(@emotion/is-prop-valid@1.2.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:
-      '@lobehub/ui': 2.1.6(@babel/core@7.27.1)(@types/react@19.1.4)(acorn@8.14.1)(antd@5.25.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(framer-motion@11.18.2(@emotion/is-prop-valid@1.2.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@lobehub/ui': 2.6.0(@babel/core@7.27.1)(@types/react@19.1.4)(acorn@8.14.1)(antd@5.25.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(framer-motion@11.18.2(@emotion/is-prop-valid@1.2.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       antd: 5.25.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       antd-style: 3.7.1(@types/react@19.1.4)(antd@5.25.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       lucide-react: 0.511.0(react@19.1.0)
@@ -13407,7 +13407,7 @@ snapshots:
 
   '@lobehub/tts@2.0.1(@babel/core@7.27.1)(@types/react@19.1.4)(acorn@8.14.1)(antd@5.25.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(framer-motion@11.18.2(@emotion/is-prop-valid@1.2.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(ws@8.18.2)(zod@3.24.4)':
     dependencies:
-      '@lobehub/ui': 2.1.6(@babel/core@7.27.1)(@types/react@19.1.4)(acorn@8.14.1)(antd@5.25.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(framer-motion@11.18.2(@emotion/is-prop-valid@1.2.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@lobehub/ui': 2.6.0(@babel/core@7.27.1)(@types/react@19.1.4)(acorn@8.14.1)(antd@5.25.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(framer-motion@11.18.2(@emotion/is-prop-valid@1.2.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       antd: 5.25.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       antd-style: 3.7.1(@types/react@19.1.4)(antd@5.25.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       lodash-es: 4.17.21
@@ -13435,7 +13435,7 @@ snapshots:
       - ws
       - zod
 
-  '@lobehub/ui@2.1.6(@babel/core@7.27.1)(@types/react@19.1.4)(acorn@8.14.1)(antd@5.25.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(framer-motion@11.18.2(@emotion/is-prop-valid@1.2.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
+  '@lobehub/ui@2.6.0(@babel/core@7.27.1)(@types/react@19.1.4)(acorn@8.14.1)(antd@5.25.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(framer-motion@11.18.2(@emotion/is-prop-valid@1.2.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:
       '@ant-design/cssinjs': 1.23.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@dnd-kit/core': 6.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -17664,7 +17664,7 @@ snapshots:
     dependencies:
       '@floating-ui/react': 0.27.8(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@giscus/react': 3.1.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      '@lobehub/ui': 2.1.6(@babel/core@7.27.1)(@types/react@19.1.4)(acorn@8.14.1)(antd@5.25.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(framer-motion@11.18.2(@emotion/is-prop-valid@1.2.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@lobehub/ui': 2.6.0(@babel/core@7.27.1)(@types/react@19.1.4)(acorn@8.14.1)(antd@5.25.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(framer-motion@11.18.2(@emotion/is-prop-valid@1.2.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       ahooks: 3.8.5(react@19.1.0)
       animated-scroll-to: 2.3.2
       antd: 5.25.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
