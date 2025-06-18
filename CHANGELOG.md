@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version&nbsp;2.0.0-beta.3](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.2...v2.0.0-beta.3)
+
+<sup>Released on **2025-06-18**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: MonacoEditor Add Shiki Theme Style.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: MonacoEditor Add Shiki Theme Style ([ac0b5b0](https://github.com/yuntijs/yunti-ui/commit/ac0b5b0))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;2.0.0-beta.2](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.1...v2.0.0-beta.2)
 
 <sup>Released on **2025-06-11**</sup>
