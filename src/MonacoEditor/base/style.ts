@@ -85,16 +85,6 @@ export const useStyles = createStyles(
             height: auto !important;
           `}
 
-          .monaco-editor,
-          .monaco-editor-background,
-          .monaco-editor .inputarea.ime-input,
-          .monaco-editor .margin {
-            ${!isFullScreen &&
-            css`
-              background-color: transparent;
-            `}
-          }
-
           & > .monaco-editor {
             border-radius: ${token.borderRadius}px;
             outline: none;

@@ -3,6 +3,8 @@ import { useThemeMode } from 'antd-style';
 import type { Variant } from 'antd/es/config-provider';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
+import { themeMap } from '@/hooks/themeMap';
+
 import { useCdnFn } from '../ConfigProvider';
 import { SingleMonacoEditorComponent } from './base';
 import type {
@@ -49,6 +51,7 @@ export const BaseMonacoEditor: React.FC<
     lineNumbers = 'on',
     wordWrap = 'off',
     contextmenu = true,
+    language,
     theme: themeFromProps,
     minimapEnabled = false,
     version = '0.52.2',
@@ -66,11 +69,17 @@ export const BaseMonacoEditor: React.FC<
 
   const { isDarkMode } = useThemeMode();
   const theme = useMemo(() => {
-    if (themeFromProps) {
+    if (themeFromProps && themeMap.includes(themeFromProps)) {
       return themeFromProps;
     }
-    return isDarkMode ? 'vs-dark' : 'vs';
-  }, [isDarkMode, themeFromProps]);
+    if (language && ['md', 'markdown'].includes(language)) {
+      return isDarkMode ? 'catppuccin-mocha' : 'catppuccin-latte';
+    }
+    if (language && ['shellsession', 'console'].includes(language)) {
+      return isDarkMode ? 'material-theme-darker' : 'material-theme-lighter';
+    }
+    return isDarkMode ? 'slack-dark' : 'slack-ochin';
+  }, [language, isDarkMode, themeFromProps]);
 
   const [editorInstance, setEditorInstance] = useState<IEditorInstance>();
   const handleEditorDidMount = useCallback((monaco: Monaco, editor: IEditorInstance) => {
@@ -115,6 +124,7 @@ export const BaseMonacoEditor: React.FC<
       <SingleMonacoEditorComponent
         className={className}
         editorDidMount={handleEditorDidMount}
+        language={language}
         options={editorOptions}
         requireConfig={requireConfig}
         supportFullScreen={editorInstance && supportFullScreen}
@@ -128,6 +138,7 @@ export const BaseMonacoEditor: React.FC<
     <SingleMonacoEditorComponent.MonacoDiffEditor
       className={className}
       editorDidMount={handleEditorDidMount}
+      language={language}
       options={editorOptions}
       requireConfig={requireConfig}
       supportFullScreen={editorInstance && supportFullScreen}

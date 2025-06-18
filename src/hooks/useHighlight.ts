@@ -16,6 +16,8 @@ import { themeMap } from './themeMap';
 
 export const FALLBACK_LANG = 'txt';
 
+export type ThemeProps = (typeof themeMap)[number];
+
 // 应用级缓存，避免重复计算
 const MD5_LENGTH_THRESHOLD = 10_000; // 超过该长度使用异步MD5
 
@@ -45,7 +47,7 @@ export const useHighlight = (
   text: string,
   lang: string,
   enableTransformer?: boolean,
-  theme?: string
+  theme?: ThemeProps
 ): SWRResponse<string, Error> => {
   const { isDarkMode } = useThemeMode();
   const antTheme = useTheme();

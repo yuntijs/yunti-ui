@@ -26,7 +26,6 @@ export default () => {
       }}
       placeholder="### this is placeholder"
       supportFullScreen={false}
-      theme="vs"
       variant="borderless"
       width={740}
       wordWrap="wordWrapColumn"

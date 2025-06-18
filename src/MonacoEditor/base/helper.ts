@@ -1,8 +1,12 @@
 /* eslint-disable no-empty */
 import { Monaco } from '@monaco-editor/loader';
+import { shikiToMonaco } from '@shikijs/monaco';
 import type { editor as IEditor } from 'monaco-editor';
 import React, { CSSProperties, useEffect, useRef, useState } from 'react';
+import { createHighlighter } from 'shiki';
 
+import { languageMap } from '@/hooks/languageMap';
+import { themeMap } from '@/hooks/themeMap';
 import { isBrowser } from '@/utils/tools';
 
 import { getMonaco } from './monaco';
@@ -14,6 +18,8 @@ import { getMonaco } from './monaco';
 export type IEditorInstance = IEditor.IStandaloneCodeEditor | IEditor.IStandaloneDiffEditor;
 
 export type EditorEnhancer = (monaco: Monaco, editorIns: IEditorInstance) => any;
+
+export type ThemeProps = (typeof themeMap)[number];
 
 export interface IGeneralManacoEditorProps {
   /** [Monaco editor options](https://microsoft.github.io/monaco-editor/) */
@@ -28,8 +34,8 @@ export interface IGeneralManacoEditorProps {
   saveViewState?: boolean;
   /** language of the editor @see https://microsoft.github.io/monaco-editor/ for available languages */
   language?: string;
-  /** theme of the editor, "light" | "vs-dark" */
-  theme?: string;
+  /** theme of the editor */
+  theme?: ThemeProps;
   /** [config passing to require](https://github.com/suren-atoyan/monaco-react#loader-config), can be used to upgrade monaco-editor */
   requireConfig?: Record<string, any>;
   /** value, controlled */
@@ -144,6 +150,19 @@ function getOrCreateModel(monaco: Monaco, value?: string, language?: string, pat
   return monaco.editor.createModel(value!, language, path ? monaco.Uri.parse(path) : undefined);
 }
 
+function setHighlight(monaco: Monaco, language: string, theme: ThemeProps) {
+  const themes = themeMap.filter(t => !!t);
+  if (!theme) return;
+  const matchedLanguage = languageMap.includes(language) ? language : 'txt';
+  createHighlighter({
+    langs: [matchedLanguage],
+    themes: [theme, ...themes],
+  }).then(highlighter => {
+    monaco?.languages.register({ id: matchedLanguage });
+    shikiToMonaco(highlighter, monaco);
+  });
+}
+
 export const useEditor = <T = IEditorInstance>(
   type: 'single' | 'diff',
   props: IGeneralManacoEditorProps
@@ -222,6 +241,7 @@ export const useEditor = <T = IEditorInstance>(
 
         monacoRef.current = monaco;
         try {
+          setHighlight(monaco, languageRef.current, theme!);
           editorWillMountRef.current?.(monaco);
         } catch {}
 
@@ -279,14 +299,16 @@ export const useEditor = <T = IEditorInstance>(
           setLoading(false);
         }
       });
-  }, [placeholder]);
+  }, [placeholder, theme]);
 
   useEffect(() => {
     if (!isEditorReady) {
       return;
     }
 
-    monacoRef.current?.editor.setTheme(theme!);
+    try {
+      monacoRef.current?.editor.setTheme(theme!);
+    } catch {}
   }, [isEditorReady, theme]);
 
   // focus status

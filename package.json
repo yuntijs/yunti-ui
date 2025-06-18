@@ -1,6 +1,6 @@
 {
   "name": "@yuntijs/ui",
-  "version": "2.0.0-beta.2",
+  "version": "2.0.0-beta.3",
   "description": "☁️ Yunti UI - an open-source UI component library for building Cloud Native web apps",
   "keywords": [
     "yuntijs",
@@ -90,6 +90,7 @@
     "@melloware/react-logviewer": "^6.2.0",
     "@monaco-editor/loader": "^1.5.0",
     "@monaco-editor/react": "^4.7.0",
+    "@shikijs/monaco": "^3.6.0",
     "@shikijs/transformers": "^3.2.1",
     "class-variance-authority": "^0.7.1",
     "leva": "^0",
