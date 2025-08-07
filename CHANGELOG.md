@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version&nbsp;2.0.0-beta.4](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.3...v2.0.0-beta.4)
+
+<sup>Released on **2025-08-07**</sup>
+
+#### ✨ Features
+
+- **SelectCard**: Support props from flex and checkIcon specify.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **SelectCard**: Support props from flex and checkIcon specify ([22d7cda](https://github.com/yuntijs/yunti-ui/commit/22d7cda))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;2.0.0-beta.3](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.2...v2.0.0-beta.3)
 
 <sup>Released on **2025-06-18**</sup>
