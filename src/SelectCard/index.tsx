@@ -1,5 +1,5 @@
 import { Icon } from '@lobehub/ui';
-import { Avatar, Flex, SelectProps, Typography } from 'antd';
+import { Avatar, Flex, type FlexProps, SelectProps, Typography } from 'antd';
 import { Check } from 'lucide-react';
 import { useMergedState } from 'rc-util';
 import React, { useCallback, useMemo } from 'react';
@@ -21,7 +21,7 @@ export interface SelectCardOption {
 }
 
 export interface SelectCardProps
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'value' | 'defaultValue' | 'onChange'> {
+  extends Omit<FlexProps, 'value' | 'defaultValue' | 'onChange' | 'children'> {
   defaultValue?: Value;
   value?: Value;
   onChange?: (value: Value) => void;
@@ -29,6 +29,8 @@ export interface SelectCardProps
   disabled?: boolean;
   options: SelectCardOption[];
   size?: SelectProps['size'];
+  /** 选中状态的图标，设置为 null 时隐藏图标 */
+  checkIcon?: React.ReactNode;
   optionRender?: (
     Option: React.ReactNode,
     option: SelectCardOption,
@@ -55,6 +57,7 @@ export const SelectCard = React.forwardRef<HTMLDivElement, SelectCardProps>((pro
     classNames,
     styles: stylesFromProps,
     size = 'middle',
+    checkIcon,
     optionRender,
     ...otherProps
   } = props;
@@ -104,6 +107,17 @@ export const SelectCard = React.forwardRef<HTMLDivElement, SelectCardProps>((pro
     [currentValue, multiple]
   );
 
+  const checkIconContent = useMemo(() => {
+    if (checkIcon === null) {
+      return null;
+    }
+    return checkIcon ? (
+      <div className={styles.check}>{checkIcon}</div>
+    ) : (
+      <Icon className={styles.check} icon={Check} />
+    );
+  }, [checkIcon, styles.check]);
+
   const renderOption = useCallback(
     (o: SelectCardOption, index: number) => {
       const selected = isSelected(o.value);
@@ -139,7 +153,7 @@ export const SelectCard = React.forwardRef<HTMLDivElement, SelectCardProps>((pro
               {o.description}
             </Paragraph>
           )}
-          {selected && <Icon className={styles.check} icon={Check} />}
+          {selected && checkIconContent}
         </Flex>
       );
       return optionRender ? optionRender(Option, o, index) : Option;
@@ -152,8 +166,8 @@ export const SelectCard = React.forwardRef<HTMLDivElement, SelectCardProps>((pro
       isImg,
       isSelected,
       onSelect,
+      checkIconContent,
       optionRender,
-      styles.check,
       styles.option,
       styles.optionSelected,
       stylesFromProps?.card,
