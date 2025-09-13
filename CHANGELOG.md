@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version&nbsp;2.0.0-beta.5](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.4...v2.0.0-beta.5)
+
+<sup>Released on **2025-09-13**</sup>
+
+#### ✨ Features
+
+- **Mentions**: Support custom plugins and bump lexical@0.35.0.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **Mentions**: Support custom plugins and bump lexical@0.35.0 ([dafd0ec](https://github.com/yuntijs/yunti-ui/commit/dafd0ec))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;2.0.0-beta.4](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.3...v2.0.0-beta.4)
 
 <sup>Released on **2025-08-07**</sup>
