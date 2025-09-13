@@ -9,7 +9,7 @@ import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
 import { ConfigProvider } from 'antd';
 // @Todo: 升级 0.25.0 后，ops-console 使用的时候出现了只输入 / 无法触发的问题
 import { $getRoot, TextNode } from 'lexical';
-import React, { forwardRef, useCallback, useMemo } from 'react';
+import React, { PropsWithChildren, forwardRef, useCallback, useMemo } from 'react';
 
 import { isBrowser } from '@/utils/tools';
 
@@ -40,7 +40,7 @@ export * from './types';
 export * from './utils';
 export { CLEAR_EDITOR_COMMAND } from 'lexical';
 
-export interface MentionsProps extends MentionPickerPluginProps {
+export interface MentionsProps extends MentionPickerPluginProps, PropsWithChildren {
   className?: string;
   classNames?: {
     wrapper?: string;
@@ -76,6 +76,7 @@ export interface MentionsProps extends MentionPickerPluginProps {
   code?: boolean;
   getPopContainer?: () => HTMLElement;
   autoFocus?: 'rootStart' | 'rootEnd';
+  extraNodes?: InitialConfigType['nodes'];
 }
 
 export const Mentions = forwardRef<MentionsEditor, MentionsProps>(
@@ -106,6 +107,8 @@ export const Mentions = forwardRef<MentionsEditor, MentionsProps>(
       onKeyDown,
       onTrigger,
       autoFocus,
+      children,
+      extraNodes = [],
     },
     ref
   ) => {
@@ -125,8 +128,10 @@ export const Mentions = forwardRef<MentionsEditor, MentionsProps>(
           {
             replace: TextNode,
             with: (node: TextNode) => new CustomTextNode(node.__text),
+            withKlass: CustomTextNode,
           },
           MentionNode,
+          ...extraNodes,
         ],
         editorState: textToEditorState(value || defaultValue || '', triggers, { punctuation }),
         onError: (error: Error) => {
@@ -236,6 +241,7 @@ export const Mentions = forwardRef<MentionsEditor, MentionsProps>(
             {onPressEnter && <ShiftEnterKeyPlugin onPressEnter={onPressEnter} />}
             {onKeyDown && <OnKeyDownPlugin onKeyDown={onKeyDown} />}
             {autoFocus && <AutoFocusPlugin defaultSelection={autoFocus} />}
+            {children}
           </div>
         </MentionsConfigProvider>
       </LexicalComposer>
