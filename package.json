@@ -27,7 +27,7 @@
     "umd"
   ],
   "scripts": {
-    "build": "father build",
+    "build": "father build && node scripts/copy-css.js",
     "ci": "npm run lint && npm run type-check",
     "clean": "rm -r es umd lib dist coverage .dumi/tmp .eslintcache node_modules/.cache",
     "dev": "dumi dev",
