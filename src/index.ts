@@ -39,6 +39,7 @@ export * from './CodeEditor';
 export * from './EditableMessage';
 export * from './Highlighter';
 export * from './hooks/useHighlight';
+export * from './MDXEditor';
 export * from './styles';
 
 // ~ custom @lobehub/tts
