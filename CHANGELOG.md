@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version&nbsp;2.0.0-beta.8](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.7...v2.0.0-beta.8)
+
+<sup>Released on **2025-09-16**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: Label `use client` - MDXEditor.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: Label `use client` - MDXEditor ([5762636](https://github.com/yuntijs/yunti-ui/commit/5762636))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;2.0.0-beta.7](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.6...v2.0.0-beta.7)
 
 <sup>Released on **2025-09-15**</sup>
