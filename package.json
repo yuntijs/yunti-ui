@@ -27,7 +27,7 @@
     "umd"
   ],
   "scripts": {
-    "build": "father build && node scripts/copy-css.js",
+    "build": "father build",
     "ci": "npm run lint && npm run type-check",
     "clean": "rm -r es umd lib dist coverage .dumi/tmp .eslintcache node_modules/.cache",
     "dev": "dumi dev",
@@ -96,7 +96,6 @@
     "@lexical/utils": "^0.35.0",
     "@lobehub/tts": "^2.0.1",
     "@lobehub/ui": "^2.12.4",
-    "@mdxeditor/editor": "^3.45.0",
     "@melloware/react-logviewer": "^6.2.0",
     "@monaco-editor/loader": "^1.5.0",
     "@monaco-editor/react": "^4.7.0",
