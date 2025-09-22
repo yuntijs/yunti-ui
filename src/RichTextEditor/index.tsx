@@ -1,0 +1,32 @@
+'use client';
+
+import { LexicalComposer } from '@lexical/react/LexicalComposer';
+import React from 'react';
+
+import { Editor } from './Editor';
+import { Methods } from './Methods';
+import PlaygroundNodes from './nodes/PlaygroundNodes';
+import { RichTextEditorMethods, RichTextEditorProps } from './types';
+
+export { RichTextEditorMethods, RichTextEditorProps } from './types';
+
+export const RichTextEditor = React.forwardRef<RichTextEditorMethods, RichTextEditorProps>(
+  ({ ...props }, ref) => {
+    const initialConfig = {
+      namespace: 'RichTextEditor',
+      nodes: [...PlaygroundNodes],
+      onError: (error: Error) => {
+        throw error;
+      },
+    };
+
+    return (
+      <LexicalComposer initialConfig={initialConfig}>
+        <div className="editor-shell">
+          <Editor {...props} />
+          <Methods mdxRef={ref} />
+        </div>
+      </LexicalComposer>
+    );
+  }
+);
