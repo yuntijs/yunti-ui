@@ -20,10 +20,37 @@ importers:
       '@babel/runtime':
         specifier: ^7
         version: 7.27.1
+      '@lexical/code':
+        specifier: ^0.35.0
+        version: 0.35.0
+      '@lexical/hashtag':
+        specifier: ^0.35.0
+        version: 0.35.0
+      '@lexical/link':
+        specifier: ^0.35.0
+        version: 0.35.0
+      '@lexical/list':
+        specifier: ^0.35.0
+        version: 0.35.0
+      '@lexical/mark':
+        specifier: ^0.35.0
+        version: 0.35.0
+      '@lexical/markdown':
+        specifier: ^0.35.0
+        version: 0.35.0
+      '@lexical/overflow':
+        specifier: ^0.35.0
+        version: 0.35.0
       '@lexical/react':
         specifier: ^0.35.0
         version: 0.35.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(yjs@13.6.27)
+      '@lexical/rich-text':
+        specifier: ^0.35.0
+        version: 0.35.0
       '@lexical/selection':
+        specifier: ^0.35.0
+        version: 0.35.0
+      '@lexical/table':
         specifier: ^0.35.0
         version: 0.35.0
       '@lexical/text':
