@@ -1,5 +1,3 @@
-'use client';
-
 import { ContentEditable } from '@lexical/react/LexicalContentEditable';
 import type { JSX } from 'react';
 
@@ -35,7 +33,9 @@ export default function LexicalContentEditable({
         className
       )}
       placeholder={
-        <div className={cx(styles.placeholder, placeholderClassName)}>{placeholder}</div>
+        <div className={cx(styles.placeholder, placeholderClassName)}>
+          {placeholder || `请输入`}
+        </div>
       }
     />
   );

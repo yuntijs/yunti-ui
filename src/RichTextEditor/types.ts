@@ -33,6 +33,10 @@ export interface RichTextEditorProps {
   onChange?: (md: string) => void;
   value?: string;
   defaultValue?: string;
-  editable?: boolean;
+  readOnly?: boolean;
+  disabled?: boolean;
   variant?: 'outlined' | 'filled' | 'borderless';
+  classNames?: {
+    wrapper?: string;
+  };
 }

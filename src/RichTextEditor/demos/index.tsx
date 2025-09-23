@@ -70,8 +70,8 @@ export default () => {
       </Space>
       <RichTextEditor
         defaultValue={complexMarkdownContentToInsert}
-        editable={editable}
         onChange={setValue}
+        readOnly={!editable}
         ref={ref}
         value={value}
         variant="borderless"

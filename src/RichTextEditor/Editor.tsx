@@ -1,5 +1,3 @@
-'use client';
-
 import { $convertToMarkdownString } from '@lexical/markdown';
 import { AutoFocusPlugin } from '@lexical/react/LexicalAutoFocusPlugin';
 import { CheckListPlugin } from '@lexical/react/LexicalCheckListPlugin';
@@ -16,8 +14,9 @@ import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
 import { SelectionAlwaysOnDisplay } from '@lexical/react/LexicalSelectionAlwaysOnDisplay';
 import { TabIndentationPlugin } from '@lexical/react/LexicalTabIndentationPlugin';
 import { TablePlugin } from '@lexical/react/LexicalTablePlugin';
+import { ConfigProvider } from 'antd';
 import { EditorState } from 'lexical';
-import React, { Fragment, useCallback, useEffect } from 'react';
+import React, { Fragment, useCallback, useEffect, useMemo } from 'react';
 
 import LexicalContentEditable from './components/ContentEditable';
 import { useActions } from './hooks/useActions';
@@ -29,7 +28,8 @@ export const Editor: React.FC<RichTextEditorProps> = ({
   placeholder = '',
   onChange,
   defaultValue,
-  editable = true,
+  readOnly,
+  disabled: customDisabled,
   variant,
 }) => {
   const { initiateValue, handleFocus } = useActions();
@@ -51,14 +51,23 @@ export const Editor: React.FC<RichTextEditorProps> = ({
     [onChange]
   );
 
+  const { componentDisabled } = ConfigProvider.useConfig();
+  const disabled = useMemo(
+    () => customDisabled ?? componentDisabled,
+    [componentDisabled, customDisabled]
+  );
+  const editable = useMemo(() => !readOnly && !disabled, [disabled, readOnly]);
+
   return (
     <Fragment>
       <RichTextPlugin
         ErrorBoundary={LexicalErrorBoundary}
-        contentEditable={<LexicalContentEditable placeholder={placeholder} variant={variant} />}
+        contentEditable={
+          <LexicalContentEditable disabled={disabled} placeholder={placeholder} variant={variant} />
+        }
       />
       <MarkdownShortcutPlugin />
-      <AutoFocusPlugin />
+      <AutoFocusPlugin defaultSelection="rootEnd" />
       <ClearEditorPlugin />
       <HashtagPlugin />
       <ListPlugin />
