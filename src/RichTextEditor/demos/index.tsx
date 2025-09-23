@@ -1,5 +1,4 @@
-import '@mdxeditor/editor/style.css';
-import { Button, MDXEditor, MDXEditorMethods, Space, message } from '@yuntijs/ui';
+import { Button, RichTextEditor, RichTextEditorMethods, Space, message } from '@yuntijs/ui';
 import React, { useCallback, useState } from 'react';
 
 const complexMarkdownContentToInsert = `
@@ -37,16 +36,21 @@ const complexMarkdownContentToInsert = `
 `;
 
 export default () => {
-  const ref = React.useRef<MDXEditorMethods>(null);
+  const ref = React.useRef<RichTextEditorMethods>(null);
   const [value, setValue] = useState('# hi');
+  const [editable, setEditable] = useState(true);
 
   const handleSet = useCallback(() => {
-    ref.current?.setMarkdown(complexMarkdownContentToInsert);
+    ref.current?.setMarkdown('# hi');
   }, []);
 
   const handleGet = useCallback(() => {
     const a = ref.current?.getMarkdown();
     message.info(a);
+  }, []);
+
+  const handleClear = useCallback(() => {
+    ref.current?.clearMarkdown();
   }, []);
 
   const handleFocus = useCallback(() => {
@@ -58,9 +62,20 @@ export default () => {
       <Space>
         <Button onClick={handleSet}>重置</Button>
         <Button onClick={handleGet}>获取</Button>
+        <Button onClick={handleClear}>清空</Button>
         <Button onClick={handleFocus}>Focus</Button>
+        <Button onClick={() => setEditable(pre => !pre)}>
+          {editable ? '可编辑状态' : '只读状态'}
+        </Button>
       </Space>
-      <MDXEditor autoFocus={true} onChange={setValue} ref={ref} value={value} />
+      <RichTextEditor
+        defaultValue={complexMarkdownContentToInsert}
+        onChange={setValue}
+        readOnly={!editable}
+        ref={ref}
+        value={value}
+        variant="borderless"
+      />
     </>
   );
 };
