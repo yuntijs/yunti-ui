@@ -2,6 +2,33 @@
 
 # Changelog
 
+## [Version&nbsp;2.0.0-beta.10](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.9...v2.0.0-beta.10)
+
+<sup>Released on **2025-10-18**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: RichTextEditor toolbar, RichTextEditor toolbar, RichTextEditor 增加 toolbar.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: RichTextEditor toolbar ([88bebc1](https://github.com/yuntijs/yunti-ui/commit/88bebc1))
+- **misc**: RichTextEditor toolbar ([165a805](https://github.com/yuntijs/yunti-ui/commit/165a805))
+- **misc**: RichTextEditor 增加 toolbar ([9bf42df](https://github.com/yuntijs/yunti-ui/commit/9bf42df))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;2.0.0-beta.9](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.8...v2.0.0-beta.9)
 
 <sup>Released on **2025-09-23**</sup>
