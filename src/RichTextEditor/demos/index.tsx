@@ -59,7 +59,7 @@ export default () => {
 
   return (
     <>
-      <Space>
+      <Space style={{ marginBottom: 10 }}>
         <Button onClick={handleSet}>重置</Button>
         <Button onClick={handleGet}>获取</Button>
         <Button onClick={handleClear}>清空</Button>
@@ -73,6 +73,7 @@ export default () => {
         onChange={setValue}
         readOnly={!editable}
         ref={ref}
+        showToolbar={true}
         value={value}
         variant="borderless"
       />

@@ -34,6 +34,7 @@ export interface RichTextEditorProps {
   value?: string;
   defaultValue?: string;
   readOnly?: boolean;
+  showToolbar?: boolean;
   disabled?: boolean;
   variant?: 'outlined' | 'filled' | 'borderless';
   classNames?: {
