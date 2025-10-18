@@ -181,7 +181,7 @@ export const Toolbar: React.FC<ToolBarProps> = ({
         disabled={!canUndo}
         icon={Undo}
         onClick={() => {
-          editor.dispatchCommand(UNDO_COMMAND, null);
+          editor.dispatchCommand(UNDO_COMMAND, void 0);
         }}
         size={size}
       />
@@ -189,7 +189,7 @@ export const Toolbar: React.FC<ToolBarProps> = ({
         disabled={!canRedo}
         icon={Redo}
         onClick={() => {
-          editor.dispatchCommand(REDO_COMMAND, null);
+          editor.dispatchCommand(REDO_COMMAND, void 0);
         }}
         size={size}
       />
