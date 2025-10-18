@@ -13,19 +13,15 @@ const complexMarkdownContentToInsert = `
 1. more
 2. more
 
-* [x] Walk the dog
-* [ ] Watch movie
-* [ ] Have dinner with family
+- [x] Walk the dog
+- [ ] Watch movie
+- [ ] Have dinner with family
 
 ... an all empty list
 
 > The overriding design goal for Markdown’s formatting syntax is to make it as readable as possible.
 > The idea is that a Markdown-formatted document should be publishable as-is, as plain text,
 > without looking like it’s been marked up with tags or formatting instructions.
-
-* [ ] Walk the dog
-* [ ] Watch movie
-* [ ] Have dinner with family
 
 ### Table
 
