@@ -209,7 +209,7 @@ export const formatBulletList = (editor: LexicalEditor, blockType: BLOCK_TYPE_VA
   if (blockType === 'bullet') {
     formatParagraph(editor);
   } else {
-    editor.dispatchCommand(INSERT_UNORDERED_LIST_COMMAND);
+    editor.dispatchCommand(INSERT_UNORDERED_LIST_COMMAND, null);
   }
 };
 
@@ -217,7 +217,7 @@ export const formatCheckList = (editor: LexicalEditor, blockType: BLOCK_TYPE_VAL
   if (blockType === 'check') {
     formatParagraph(editor);
   } else {
-    editor.dispatchCommand(INSERT_CHECK_LIST_COMMAND);
+    editor.dispatchCommand(INSERT_CHECK_LIST_COMMAND, null);
   }
 };
 
@@ -225,7 +225,7 @@ export const formatNumberedList = (editor: LexicalEditor, blockType: string) => 
   if (blockType === 'number') {
     formatParagraph(editor);
   } else {
-    editor.dispatchCommand(INSERT_ORDERED_LIST_COMMAND);
+    editor.dispatchCommand(INSERT_ORDERED_LIST_COMMAND, null);
   }
 };
 

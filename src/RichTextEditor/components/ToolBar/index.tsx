@@ -23,14 +23,14 @@ import {
   Bold,
   Code,
   Italic,
-  RotateCcw,
-  RotateCw,
+  Redo,
   Strikethrough,
   TextAlignCenter,
   TextAlignEnd,
   TextAlignJustify,
   TextAlignStart,
   Underline,
+  Undo,
 } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
@@ -179,17 +179,17 @@ export const Toolbar: React.FC<ToolBarProps> = ({
     <Flex align="center" className={styles.wrapper} gap={gap} ref={toolbarRef} wrap>
       <ActionIcon
         disabled={!canUndo}
-        icon={RotateCcw}
+        icon={Undo}
         onClick={() => {
-          editor.dispatchCommand(UNDO_COMMAND);
+          editor.dispatchCommand(UNDO_COMMAND, null);
         }}
         size={size}
       />
       <ActionIcon
         disabled={!canRedo}
-        icon={RotateCw}
+        icon={Redo}
         onClick={() => {
-          editor.dispatchCommand(REDO_COMMAND);
+          editor.dispatchCommand(REDO_COMMAND, null);
         }}
         size={size}
       />
