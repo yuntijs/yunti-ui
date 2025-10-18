@@ -3,14 +3,16 @@ import React from 'react';
 
 import { Editor } from './Editor';
 import { Methods } from './Methods';
+import { Toolbar } from './components/ToolBar';
 import PlaygroundNodes from './nodes/PlaygroundNodes';
 import { useStyles } from './style';
+import PlaygroundEditorTheme from './themes/PlaygroundEditorTheme';
 import { RichTextEditorMethods, RichTextEditorProps } from './types';
 
 export { RichTextEditorMethods, RichTextEditorProps } from './types';
 
 export const RichTextEditor = React.forwardRef<RichTextEditorMethods, RichTextEditorProps>(
-  ({ ...props }, ref) => {
+  ({ showToolbar, ...props }, ref) => {
     const { styles, cx } = useStyles({ autoSize: { minRows: 1 }, code: false });
 
     const initialConfig = {
@@ -19,11 +21,13 @@ export const RichTextEditor = React.forwardRef<RichTextEditorMethods, RichTextEd
       onError: (error: Error) => {
         throw error;
       },
+      theme: PlaygroundEditorTheme,
     };
 
     return (
       <LexicalComposer initialConfig={initialConfig}>
         <div className={cx(styles.wrapper, props?.classNames?.wrapper)}>
+          {showToolbar ? <Toolbar /> : null}
           <Editor {...props} />
           <Methods mdxRef={ref} />
         </div>

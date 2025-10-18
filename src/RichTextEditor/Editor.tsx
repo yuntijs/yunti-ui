@@ -20,7 +20,10 @@ import React, { Fragment, useCallback, useEffect, useMemo } from 'react';
 
 import LexicalContentEditable from './components/ContentEditable';
 import { useActions } from './hooks/useActions';
+import LexicalAutoLinkPlugin from './plugins/AutoLinkPlugin';
+import CodeHighlightPlugin from './plugins/CodeHighlightPlugin';
 import { EditablePlugin } from './plugins/EditablePlugin';
+import LinkPlugin from './plugins/LinkPlugin';
 import { PLAYGROUND_TRANSFORMERS } from './plugins/MarkdownTransformers';
 import { RichTextEditorProps } from './types';
 
@@ -74,8 +77,11 @@ export const Editor: React.FC<RichTextEditorProps> = ({
       <CheckListPlugin />
       <TablePlugin />
       <ClickableLinkPlugin />
+      <LinkPlugin hasLinkAttributes={false} />
       <HorizontalRulePlugin />
       <HistoryPlugin />
+      <LexicalAutoLinkPlugin />
+      <CodeHighlightPlugin />
       <TabIndentationPlugin maxIndent={7} />
       <EditablePlugin editable={editable} />
       <OnChangePlugin onChange={handleChange} />
