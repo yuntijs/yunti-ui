@@ -1,84 +1,124 @@
-/**
- * Copyright (c) Meta Platforms, Inc. and affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- *
- */
-.PlaygroundEditorTheme__ltr {
+/* Light theme styles (default) */
+:root {
+  --rt-editor-text-primary: rgb(5, 5, 5);
+  --rt-editor-text-secondary: rgb(101, 103, 107);
+  --rt-editor-bg-primary: #ffffff;
+  --rt-editor-bg-secondary: rgb(240, 242, 245);
+  --rt-editor-bg-tertiary: #f2f3f5;
+  --rt-editor-border-color: #bbb;
+  --rt-editor-border-light: rgb(206, 208, 212);
+  --rt-editor-link-color: rgb(33, 111, 219);
+  --rt-editor-code-bg: rgb(240, 242, 245);
+  --rt-editor-code-gutter: #eee;
+  --rt-editor-table-stripe: #f2f5fb;
+  --rt-editor-table-hover: #c9dbf0;
+  --rt-editor-table-header: #f2f3f5;
+  --rt-editor-table-frozen-bg: #ffffff;
+  --rt-editor-table-frozen-header: #f2f3f5;
+  --rt-editor-action-button-bg: #eee;
+  --rt-editor-action-button-hover: #ddd;
+  --rt-editor-hr-color: #ccc;
+  --rt-editor-layout-border: #ddd;
+  --rt-editor-autocomplete-color: #ccc;
+}
+
+/* Dark theme styles */
+[data-theme="dark"] {
+  --rt-editor-text-primary: rgba(255, 255, 255, 0.85);
+  --rt-editor-text-secondary: rgba(255, 255, 255, 0.65);
+  --rt-editor-bg-primary: #141414;
+  --rt-editor-bg-secondary: #1f1f1f;
+  --rt-editor-bg-tertiary: #262626;
+  --rt-editor-border-color: #434343;
+  --rt-editor-border-light: #434343;
+  --rt-editor-link-color: #1890ff;
+  --rt-editor-code-bg: #1f1f1f;
+  --rt-editor-code-gutter: #262626;
+  --rt-editor-table-stripe: #1a1a1a;
+  --rt-editor-table-hover: #177ddc;
+  --rt-editor-table-header: #262626;
+  --rt-editor-table-frozen-bg: #141414;
+  --rt-editor-table-frozen-header: #262626;
+  --rt-editor-action-button-bg: #262626;
+  --rt-editor-action-button-hover: #434343;
+  --rt-editor-hr-color: #434343;
+  --rt-editor-layout-border: #434343;
+  --rt-editor-autocomplete-color: #434343;
+}
+
+.RTEditor__ltr {
   text-align: left;
 }
-.PlaygroundEditorTheme__rtl {
+.RTEditor__rtl {
   text-align: right;
 }
-.PlaygroundEditorTheme__paragraph {
+.RTEditor__paragraph {
   margin: 0;
   position: relative;
 }
-.PlaygroundEditorTheme__quote {
+.RTEditor__quote {
   margin: 0;
   margin-left: 20px;
   margin-bottom: 10px;
   font-size: 15px;
-  color: rgb(101, 103, 107);
-  border-left-color: rgb(206, 208, 212);
+  color: var(--rt-editor-text-secondary);
+  border-left-color: var(--rt-editor-border-light);
   border-left-width: 4px;
   border-left-style: solid;
   padding-left: 16px;
 }
-.PlaygroundEditorTheme__h1 {
+.RTEditor__h1 {
   font-size: 24px;
-  color: rgb(5, 5, 5);
+  color: var(--rt-editor-text-primary);
   font-weight: 400;
   margin: 0;
 }
-.PlaygroundEditorTheme__h2 {
+.RTEditor__h2 {
   font-size: 15px;
-  color: rgb(101, 103, 107);
+  color: var(--rt-editor-text-secondary);
   font-weight: 700;
   margin: 0;
   text-transform: uppercase;
 }
-.PlaygroundEditorTheme__h3 {
+.RTEditor__h3 {
   font-size: 12px;
   margin: 0;
   text-transform: uppercase;
 }
-.PlaygroundEditorTheme__indent {
+.RTEditor__indent {
   --lexical-indent-base-value: 40px;
 }
-.PlaygroundEditorTheme__textBold {
+.RTEditor__textBold {
   font-weight: bold;
 }
-.PlaygroundEditorTheme__paragraph mark {
+.RTEditor__paragraph mark {
   background-color: unset;
 }
-.PlaygroundEditorTheme__textHighlight {
+.RTEditor__textHighlight {
   background: rgba(255, 212, 0, 0.14);
   border-bottom: 2px solid rgba(255, 212, 0, 0.3);
 }
-.PlaygroundEditorTheme__textItalic {
+.RTEditor__textItalic {
   font-style: italic;
 }
-.PlaygroundEditorTheme__textUnderline {
+.RTEditor__textUnderline {
   text-decoration: underline;
 }
 
-.PlaygroundEditorTheme__textStrikethrough {
+.RTEditor__textStrikethrough {
   text-decoration: line-through;
 }
 
-.PlaygroundEditorTheme__textUnderlineStrikethrough {
+.RTEditor__textUnderlineStrikethrough {
   text-decoration: underline line-through;
 }
 
-.PlaygroundEditorTheme__tabNode {
+.RTEditor__tabNode {
   position: relative;
   text-decoration: none;
 }
 
-.PlaygroundEditorTheme__tabNode.PlaygroundEditorTheme__textUnderline::after {
+.RTEditor__tabNode.RTEditor__textUnderline::after {
   content: '';
   position: absolute;
   left: 0;
@@ -87,7 +127,7 @@
   border-bottom: 0.1em solid currentColor;
 }
 
-.PlaygroundEditorTheme__tabNode.PlaygroundEditorTheme__textStrikethrough::before {
+.RTEditor__tabNode.RTEditor__textStrikethrough::before {
   content: '';
   position: absolute;
   left: 0;
@@ -96,65 +136,65 @@
   border-top: 0.1em solid currentColor;
 }
 
-.PlaygroundEditorTheme__tabNode.PlaygroundEditorTheme__textUnderlineStrikethrough::before,
-.PlaygroundEditorTheme__tabNode.PlaygroundEditorTheme__textUnderlineStrikethrough::after {
+.RTEditor__tabNode.RTEditor__textUnderlineStrikethrough::before,
+.RTEditor__tabNode.RTEditor__textUnderlineStrikethrough::after {
   content: '';
   position: absolute;
   left: 0;
   right: 0;
 }
 
-.PlaygroundEditorTheme__tabNode.PlaygroundEditorTheme__textUnderlineStrikethrough::before {
+.RTEditor__tabNode.RTEditor__textUnderlineStrikethrough::before {
   top: 0.69em;
   border-top: 0.1em solid currentColor;
 }
 
-.PlaygroundEditorTheme__tabNode.PlaygroundEditorTheme__textUnderlineStrikethrough::after {
+.RTEditor__tabNode.RTEditor__textUnderlineStrikethrough::after {
   bottom: 0.05em;
   border-bottom: 0.1em solid currentColor;
 }
 
-.PlaygroundEditorTheme__textSubscript {
+.RTEditor__textSubscript {
   font-size: 0.8em;
   vertical-align: sub !important;
 }
-.PlaygroundEditorTheme__textSuperscript {
+.RTEditor__textSuperscript {
   font-size: 0.8em;
   vertical-align: super;
 }
-.PlaygroundEditorTheme__textCode {
-  background-color: rgb(240, 242, 245);
+.RTEditor__textCode {
+  background-color: var(--rt-editor-code-bg);
   padding: 1px 0.25rem;
   font-family: Menlo, Consolas, Monaco, monospace;
   font-size: 94%;
 }
-.PlaygroundEditorTheme__textLowercase {
+.RTEditor__textLowercase {
   text-transform: lowercase;
 }
-.PlaygroundEditorTheme__textUppercase {
+.RTEditor__textUppercase {
   text-transform: uppercase;
 }
-.PlaygroundEditorTheme__textCapitalize {
+.RTEditor__textCapitalize {
   text-transform: capitalize;
 }
-.PlaygroundEditorTheme__hashtag {
+.RTEditor__hashtag {
   background-color: rgba(88, 144, 255, 0.15);
   border-bottom: 1px solid rgba(88, 144, 255, 0.3);
 }
-.PlaygroundEditorTheme__link {
-  color: rgb(33, 111, 219);
+.RTEditor__link {
+  color: var(--rt-editor-link-color);
   text-decoration: none;
 }
-.PlaygroundEditorTheme__link:hover {
+.RTEditor__link:hover {
   text-decoration: underline;
   cursor: pointer;
 }
-.PlaygroundEditorTheme__blockCursor {
+.RTEditor__blockCursor {
   display: block;
   pointer-events: none;
   position: absolute;
 }
-.PlaygroundEditorTheme__blockCursor:after {
+.RTEditor__blockCursor:after {
   content: '';
   display: block;
   position: absolute;
@@ -168,8 +208,8 @@
     visibility: hidden;
   }
 }
-.PlaygroundEditorTheme__code {
-  background-color: rgb(240, 242, 245);
+.RTEditor__code {
+  background-color: var(--rt-editor-code-bg);
   font-family: Menlo, Consolas, Monaco, monospace;
   display: block;
   padding: 8px 8px 8px 52px;
@@ -182,36 +222,36 @@
   position: relative;
   tab-size: 2;
 }
-.PlaygroundEditorTheme__code:before {
+.RTEditor__code:before {
   content: attr(data-gutter);
   position: absolute;
-  background-color: #eee;
+  background-color: var(--rt-editor-code-gutter);
   left: 0;
   top: 0;
-  border-right: 1px solid #ccc;
+  border-right: 1px solid var(--rt-editor-border-color);
   padding: 8px;
-  color: #777;
+  color: var(--rt-editor-text-secondary);
   white-space: pre-wrap;
   text-align: right;
   min-width: 25px;
 }
-.PlaygroundEditorTheme__tableScrollableWrapper {
+.RTEditor__tableScrollableWrapper {
   overflow-x: auto;
   margin: 0px 25px 30px 0px;
 }
-.PlaygroundEditorTheme__tableScrollableWrapper > .PlaygroundEditorTheme__table {
+.RTEditor__tableScrollableWrapper > .RTEditor__table {
   /* Remove the table's vertical margin and put it on the wrapper */
   margin-top: 0;
   margin-bottom: 0;
 }
-.PlaygroundEditorTheme__tableAlignmentCenter {
+.RTEditor__tableAlignmentCenter {
   margin-left: auto;
   margin-right: auto;
 }
-.PlaygroundEditorTheme__tableAlignmentRight {
+.RTEditor__tableAlignmentRight {
   margin-left: auto;
 }
-.PlaygroundEditorTheme__table {
+.RTEditor__table {
   border-collapse: collapse;
   border-spacing: 0;
   overflow-y: scroll;
@@ -221,66 +261,66 @@
   margin-top: 25px;
   margin-bottom: 30px;
 }
-.PlaygroundEditorTheme__tableScrollableWrapper.PlaygroundEditorTheme__tableFrozenRow {
+.RTEditor__tableScrollableWrapper.RTEditor__tableFrozenRow {
   /* position:sticky needs overflow:clip or visible
      https://github.com/w3c/csswg-drafts/issues/865#issuecomment-350585274 */
   overflow-x: clip;
 }
-.PlaygroundEditorTheme__tableFrozenRow tr:nth-of-type(1) > td {
+.RTEditor__tableFrozenRow tr:nth-of-type(1) > td {
   overflow: clip;
-  background-color: #ffffff;
+  background-color: var(--rt-editor-table-frozen-bg);
   position: sticky;
   z-index: 2;
   top: 44px;
 }
-.PlaygroundEditorTheme__tableFrozenRow tr:nth-of-type(1) > th {
+.RTEditor__tableFrozenRow tr:nth-of-type(1) > th {
   overflow: clip;
-  background-color: #f2f3f5;
+  background-color: var(--rt-editor-table-frozen-header);
   position: sticky;
   z-index: 2;
   top: 44px;
 }
-.PlaygroundEditorTheme__tableFrozenRow tr:nth-of-type(1) > th:after,
-.PlaygroundEditorTheme__tableFrozenRow tr:nth-of-type(1) > td:after {
+.RTEditor__tableFrozenRow tr:nth-of-type(1) > th:after,
+.RTEditor__tableFrozenRow tr:nth-of-type(1) > td:after {
   content: '';
   position: absolute;
   left: 0;
   bottom: 0;
   width: 100%;
-  border-bottom: 1px solid #bbb;
+  border-bottom: 1px solid var(--rt-editor-border-color);
 }
-.PlaygroundEditorTheme__tableFrozenColumn tr > td:first-child {
-  background-color: #ffffff;
+.RTEditor__tableFrozenColumn tr > td:first-child {
+  background-color: var(--rt-editor-table-frozen-bg);
   position: sticky;
   z-index: 2;
   left: 0;
 }
-.PlaygroundEditorTheme__tableFrozenColumn tr > th:first-child {
-  background-color: #f2f3f5;
+.RTEditor__tableFrozenColumn tr > th:first-child {
+  background-color: var(--rt-editor-table-frozen-header);
   position: sticky;
   z-index: 2;
   left: 0;
 }
-.PlaygroundEditorTheme__tableFrozenColumn tr > :first-child::after {
+.RTEditor__tableFrozenColumn tr > :first-child::after {
   content: '';
   position: absolute;
   left: 0;
   top: 0;
   right: 0;
   height: 100%;
-  border-right: 1px solid #bbb;
+  border-right: 1px solid var(--rt-editor-border-color);
 }
-.PlaygroundEditorTheme__tableRowStriping tr:nth-child(even) {
-  background-color: #f2f5fb;
+.RTEditor__tableRowStriping tr:nth-child(even) {
+  background-color: var(--rt-editor-table-stripe);
 }
-.PlaygroundEditorTheme__tableSelection *::selection {
+.RTEditor__tableSelection *::selection {
   background-color: transparent;
 }
-.PlaygroundEditorTheme__tableSelected {
+.RTEditor__tableSelected {
   outline: 2px solid rgb(60, 132, 244);
 }
-.PlaygroundEditorTheme__tableCell {
-  border: 1px solid #bbb;
+.RTEditor__tableCell {
+  border: 1px solid var(--rt-editor-border-color);
   width: 75px;
   vertical-align: top;
   text-align: start;
@@ -293,10 +333,10 @@
   A firefox workaround to allow scrolling of overflowing table cell
   ref: https://bugzilla.mozilla.org/show_bug.cgi?id=1904159
 */
-.PlaygroundEditorTheme__tableCell > * {
+.RTEditor__tableCell > * {
   overflow: inherit;
 }
-.PlaygroundEditorTheme__tableCellResizer {
+.RTEditor__tableCellResizer {
   position: absolute;
   right: -4px;
   height: 100%;
@@ -305,14 +345,14 @@
   z-index: 10;
   top: 0;
 }
-.PlaygroundEditorTheme__tableCellHeader {
-  background-color: #f2f3f5;
+.RTEditor__tableCellHeader {
+  background-color: var(--rt-editor-table-header);
   text-align: start;
 }
-.PlaygroundEditorTheme__tableCellSelected {
+.RTEditor__tableCellSelected {
   caret-color: transparent;
 }
-.PlaygroundEditorTheme__tableCellSelected::after {
+.RTEditor__tableCellSelected::after {
   position: absolute;
   left: 0;
   right: 0;
@@ -323,15 +363,15 @@
   content: '';
   pointer-events: none;
 }
-.PlaygroundEditorTheme__tableAddColumns {
+.RTEditor__tableAddColumns {
   position: absolute;
-  background-color: #eee;
+  background-color: var(--rt-editor-action-button-bg);
   height: 100%;
   animation: table-controls 0.2s ease;
   border: 0;
   cursor: pointer;
 }
-.PlaygroundEditorTheme__tableAddColumns:after {
+.RTEditor__tableAddColumns:after {
   background-image: url(../images/icons/plus.svg);
   background-size: contain;
   background-position: center;
@@ -345,19 +385,19 @@
   height: 100%;
   opacity: 0.4;
 }
-.PlaygroundEditorTheme__tableAddColumns:hover,
-.PlaygroundEditorTheme__tableAddRows:hover {
-  background-color: #c9dbf0;
+.RTEditor__tableAddColumns:hover,
+.RTEditor__tableAddRows:hover {
+  background-color: var(--rt-editor-table-hover);
 }
-.PlaygroundEditorTheme__tableAddRows {
+.RTEditor__tableAddRows {
   position: absolute;
   width: calc(100% - 25px);
-  background-color: #eee;
+  background-color: var(--rt-editor-action-button-bg);
   animation: table-controls 0.2s ease;
   border: 0;
   cursor: pointer;
 }
-.PlaygroundEditorTheme__tableAddRows:after {
+.RTEditor__tableAddRows:after {
   background-image: url(../images/icons/plus.svg);
   background-size: contain;
   background-position: center;
@@ -379,7 +419,7 @@
     opacity: 1;
   }
 }
-.PlaygroundEditorTheme__tableCellResizeRuler {
+.RTEditor__tableCellResizeRuler {
   display: block;
   position: absolute;
   width: 1px;
@@ -387,7 +427,7 @@
   height: 100%;
   top: 0;
 }
-.PlaygroundEditorTheme__tableCellActionButtonContainer {
+.RTEditor__tableCellActionButtonContainer {
   display: block;
   right: 5px;
   top: 6px;
@@ -396,68 +436,68 @@
   width: 20px;
   height: 20px;
 }
-.PlaygroundEditorTheme__tableCellActionButton {
-  background-color: #eee;
+.RTEditor__tableCellActionButton {
+  background-color: var(--rt-editor-action-button-bg);
   display: block;
   border: 0;
   border-radius: 20px;
   width: 20px;
   height: 20px;
-  color: #222;
+  color: var(--rt-editor-text-primary);
   cursor: pointer;
 }
-.PlaygroundEditorTheme__tableCellActionButton:hover {
-  background-color: #ddd;
+.RTEditor__tableCellActionButton:hover {
+  background-color: var(--rt-editor-action-button-hover);
 }
-.PlaygroundEditorTheme__characterLimit {
+.RTEditor__characterLimit {
   display: inline;
   background-color: #ffbbbb !important;
 }
-.PlaygroundEditorTheme__ol1 {
+.RTEditor__ol1 {
   padding: 0;
   margin: 0;
   list-style-position: outside;
 }
-.PlaygroundEditorTheme__ol2 {
+.RTEditor__ol2 {
   padding: 0;
   margin: 0;
   list-style-type: upper-alpha;
   list-style-position: outside;
 }
-.PlaygroundEditorTheme__ol3 {
+.RTEditor__ol3 {
   padding: 0;
   margin: 0;
   list-style-type: lower-alpha;
   list-style-position: outside;
 }
-.PlaygroundEditorTheme__ol4 {
+.RTEditor__ol4 {
   padding: 0;
   margin: 0;
   list-style-type: upper-roman;
   list-style-position: outside;
 }
-.PlaygroundEditorTheme__ol5 {
+.RTEditor__ol5 {
   padding: 0;
   margin: 0;
   list-style-type: lower-roman;
   list-style-position: outside;
 }
-.PlaygroundEditorTheme__ul {
+.RTEditor__ul {
   padding: 0;
   margin: 0;
   list-style-position: outside;
 }
-.PlaygroundEditorTheme__listItem {
+.RTEditor__listItem {
   margin: 0 32px;
 }
-.PlaygroundEditorTheme__listItem::marker {
+.RTEditor__listItem::marker {
   color: var(--listitem-marker-color);
   background-color: var(--listitem-marker-background-color);
   font-family: var(--listitem-marker-font-family);
   font-size: var(--listitem-marker-font-size);
 }
-.PlaygroundEditorTheme__listItemChecked,
-.PlaygroundEditorTheme__listItemUnchecked {
+.RTEditor__listItemChecked,
+.RTEditor__listItemUnchecked {
   position: relative;
   margin-left: 8px;
   margin-right: 8px;
@@ -466,11 +506,11 @@
   list-style-type: none;
   outline: none;
 }
-.PlaygroundEditorTheme__listItemChecked {
+.RTEditor__listItemChecked {
   text-decoration: line-through;
 }
-.PlaygroundEditorTheme__listItemUnchecked:before,
-.PlaygroundEditorTheme__listItemChecked:before {
+.RTEditor__listItemUnchecked:before,
+.RTEditor__listItemChecked:before {
   content: '';
   width: 16px;
   height: 16px;
@@ -481,27 +521,27 @@
   background-size: cover;
   position: absolute;
 }
-.PlaygroundEditorTheme__listItemUnchecked[dir='rtl']:before,
-.PlaygroundEditorTheme__listItemChecked[dir='rtl']:before {
+.RTEditor__listItemUnchecked[dir='rtl']:before,
+.RTEditor__listItemChecked[dir='rtl']:before {
   left: auto;
   right: 0;
 }
-.PlaygroundEditorTheme__listItemUnchecked:focus:before,
-.PlaygroundEditorTheme__listItemChecked:focus:before {
+.RTEditor__listItemUnchecked:focus:before,
+.RTEditor__listItemChecked:focus:before {
   box-shadow: 0 0 0 2px #a6cdfe;
   border-radius: 2px;
 }
-.PlaygroundEditorTheme__listItemUnchecked:before {
+.RTEditor__listItemUnchecked:before {
   border: 1px solid #999;
   border-radius: 2px;
 }
-.PlaygroundEditorTheme__listItemChecked:before {
+.RTEditor__listItemChecked:before {
   border: 1px solid rgb(61, 135, 245);
   border-radius: 2px;
   background-color: #3d87f5;
   background-repeat: no-repeat;
 }
-.PlaygroundEditorTheme__listItemChecked:after {
+.RTEditor__listItemChecked:after {
   content: '';
   cursor: pointer;
   border-color: #fff;
@@ -516,93 +556,93 @@
   transform: rotate(45deg);
   border-width: 0 2px 2px 0;
 }
-.PlaygroundEditorTheme__nestedListItem {
+.RTEditor__nestedListItem {
   list-style-type: none;
 }
-.PlaygroundEditorTheme__nestedListItem:before,
-.PlaygroundEditorTheme__nestedListItem:after {
+.RTEditor__nestedListItem:before,
+.RTEditor__nestedListItem:after {
   display: none;
 }
-.PlaygroundEditorTheme__tokenComment {
+.RTEditor__tokenComment {
   color: slategray;
 }
-.PlaygroundEditorTheme__tokenPunctuation {
+.RTEditor__tokenPunctuation {
   color: #999;
 }
-.PlaygroundEditorTheme__tokenProperty {
+.RTEditor__tokenProperty {
   color: #905;
 }
-.PlaygroundEditorTheme__tokenSelector {
+.RTEditor__tokenSelector {
   color: #690;
 }
-.PlaygroundEditorTheme__tokenOperator {
+.RTEditor__tokenOperator {
   color: #9a6e3a;
 }
-.PlaygroundEditorTheme__tokenAttr {
+.RTEditor__tokenAttr {
   color: #07a;
 }
-.PlaygroundEditorTheme__tokenVariable {
+.RTEditor__tokenVariable {
   color: #e90;
 }
-.PlaygroundEditorTheme__tokenFunction {
+.RTEditor__tokenFunction {
   color: #dd4a68;
 }
-.PlaygroundEditorTheme__mark {
+.RTEditor__mark {
   background: rgba(255, 212, 0, 0.14);
   border-bottom: 2px solid rgba(255, 212, 0, 0.3);
   padding-bottom: 2px;
 }
-.PlaygroundEditorTheme__markOverlap {
+.RTEditor__markOverlap {
   background: rgba(255, 212, 0, 0.3);
   border-bottom: 2px solid rgba(255, 212, 0, 0.7);
 }
-.PlaygroundEditorTheme__mark.selected {
+.RTEditor__mark.selected {
   background: rgba(255, 212, 0, 0.5);
   border-bottom: 2px solid rgba(255, 212, 0, 1);
 }
-.PlaygroundEditorTheme__markOverlap.selected {
+.RTEditor__markOverlap.selected {
   background: rgba(255, 212, 0, 0.7);
   border-bottom: 2px solid rgba(255, 212, 0, 0.7);
 }
-.PlaygroundEditorTheme__embedBlock {
+.RTEditor__embedBlock {
   user-select: none;
 }
-.PlaygroundEditorTheme__embedBlockFocus {
+.RTEditor__embedBlockFocus {
   outline: 2px solid rgb(60, 132, 244);
 }
-.PlaygroundEditorTheme__layoutContainer {
+.RTEditor__layoutContainer {
   display: grid;
   gap: 10px;
   margin: 10px 0;
 }
-.PlaygroundEditorTheme__layoutItem {
-  border: 1px dashed #ddd;
+.RTEditor__layoutItem {
+  border: 1px dashed var(--rt-editor-layout-border);
   padding: 8px 16px;
   min-width: 0;
   max-width: 100%;
 }
-.PlaygroundEditorTheme__autocomplete {
-  color: #ccc;
+.RTEditor__autocomplete {
+  color: var(--rt-editor-autocomplete-color);
 }
-.PlaygroundEditorTheme__hr {
+.RTEditor__hr {
   padding: 2px 2px;
   border: none;
   margin: 1em 0;
   cursor: pointer;
 }
-.PlaygroundEditorTheme__hr:after {
+.RTEditor__hr:after {
   content: '';
   display: block;
   height: 2px;
-  background-color: #ccc;
+  background-color: var(--rt-editor-hr-color);
   line-height: 2px;
 }
-.PlaygroundEditorTheme__hr.PlaygroundEditorTheme__hrSelected {
+.RTEditor__hr.RTEditor__hrSelected {
   outline: 2px solid rgb(60, 132, 244);
   user-select: none;
 }
 
-.PlaygroundEditorTheme__specialText {
+.RTEditor__specialText {
   background-color: yellow;
   font-weight: bold;
 }

@@ -1,4 +1,5 @@
 import { LexicalComposer } from '@lexical/react/LexicalComposer';
+import { useThemeMode } from 'antd-style';
 import React from 'react';
 
 import { Editor } from './Editor';
@@ -14,6 +15,7 @@ export { RichTextEditorMethods, RichTextEditorProps } from './types';
 export const RichTextEditor = React.forwardRef<RichTextEditorMethods, RichTextEditorProps>(
   ({ showToolbar, ...props }, ref) => {
     const { styles, cx } = useStyles({ autoSize: { minRows: 1 }, code: false });
+    const { isDarkMode } = useThemeMode();
 
     const initialConfig = {
       namespace: 'RichTextEditor',
@@ -26,7 +28,10 @@ export const RichTextEditor = React.forwardRef<RichTextEditorMethods, RichTextEd
 
     return (
       <LexicalComposer initialConfig={initialConfig}>
-        <div className={cx(styles.wrapper, props?.classNames?.wrapper)}>
+        <div
+          className={cx(styles.wrapper, props?.classNames?.wrapper)}
+          data-theme={isDarkMode ? 'dark' : 'light'}
+        >
           {showToolbar ? <Toolbar /> : null}
           <Editor {...props} />
           <Methods mdxRef={ref} />
