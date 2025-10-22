@@ -4,7 +4,7 @@ import type { JSX } from 'react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import * as React from 'react';
 
-import './ColorPicker.css';
+import { useStyles } from './style';
 
 let skipAddingToHistoryStack = false;
 
@@ -264,6 +264,7 @@ export default function ColorPicker({ color, onChange }: Readonly<ColorPickerPro
   const [selfColor, setSelfColor] = useState(transformColor('hex', color));
   const [inputColor, setInputColor] = useState(color);
   const innerDivRef = useRef(null);
+  const { styles } = useStyles();
 
   const saturationPosition = useMemo(
     () => ({
@@ -325,7 +326,7 @@ export default function ColorPicker({ color, onChange }: Readonly<ColorPickerPro
   }, [color]);
 
   return (
-    <div className="color-picker-wrapper" ref={innerDivRef} style={{ width: WIDTH }}>
+    <div className={styles.colorPickerBox} ref={innerDivRef} style={{ width: WIDTH }}>
       <Flex align="center" gap={10}>
         <label>Hex</label>
         <Input onChange={e => onSetHex(e.target.value)} value={inputColor} />
