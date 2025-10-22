@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version&nbsp;2.0.0-beta.11](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.10...v2.0.0-beta.11)
+
+<sup>Released on **2025-10-22**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: Support dark mode of RichTextEditor.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: Support dark mode of RichTextEditor ([18d7c8e](https://github.com/yuntijs/yunti-ui/commit/18d7c8e))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;2.0.0-beta.10](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.9...v2.0.0-beta.10)
 
 <sup>Released on **2025-10-18**</sup>
