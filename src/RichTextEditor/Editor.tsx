@@ -16,7 +16,7 @@ import { TabIndentationPlugin } from '@lexical/react/LexicalTabIndentationPlugin
 import { TablePlugin } from '@lexical/react/LexicalTablePlugin';
 import { ConfigProvider } from 'antd';
 import { EditorState } from 'lexical';
-import React, { Fragment, useCallback, useEffect, useMemo } from 'react';
+import React, { Fragment, useCallback, useEffect, useMemo, useRef } from 'react';
 
 import LexicalContentEditable from './components/ContentEditable';
 import { useActions } from './hooks/useActions';
@@ -27,7 +27,7 @@ import LinkPlugin from './plugins/LinkPlugin';
 import { PLAYGROUND_TRANSFORMERS } from './plugins/MarkdownTransformers';
 import { RichTextEditorProps } from './types';
 
-export const Editor: React.FC<RichTextEditorProps> = ({
+export const Editor: React.FC<Omit<RichTextEditorProps, 'toolBarProps' | 'classname'>> = ({
   placeholder = '',
   onChange,
   defaultValue,
@@ -36,6 +36,7 @@ export const Editor: React.FC<RichTextEditorProps> = ({
   variant,
 }) => {
   const { initiateValue, handleFocus } = useActions();
+  const floatingAnchorElem = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (defaultValue) {
@@ -66,14 +67,20 @@ export const Editor: React.FC<RichTextEditorProps> = ({
       <RichTextPlugin
         ErrorBoundary={LexicalErrorBoundary}
         contentEditable={
-          <LexicalContentEditable disabled={disabled} placeholder={placeholder} variant={variant} />
+          <div ref={floatingAnchorElem}>
+            <LexicalContentEditable
+              disabled={disabled}
+              placeholder={placeholder}
+              variant={variant}
+            />
+          </div>
         }
       />
       <MarkdownShortcutPlugin />
       <AutoFocusPlugin defaultSelection="rootEnd" />
       <ClearEditorPlugin />
       <HashtagPlugin />
-      <ListPlugin />
+      <ListPlugin hasStrictIndent={true} />
       <CheckListPlugin />
       <TablePlugin />
       <ClickableLinkPlugin />
@@ -86,6 +93,9 @@ export const Editor: React.FC<RichTextEditorProps> = ({
       <EditablePlugin editable={editable} />
       <OnChangePlugin onChange={handleChange} />
       <SelectionAlwaysOnDisplay />
+      {/* {floatingAnchorElem.current ? (
+        <CodeActionMenuPlugin anchorElem={floatingAnchorElem.current} />
+      ) : null} */}
     </Fragment>
   );
 };

@@ -16,9 +16,13 @@ export const useStyles = createStyles(
     return {
       wrapper: css`
         position: relative;
+
+        overflow-y: auto;
         display: inline-block;
+
         width: 100%;
         min-width: 0;
+        height: 100%;
       `,
       placeholder: css`
         pointer-events: none;

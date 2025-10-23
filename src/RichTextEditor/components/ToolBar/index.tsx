@@ -1,9 +1,8 @@
 import { $isListNode, ListNode } from '@lexical/list';
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
 import { $isHeadingNode } from '@lexical/rich-text';
-import { $getSelectionStyleValueForProperty, $patchStyleText } from '@lexical/selection';
 import { $findMatchingParent, $getNearestNodeOfType, mergeRegister } from '@lexical/utils';
-import { ActionIcon, ActionIconSize } from '@lobehub/ui';
+import { ActionIcon } from '@lobehub/ui';
 import { Divider, Flex } from 'antd';
 import {
   $getSelection,
@@ -14,7 +13,6 @@ import {
   COMMAND_PRIORITY_LOW,
   FORMAT_ELEMENT_COMMAND,
   FORMAT_TEXT_COMMAND,
-  HISTORIC_TAG,
   REDO_COMMAND,
   SELECTION_CHANGE_COMMAND,
   UNDO_COMMAND,
@@ -34,26 +32,17 @@ import {
 } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import AColorSvg from '@/RichTextEditor/images/AColorSvg';
-import FontBgColorSvg from '@/RichTextEditor/images/FontBgColorSvg';
-
+import { RichTextToolbarProps } from '../../types';
 import { BlockFormatDropDown } from './BlockFormatDropDown';
-import DropdownColorPicker from './DropdownColorPicker';
-import { FontDropDown } from './FontDropDown';
-import { FontSizeInput } from './FontSizeInput';
 import { useStyles } from './styles';
 import { BLOCK_TYPE } from './utils';
 
-interface ToolBarProps {
-  size?: ActionIconSize;
-  gap?: number;
-}
-
-export const Toolbar: React.FC<ToolBarProps> = ({
+export const Toolbar: React.FC<RichTextToolbarProps> = ({
   size = { blockSize: 26, size: 18 },
   gap = 2,
+  classname,
 }) => {
-  const { styles } = useStyles();
+  const { styles, cx } = useStyles();
   const [editor] = useLexicalComposerContext();
   const toolbarRef = useRef(null);
   const [canUndo, setCanUndo] = useState(false);
@@ -63,10 +52,6 @@ export const Toolbar: React.FC<ToolBarProps> = ({
   const [isUnderline, setIsUnderline] = useState(false);
   const [isStrikethrough, setIsStrikethrough] = useState(false);
   const [isCode, setIsCode] = useState(false);
-  const [fontSize, setFontSize] = useState(15);
-  const [fontColor, setFontColor] = useState('#000');
-  const [fontFam, setFontFamily] = useState('Arial');
-  const [bgColor, setBgColor] = useState('#fff');
   const [blockType, setBlockType] = useState(BLOCK_TYPE.PARAGRAPH);
 
   const $updateToolbar = useCallback(() => {
@@ -77,17 +62,6 @@ export const Toolbar: React.FC<ToolBarProps> = ({
       setIsUnderline(selection.hasFormat('underline'));
       setIsStrikethrough(selection.hasFormat('strikethrough'));
       setIsCode(selection.hasFormat('code'));
-      setFontColor($getSelectionStyleValueForProperty(selection, 'color', '#000'));
-      setBgColor($getSelectionStyleValueForProperty(selection, 'background-color', '#fff'));
-      setFontFamily($getSelectionStyleValueForProperty(selection, 'font-family', 'Arial'));
-
-      // const node = getSelectedNode(selection);
-      // const parent = node.getParent();
-      // const _isLink = $isLinkNode(parent) || $isLinkNode(node);
-      // setIsLink(_isLink);
-
-      const fontSize = $getSelectionStyleValueForProperty(selection, 'font-size', '15px');
-      setFontSize(Number(fontSize?.slice(0, -2)));
 
       const anchorNode = selection.anchor.getNode();
       let element =
@@ -146,37 +120,14 @@ export const Toolbar: React.FC<ToolBarProps> = ({
     );
   }, [editor, $updateToolbar]);
 
-  const applyStyleText = useCallback(
-    (styles: Record<string, string>, skipHistoryStack?: boolean) => {
-      editor.update(
-        () => {
-          const selection = $getSelection();
-          if (selection !== null) {
-            $patchStyleText(selection, styles);
-          }
-        },
-        skipHistoryStack ? { tag: HISTORIC_TAG } : {}
-      );
-    },
-    [editor]
-  );
-
-  const onFontColorSelect = useCallback(
-    (value: string, skipHistoryStack: boolean) => {
-      applyStyleText({ color: value }, skipHistoryStack);
-    },
-    [applyStyleText]
-  );
-
-  const onBgColorSelect = useCallback(
-    (value: string, skipHistoryStack: boolean) => {
-      applyStyleText({ 'background-color': value }, skipHistoryStack);
-    },
-    [applyStyleText]
-  );
-
   return (
-    <Flex align="center" className={styles.wrapper} gap={gap} ref={toolbarRef} wrap>
+    <Flex
+      align="center"
+      className={cx(styles.barWrapper, classname)}
+      gap={gap}
+      ref={toolbarRef}
+      wrap
+    >
       <ActionIcon
         disabled={!canUndo}
         icon={Undo}
@@ -195,10 +146,6 @@ export const Toolbar: React.FC<ToolBarProps> = ({
       />
       <Divider className={styles.divider} type="vertical" />
       <BlockFormatDropDown blockType={blockType} editor={editor} />
-      <Divider className={styles.divider} type="vertical" />
-      <FontDropDown editor={editor} value={fontFam} />
-      <Divider className={styles.divider} type="vertical" />
-      <FontSizeInput disabled={false} editor={editor} selectionFontSize={fontSize} />
       <Divider className={styles.divider} type="vertical" />
       <ActionIcon
         active={isBold}
@@ -240,13 +187,6 @@ export const Toolbar: React.FC<ToolBarProps> = ({
         }}
         size={size}
       />
-      <Divider className={styles.divider} type="vertical" />
-      <DropdownColorPicker color={fontColor} onChange={onFontColorSelect}>
-        <ActionIcon icon={<AColorSvg />} size={size} />
-      </DropdownColorPicker>
-      <DropdownColorPicker color={bgColor} onChange={onBgColorSelect}>
-        <ActionIcon icon={<FontBgColorSvg />} size={size} />
-      </DropdownColorPicker>
       <Divider className={styles.divider} type="vertical" />
       <ActionIcon
         icon={TextAlignStart}

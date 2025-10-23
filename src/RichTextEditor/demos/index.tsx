@@ -1,4 +1,5 @@
 import { Button, RichTextEditor, RichTextEditorMethods, Space, message } from '@yuntijs/ui';
+import { createStyles } from 'antd-style';
 import React, { useCallback, useState } from 'react';
 
 const complexMarkdownContentToInsert = `
@@ -29,12 +30,32 @@ const complexMarkdownContentToInsert = `
 | ----------- | ------------- | ------:|
 | Header      | Title         | 50     |
 | Paragraph   | Text *italic*   | 70     |
+
+
+1. **基本信息**：
+   - **级别**：中大型SUV
+   - **能源类型**：纯电动
+2. **基本信息**：
+   - **级别**：中大型SUV
+   - **能源类型**：纯电动
 `;
+
+export const useStyles = createStyles(({ css, token }) => {
+  return {
+    box: css`
+      height: 500px;
+    `,
+    toolbar: css`
+      background-color: ${token.colorBgContainer};
+    `,
+  };
+});
 
 export default () => {
   const ref = React.useRef<RichTextEditorMethods>(null);
   const [value, setValue] = useState('# hi');
   const [editable, setEditable] = useState(true);
+  const { styles } = useStyles();
 
   const handleSet = useCallback(() => {
     ref.current?.setMarkdown('# hi');
@@ -65,11 +86,15 @@ export default () => {
         </Button>
       </Space>
       <RichTextEditor
+        classname={styles.box}
         defaultValue={complexMarkdownContentToInsert}
         onChange={setValue}
         readOnly={!editable}
         ref={ref}
         showToolbar={true}
+        toolbarProps={{
+          classname: styles.toolbar,
+        }}
         value={value}
         variant="borderless"
       />

@@ -1,3 +1,5 @@
+import { ActionIconSize } from '@lobehub/ui';
+
 export interface RichTextEditorMethods {
   /**
    * Gets the current markdown value.
@@ -27,6 +29,11 @@ export interface RichTextEditorMethods {
     }
   ) => void;
 }
+export interface RichTextToolbarProps {
+  size?: ActionIconSize;
+  gap?: number;
+  classname?: string;
+}
 
 export interface RichTextEditorProps {
   placeholder?: string;
@@ -37,7 +44,6 @@ export interface RichTextEditorProps {
   showToolbar?: boolean;
   disabled?: boolean;
   variant?: 'outlined' | 'filled' | 'borderless';
-  classNames?: {
-    wrapper?: string;
-  };
+  classname?: string;
+  toolbarProps?: RichTextToolbarProps;
 }

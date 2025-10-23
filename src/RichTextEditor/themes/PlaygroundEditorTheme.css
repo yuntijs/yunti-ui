@@ -20,6 +20,10 @@
   --rt-editor-hr-color: #ccc;
   --rt-editor-layout-border: #ddd;
   --rt-editor-autocomplete-color: #ccc;
+  --rt-editor-line-height: 1.625;
+  --rt-editor-margin-multiple: 1;
+  --rt-editor-font-size: 14px;
+  --rt-editor-header-multiple: 0.8;
 }
 
 /* Dark theme styles */
@@ -53,14 +57,21 @@
   text-align: right;
 }
 .RTEditor__paragraph {
-  margin: 0;
-  position: relative;
+  line-height: var(--rt-editor-line-height);
+  letter-spacing: 0.02em;
+  font-size: var(--rt-editor-font-size);
+}
+.RTEditor__paragraph:not(:last-child) {
+  margin-block-end: calc(var(--rt-editor-margin-multiple) * 0.5em);
+}
+.RTEditor__paragraph:not(:first-child) {
+  margin-block-start: calc(var(--rt-editor-margin-multiple) * 0.5em);
 }
 .RTEditor__quote {
   margin: 0;
   margin-left: 20px;
   margin-bottom: 10px;
-  font-size: 15px;
+  font-size: var(--rt-editor-font-size);
   color: var(--rt-editor-text-secondary);
   border-left-color: var(--rt-editor-border-light);
   border-left-width: 4px;
@@ -68,21 +79,28 @@
   padding-left: 16px;
 }
 .RTEditor__h1 {
-  font-size: 24px;
+  font-size: calc(var(--rt-editor-font-size) * (1 + 1.5 * var(--rt-editor-header-multiple)));
   color: var(--rt-editor-text-primary);
-  font-weight: 400;
-  margin: 0;
+  font-weight: bold;
+  line-height: 1.25;
+  margin-top: 0;
+  margin-bottom: .5em;
 }
 .RTEditor__h2 {
-  font-size: 15px;
-  color: var(--rt-editor-text-secondary);
+  font-size: calc(var(--rt-editor-font-size) * (1 + var(--rt-editor-header-multiple)));
+  color: var(--rt-editor-text-primary);
   font-weight: 700;
-  margin: 0;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: .5em;
   text-transform: uppercase;
 }
 .RTEditor__h3 {
-  font-size: 12px;
-  margin: 0;
+  font-size: calc(var(--rt-editor-font-size) * (1 + 0.5 * var(--rt-editor-header-multiple)));
+  color: var(--rt-editor-text-primary);
+  margin-top: 0;
+  margin-bottom: .5em;
+  font-weight: bold;
   text-transform: uppercase;
 }
 .RTEditor__indent {
@@ -210,30 +228,18 @@
 }
 .RTEditor__code {
   background-color: var(--rt-editor-code-bg);
+  border-radius: 8px;
   font-family: Menlo, Consolas, Monaco, monospace;
   display: block;
-  padding: 8px 8px 8px 52px;
-  line-height: 1.53;
-  font-size: 13px;
+  padding: 16px;
+  line-height: 1.8;
+  font-size: 14px;
   margin: 0;
   margin-top: 8px;
   margin-bottom: 8px;
   overflow-x: auto;
   position: relative;
   tab-size: 2;
-}
-.RTEditor__code:before {
-  content: attr(data-gutter);
-  position: absolute;
-  background-color: var(--rt-editor-code-gutter);
-  left: 0;
-  top: 0;
-  border-right: 1px solid var(--rt-editor-border-color);
-  padding: 8px;
-  color: var(--rt-editor-text-secondary);
-  white-space: pre-wrap;
-  text-align: right;
-  min-width: 25px;
 }
 .RTEditor__tableScrollableWrapper {
   overflow-x: auto;
