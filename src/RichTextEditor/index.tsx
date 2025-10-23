@@ -10,10 +10,10 @@ import { useStyles } from './style';
 import PlaygroundEditorTheme from './themes/PlaygroundEditorTheme';
 import { RichTextEditorMethods, RichTextEditorProps } from './types';
 
-export { RichTextEditorMethods, RichTextEditorProps } from './types';
+export type { RichTextEditorMethods, RichTextEditorProps } from './types';
 
 export const RichTextEditor = React.forwardRef<RichTextEditorMethods, RichTextEditorProps>(
-  ({ showToolbar, ...props }, ref) => {
+  ({ showToolbar, classname, toolbarProps, ...props }, ref) => {
     const { styles, cx } = useStyles({ autoSize: { minRows: 1 }, code: false });
     const { isDarkMode } = useThemeMode();
 
@@ -28,11 +28,8 @@ export const RichTextEditor = React.forwardRef<RichTextEditorMethods, RichTextEd
 
     return (
       <LexicalComposer initialConfig={initialConfig}>
-        <div
-          className={cx(styles.wrapper, props?.classNames?.wrapper)}
-          data-theme={isDarkMode ? 'dark' : 'light'}
-        >
-          {showToolbar ? <Toolbar /> : null}
+        <div className={cx(styles.wrapper, classname)} data-theme={isDarkMode ? 'dark' : 'light'}>
+          {showToolbar ? <Toolbar {...toolbarProps} /> : null}
           <Editor {...props} />
           <Methods mdxRef={ref} />
         </div>
