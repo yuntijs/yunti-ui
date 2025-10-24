@@ -83,25 +83,20 @@
   color: var(--rt-editor-text-primary);
   font-weight: bold;
   line-height: 1.25;
-  margin-top: 0;
-  margin-bottom: .5em;
+  margin-block: max(calc(var(--rt-editor-header-multiple) * var(--rt-editor-header-multiple) * 0.4em), var(--rt-editor-font-size));
 }
 .RTEditor__h2 {
   font-size: calc(var(--rt-editor-font-size) * (1 + var(--rt-editor-header-multiple)));
   color: var(--rt-editor-text-primary);
   font-weight: 700;
   font-weight: bold;
-  margin-top: 0;
-  margin-bottom: .5em;
-  text-transform: uppercase;
+  margin-block: max(calc(var(--rt-editor-header-multiple) * var(--rt-editor-header-multiple) * 0.4em), var(--rt-editor-font-size));
 }
 .RTEditor__h3 {
   font-size: calc(var(--rt-editor-font-size) * (1 + 0.5 * var(--rt-editor-header-multiple)));
   color: var(--rt-editor-text-primary);
-  margin-top: 0;
-  margin-bottom: .5em;
   font-weight: bold;
-  text-transform: uppercase;
+  margin-block: max(calc(var(--rt-editor-header-multiple) * var(--rt-editor-header-multiple) * 0.4em), var(--rt-editor-font-size));
 }
 .RTEditor__indent {
   --lexical-indent-base-value: 40px;
@@ -631,17 +626,14 @@
   color: var(--rt-editor-autocomplete-color);
 }
 .RTEditor__hr {
-  padding: 2px 2px;
-  border: none;
-  margin: 1em 0;
-  cursor: pointer;
-}
-.RTEditor__hr:after {
-  content: '';
-  display: block;
-  height: 2px;
-  background-color: var(--rt-editor-hr-color);
-  line-height: 2px;
+  width: 100%;
+  margin-block: calc(var(--rt-editor-header-multiple) * 1.5em);
+  border-color: #e3e3e3;
+  border-style: dashed;
+  border-width: 1px;
+  border-block-start: none;
+  border-inline-start: none;
+  border-inline-end: none;
 }
 .RTEditor__hr.RTEditor__hrSelected {
   outline: 2px solid rgb(60, 132, 244);

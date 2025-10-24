@@ -21,7 +21,12 @@ import {
   Bold,
   Code,
   Italic,
+  List,
+  ListOrdered,
+  MessageSquareQuote,
   Redo,
+  SquareCheck,
+  SquareCode,
   Strikethrough,
   TextAlignCenter,
   TextAlignEnd,
@@ -35,7 +40,14 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { RichTextToolbarProps } from '../../types';
 import { BlockFormatDropDown } from './BlockFormatDropDown';
 import { useStyles } from './styles';
-import { BLOCK_TYPE } from './utils';
+import {
+  BLOCK_TYPE,
+  formatBulletList,
+  formatCheckList,
+  formatCode,
+  formatNumberedList,
+  formatQuote,
+} from './utils';
 
 export const Toolbar: React.FC<RichTextToolbarProps> = ({
   size = { blockSize: 26, size: 18 },
@@ -131,17 +143,13 @@ export const Toolbar: React.FC<RichTextToolbarProps> = ({
       <ActionIcon
         disabled={!canUndo}
         icon={Undo}
-        onClick={() => {
-          editor.dispatchCommand(UNDO_COMMAND, void 0);
-        }}
+        onClick={() => editor.dispatchCommand(UNDO_COMMAND, void 0)}
         size={size}
       />
       <ActionIcon
         disabled={!canRedo}
         icon={Redo}
-        onClick={() => {
-          editor.dispatchCommand(REDO_COMMAND, void 0);
-        }}
+        onClick={() => editor.dispatchCommand(REDO_COMMAND, void 0)}
         size={size}
       />
       <Divider className={styles.divider} type="vertical" />
@@ -150,42 +158,73 @@ export const Toolbar: React.FC<RichTextToolbarProps> = ({
       <ActionIcon
         active={isBold}
         icon={Bold}
-        onClick={() => {
-          editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'bold');
-        }}
+        onClick={() => editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'bold')}
         size={size}
+        title="Bold"
       />
       <ActionIcon
         active={isItalic}
         icon={Italic}
-        onClick={() => {
-          editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'italic');
-        }}
+        onClick={() => editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'italic')}
         size={size}
+        title="Ttalic"
       />
       <ActionIcon
         active={isUnderline}
         icon={Underline}
-        onClick={() => {
-          editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'underline');
-        }}
+        onClick={() => editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'underline')}
         size={size}
+        title="Underline"
       />
       <ActionIcon
         active={isStrikethrough}
         icon={Strikethrough}
-        onClick={() => {
-          editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'strikethrough');
-        }}
+        onClick={() => editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'strikethrough')}
         size={size}
+        title="Strikethrough"
       />
       <ActionIcon
         active={isCode}
         icon={Code}
-        onClick={() => {
-          editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'code');
-        }}
+        onClick={() => editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'code')}
         size={size}
+        title="Inline code"
+      />
+      <Divider className={styles.divider} type="vertical" />
+      <ActionIcon
+        active={blockType === BLOCK_TYPE.BULLET}
+        icon={List}
+        onClick={() => formatBulletList(editor, blockType)}
+        size={size}
+        title="Bullet List"
+      />
+      <ActionIcon
+        active={blockType === BLOCK_TYPE.NUMBER}
+        icon={ListOrdered}
+        onClick={() => formatNumberedList(editor, blockType)}
+        size={size}
+        title="Numbered List"
+      />
+      <ActionIcon
+        active={blockType === BLOCK_TYPE.CHECK}
+        icon={SquareCheck}
+        onClick={() => formatCheckList(editor, blockType)}
+        size={size}
+        title="Check List"
+      />
+      <ActionIcon
+        active={blockType === BLOCK_TYPE.QUOTE}
+        icon={MessageSquareQuote}
+        onClick={() => formatQuote(editor, blockType)}
+        size={size}
+        title="Quote"
+      />
+      <ActionIcon
+        active={blockType === BLOCK_TYPE.CODE}
+        icon={SquareCode}
+        onClick={() => formatCode(editor, blockType)}
+        size={size}
+        title="Code Block"
       />
       <Divider className={styles.divider} type="vertical" />
       <ActionIcon

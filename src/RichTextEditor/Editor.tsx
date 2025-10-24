@@ -80,7 +80,7 @@ export const Editor: React.FC<Omit<RichTextEditorProps, 'toolBarProps' | 'classn
       <AutoFocusPlugin defaultSelection="rootEnd" />
       <ClearEditorPlugin />
       <HashtagPlugin />
-      <ListPlugin hasStrictIndent={true} />
+      <ListPlugin hasStrictIndent={false} />
       <CheckListPlugin />
       <TablePlugin />
       <ClickableLinkPlugin />
