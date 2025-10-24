@@ -1,7 +1,6 @@
 import {
   $convertFromMarkdownString,
   $convertToMarkdownString,
-  CHECK_LIST,
   ELEMENT_TRANSFORMERS,
   ElementTransformer,
   MULTILINE_ELEMENT_TRANSFORMERS,
@@ -27,6 +26,8 @@ import {
   TableRowNode,
 } from '@lexical/table';
 import { $isParagraphNode, $isTextNode, LexicalNode } from 'lexical';
+
+import { CHECK_LIST, ORDERED_LIST, UNORDERED_LIST } from './transformers';
 
 // 扩展参考 https://github.com/facebook/lexical/blob/main/packages/lexical-playground/src/plugins/MarkdownTransformers/index.ts
 // import {
@@ -293,6 +294,8 @@ export const PLAYGROUND_TRANSFORMERS: Array<Transformer> = [
   // EMOJI,
   // EQUATION,
   // TWEET,
+  UNORDERED_LIST,
+  ORDERED_LIST,
   CHECK_LIST,
   ...ELEMENT_TRANSFORMERS,
   ...MULTILINE_ELEMENT_TRANSFORMERS,

@@ -63,6 +63,8 @@ export default () => {
 
   const handleGet = useCallback(() => {
     const a = ref.current?.getMarkdown();
+    // eslint-disable-next-line no-console
+    console.log(a);
     message.info(a);
   }, []);
 
