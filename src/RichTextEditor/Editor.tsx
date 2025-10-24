@@ -76,7 +76,7 @@ export const Editor: React.FC<Omit<RichTextEditorProps, 'toolBarProps' | 'classn
           </div>
         }
       />
-      <MarkdownShortcutPlugin />
+      <MarkdownShortcutPlugin transformers={PLAYGROUND_TRANSFORMERS} />
       <AutoFocusPlugin defaultSelection="rootEnd" />
       <ClearEditorPlugin />
       <HashtagPlugin />
