@@ -4,6 +4,7 @@ export const useStyles = createStyles(({ css, token }) => {
   return {
     barWrapper: css`
       position: sticky;
+      z-index: 99;
       top: 0;
       left: 0;
 
@@ -12,7 +13,7 @@ export const useStyles = createStyles(({ css, token }) => {
 
       background-color: ${token.colorBgContainer};
       border: 1px solid ${token.colorBorderSecondary};
-      border-radius: ${token.borderRadiusLG}px;
+      border-radius: ${token.borderRadius}px;
     `,
     divider: css`
       height: 20px;

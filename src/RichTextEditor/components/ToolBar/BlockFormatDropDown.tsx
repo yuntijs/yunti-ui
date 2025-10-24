@@ -2,30 +2,10 @@ import { Icon } from '@lobehub/ui';
 import { Dropdown, Flex } from 'antd';
 import { useTheme } from 'antd-style';
 import { LexicalEditor } from 'lexical';
-import {
-  ChevronDown,
-  Code,
-  Heading1,
-  Heading2,
-  Heading3,
-  List,
-  ListOrdered,
-  Logs,
-  MessageSquareQuote,
-  SquareCheck,
-} from 'lucide-react';
+import { ChevronDown, Heading1, Heading2, Heading3, Logs } from 'lucide-react';
 import { useCallback, useMemo } from 'react';
 
-import {
-  BLOCK_TYPE,
-  formatBulletList,
-  formatCheckList,
-  formatCode,
-  formatHeading,
-  formatNumberedList,
-  formatParagraph,
-  formatQuote,
-} from './utils';
+import { BLOCK_TYPE, formatHeading, formatParagraph } from './utils';
 
 interface BlockFormatDropDownProps {
   blockType: BLOCK_TYPE;
@@ -58,26 +38,6 @@ export const BlockFormatDropDown: React.FC<BlockFormatDropDownProps> = ({
           formatHeading(editor, blockType, 'h3');
           break;
         }
-        case BLOCK_TYPE.BULLET: {
-          formatBulletList(editor, blockType);
-          break;
-        }
-        case BLOCK_TYPE.NUMBER: {
-          formatNumberedList(editor, blockType);
-          break;
-        }
-        case BLOCK_TYPE.CHECK: {
-          formatCheckList(editor, blockType);
-          break;
-        }
-        case BLOCK_TYPE.QUOTE: {
-          formatQuote(editor, blockType);
-          break;
-        }
-        case BLOCK_TYPE.CODE: {
-          formatCode(editor, blockType);
-          break;
-        }
         default: {
           break;
         }
@@ -92,7 +52,7 @@ export const BlockFormatDropDown: React.FC<BlockFormatDropDownProps> = ({
         label: (
           <Flex align="center" gap={10}>
             <Icon color={token.colorTextTertiary} icon={Logs} size={16} />
-            <span>Normal</span>
+            <span>Paragraph</span>
           </Flex>
         ),
         key: BLOCK_TYPE.PARAGRAPH,
@@ -124,51 +84,6 @@ export const BlockFormatDropDown: React.FC<BlockFormatDropDownProps> = ({
         ),
         key: BLOCK_TYPE.H3,
       },
-      {
-        label: (
-          <Flex align="center" gap={10}>
-            <Icon color={token.colorTextTertiary} icon={List} size={16} />
-            <span>Bullet List</span>
-          </Flex>
-        ),
-        key: BLOCK_TYPE.BULLET,
-      },
-      {
-        label: (
-          <Flex align="center" gap={10}>
-            <Icon color={token.colorTextTertiary} icon={ListOrdered} size={16} />
-            <span>Numbered List</span>
-          </Flex>
-        ),
-        key: BLOCK_TYPE.NUMBER,
-      },
-      {
-        label: (
-          <Flex align="center" gap={10}>
-            <Icon color={token.colorTextTertiary} icon={SquareCheck} size={16} />
-            <span>Check List</span>
-          </Flex>
-        ),
-        key: BLOCK_TYPE.CHECK,
-      },
-      {
-        label: (
-          <Flex align="center" gap={10}>
-            <Icon color={token.colorTextTertiary} icon={MessageSquareQuote} size={16} />
-            <span>Quote</span>
-          </Flex>
-        ),
-        key: BLOCK_TYPE.QUOTE,
-      },
-      {
-        label: (
-          <Flex align="center" gap={10}>
-            <Icon color={token.colorTextTertiary} icon={Code} size={16} />
-            <span>Code Block</span>
-          </Flex>
-        ),
-        key: BLOCK_TYPE.CODE,
-      },
     ],
     [token]
   );
@@ -180,7 +95,7 @@ export const BlockFormatDropDown: React.FC<BlockFormatDropDownProps> = ({
       trigger={['click']}
     >
       <Flex align="center" gap={16}>
-        {items.find(d => d.key === blockType)?.label || blockType}
+        {items.find(d => d.key === blockType)?.label || items[0].label}
         <Icon color={token.colorTextQuaternary} icon={ChevronDown} size={18} />
       </Flex>
     </Dropdown>
