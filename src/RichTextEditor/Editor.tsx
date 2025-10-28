@@ -16,7 +16,7 @@ import { TabIndentationPlugin } from '@lexical/react/LexicalTabIndentationPlugin
 import { TablePlugin } from '@lexical/react/LexicalTablePlugin';
 import { ConfigProvider } from 'antd';
 import { EditorState } from 'lexical';
-import React, { Fragment, useCallback, useEffect, useMemo, useRef } from 'react';
+import React, { Fragment, useCallback, useEffect, useMemo } from 'react';
 
 import LexicalContentEditable from './components/ContentEditable';
 import { useActions } from './hooks/useActions';
@@ -36,7 +36,6 @@ export const Editor: React.FC<Omit<RichTextEditorProps, 'toolBarProps' | 'classn
   variant,
 }) => {
   const { initiateValue, handleFocus } = useActions();
-  const floatingAnchorElem = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (defaultValue) {
@@ -67,13 +66,7 @@ export const Editor: React.FC<Omit<RichTextEditorProps, 'toolBarProps' | 'classn
       <RichTextPlugin
         ErrorBoundary={LexicalErrorBoundary}
         contentEditable={
-          <div ref={floatingAnchorElem}>
-            <LexicalContentEditable
-              disabled={disabled}
-              placeholder={placeholder}
-              variant={variant}
-            />
-          </div>
+          <LexicalContentEditable disabled={disabled} placeholder={placeholder} variant={variant} />
         }
       />
       <MarkdownShortcutPlugin transformers={PLAYGROUND_TRANSFORMERS} />
@@ -93,9 +86,6 @@ export const Editor: React.FC<Omit<RichTextEditorProps, 'toolBarProps' | 'classn
       <EditablePlugin editable={editable} />
       <OnChangePlugin onChange={handleChange} />
       <SelectionAlwaysOnDisplay />
-      {/* {floatingAnchorElem.current ? (
-        <CodeActionMenuPlugin anchorElem={floatingAnchorElem.current} />
-      ) : null} */}
     </Fragment>
   );
 };

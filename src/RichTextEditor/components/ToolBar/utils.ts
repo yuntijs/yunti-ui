@@ -14,13 +14,15 @@ import {
 } from '@lexical/rich-text';
 import { $patchStyleText, $setBlocksType } from '@lexical/selection';
 import { $isTableSelection } from '@lexical/table';
-import { $getNearestBlockElementAncestorOrThrow } from '@lexical/utils';
+import { $findMatchingParent, $getNearestBlockElementAncestorOrThrow } from '@lexical/utils';
 import {
   $createParagraphNode,
   $getSelection,
   $isRangeSelection,
+  $isRootOrShadowRoot,
   $isTextNode,
   LexicalEditor,
+  LexicalNode,
 } from 'lexical';
 
 import {
@@ -321,3 +323,18 @@ export const clearFormatting = (editor: LexicalEditor) => {
     }
   });
 };
+
+export function $findTopLevelElement(node: LexicalNode) {
+  let topLevelElement =
+    node.getKey() === 'root'
+      ? node
+      : $findMatchingParent(node, e => {
+          const parent = e.getParent();
+          return parent !== null && $isRootOrShadowRoot(parent);
+        });
+
+  if (topLevelElement === null) {
+    topLevelElement = node.getTopLevelElementOrThrow();
+  }
+  return topLevelElement;
+}
