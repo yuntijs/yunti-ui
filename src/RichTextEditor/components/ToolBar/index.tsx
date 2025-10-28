@@ -1,18 +1,21 @@
+import { $isCodeNode } from '@lexical/code';
 import { $isListNode, ListNode } from '@lexical/list';
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
 import { $isHeadingNode } from '@lexical/rich-text';
-import { $findMatchingParent, $getNearestNodeOfType, mergeRegister } from '@lexical/utils';
+import { $getNearestNodeOfType, mergeRegister } from '@lexical/utils';
 import { ActionIcon } from '@lobehub/ui';
 import { Divider, Flex } from 'antd';
 import {
+  $getNodeByKey,
   $getSelection,
+  $isNodeSelection,
   $isRangeSelection,
-  $isRootOrShadowRoot,
   CAN_REDO_COMMAND,
   CAN_UNDO_COMMAND,
   COMMAND_PRIORITY_LOW,
   FORMAT_ELEMENT_COMMAND,
   FORMAT_TEXT_COMMAND,
+  NodeKey,
   REDO_COMMAND,
   SELECTION_CHANGE_COMMAND,
   UNDO_COMMAND,
@@ -26,7 +29,6 @@ import {
   MessageSquareQuote,
   Redo,
   SquareCheck,
-  SquareCode,
   Strikethrough,
   TextAlignCenter,
   TextAlignEnd,
@@ -39,12 +41,13 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { RichTextToolbarProps } from '../../types';
 import { BlockFormatDropDown } from './BlockFormatDropDown';
+import DropdownLanguages from './DropdownLanguages';
 import { useStyles } from './styles';
 import {
+  $findTopLevelElement,
   BLOCK_TYPE,
   formatBulletList,
   formatCheckList,
-  formatCode,
   formatNumberedList,
   formatQuote,
 } from './utils';
@@ -65,6 +68,8 @@ export const Toolbar: React.FC<RichTextToolbarProps> = ({
   const [isStrikethrough, setIsStrikethrough] = useState(false);
   const [isCode, setIsCode] = useState(false);
   const [blockType, setBlockType] = useState(BLOCK_TYPE.PARAGRAPH);
+  const [language, setLanguage] = useState('');
+  const [selectedElementKey, setSelectedElementKey] = useState<NodeKey | null>(null);
 
   const $updateToolbar = useCallback(() => {
     const selection = $getSelection();
@@ -76,24 +81,58 @@ export const Toolbar: React.FC<RichTextToolbarProps> = ({
       setIsCode(selection.hasFormat('code'));
 
       const anchorNode = selection.anchor.getNode();
-      let element =
-        anchorNode.getKey() === 'root'
-          ? anchorNode
-          : $findMatchingParent(anchorNode, e => {
-              const parent = e.getParent();
-              return parent !== null && $isRootOrShadowRoot(parent);
-            });
+      const element = $findTopLevelElement(anchorNode);
+      const elementKey = element.getKey();
+      const elementDOM = editor.getElementByKey(elementKey);
 
-      if ($isListNode(element)) {
-        const parentList = $getNearestNodeOfType(anchorNode, ListNode);
-        const type = parentList ? parentList.getListType() : element.getListType();
-        setBlockType(type as BLOCK_TYPE);
-      } else if (element) {
-        const type = $isHeadingNode(element) ? element.getTag() : element.getType();
-        setBlockType(type as BLOCK_TYPE);
+      if (elementDOM !== null) {
+        setSelectedElementKey(elementKey);
+        if ($isListNode(element)) {
+          const parentList = $getNearestNodeOfType(anchorNode, ListNode);
+          const type = parentList ? parentList.getListType() : element.getListType();
+          setBlockType(type as BLOCK_TYPE);
+        } else if (element) {
+          if ($isCodeNode(element)) {
+            const language = element.getLanguage();
+            setLanguage(language || '');
+          }
+          const type = $isHeadingNode(element) ? element.getTag() : element.getType();
+          setBlockType(type as BLOCK_TYPE);
+        }
       }
     }
-  }, []);
+    if ($isNodeSelection(selection)) {
+      const nodes = selection.getNodes();
+      for (const selectedNode of nodes) {
+        const parentList = $getNearestNodeOfType<ListNode>(selectedNode, ListNode);
+        if (parentList) {
+          const type = parentList.getListType();
+          setBlockType(type as BLOCK_TYPE);
+        } else {
+          const selectedElement = $findTopLevelElement(selectedNode);
+          if ($isCodeNode(selectedElement)) {
+            const language = selectedElement.getLanguage();
+            setLanguage(language || '');
+            setBlockType(BLOCK_TYPE.CODE);
+          }
+        }
+      }
+    }
+  }, [editor]);
+
+  const onCodeLanguageSelect = useCallback(
+    (value: string) => {
+      editor.update(() => {
+        if (selectedElementKey !== null) {
+          const node = $getNodeByKey(selectedElementKey);
+          if ($isCodeNode(node)) {
+            node.setLanguage(value);
+          }
+        }
+      });
+    },
+    [editor, selectedElementKey]
+  );
 
   useEffect(() => {
     return mergeRegister(
@@ -219,12 +258,12 @@ export const Toolbar: React.FC<RichTextToolbarProps> = ({
         size={size}
         title="Quote"
       />
-      <ActionIcon
-        active={blockType === BLOCK_TYPE.CODE}
-        icon={SquareCode}
-        onClick={() => formatCode(editor, blockType)}
+      <DropdownLanguages
+        blockType={blockType}
+        editor={editor}
+        onChange={onCodeLanguageSelect}
         size={size}
-        title="Code Block"
+        value={language}
       />
       <Divider className={styles.divider} type="vertical" />
       <ActionIcon
