@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version&nbsp;2.0.0-beta.15](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.14...v2.0.0-beta.15)
+
+<sup>Released on **2025-10-28**</sup>
+
+#### ✨ Features
+
+- **misc**: Select code language for RichTextEditor.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **misc**: Select code language for RichTextEditor ([0a1081e](https://github.com/yuntijs/yunti-ui/commit/0a1081e))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;2.0.0-beta.14](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.13...v2.0.0-beta.14)
 
 <sup>Released on **2025-10-24**</sup>
