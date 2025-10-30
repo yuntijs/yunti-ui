@@ -4,20 +4,12 @@ export const useStyles = createStyles(({ css, token }) => {
   return {
     dropdownLang: css`
       overflow-y: auto;
-
       height: 200px;
-      padding: ${token.paddingXXS}px ${token.paddingSM}px;
+      font-size: ${token.fontSizeSM}px !important;
 
-      background-color: ${token.colorBgElevated};
-      border-radius: ${token.borderRadius}px;
-    `,
-    btn: css`
-      justify-content: left;
-      font-size: ${token.fontSizeSM}px;
-      color: ${token.colorTextSecondary};
-    `,
-    activeBtn: css`
-      background-color: ${token.colorFillSecondary};
+      .ant-dropdown-menu-item {
+        font-size: ${token.fontSizeSM}px !important;
+      }
     `,
   };
 });
