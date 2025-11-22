@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version&nbsp;2.0.0-beta.17](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.16...v2.0.0-beta.17)
+
+<sup>Released on **2025-11-22**</sup>
+
+#### ✨ Features
+
+- **misc**: Support ECharts for RichTextEditor.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **misc**: Support ECharts for RichTextEditor ([58498e9](https://github.com/yuntijs/yunti-ui/commit/58498e9))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;2.0.0-beta.16](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.15...v2.0.0-beta.16)
 
 <sup>Released on **2025-10-30**</sup>
