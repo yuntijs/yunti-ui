@@ -9,6 +9,8 @@ import { useCallback, useMemo, useState } from 'react';
 import { BLOCK_TYPE, formatCode } from '../utils';
 import { useStyles } from './style';
 
+const languageOptions = [...getCodeLanguageOptions(), ['echarts', 'ECharts']];
+
 type Props = {
   size?: ActionIconSize;
   editor: LexicalEditor;
@@ -30,7 +32,7 @@ export default function DropdownLanguages({ size, editor, blockType, value, onCh
 
   const items = useMemo(
     () =>
-      getCodeLanguageOptions()?.map(([k, v]) => ({
+      languageOptions?.map(([k, v]) => ({
         key: k,
         label: (
           <Space>
