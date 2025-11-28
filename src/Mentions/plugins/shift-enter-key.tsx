@@ -27,7 +27,7 @@ export const ShiftEnterKeyPlugin: React.FC<ShiftEnterKeyPluginProps> = ({ onPres
     // https://github.com/facebook/lexical/discussions/4464#discussioncomment-5833227
     editor.registerCommand<KeyboardEvent | null>(
       KEY_ENTER_COMMAND,
-      event => {
+      (event: any) => {
         const selection = $getSelection();
         if (!$isRangeSelection(selection)) {
           return false;

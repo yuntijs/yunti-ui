@@ -19,7 +19,7 @@ export const OnKeyDownPlugin: React.FC<OnKeyDownPluginProps> = ({ onKeyDown }) =
     // https://github.com/facebook/lexical/discussions/4464#discussioncomment-5833227
     editor.registerCommand<KeyboardEvent | null>(
       KEY_DOWN_COMMAND,
-      event => {
+      (event: any) => {
         // 这里把 onKeyDown 放在下一次事件循环中触发，是为了避免跟 Lexical 还未结束的输入等事务发生冲突
         if (window.queueMicrotask === undefined) {
           setTimeout(() => {

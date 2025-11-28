@@ -56,6 +56,7 @@ export interface HighlighterProps extends DivProps {
   wrap?: boolean;
   enableTransformer?: boolean;
   theme?: ThemeProps;
+  animated?: boolean;
 }
 
 export const Highlighter = memo<HighlighterProps>(
@@ -77,6 +78,7 @@ export const Highlighter = memo<HighlighterProps>(
     wrap,
     enableTransformer,
     theme,
+    animated,
     ...rest
   }) => {
     const { styles, cx } = useStyles({ variant });
@@ -86,6 +88,7 @@ export const Highlighter = memo<HighlighterProps>(
       return (
         <FullFeaturedHighlighter
           allowChangeLanguage={allowChangeLanguage}
+          animated={animated}
           className={className}
           contentStyle={contentStyle}
           fileName={fileName}
@@ -108,6 +111,7 @@ export const Highlighter = memo<HighlighterProps>(
         {showLanguage && language && <Tag className={styles.lang}>{language.toLowerCase()}</Tag>}
         <div className={styles.scroller}>
           <SyntaxHighlighter
+            animated={animated}
             enableTransformer={enableTransformer}
             language={language?.toLowerCase()}
             style={contentStyle}

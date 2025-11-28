@@ -6,8 +6,9 @@ import {
   transformerNotationWordHighlight,
 } from '@shikijs/transformers';
 import { useTheme, useThemeMode } from 'antd-style';
-import { useMemo } from 'react';
-import type { codeToHtml } from 'shiki';
+import { CSSProperties, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import type { ThemedToken, codeToHtml } from 'shiki';
+import { ShikiStreamTokenizer } from 'shiki-stream';
 import useSWR, { SWRResponse } from 'swr';
 import { Md5 } from 'ts-md5';
 
@@ -28,9 +29,34 @@ type ColorReplacements = {
   };
 };
 
+type StreamingHighlightResult = {
+  colorReplacements?: Record<string, string>;
+  lines: ThemedToken[][];
+  preStyle?: CSSProperties;
+};
+
+type UseHighlightResponse = SWRResponse<string, Error> & {
+  colorReplacements?: ColorReplacements;
+  streaming?: StreamingHighlightResult;
+};
+
+type StreamingOptions = {
+  colorReplacements?: Record<string, string>;
+  enabled?: boolean;
+  language: string;
+  theme: string;
+};
+
+type ShikiModule = typeof import('shiki');
+
 // 懒加载 shiki
 const loadShiki = (): Promise<typeof codeToHtml> => import('shiki').then(mod => mod.codeToHtml);
 const shikiPromise: Promise<typeof codeToHtml> = loadShiki();
+const loadShikiModule = (): Promise<ShikiModule | null> => {
+  if (typeof window === 'undefined') return Promise.resolve(null);
+  return import('shiki');
+};
+const shikiModulePromise = loadShikiModule();
 
 // 辅助函数：安全的HTML转义
 const escapeHtml = (str: string): string => {
@@ -42,13 +68,220 @@ const escapeHtml = (str: string): string => {
     .replaceAll("'", '&#039;');
 };
 
+const tokensToLineTokens = (tokens: ThemedToken[]): ThemedToken[][] => {
+  if (tokens.length === 0) return [[]];
+
+  const lines: ThemedToken[][] = [[]];
+  let currentLine = lines[0];
+
+  const startNewLine = () => {
+    currentLine = [];
+    lines.push(currentLine);
+  };
+
+  for (const token of tokens) {
+    const content = token.content ?? '';
+
+    if (content === '\n') {
+      startNewLine();
+      continue;
+    }
+
+    if (!content.includes('\n')) {
+      currentLine.push(token);
+      continue;
+    }
+
+    const segments = content.split('\n');
+    for (const [index, segment] of segments.entries()) {
+      if (segment) {
+        currentLine.push({
+          ...token,
+          content: segment,
+        });
+      }
+
+      if (index < segments.length - 1) {
+        startNewLine();
+      }
+    }
+  }
+
+  if (lines.length === 0) return [[]];
+
+  return lines;
+};
+
+const createPreStyle = (bg?: string, fg?: string): CSSProperties | undefined => {
+  if (!bg && !fg) return undefined;
+  return {
+    backgroundColor: bg,
+    color: fg,
+  };
+};
+
+const useStreamingHighlighter = (
+  text: string,
+  options: StreamingOptions
+): StreamingHighlightResult | undefined => {
+  const { colorReplacements, enabled, language, theme } = options;
+  const [result, setResult] = useState<StreamingHighlightResult>();
+  const tokenizerRef = useRef<ShikiStreamTokenizer | null>(null);
+  const previousTextRef = useRef('');
+  const latestTextRef = useRef(text);
+  // eslint-disable-next-line unicorn/no-useless-undefined
+  const preStyleRef = useRef<CSSProperties | undefined>(undefined);
+  const colorReplacementsRef = useRef(colorReplacements);
+  const linesRef = useRef<ThemedToken[][]>([[]]);
+
+  useEffect(() => {
+    latestTextRef.current = text;
+  }, [text]);
+
+  useEffect(() => {
+    colorReplacementsRef.current = colorReplacements;
+  }, [colorReplacements]);
+
+  const setStreamingResult = useCallback((rawLines: ThemedToken[][]) => {
+    const previousLines = linesRef.current;
+
+    const mergedLines = rawLines.map((line, index) => {
+      const previousLine = previousLines[index];
+      if (
+        previousLine &&
+        previousLine.length === line.length &&
+        previousLine.every((token, tokenIndex) => token === line[tokenIndex])
+      ) {
+        return previousLine;
+      }
+      return line;
+    });
+
+    linesRef.current = mergedLines;
+
+    setResult({
+      colorReplacements: colorReplacementsRef.current,
+      lines: mergedLines,
+      preStyle: preStyleRef.current,
+    });
+  }, []);
+
+  const updateTokens = useCallback(
+    async (nextText: string, forceReset = false) => {
+      const tokenizer = tokenizerRef.current;
+      if (!tokenizer) return;
+
+      if (forceReset) {
+        tokenizer.clear();
+        previousTextRef.current = '';
+      }
+
+      const previousText = previousTextRef.current;
+      let chunk = nextText;
+      const canAppend = !forceReset && nextText.startsWith(previousText);
+
+      if (canAppend) {
+        chunk = nextText.slice(previousText.length);
+      } else if (!forceReset) {
+        tokenizer.clear();
+      }
+
+      previousTextRef.current = nextText;
+
+      if (!chunk) {
+        const mergedTokens = [...tokenizer.tokensStable, ...tokenizer.tokensUnstable];
+        setStreamingResult(mergedTokens.length > 0 ? tokensToLineTokens(mergedTokens) : [[]]);
+        return;
+      }
+
+      try {
+        await tokenizer.enqueue(chunk);
+        const mergedTokens = [...tokenizer.tokensStable, ...tokenizer.tokensUnstable];
+        setStreamingResult(tokensToLineTokens(mergedTokens));
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error('Streaming highlighting failed:', error);
+      }
+    },
+    [setStreamingResult]
+  );
+
+  useEffect(() => {
+    if (!enabled) {
+      tokenizerRef.current?.clear();
+      tokenizerRef.current = null;
+      previousTextRef.current = '';
+      preStyleRef.current = undefined;
+      linesRef.current = [[]];
+      // eslint-disable-next-line unicorn/no-useless-undefined
+      setResult(undefined);
+      return;
+    }
+
+    let cancelled = false;
+
+    (async () => {
+      const mod = await shikiModulePromise;
+      if (!mod || cancelled) return;
+
+      try {
+        const highlighter = await mod.getSingletonHighlighter({
+          langs: language ? [language] : [],
+          themes: [theme],
+        });
+
+        if (!highlighter || cancelled) return;
+
+        const tokenizer = new ShikiStreamTokenizer({
+          highlighter,
+          lang: language,
+          theme,
+        });
+
+        tokenizerRef.current = tokenizer;
+        previousTextRef.current = '';
+        linesRef.current = [[]];
+
+        const themeInfo = highlighter.getTheme(theme);
+        preStyleRef.current = createPreStyle(themeInfo?.bg, themeInfo?.fg);
+
+        const currentText = latestTextRef.current;
+        if (currentText) {
+          await updateTokens(currentText, true);
+        } else {
+          setStreamingResult([[]]);
+        }
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error('Streaming highlighter initialization failed:', error);
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+      tokenizerRef.current?.clear();
+      tokenizerRef.current = null;
+      previousTextRef.current = '';
+    };
+  }, [enabled, language, setStreamingResult, theme, updateTokens]);
+
+  useEffect(() => {
+    if (!enabled) return;
+    if (!tokenizerRef.current) return;
+    updateTokens(text);
+  }, [enabled, text, updateTokens]);
+
+  return result;
+};
+
 // 主高亮组件
 export const useHighlight = (
   text: string,
   lang: string,
   enableTransformer?: boolean,
-  theme?: ThemeProps
-): SWRResponse<string, Error> => {
+  theme?: ThemeProps,
+  streaming?: boolean
+): UseHighlightResponse => {
   const { isDarkMode } = useThemeMode();
   const antTheme = useTheme();
   const language = lang.toLowerCase();
@@ -124,8 +357,8 @@ export const useHighlight = (
   }, [text, matchedLanguage, shikiTheme]);
 
   // 使用SWR获取高亮HTML
-  return useSWR(
-    cacheKey,
+  const response = useSWR(
+    streaming ? null : cacheKey,
     async (): Promise<string> => {
       try {
         // 尝试完整渲染
@@ -163,6 +396,20 @@ export const useHighlight = (
       revalidateOnReconnect: false,
     }
   );
+
+  const effectiveTheme = isDarkMode ? 'slack-dark' : 'slack-ochin';
+  const streamingResult = useStreamingHighlighter(text, {
+    colorReplacements: shikiTheme ? undefined : colorReplacements[effectiveTheme],
+    enabled: streaming,
+    language: matchedLanguage,
+    theme: effectiveTheme,
+  });
+
+  return {
+    ...response,
+    colorReplacements,
+    streaming: streamingResult,
+  };
 };
 
 export { languageMap } from './languageMap';

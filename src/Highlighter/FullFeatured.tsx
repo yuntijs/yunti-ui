@@ -25,6 +25,7 @@ export interface FullFeaturedHighlighterProps extends DivProps {
   contentStyle?: React.CSSProperties;
   enableTransformer?: boolean;
   theme?: ThemeProps;
+  animated?: boolean;
 }
 
 const options: SelectProps['options'] = languageMap.map(item => ({
@@ -44,6 +45,7 @@ export const FullFeaturedHighlighter = memo<FullFeaturedHighlighterProps>(
     contentStyle,
     enableTransformer,
     theme,
+    animated,
     ...rest
   }) => {
     const [expand, setExpand] = useState(true);
@@ -83,6 +85,7 @@ export const FullFeaturedHighlighter = memo<FullFeaturedHighlighterProps>(
           <CopyButton content={children} size="small" />
         </Flexbox>
         <SyntaxHighlighter
+          animated={animated}
           enableTransformer={enableTransformer}
           language={lang?.toLowerCase()}
           style={
