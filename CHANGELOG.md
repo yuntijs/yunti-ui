@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version&nbsp;2.0.0-beta.19](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.18...v2.0.0-beta.19)
+
+<sup>Released on **2025-12-01**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: Enable auto-scrolling for the SyntaxHighlighter stream.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: Enable auto-scrolling for the SyntaxHighlighter stream ([d07cc35](https://github.com/yuntijs/yunti-ui/commit/d07cc35))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;2.0.0-beta.18](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.17...v2.0.0-beta.18)
 
 <sup>Released on **2025-11-28**</sup>
