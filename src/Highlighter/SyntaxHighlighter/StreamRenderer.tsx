@@ -2,7 +2,7 @@ import { Icon } from '@lobehub/ui';
 import { getTokenStyleObject } from '@shikijs/core';
 import { Loader2 } from 'lucide-react';
 import type { CSSProperties } from 'react';
-import { memo } from 'react';
+import { memo, useEffect, useRef } from 'react';
 import { Flexbox } from 'react-layout-kit';
 import type { BuiltinTheme, ThemedToken } from 'shiki';
 
@@ -99,9 +99,19 @@ const StreamRenderer = memo<StreamRendererProps>(
       theme,
       true
     );
+    const containerRef = useRef<HTMLDivElement>(null);
 
     const lines = streaming?.lines;
     const replacements = streaming?.colorReplacements;
+
+    useEffect(() => {
+      if (containerRef.current && (lines?.length || 0) > 0) {
+        containerRef.current.scrollIntoView({
+          behavior: 'smooth',
+          block: 'end',
+        });
+      }
+    }, [lines?.length]);
 
     return (
       <>
@@ -114,7 +124,10 @@ const StreamRenderer = memo<StreamRendererProps>(
         ) : (
           <div className={cx(styles.shiki, className)} dir="ltr" style={style}>
             <pre tabIndex={0}>
-              <code style={{ display: 'flex', flexDirection: 'column', whiteSpace: 'pre' }}>
+              <code
+                ref={containerRef}
+                style={{ display: 'flex', flexDirection: 'column', whiteSpace: 'pre' }}
+              >
                 {lines.map((line, index) => (
                   <TokenLine key={`line-${index}`} line={line} replacements={replacements} />
                 ))}
