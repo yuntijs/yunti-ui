@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version&nbsp;2.0.0-beta.20](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.19...v2.0.0-beta.20)
+
+<sup>Released on **2025-12-02**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: Update the white-space property for SyntaxHighlighter.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: Update the white-space property for SyntaxHighlighter ([0b2506c](https://github.com/yuntijs/yunti-ui/commit/0b2506c))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;2.0.0-beta.19](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.18...v2.0.0-beta.19)
 
 <sup>Released on **2025-12-01**</sup>
