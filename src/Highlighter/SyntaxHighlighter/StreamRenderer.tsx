@@ -40,11 +40,10 @@ const getTokenInlineStyle = (
 ): CSSProperties => {
   const rawStyle = token.htmlStyle || getTokenStyleObject(token);
   const baseStyle = normalizeStyleKeys(rawStyle);
-  if (!replacements) return { ...baseStyle, whiteSpace: 'pre' };
+  if (!replacements) return { ...baseStyle };
 
   const style: CSSProperties = {
     ...baseStyle,
-    whiteSpace: 'pre',
   };
 
   if (style.color && typeof style.color === 'string') {
@@ -73,7 +72,7 @@ const TokenLine = memo(
     if (line.length === 0) {
       return (
         <span className="line">
-          <span style={{ whiteSpace: 'pre' }}>{'\u00A0'}</span>
+          <span>{'\u00A0'}</span>
         </span>
       );
     }
@@ -124,10 +123,7 @@ const StreamRenderer = memo<StreamRendererProps>(
         ) : (
           <div className={cx(styles.shiki, className)} dir="ltr" style={style}>
             <pre tabIndex={0}>
-              <code
-                ref={containerRef}
-                style={{ display: 'flex', flexDirection: 'column', whiteSpace: 'pre' }}
-              >
+              <code ref={containerRef} style={{ display: 'flex', flexDirection: 'column' }}>
                 {lines.map((line, index) => (
                   <TokenLine key={`line-${index}`} line={line} replacements={replacements} />
                 ))}
