@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version&nbsp;2.0.0-beta.21](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.20...v2.0.0-beta.21)
+
+<sup>Released on **2025-12-29**</sup>
+
+#### ♻ Code Refactoring
+
+- **hooks**: Optimize useHighlight hooks following lobe-ui patterns.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### Code refactoring
+
+- **hooks**: Optimize useHighlight hooks following lobe-ui patterns ([14bb69d](https://github.com/yuntijs/yunti-ui/commit/14bb69d))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;2.0.0-beta.20](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.19...v2.0.0-beta.20)
 
 <sup>Released on **2025-12-02**</sup>
