@@ -1,12 +1,9 @@
-import { Icon } from '@lobehub/ui';
 import { getTokenStyleObject } from '@shikijs/core';
-import { Loader2 } from 'lucide-react';
 import type { CSSProperties } from 'react';
-import { memo, useEffect, useRef } from 'react';
-import { Flexbox } from 'react-layout-kit';
-import type { BuiltinTheme, ThemedToken } from 'shiki';
+import { memo } from 'react';
+import type { ThemedToken } from 'shiki';
 
-import { useHighlight } from '@/hooks/useHighlight';
+import { ThemeProps, useStreamHighlight } from '@/hooks/useHighlight';
 
 import { useStyles } from './style';
 
@@ -17,7 +14,7 @@ interface StreamRendererProps {
   fallbackClassName?: string;
   language: string;
   style?: CSSProperties;
-  theme?: BuiltinTheme;
+  theme?: ThemeProps;
 }
 
 const applyColorReplacement = (color?: string, replacements?: Record<string, string>) => {
@@ -40,10 +37,11 @@ const getTokenInlineStyle = (
 ): CSSProperties => {
   const rawStyle = token.htmlStyle || getTokenStyleObject(token);
   const baseStyle = normalizeStyleKeys(rawStyle);
-  if (!replacements) return { ...baseStyle };
+  if (!replacements) return { ...baseStyle, whiteSpace: 'pre' };
 
   const style: CSSProperties = {
     ...baseStyle,
+    whiteSpace: 'pre',
   };
 
   if (style.color && typeof style.color === 'string') {
@@ -72,7 +70,7 @@ const TokenLine = memo(
     if (line.length === 0) {
       return (
         <span className="line">
-          <span>{'\u00A0'}</span>
+          <span style={{ whiteSpace: 'pre' }}>{'\u00A0'}</span>
         </span>
       );
     }
@@ -89,60 +87,35 @@ const TokenLine = memo(
 );
 
 const StreamRenderer = memo<StreamRendererProps>(
-  ({ children, className, enableTransformer, language, style, theme }) => {
+  ({ children, className, enableTransformer, fallbackClassName, language, style, theme }) => {
     const { styles, cx } = useStyles({ theme });
-    const { streaming, isLoading } = useHighlight(
-      children,
-      language,
-      enableTransformer,
-      theme,
-      true
-    );
-    const containerRef = useRef<HTMLDivElement>(null);
+    const safeChildren = children ?? '';
 
-    const lines = streaming?.lines;
-    const replacements = streaming?.colorReplacements;
+    const result = useStreamHighlight(safeChildren, language, enableTransformer, theme);
 
-    useEffect(() => {
-      if (containerRef.current && (lines?.length || 0) > 0) {
-        containerRef.current.scrollIntoView({
-          behavior: 'smooth',
-          block: 'end',
-        });
-      }
-    }, [lines?.length]);
+    const lines = result?.lines;
+    const replacements = result?.colorReplacements;
+
+    if (!lines || lines.length === 0) {
+      return (
+        <div className={cx(styles.shiki, fallbackClassName)} dir="ltr" style={style}>
+          <pre>
+            <code>{safeChildren}</code>
+          </pre>
+        </div>
+      );
+    }
 
     return (
-      <>
-        {isLoading || !lines || lines.length === 0 ? (
-          <div className={cx(styles.shiki, className)} style={style}>
-            <pre>
-              <div>{children.trim()}</div>
-            </pre>
-          </div>
-        ) : (
-          <div className={cx(styles.shiki, className)} dir="ltr" style={style}>
-            <pre tabIndex={0}>
-              <code ref={containerRef} style={{ display: 'flex', flexDirection: 'column' }}>
-                {lines.map((line, index) => (
-                  <TokenLine key={`line-${index}`} line={line} replacements={replacements} />
-                ))}
-              </code>
-            </pre>
-          </div>
-        )}
-        {isLoading && (
-          <Flexbox
-            align={'center'}
-            className={styles.loading}
-            gap={8}
-            horizontal
-            justify={'center'}
-          >
-            <Icon icon={Loader2} spin />
-          </Flexbox>
-        )}
-      </>
+      <div className={cx(styles.shiki, className)} dir="ltr" style={style}>
+        <pre tabIndex={0}>
+          <code style={{ display: 'flex', flexDirection: 'column', whiteSpace: 'pre' }}>
+            {lines.map((line, index) => (
+              <TokenLine key={`line-${index}`} line={line} replacements={replacements} />
+            ))}
+          </code>
+        </pre>
+      </div>
     );
   }
 );

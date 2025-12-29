@@ -1,9 +1,6 @@
-import { Icon } from '@lobehub/ui';
-import { Loader2 } from 'lucide-react';
 import { memo } from 'react';
-import { Flexbox } from 'react-layout-kit';
 
-import { ThemeProps, useHighlight } from '@/hooks/useHighlight';
+import { ThemeProps, escapeHtml, useStaticHighlight } from '@/hooks/useHighlight';
 import { DivProps } from '@/types';
 
 import { useStyles } from './style';
@@ -13,44 +10,26 @@ export interface StaticRendererProps extends DivProps {
   language: string;
   enableTransformer?: boolean;
   theme?: ThemeProps;
-  streaming?: boolean;
 }
 
 export const StaticRenderer = memo<StaticRendererProps>(
   ({ children, language, enableTransformer, theme, className, style }) => {
     const { styles, cx } = useStyles({ theme });
+    const safeChildren = children?.trim() ?? '';
 
-    const { data, isLoading } = useHighlight(children.trim(), language, enableTransformer, theme);
+    const data = useStaticHighlight(safeChildren, language, enableTransformer, theme);
+
+    const hasData = typeof data === 'string' && data.length > 0;
 
     return (
-      <>
-        {isLoading || !data ? (
-          <div className={cx(styles.shiki, className)} style={style}>
-            <pre>
-              <div>{children.trim()}</div>
-            </pre>
-          </div>
-        ) : (
-          <div
-            className={cx(styles.shiki, className)}
-            dangerouslySetInnerHTML={{
-              __html: data as string,
-            }}
-            style={style}
-          />
-        )}
-        {isLoading && (
-          <Flexbox
-            align={'center'}
-            className={styles.loading}
-            gap={8}
-            horizontal
-            justify={'center'}
-          >
-            <Icon icon={Loader2} spin />
-          </Flexbox>
-        )}
-      </>
+      <div
+        className={cx(styles.shiki, className)}
+        dangerouslySetInnerHTML={{
+          __html: hasData ? data : `<pre><code>${escapeHtml(safeChildren)}</code></pre>`,
+        }}
+        dir="ltr"
+        style={style}
+      />
     );
   }
 );

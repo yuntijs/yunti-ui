@@ -9,7 +9,6 @@ import { useTheme, useThemeMode } from 'antd-style';
 import { CSSProperties, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { ThemedToken, codeToHtml } from 'shiki';
 import { ShikiStreamTokenizer } from 'shiki-stream';
-import useSWR, { SWRResponse } from 'swr';
 import { Md5 } from 'ts-md5';
 
 import { languageMap } from './languageMap';
@@ -19,32 +18,29 @@ export const FALLBACK_LANG = 'txt';
 
 export type ThemeProps = (typeof themeMap)[number];
 
-// 应用级缓存，避免重复计算
-const MD5_LENGTH_THRESHOLD = 10_000; // 超过该长度使用异步MD5
+// ============ 常量和工具函数 ============
+
+const MD5_LENGTH_THRESHOLD = 10_000;
+
+// 应用级缓存
+const highlightCache = new Map<string, Promise<string>>();
+const MAX_CACHE_SIZE = 1000;
+
+const cleanupCache = () => {
+  if (highlightCache.size > MAX_CACHE_SIZE) {
+    const entriesToRemove = Math.floor(MAX_CACHE_SIZE * 0.2);
+    const keysToRemove = [...highlightCache.keys()].slice(0, entriesToRemove);
+    for (const key of keysToRemove) {
+      highlightCache.delete(key);
+    }
+  }
+};
 
 // 颜色替换映射类型
 type ColorReplacements = {
   [themeName: string]: {
     [color: string]: string;
   };
-};
-
-type StreamingHighlightResult = {
-  colorReplacements?: Record<string, string>;
-  lines: ThemedToken[][];
-  preStyle?: CSSProperties;
-};
-
-type UseHighlightResponse = SWRResponse<string, Error> & {
-  colorReplacements?: ColorReplacements;
-  streaming?: StreamingHighlightResult;
-};
-
-type StreamingOptions = {
-  colorReplacements?: Record<string, string>;
-  enabled?: boolean;
-  language: string;
-  theme: string;
 };
 
 type ShikiModule = typeof import('shiki');
@@ -120,168 +116,36 @@ const createPreStyle = (bg?: string, fg?: string): CSSProperties | undefined => 
   };
 };
 
-const useStreamingHighlighter = (
-  text: string,
-  options: StreamingOptions
-): StreamingHighlightResult | undefined => {
-  const { colorReplacements, enabled, language, theme } = options;
-  const [result, setResult] = useState<StreamingHighlightResult>();
-  const tokenizerRef = useRef<ShikiStreamTokenizer | null>(null);
-  const previousTextRef = useRef('');
-  const latestTextRef = useRef(text);
-  // eslint-disable-next-line unicorn/no-useless-undefined
-  const preStyleRef = useRef<CSSProperties | undefined>(undefined);
-  const colorReplacementsRef = useRef(colorReplacements);
-  const linesRef = useRef<ThemedToken[][]>([[]]);
+// ============ 类型定义 ============
 
-  useEffect(() => {
-    latestTextRef.current = text;
-  }, [text]);
-
-  useEffect(() => {
-    colorReplacementsRef.current = colorReplacements;
-  }, [colorReplacements]);
-
-  const setStreamingResult = useCallback((rawLines: ThemedToken[][]) => {
-    const previousLines = linesRef.current;
-
-    const mergedLines = rawLines.map((line, index) => {
-      const previousLine = previousLines[index];
-      if (
-        previousLine &&
-        previousLine.length === line.length &&
-        previousLine.every((token, tokenIndex) => token === line[tokenIndex])
-      ) {
-        return previousLine;
-      }
-      return line;
-    });
-
-    linesRef.current = mergedLines;
-
-    setResult({
-      colorReplacements: colorReplacementsRef.current,
-      lines: mergedLines,
-      preStyle: preStyleRef.current,
-    });
-  }, []);
-
-  const updateTokens = useCallback(
-    async (nextText: string, forceReset = false) => {
-      const tokenizer = tokenizerRef.current;
-      if (!tokenizer) return;
-
-      if (forceReset) {
-        tokenizer.clear();
-        previousTextRef.current = '';
-      }
-
-      const previousText = previousTextRef.current;
-      let chunk = nextText;
-      const canAppend = !forceReset && nextText.startsWith(previousText);
-
-      if (canAppend) {
-        chunk = nextText.slice(previousText.length);
-      } else if (!forceReset) {
-        tokenizer.clear();
-      }
-
-      previousTextRef.current = nextText;
-
-      if (!chunk) {
-        const mergedTokens = [...tokenizer.tokensStable, ...tokenizer.tokensUnstable];
-        setStreamingResult(mergedTokens.length > 0 ? tokensToLineTokens(mergedTokens) : [[]]);
-        return;
-      }
-
-      try {
-        await tokenizer.enqueue(chunk);
-        const mergedTokens = [...tokenizer.tokensStable, ...tokenizer.tokensUnstable];
-        setStreamingResult(tokensToLineTokens(mergedTokens));
-      } catch (error) {
-        // eslint-disable-next-line no-console
-        console.error('Streaming highlighting failed:', error);
-      }
-    },
-    [setStreamingResult]
-  );
-
-  useEffect(() => {
-    if (!enabled) {
-      tokenizerRef.current?.clear();
-      tokenizerRef.current = null;
-      previousTextRef.current = '';
-      preStyleRef.current = undefined;
-      linesRef.current = [[]];
-      // eslint-disable-next-line unicorn/no-useless-undefined
-      setResult(undefined);
-      return;
-    }
-
-    let cancelled = false;
-
-    (async () => {
-      const mod = await shikiModulePromise;
-      if (!mod || cancelled) return;
-
-      try {
-        const highlighter = await mod.getSingletonHighlighter({
-          langs: language ? [language] : [],
-          themes: [theme],
-        });
-
-        if (!highlighter || cancelled) return;
-
-        const tokenizer = new ShikiStreamTokenizer({
-          highlighter,
-          lang: language,
-          theme,
-        });
-
-        tokenizerRef.current = tokenizer;
-        previousTextRef.current = '';
-        linesRef.current = [[]];
-
-        const themeInfo = highlighter.getTheme(theme);
-        preStyleRef.current = createPreStyle(themeInfo?.bg, themeInfo?.fg);
-
-        const currentText = latestTextRef.current;
-        if (currentText) {
-          await updateTokens(currentText, true);
-        } else {
-          setStreamingResult([[]]);
-        }
-      } catch (error) {
-        // eslint-disable-next-line no-console
-        console.error('Streaming highlighter initialization failed:', error);
-      }
-    })();
-
-    return () => {
-      cancelled = true;
-      tokenizerRef.current?.clear();
-      tokenizerRef.current = null;
-      previousTextRef.current = '';
-    };
-  }, [enabled, language, setStreamingResult, theme, updateTokens]);
-
-  useEffect(() => {
-    if (!enabled) return;
-    if (!tokenizerRef.current) return;
-    updateTokens(text);
-  }, [enabled, text, updateTokens]);
-
-  return result;
+export type StreamingHighlightResult = {
+  colorReplacements?: Record<string, string>;
+  lines: ThemedToken[][];
+  preStyle?: CSSProperties;
 };
 
-// 主高亮组件
-export const useHighlight = (
-  text: string,
+export type UseStaticHighlightResponse = string;
+
+export type UseStreamHighlightResponse = StreamingHighlightResult | undefined;
+
+export type HighlightConfig = {
+  colorReplacements: ColorReplacements;
+  matchedLanguage: string;
+  shikiTheme: string;
+  transformers?: ReturnType<typeof transformerNotationDiff>[];
+};
+
+// ============ useHighlightConfig Hook ============
+
+/**
+ * 共享的高亮配置 hook
+ * 处理主题、语言匹配、颜色替换等通用逻辑
+ */
+export const useHighlightConfig = (
   lang: string,
   enableTransformer?: boolean,
-  theme?: ThemeProps,
-  streaming?: boolean
-): UseHighlightResponse => {
+  theme?: ThemeProps
+): HighlightConfig => {
   const { isDarkMode } = useThemeMode();
   const antTheme = useTheme();
   const language = lang.toLowerCase();
@@ -291,6 +155,7 @@ export const useHighlight = (
     () => (languageMap.includes(language as any) ? language : FALLBACK_LANG),
     [language]
   );
+
   // 匹配支持的主题
   const matchedTheme = useMemo(() => (themeMap.includes(theme!) ? theme : undefined), [theme]);
 
@@ -346,71 +211,349 @@ export const useHighlight = (
     if (language === 'shellsession') {
       return isDarkMode ? 'material-theme-darker' : 'material-theme-lighter';
     }
+    if (language === 'diff') {
+      return isDarkMode ? 'slack-dark' : 'github-light';
+    }
     return isDarkMode ? 'slack-dark' : 'slack-ochin';
   }, [isDarkMode, language, matchedTheme]);
 
+  return {
+    colorReplacements,
+    matchedLanguage,
+    shikiTheme,
+    transformers,
+  };
+};
+
+// ============ useStaticHighlight Hook ============
+
+/**
+ * 静态高亮 hook
+ * 将代码转换为高亮 HTML 字符串
+ */
+export const useStaticHighlight = (
+  text: string,
+  lang: string,
+  enableTransformer?: boolean,
+  theme?: ThemeProps
+): UseStaticHighlightResponse => {
+  const { colorReplacements, matchedLanguage, shikiTheme, transformers } = useHighlightConfig(
+    lang,
+    enableTransformer,
+    theme
+  );
+
   // 构建缓存键
-  const cacheKey = useMemo((): string | null => {
-    // 长文本使用 hash
+  const cacheKey = useMemo((): string => {
     const hash = text.length < MD5_LENGTH_THRESHOLD ? text : Md5.hashStr(text);
     return [matchedLanguage, shikiTheme, hash].join('-');
   }, [text, matchedLanguage, shikiTheme]);
 
-  // 使用SWR获取高亮HTML
-  const response = useSWR(
-    streaming ? null : cacheKey,
-    async (): Promise<string> => {
+  const [data, setData] = useState<string | undefined>();
+
+  useEffect(() => {
+    if (!cacheKey) {
+      // eslint-disable-next-line unicorn/no-useless-undefined
+      setData(undefined);
+      return;
+    }
+
+    // 检查缓存
+    const cachedPromise = highlightCache.get(cacheKey);
+    if (cachedPromise) {
+      cachedPromise
+        .then(html => {
+          setData(html);
+        })
+        .catch(() => {
+          // 静默处理错误，已在创建时处理
+        });
+      return;
+    }
+
+    // 创建新的高亮 Promise
+    const highlightPromise = (async (): Promise<string> => {
       try {
-        // 尝试完整渲染
-        const codeToHtml = await shikiPromise;
-        const html = await codeToHtml(text, {
+        const codeToHtmlFn = await shikiPromise;
+        const html = await codeToHtmlFn(text, {
           colorReplacements,
           lang: matchedLanguage,
           theme: shikiTheme,
           transformers,
         });
-
         return html;
-      } catch (error) {
-        console.warn('高级渲染失败:', error);
+      } catch (error_) {
+        console.warn('高级渲染失败:', error_);
 
         try {
-          // 尝试简单渲染 (不使用转换器)
-          const codeToHtml = await shikiPromise;
-          const html = await codeToHtml(text, {
+          const codeToHtmlFn = await shikiPromise;
+          const html = await codeToHtmlFn(text, {
             lang: matchedLanguage,
             theme: shikiTheme,
           });
           return html;
         } catch {
-          // 最终降级到纯文本
           const fallbackHtml = `<pre class="fallback"><code>${escapeHtml(text)}</code></pre>`;
           return fallbackHtml;
         }
       }
-    },
-    {
-      dedupingInterval: 3000, // 3秒内相同请求只执行一次
-      errorRetryCount: 2, // 最多重试2次
-      revalidateOnFocus: false,
-      revalidateOnReconnect: false,
-    }
+    })();
+
+    // 缓存 Promise
+    highlightCache.set(cacheKey, highlightPromise);
+    cleanupCache();
+
+    // 处理结果
+    highlightPromise
+      .then(html => {
+        // 仅当缓存仍然有效时更新
+        if (highlightCache.get(cacheKey) === highlightPromise) {
+          setData(html);
+        }
+      })
+      .catch(() => {
+        // 从缓存中移除失败的 Promise
+        if (highlightCache.get(cacheKey) === highlightPromise) {
+          highlightCache.delete(cacheKey);
+        }
+      });
+  }, [cacheKey, text, matchedLanguage, shikiTheme, transformers, colorReplacements]);
+
+  return data || '';
+};
+
+// ============ useStreamHighlight Hook ============
+
+/**
+ * 流式高亮 hook
+ * 用于实时流式渲染代码高亮
+ */
+export const useStreamHighlight = (
+  text: string,
+  lang: string,
+  enableTransformer?: boolean,
+  theme?: ThemeProps
+): UseStreamHighlightResponse => {
+  const { colorReplacements, matchedLanguage, shikiTheme } = useHighlightConfig(
+    lang,
+    enableTransformer,
+    theme
   );
 
-  const effectiveTheme = isDarkMode ? 'slack-dark' : 'slack-ochin';
-  const streamingResult = useStreamingHighlighter(text, {
-    colorReplacements: shikiTheme ? undefined : colorReplacements[effectiveTheme],
-    enabled: streaming,
-    language: matchedLanguage,
-    theme: effectiveTheme,
-  });
+  const [result, setResult] = useState<StreamingHighlightResult>();
+  const tokenizerRef = useRef<ShikiStreamTokenizer | null>(null);
+  const previousTextRef = useRef('');
+  const latestTextRef = useRef(text);
+  // eslint-disable-next-line unicorn/no-useless-undefined
+  const preStyleRef = useRef<CSSProperties | undefined>(undefined);
+  const colorReplacementsRef = useRef(colorReplacements[shikiTheme]);
+  const linesRef = useRef<ThemedToken[][]>([[]]);
+  // 缓存 highlighter key，避免不必要的 tokenizer 重建
+  const highlighterKeyRef = useRef<string>('');
 
-  return {
-    ...response,
-    colorReplacements,
-    streaming: streamingResult,
-  };
+  useEffect(() => {
+    latestTextRef.current = text;
+  }, [text]);
+
+  useEffect(() => {
+    colorReplacementsRef.current = colorReplacements[shikiTheme];
+  }, [colorReplacements, shikiTheme]);
+
+  const setStreamingResult = useCallback((rawLines: ThemedToken[][]) => {
+    const previousLines = linesRef.current;
+    const newLinesLength = rawLines.length;
+    const prevLinesLength = previousLines.length;
+
+    // 快速路径：如果长度不同或为空，直接使用新的 lines
+    if (newLinesLength !== prevLinesLength || newLinesLength === 0) {
+      linesRef.current = rawLines;
+      setResult({
+        colorReplacements: colorReplacementsRef.current,
+        lines: rawLines,
+        preStyle: preStyleRef.current,
+      });
+      return;
+    }
+
+    // 优化比较：只检查有变化的行
+    let hasChanges = false;
+    const mergedLines: ThemedToken[][] = [];
+
+    for (let i = 0; i < newLinesLength; i++) {
+      const newLine = rawLines[i];
+      const prevLine = previousLines[i];
+
+      // 快速引用相等检查
+      if (prevLine === newLine) {
+        mergedLines[i] = prevLine;
+        continue;
+      }
+
+      // 长度检查
+      if (!prevLine || prevLine.length !== newLine.length) {
+        mergedLines[i] = newLine;
+        hasChanges = true;
+        continue;
+      }
+
+      // 深度比较只对可能变化的行
+      let lineChanged = false;
+      for (const [j, newToken] of newLine.entries()) {
+        if (prevLine[j] !== newToken) {
+          lineChanged = true;
+          break;
+        }
+      }
+
+      if (lineChanged) {
+        mergedLines[i] = newLine;
+        hasChanges = true;
+      } else {
+        mergedLines[i] = prevLine;
+      }
+    }
+
+    // 只有实际变化时才更新状态
+    if (hasChanges) {
+      linesRef.current = mergedLines;
+      setResult({
+        colorReplacements: colorReplacementsRef.current,
+        lines: mergedLines,
+        preStyle: preStyleRef.current,
+      });
+    }
+  }, []);
+
+  const updateTokens = useCallback(
+    async (nextText: string, forceReset = false) => {
+      const tokenizer = tokenizerRef.current;
+      if (!tokenizer) return;
+
+      if (forceReset) {
+        tokenizer.clear();
+        previousTextRef.current = '';
+      }
+
+      const previousText = previousTextRef.current;
+      let chunk = nextText;
+      const canAppend = !forceReset && nextText.startsWith(previousText);
+
+      if (canAppend) {
+        chunk = nextText.slice(previousText.length);
+      } else if (!forceReset) {
+        tokenizer.clear();
+      }
+
+      previousTextRef.current = nextText;
+
+      if (!chunk) {
+        const stableTokens = tokenizer.tokensStable;
+        const unstableTokens = tokenizer.tokensUnstable;
+        const totalLength = stableTokens.length + unstableTokens.length;
+
+        if (totalLength === 0) {
+          setStreamingResult([[]]);
+          return;
+        }
+
+        // 优化：只在必要时创建合并数组
+        const getMergedTokens = () => {
+          if (stableTokens.length === 0) return unstableTokens;
+          if (unstableTokens.length === 0) return stableTokens;
+          return [...stableTokens, ...unstableTokens];
+        };
+
+        setStreamingResult(tokensToLineTokens(getMergedTokens()));
+        return;
+      }
+
+      try {
+        await tokenizer.enqueue(chunk);
+        const stableTokens = tokenizer.tokensStable;
+        const unstableTokens = tokenizer.tokensUnstable;
+        const getMergedTokens = () => {
+          if (stableTokens.length === 0) return unstableTokens;
+          if (unstableTokens.length === 0) return stableTokens;
+          return [...stableTokens, ...unstableTokens];
+        };
+        setStreamingResult(tokensToLineTokens(getMergedTokens()));
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error('Streaming highlighting failed:', error);
+      }
+    },
+    [setStreamingResult]
+  );
+
+  useEffect(() => {
+    // 如果 language/theme 组合没有变化，跳过
+    const currentKey = `${matchedLanguage}-${shikiTheme}`;
+    if (highlighterKeyRef.current === currentKey && tokenizerRef.current) {
+      return;
+    }
+
+    let cancelled = false;
+
+    (async () => {
+      const mod = await shikiModulePromise;
+      if (!mod || cancelled) return;
+
+      try {
+        const highlighter = await mod.getSingletonHighlighter({
+          langs: matchedLanguage ? [matchedLanguage] : [],
+          themes: [shikiTheme],
+        });
+
+        if (!highlighter || cancelled) return;
+
+        // 只在 key 变化时创建新的 tokenizer
+        if (highlighterKeyRef.current !== currentKey) {
+          // 清理旧的 tokenizer
+          tokenizerRef.current?.clear();
+
+          const tokenizer = new ShikiStreamTokenizer({
+            highlighter,
+            lang: matchedLanguage,
+            theme: shikiTheme,
+          });
+
+          tokenizerRef.current = tokenizer;
+          highlighterKeyRef.current = currentKey;
+          previousTextRef.current = '';
+          linesRef.current = [[]];
+
+          const themeInfo = highlighter.getTheme(shikiTheme);
+          preStyleRef.current = createPreStyle(themeInfo?.bg, themeInfo?.fg);
+        }
+
+        const currentText = latestTextRef.current;
+        if (currentText) {
+          await updateTokens(currentText, true);
+        } else {
+          setStreamingResult([[]]);
+        }
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error('Streaming highlighter initialization failed:', error);
+        // 重置错误时的 key
+        highlighterKeyRef.current = '';
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [matchedLanguage, setStreamingResult, shikiTheme, updateTokens]);
+
+  useEffect(() => {
+    if (!tokenizerRef.current) return;
+    updateTokens(text);
+  }, [text, updateTokens]);
+
+  return result;
 };
+
+// ============ 导出 ============
 
 export { languageMap } from './languageMap';
 export { themeMap } from './themeMap';
