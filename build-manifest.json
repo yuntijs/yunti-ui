@@ -1,7 +1,7 @@
 {
   "assets": {
     "umi.css": "/yunti-ui/umi.144f33f2.css",
-    "umi.js": "/yunti-ui/umi.0455ebf4.js",
+    "umi.js": "/yunti-ui/umi.5c8503e3.js",
     "meta__docs.js": "/yunti-ui/meta__docs.1e492aae.async.js",
     "meta__Alert.js": "/yunti-ui/meta__Alert.3fb4d4ef.async.js",
     "meta__Breadcrumb.js": "/yunti-ui/meta__Breadcrumb.1ed70383.async.js",
@@ -29,7 +29,7 @@
     "meta__Modal.js": "/yunti-ui/meta__Modal.5de113c7.async.js",
     "meta__MonacoEditor.js": "/yunti-ui/meta__MonacoEditor.d1ab82bc.async.js",
     "meta__notification.js": "/yunti-ui/meta__notification.15f6021f.async.js",
-    "meta__Page.js": "/yunti-ui/meta__Page.3511d41f.async.js",
+    "meta__Page.js": "/yunti-ui/meta__Page.79c81035.async.js",
     "meta__ProCard.js": "/yunti-ui/meta__ProCard.7b7b002f.async.js",
     "meta__SelectCard.js": "/yunti-ui/meta__SelectCard.f145e199.async.js",
     "meta__SliderInput.js": "/yunti-ui/meta__SliderInput.b393d252.async.js",
