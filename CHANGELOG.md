@@ -2,6 +2,31 @@
 
 # Changelog
 
+## [Version&nbsp;2.0.0-beta.22](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.21...v2.0.0-beta.22)
+
+<sup>Released on **2025-12-30**</sup>
+
+#### ✨ Features
+
+- **Highlighter**: Add streaming demo and auto-scroll for StreamRenderer.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **Highlighter**: Add streaming demo and auto-scroll for StreamRenderer ([8264b4f](https://github.com/yuntijs/yunti-ui/commit/8264b4f))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;2.0.0-beta.21](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.20...v2.0.0-beta.21)
 
 <sup>Released on **2025-12-29**</sup>
