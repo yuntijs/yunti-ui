@@ -96,6 +96,7 @@ export const Highlighter = memo<HighlighterProps>(
           language={language}
           style={style}
           theme={theme}
+          wrap={wrap}
           {...rest}
         >
           {children}

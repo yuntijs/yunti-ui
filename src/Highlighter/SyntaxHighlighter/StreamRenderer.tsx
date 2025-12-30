@@ -97,21 +97,34 @@ const StreamRenderer = memo<StreamRendererProps>(
     const replacements = result?.colorReplacements;
 
     const linesCount = lines?.length ?? 0;
-    const prevLinesCountRef = useRef(0);
+    // 计算最后一行的内容长度，用于 wrap 模式下折行时也能触发滚动
+    const lastLineContentLength =
+      linesCount > 0
+        ? (lines?.[linesCount - 1]?.reduce((acc, token) => acc + (token.content?.length ?? 0), 0) ??
+          0)
+        : 0;
+    const rafIdRef = useRef<number>(0);
 
-    // 流式输出时自动滚动
+    // 流式输出时自动滚动（使用 RAF 节流，每帧最多执行一次）
     useEffect(() => {
       if (!preRef.current || linesCount === 0) return;
 
-      const pre = preRef.current;
-      prevLinesCountRef.current = linesCount;
+      // 取消上一次未执行的 RAF
+      if (rafIdRef.current) {
+        cancelAnimationFrame(rafIdRef.current);
+      }
 
-      // 平滑滚动到底部
-      pre.scrollTo({
-        behavior: 'smooth',
-        top: pre.scrollHeight,
+      rafIdRef.current = requestAnimationFrame(() => {
+        if (!preRef.current) return;
+        preRef.current.scrollTop = preRef.current.scrollHeight;
       });
-    }, [linesCount]);
+
+      return () => {
+        if (rafIdRef.current) {
+          cancelAnimationFrame(rafIdRef.current);
+        }
+      };
+    }, [linesCount, lastLineContentLength]);
 
     if (!lines || lines.length === 0) {
       return (

@@ -26,6 +26,7 @@ export interface FullFeaturedHighlighterProps extends DivProps {
   enableTransformer?: boolean;
   theme?: ThemeProps;
   animated?: boolean;
+  wrap?: boolean;
 }
 
 const options: SelectProps['options'] = languageMap.map(item => ({
@@ -46,12 +47,13 @@ export const FullFeaturedHighlighter = memo<FullFeaturedHighlighterProps>(
     enableTransformer,
     theme,
     animated,
+    wrap,
     ...rest
   }) => {
     const [expand, setExpand] = useState(true);
     const [lang, setLang] = useState(language || 'markdown');
     const { styles, cx } = useStyles({ variant: 'filled', expand });
-    const container = cx(styles.container, className);
+    const container = cx(styles.container, wrap && styles.wrap, className);
 
     useEffect(() => {
       setLang(language);

@@ -8,7 +8,14 @@ interface User {
   id: number;
   name: string;
   email: string;
+  avatar: string;
+  bio: string;
+  createdAt: Date;
+  updatedAt: Date;
+  preferences: { theme: 'light' | 'dark'; language: string; notifications: boolean };
 }
+
+// 这是一个超长的注释行，用于测试在不开启 wrap 模式下横向滚动的效果。This is a very long comment line to test horizontal scrolling behavior when wrap mode is disabled. 这行注释足够长以确保会触发横向滚动。
 
 const fetchUser = async (id: number): Promise<User> => {
   const response = await fetch(\`/api/users/\${id}\`);
@@ -46,6 +53,8 @@ export const UserProfile = ({ userId }: { userId: number }) => {
     <div className="user-profile">
       <h1>{user.name}</h1>
       <p>Email: {user.email}</p>
+      <p>Bio: {user.bio}</p>
+      <img src={user.avatar} alt={user.name} style={{ width: 100, height: 100, borderRadius: '50%' }} />
     </div>
   );
 };`;
