@@ -1,13 +1,13 @@
 import { getTokenStyleObject } from '@shikijs/core';
 import type { CSSProperties } from 'react';
-import { memo } from 'react';
+import { memo, useEffect, useRef } from 'react';
 import type { ThemedToken } from 'shiki';
 
 import { ThemeProps, useStreamHighlight } from '@/hooks/useHighlight';
 
 import { useStyles } from './style';
 
-interface StreamRendererProps {
+export interface StreamRendererProps {
   children: string;
   className?: string;
   enableTransformer?: boolean;
@@ -37,11 +37,10 @@ const getTokenInlineStyle = (
 ): CSSProperties => {
   const rawStyle = token.htmlStyle || getTokenStyleObject(token);
   const baseStyle = normalizeStyleKeys(rawStyle);
-  if (!replacements) return { ...baseStyle, whiteSpace: 'pre' };
+  if (!replacements) return { ...baseStyle };
 
   const style: CSSProperties = {
     ...baseStyle,
-    whiteSpace: 'pre',
   };
 
   if (style.color && typeof style.color === 'string') {
@@ -70,7 +69,7 @@ const TokenLine = memo(
     if (line.length === 0) {
       return (
         <span className="line">
-          <span style={{ whiteSpace: 'pre' }}>{'\u00A0'}</span>
+          <span>{'\u00A0'}</span>
         </span>
       );
     }
@@ -90,11 +89,29 @@ const StreamRenderer = memo<StreamRendererProps>(
   ({ children, className, enableTransformer, fallbackClassName, language, style, theme }) => {
     const { styles, cx } = useStyles({ theme });
     const safeChildren = children ?? '';
+    const preRef = useRef<HTMLPreElement>(null);
 
     const result = useStreamHighlight(safeChildren, language, enableTransformer, theme);
 
     const lines = result?.lines;
     const replacements = result?.colorReplacements;
+
+    const linesCount = lines?.length ?? 0;
+    const prevLinesCountRef = useRef(0);
+
+    // 流式输出时自动滚动
+    useEffect(() => {
+      if (!preRef.current || linesCount === 0) return;
+
+      const pre = preRef.current;
+      prevLinesCountRef.current = linesCount;
+
+      // 平滑滚动到底部
+      pre.scrollTo({
+        behavior: 'smooth',
+        top: pre.scrollHeight,
+      });
+    }, [linesCount]);
 
     if (!lines || lines.length === 0) {
       return (
@@ -108,8 +125,8 @@ const StreamRenderer = memo<StreamRendererProps>(
 
     return (
       <div className={cx(styles.shiki, className)} dir="ltr" style={style}>
-        <pre tabIndex={0}>
-          <code style={{ display: 'flex', flexDirection: 'column', whiteSpace: 'pre' }}>
+        <pre ref={preRef} tabIndex={0}>
+          <code style={{ display: 'flex', flexDirection: 'column' }}>
             {lines.map((line, index) => (
               <TokenLine key={`line-${index}`} line={line} replacements={replacements} />
             ))}
