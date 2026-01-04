@@ -1,8 +1,10 @@
 'use client';
 
-import { CopyButton, type CopyButtonProps, Spotlight, Tag } from '@lobehub/ui';
+import { CopyButton, type CopyButtonProps, Tag } from '@lobehub/ui';
+import { Spotlight } from '@lobehub/ui/awesome';
 import React, { ReactNode, memo } from 'react';
 
+import { ThemeProps } from '@/hooks/useHighlight';
 import { DivProps } from '@/types';
 
 import { FullFeaturedHighlighter } from './FullFeatured';
@@ -39,10 +41,10 @@ export interface HighlighterProps extends DivProps {
    */
   spotlight?: boolean;
   /**
-   * @description The type of the code block
-   * @default 'block'
+   * @description The variant of the code block
+   * @default 'filled'
    */
-  type?: 'ghost' | 'block' | 'pure';
+  variant?: 'filled' | 'outlined' | 'borderless';
   /**
    * @description The style of the code content
    */
@@ -52,40 +54,49 @@ export interface HighlighterProps extends DivProps {
    * @default false
    */
   wrap?: boolean;
+  enableTransformer?: boolean;
+  theme?: ThemeProps;
+  animated?: boolean;
 }
 
 export const Highlighter = memo<HighlighterProps>(
   ({
     fullFeatured,
-    copyButtonSize = 'site',
+    copyButtonSize = 'small',
     children,
     language,
     className,
     style,
     copyable = true,
     showLanguage = true,
-    type = 'block',
+    variant = 'filled',
     spotlight,
     allowChangeLanguage,
     fileName,
     icon,
     contentStyle,
     wrap,
+    enableTransformer,
+    theme,
+    animated,
     ...rest
   }) => {
-    const { styles, cx } = useStyles(type);
-    const container = cx(styles.container, !wrap && styles.nowrap, className);
+    const { styles, cx } = useStyles({ variant });
+    const container = cx(styles.container, wrap && styles.wrap, className);
 
     if (fullFeatured)
       return (
         <FullFeaturedHighlighter
           allowChangeLanguage={allowChangeLanguage}
+          animated={animated}
           className={className}
           contentStyle={contentStyle}
           fileName={fileName}
           icon={icon}
           language={language}
           style={style}
+          theme={theme}
+          wrap={wrap}
           {...rest}
         >
           {children}
@@ -96,16 +107,17 @@ export const Highlighter = memo<HighlighterProps>(
       <div className={container} data-code-type="highlighter" style={style} {...rest}>
         {spotlight && <Spotlight size={240} />}
         {copyable && (
-          <CopyButton
-            className={styles.button}
-            content={children}
-            placement="left"
-            size={copyButtonSize}
-          />
+          <CopyButton className={styles.button} content={children} size={copyButtonSize} />
         )}
         {showLanguage && language && <Tag className={styles.lang}>{language.toLowerCase()}</Tag>}
         <div className={styles.scroller}>
-          <SyntaxHighlighter language={language?.toLowerCase()} style={contentStyle}>
+          <SyntaxHighlighter
+            animated={animated}
+            enableTransformer={enableTransformer}
+            language={language?.toLowerCase()}
+            style={contentStyle}
+            theme={theme}
+          >
             {children}
           </SyntaxHighlighter>
         </div>

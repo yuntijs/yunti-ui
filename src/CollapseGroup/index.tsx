@@ -13,13 +13,10 @@ export type CollapseGroupProps = Omit<
 
 export const CollapseGroup: React.FC<CollapseGroupProps> = ({
   className,
-  variant,
-  collapsible,
+  variant = 'filled',
+  collapsible = true,
   expandIcon = panelProps => (
-    <ActionIcon
-      icon={panelProps.isActive ? ChevronDown : ChevronRight}
-      size={{ blockSize: 24, fontSize: 14, strokeWidth: 3 }}
-    />
+    <ActionIcon icon={panelProps.isActive ? ChevronDown : ChevronRight} size="small" />
   ),
   ...otherProps
 }) => {
@@ -28,7 +25,7 @@ export const CollapseGroup: React.FC<CollapseGroupProps> = ({
   return (
     <FormGroup
       className={cx(styles.root, className)}
-      collapsible={variant === 'pure' ? false : collapsible}
+      collapsible={collapsible}
       expandIcon={expandIcon}
       variant={variant}
       {...otherProps}

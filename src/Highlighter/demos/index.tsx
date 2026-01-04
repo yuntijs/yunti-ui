@@ -1,5 +1,7 @@
-import { StoryBook, useControls, useCreateStore } from '@lobehub/ui';
+import { StoryBook, useControls, useCreateStore } from '@lobehub/ui/storybook';
 import { Highlighter, HighlighterProps } from '@yuntijs/ui';
+
+import { themeMap } from '@/hooks/themeMap';
 
 const code = `export default ({ children, className }: MarkdownProps) => {
   const { styles } = useStyles();
@@ -23,18 +25,18 @@ export default () => {
       },
       copyable: true,
       copyButtonSize: {
-        options: ['site', 'large', 'normal', 'small'],
-        value: 'site',
+        options: ['large', 'normal', 'small'],
+        value: 'small',
       },
       language: 'tsx',
       showLanguage: true,
       spotlight: false,
-      type: {
-        options: ['ghost', 'block', 'pure'],
-        value: 'block',
-      },
       fullFeatured: false,
       wrap: false,
+      theme: {
+        options: themeMap,
+        value: 'slack-ochin',
+      },
     },
     { store }
   );

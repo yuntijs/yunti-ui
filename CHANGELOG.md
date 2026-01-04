@@ -2,6 +2,818 @@
 
 # Changelog
 
+## [Version&nbsp;2.0.0-beta.23](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.22...v2.0.0-beta.23)
+
+<sup>Released on **2025-12-30**</sup>
+
+#### ✨ Features
+
+- **Highlighter**: Optimize StreamRenderer auto-scroll with RAF throttling.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **Highlighter**: Optimize StreamRenderer auto-scroll with RAF throttling ([56a338d](https://github.com/yuntijs/yunti-ui/commit/56a338d))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
+## [Version&nbsp;2.0.0-beta.22](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.21...v2.0.0-beta.22)
+
+<sup>Released on **2025-12-30**</sup>
+
+#### ✨ Features
+
+- **Highlighter**: Add streaming demo and auto-scroll for StreamRenderer.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **Highlighter**: Add streaming demo and auto-scroll for StreamRenderer ([8264b4f](https://github.com/yuntijs/yunti-ui/commit/8264b4f))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
+## [Version&nbsp;2.0.0-beta.21](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.20...v2.0.0-beta.21)
+
+<sup>Released on **2025-12-29**</sup>
+
+#### ♻ Code Refactoring
+
+- **hooks**: Optimize useHighlight hooks following lobe-ui patterns.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### Code refactoring
+
+- **hooks**: Optimize useHighlight hooks following lobe-ui patterns ([14bb69d](https://github.com/yuntijs/yunti-ui/commit/14bb69d))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
+## [Version&nbsp;2.0.0-beta.20](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.19...v2.0.0-beta.20)
+
+<sup>Released on **2025-12-02**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: Update the white-space property for SyntaxHighlighter.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: Update the white-space property for SyntaxHighlighter ([0b2506c](https://github.com/yuntijs/yunti-ui/commit/0b2506c))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
+## [Version&nbsp;2.0.0-beta.19](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.18...v2.0.0-beta.19)
+
+<sup>Released on **2025-12-01**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: Enable auto-scrolling for the SyntaxHighlighter stream.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: Enable auto-scrolling for the SyntaxHighlighter stream ([d07cc35](https://github.com/yuntijs/yunti-ui/commit/d07cc35))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
+## [Version&nbsp;2.0.0-beta.18](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.17...v2.0.0-beta.18)
+
+<sup>Released on **2025-11-28**</sup>
+
+#### ✨ Features
+
+- **misc**: SyntaxHighlighter 支持 stream.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **misc**: SyntaxHighlighter 支持 stream ([d6b5640](https://github.com/yuntijs/yunti-ui/commit/d6b5640))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
+## [Version&nbsp;2.0.0-beta.17](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.16...v2.0.0-beta.17)
+
+<sup>Released on **2025-11-22**</sup>
+
+#### ✨ Features
+
+- **misc**: Support ECharts for RichTextEditor.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **misc**: Support ECharts for RichTextEditor ([58498e9](https://github.com/yuntijs/yunti-ui/commit/58498e9))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
+## [Version&nbsp;2.0.0-beta.16](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.15...v2.0.0-beta.16)
+
+<sup>Released on **2025-10-30**</sup>
+
+#### ✨ Features
+
+- **misc**: RichTextEditor code block.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **misc**: RichTextEditor code block ([b77a13a](https://github.com/yuntijs/yunti-ui/commit/b77a13a))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
+## [Version&nbsp;2.0.0-beta.15](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.14...v2.0.0-beta.15)
+
+<sup>Released on **2025-10-28**</sup>
+
+#### ✨ Features
+
+- **misc**: Select code language for RichTextEditor.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **misc**: Select code language for RichTextEditor ([0a1081e](https://github.com/yuntijs/yunti-ui/commit/0a1081e))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
+## [Version&nbsp;2.0.0-beta.14](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.13...v2.0.0-beta.14)
+
+<sup>Released on **2025-10-24**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: RichTextEditor markdown transformer.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: RichTextEditor markdown transformer ([75bd213](https://github.com/yuntijs/yunti-ui/commit/75bd213))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
+## [Version&nbsp;2.0.0-beta.13](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.12...v2.0.0-beta.13)
+
+<sup>Released on **2025-10-24**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: RichTextEditor ToolBar.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: RichTextEditor ToolBar ([5630101](https://github.com/yuntijs/yunti-ui/commit/5630101))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
+## [Version&nbsp;2.0.0-beta.12](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.11...v2.0.0-beta.12)
+
+<sup>Released on **2025-10-23**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: RichTextEditor toolbar.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: RichTextEditor toolbar ([5191284](https://github.com/yuntijs/yunti-ui/commit/5191284))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
+## [Version&nbsp;2.0.0-beta.11](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.10...v2.0.0-beta.11)
+
+<sup>Released on **2025-10-22**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: Support dark mode of RichTextEditor.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: Support dark mode of RichTextEditor ([18d7c8e](https://github.com/yuntijs/yunti-ui/commit/18d7c8e))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
+## [Version&nbsp;2.0.0-beta.10](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.9...v2.0.0-beta.10)
+
+<sup>Released on **2025-10-18**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: RichTextEditor toolbar, RichTextEditor toolbar, RichTextEditor 增加 toolbar.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: RichTextEditor toolbar ([88bebc1](https://github.com/yuntijs/yunti-ui/commit/88bebc1))
+- **misc**: RichTextEditor toolbar ([165a805](https://github.com/yuntijs/yunti-ui/commit/165a805))
+- **misc**: RichTextEditor 增加 toolbar ([9bf42df](https://github.com/yuntijs/yunti-ui/commit/9bf42df))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
+## [Version&nbsp;2.0.0-beta.9](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.8...v2.0.0-beta.9)
+
+<sup>Released on **2025-09-23**</sup>
+
+#### ✨ Features
+
+- **misc**: RichTextEditor.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **misc**: RichTextEditor ([721bc79](https://github.com/yuntijs/yunti-ui/commit/721bc79))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
+## [Version&nbsp;2.0.0-beta.8](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.7...v2.0.0-beta.8)
+
+<sup>Released on **2025-09-16**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: Label `use client` - MDXEditor.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: Label `use client` - MDXEditor ([5762636](https://github.com/yuntijs/yunti-ui/commit/5762636))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
+## [Version&nbsp;2.0.0-beta.7](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.6...v2.0.0-beta.7)
+
+<sup>Released on **2025-09-15**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: Export mdxEditor css.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: Export mdxEditor css ([a49f1ce](https://github.com/yuntijs/yunti-ui/commit/a49f1ce))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
+## [Version&nbsp;2.0.0-beta.6](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.5...v2.0.0-beta.6)
+
+<sup>Released on **2025-09-15**</sup>
+
+#### ✨ Features
+
+- **misc**: MDXEditor.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **misc**: MDXEditor ([3028e93](https://github.com/yuntijs/yunti-ui/commit/3028e93))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
+## [Version&nbsp;2.0.0-beta.5](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.4...v2.0.0-beta.5)
+
+<sup>Released on **2025-09-13**</sup>
+
+#### ✨ Features
+
+- **Mentions**: Support custom plugins and bump lexical@0.35.0.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **Mentions**: Support custom plugins and bump lexical@0.35.0 ([dafd0ec](https://github.com/yuntijs/yunti-ui/commit/dafd0ec))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
+## [Version&nbsp;2.0.0-beta.4](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.3...v2.0.0-beta.4)
+
+<sup>Released on **2025-08-07**</sup>
+
+#### ✨ Features
+
+- **SelectCard**: Support props from flex and checkIcon specify.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **SelectCard**: Support props from flex and checkIcon specify ([22d7cda](https://github.com/yuntijs/yunti-ui/commit/22d7cda))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
+## [Version&nbsp;2.0.0-beta.3](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.2...v2.0.0-beta.3)
+
+<sup>Released on **2025-06-18**</sup>
+
+#### 🐛 Bug Fixes
+
+- **misc**: MonacoEditor Add Shiki Theme Style.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **misc**: MonacoEditor Add Shiki Theme Style ([ac0b5b0](https://github.com/yuntijs/yunti-ui/commit/ac0b5b0))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
+## [Version&nbsp;2.0.0-beta.2](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.1...v2.0.0-beta.2)
+
+<sup>Released on **2025-06-11**</sup>
+
+#### ✨ Features
+
+- **CollapseGroup**: Add style overwrite back.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **CollapseGroup**: Add style overwrite back ([9ecf60a](https://github.com/yuntijs/yunti-ui/commit/9ecf60a))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
+## [Version&nbsp;2.0.0-beta.1](https://github.com/yuntijs/yunti-ui/compare/v1.2.0-beta.8...v2.0.0-beta.1)
+
+<sup>Released on **2025-05-26**</sup>
+
+#### ✨ Features
+
+- **misc**: Bump v2 [force major].
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **misc**: Bump v2 [force major] ([cff8c87](https://github.com/yuntijs/yunti-ui/commit/cff8c87))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
+## [Version 1.2.0-beta.8](https://github.com/yuntijs/yunti-ui/compare/v1.2.0-beta.7...v1.2.0-beta.8)
+
+<sup>Released on **2025-05-19**</sup>
+
+#### ✨ Features
+
+- **Mentions**: Support autoFocus.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **Mentions**: Support autoFocus ([9dcc4c1](https://github.com/yuntijs/yunti-ui/commit/9dcc4c1))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
+## [Version 1.2.0-beta.7](https://github.com/yuntijs/yunti-ui/compare/v1.2.0-beta.6...v1.2.0-beta.7)
+
+<sup>Released on **2025-04-25**</sup>
+
+#### ✨ Features
+
+- **Highlighter**: Add default theme for shellsession.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **Highlighter**: Add default theme for shellsession ([f51474c](https://github.com/yuntijs/yunti-ui/commit/f51474c))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
+## [Version 1.2.0-beta.6](https://github.com/yuntijs/yunti-ui/compare/v1.2.0-beta.5...v1.2.0-beta.6)
+
+<sup>Released on **2025-04-25**</sup>
+
+#### ✨ Features
+
+- **Highlighter**: Support theme config and refactor useHighlight by lobe-ui.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **Highlighter**: Support theme config and refactor useHighlight by lobe-ui ([b892825](https://github.com/yuntijs/yunti-ui/commit/b892825))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
+## [Version 1.2.0-beta.5](https://github.com/yuntijs/yunti-ui/compare/v1.2.0-beta.4...v1.2.0-beta.5)
+
+<sup>Released on **2025-04-17**</sup>
+
+#### 🐛 Bug Fixes
+
+- **Mentions**: Mention node split incorrect.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **Mentions**: Mention node split incorrect ([65b8a27](https://github.com/yuntijs/yunti-ui/commit/65b8a27))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
+## [Version 1.2.0-beta.4](https://github.com/yuntijs/yunti-ui/compare/v1.2.0-beta.3...v1.2.0-beta.4)
+
+<sup>Released on **2025-04-17**</sup>
+
+#### ✨ Features
+
+- **Mentions**: Support triggers in option and change mention regex.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **Mentions**: Support triggers in option and change mention regex ([0f0220d](https://github.com/yuntijs/yunti-ui/commit/0f0220d))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
+## [Version 1.2.0-beta.3](https://github.com/yuntijs/yunti-ui/compare/v1.2.0-beta.2...v1.2.0-beta.3)
+
+<sup>Released on **2025-04-17**</sup>
+
+#### ✨ Features
+
+- **Mentions**: Support onKeyDown.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- **Mentions**: Support onKeyDown ([593e804](https://github.com/yuntijs/yunti-ui/commit/593e804))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
+## [Version 1.2.0-beta.2](https://github.com/yuntijs/yunti-ui/compare/v1.2.0-beta.1...v1.2.0-beta.2)
+
+<sup>Released on **2025-04-11**</sup>
+
+#### 🐛 Bug Fixes
+
+- **Mentions**: Cant not get latest state in onPressEnter.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- **Mentions**: Cant not get latest state in onPressEnter ([2800140](https://github.com/yuntijs/yunti-ui/commit/2800140))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
+## [Version 1.2.0-beta.1](https://github.com/yuntijs/yunti-ui/compare/v1.1.0...v1.2.0-beta.1)
+
+<sup>Released on **2025-04-11**</sup>
+
+#### ♻ Code Refactoring
+
+- **useHighlight**: Merge from lobehub/ui.
+
+#### ✨ Features
+
+- **FormCollapseList**: Change shown when readOnly.
+- **Highlighter**: Bump shiki\@3.2.1.
+- **Mentions**: Remove SSR special handling, support onPressEnter, support onTrigger, support ref.
+- **MonacoEditor**: Add miss deps for hooks and remove unuse deps in package.json, remove outline style for diff editor.
+
+#### 🐛 Bug Fixes
+
+- **Mentions**: Clear input not work in onPressEnter, getPopContainer prop not work.
+- **misc**: Background for user chatItem, ChatItem, fix the monaco-editor in strict-mode bug, hide avatar for ChatItem, MonacoEditor2, selectedCard, the max width of ChatItem.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### Code refactoring
+
+- **useHighlight**: Merge from lobehub/ui ([ae8a301](https://github.com/yuntijs/yunti-ui/commit/ae8a301))
+
+#### What's improved
+
+- **FormCollapseList**: Change shown when readOnly ([d014ff0](https://github.com/yuntijs/yunti-ui/commit/d014ff0))
+- **Highlighter**: Bump shiki\@3.2.1 ([40bc00d](https://github.com/yuntijs/yunti-ui/commit/40bc00d))
+- **Mentions**: Remove SSR special handling ([c484657](https://github.com/yuntijs/yunti-ui/commit/c484657))
+- **Mentions**: Support onPressEnter ([9d1ff7a](https://github.com/yuntijs/yunti-ui/commit/9d1ff7a))
+- **Mentions**: Support onTrigger ([c09746c](https://github.com/yuntijs/yunti-ui/commit/c09746c))
+- **Mentions**: Support ref ([779531a](https://github.com/yuntijs/yunti-ui/commit/779531a))
+- **MonacoEditor**: Add miss deps for hooks and remove unuse deps in package.json ([55d4034](https://github.com/yuntijs/yunti-ui/commit/55d4034))
+- **MonacoEditor**: Remove outline style for diff editor ([5d141a7](https://github.com/yuntijs/yunti-ui/commit/5d141a7))
+
+#### What's fixed
+
+- **Mentions**: Clear input not work in onPressEnter ([2701831](https://github.com/yuntijs/yunti-ui/commit/2701831))
+- **Mentions**: GetPopContainer prop not work ([933dd0b](https://github.com/yuntijs/yunti-ui/commit/933dd0b))
+- **misc**: Background for user chatItem, closes [#52](https://github.com/yuntijs/yunti-ui/issues/52) ([3a04f79](https://github.com/yuntijs/yunti-ui/commit/3a04f79))
+- **misc**: ChatItem, closes [#49](https://github.com/yuntijs/yunti-ui/issues/49) ([3b4c7ba](https://github.com/yuntijs/yunti-ui/commit/3b4c7ba))
+- **misc**: Fix the monaco-editor in strict-mode bug, closes [#47](https://github.com/yuntijs/yunti-ui/issues/47) ([088ac29](https://github.com/yuntijs/yunti-ui/commit/088ac29))
+- **misc**: Hide avatar for ChatItem, closes [#48](https://github.com/yuntijs/yunti-ui/issues/48) ([2fd12e0](https://github.com/yuntijs/yunti-ui/commit/2fd12e0))
+- **misc**: MonacoEditor2, closes [#51](https://github.com/yuntijs/yunti-ui/issues/51) ([7eefb7e](https://github.com/yuntijs/yunti-ui/commit/7eefb7e))
+- **misc**: SelectedCard, closes [#45](https://github.com/yuntijs/yunti-ui/issues/45) ([6f5d6ad](https://github.com/yuntijs/yunti-ui/commit/6f5d6ad))
+- **misc**: The max width of ChatItem, closes [#50](https://github.com/yuntijs/yunti-ui/issues/50) ([0a17d4c](https://github.com/yuntijs/yunti-ui/commit/0a17d4c))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version 1.2.0](https://github.com/yuntijs/yunti-ui/compare/v1.1.0...v1.2.0)
 
 <sup>Released on **2025-04-11**</sup>

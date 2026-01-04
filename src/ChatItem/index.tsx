@@ -26,7 +26,7 @@ export const ChatItem = memo<ChatItemProps>(
     loading,
     message,
     placement = 'left',
-    type = 'block',
+    variant = 'bubble',
     avatar,
     error,
     showTitle,
@@ -55,7 +55,7 @@ export const ChatItem = memo<ChatItemProps>(
       showTitle,
       time,
       title: avatar.title,
-      type,
+      variant,
       isLatest,
     });
 
@@ -105,14 +105,14 @@ export const ChatItem = memo<ChatItemProps>(
                 primary={primary}
                 renderMessage={renderMessage}
                 text={text}
-                type={type}
+                variant={variant}
               />
             )}
             {affixation ? <div className="affixation">{affixation}</div> : null}
-            <Actions actions={actions} editing={editing} placement={placement} type={type} />
+            <Actions actions={actions} editing={editing} placement={placement} variant={variant} />
           </Flexbox>
         </Flexbox>
-        {mobile && type === 'block' && <BorderSpacing borderSpacing={MOBILE_AVATAR_SIZE} />}
+        {mobile && variant === 'bubble' && <BorderSpacing borderSpacing={MOBILE_AVATAR_SIZE} />}
       </Flexbox>
     );
   }

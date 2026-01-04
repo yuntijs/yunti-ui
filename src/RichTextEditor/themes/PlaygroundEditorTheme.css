@@ -1,0 +1,646 @@
+/* Light theme styles (default) */
+:root {
+  --rt-editor-text-primary: rgb(5, 5, 5);
+  --rt-editor-text-secondary: rgb(101, 103, 107);
+  --rt-editor-bg-primary: #ffffff;
+  --rt-editor-bg-secondary: rgb(240, 242, 245);
+  --rt-editor-bg-tertiary: #f2f3f5;
+  --rt-editor-border-color: #bbb;
+  --rt-editor-border-light: rgb(206, 208, 212);
+  --rt-editor-link-color: rgb(33, 111, 219);
+  --rt-editor-code-bg: rgb(240, 242, 245);
+  --rt-editor-code-gutter: #eee;
+  --rt-editor-table-stripe: #f2f5fb;
+  --rt-editor-table-hover: #c9dbf0;
+  --rt-editor-table-header: #f2f3f5;
+  --rt-editor-table-frozen-bg: #ffffff;
+  --rt-editor-table-frozen-header: #f2f3f5;
+  --rt-editor-action-button-bg: #eee;
+  --rt-editor-action-button-hover: #ddd;
+  --rt-editor-hr-color: #ccc;
+  --rt-editor-layout-border: #ddd;
+  --rt-editor-autocomplete-color: #ccc;
+  --rt-editor-line-height: 1.625;
+  --rt-editor-margin-multiple: 1;
+  --rt-editor-font-size: 14px;
+  --rt-editor-header-multiple: 0.8;
+}
+
+/* Dark theme styles */
+[data-theme="dark"] {
+  --rt-editor-text-primary: rgba(255, 255, 255, 0.85);
+  --rt-editor-text-secondary: rgba(255, 255, 255, 0.65);
+  --rt-editor-bg-primary: #141414;
+  --rt-editor-bg-secondary: #1f1f1f;
+  --rt-editor-bg-tertiary: #262626;
+  --rt-editor-border-color: #434343;
+  --rt-editor-border-light: #434343;
+  --rt-editor-link-color: #1890ff;
+  --rt-editor-code-bg: #1f1f1f;
+  --rt-editor-code-gutter: #262626;
+  --rt-editor-table-stripe: #1a1a1a;
+  --rt-editor-table-hover: #177ddc;
+  --rt-editor-table-header: #262626;
+  --rt-editor-table-frozen-bg: #141414;
+  --rt-editor-table-frozen-header: #262626;
+  --rt-editor-action-button-bg: #262626;
+  --rt-editor-action-button-hover: #434343;
+  --rt-editor-hr-color: #434343;
+  --rt-editor-layout-border: #434343;
+  --rt-editor-autocomplete-color: #434343;
+}
+
+.RTEditor__ltr {
+  text-align: left;
+}
+.RTEditor__rtl {
+  text-align: right;
+}
+.RTEditor__paragraph {
+  line-height: var(--rt-editor-line-height);
+  letter-spacing: 0.02em;
+  font-size: var(--rt-editor-font-size);
+}
+.RTEditor__paragraph:not(:last-child) {
+  margin-block-end: calc(var(--rt-editor-margin-multiple) * 0.5em);
+}
+.RTEditor__paragraph:not(:first-child) {
+  margin-block-start: calc(var(--rt-editor-margin-multiple) * 0.5em);
+}
+.RTEditor__quote {
+  margin: 0;
+  margin-left: 20px;
+  margin-bottom: 10px;
+  font-size: var(--rt-editor-font-size);
+  color: var(--rt-editor-text-secondary);
+  border-left-color: var(--rt-editor-border-light);
+  border-left-width: 4px;
+  border-left-style: solid;
+  padding-left: 16px;
+}
+.RTEditor__h1 {
+  font-size: calc(var(--rt-editor-font-size) * (1 + 1.5 * var(--rt-editor-header-multiple)));
+  color: var(--rt-editor-text-primary);
+  font-weight: bold;
+  line-height: 1.25;
+  margin-block: max(calc(var(--rt-editor-header-multiple) * var(--rt-editor-header-multiple) * 0.4em), var(--rt-editor-font-size));
+}
+.RTEditor__h2 {
+  font-size: calc(var(--rt-editor-font-size) * (1 + var(--rt-editor-header-multiple)));
+  color: var(--rt-editor-text-primary);
+  font-weight: 700;
+  font-weight: bold;
+  margin-block: max(calc(var(--rt-editor-header-multiple) * var(--rt-editor-header-multiple) * 0.4em), var(--rt-editor-font-size));
+}
+.RTEditor__h3 {
+  font-size: calc(var(--rt-editor-font-size) * (1 + 0.5 * var(--rt-editor-header-multiple)));
+  color: var(--rt-editor-text-primary);
+  font-weight: bold;
+  margin-block: max(calc(var(--rt-editor-header-multiple) * var(--rt-editor-header-multiple) * 0.4em), var(--rt-editor-font-size));
+}
+.RTEditor__indent {
+  --lexical-indent-base-value: 40px;
+}
+.RTEditor__textBold {
+  font-weight: bold;
+}
+.RTEditor__paragraph mark {
+  background-color: unset;
+}
+.RTEditor__textHighlight {
+  background: rgba(255, 212, 0, 0.14);
+  border-bottom: 2px solid rgba(255, 212, 0, 0.3);
+}
+.RTEditor__textItalic {
+  font-style: italic;
+}
+.RTEditor__textUnderline {
+  text-decoration: underline;
+}
+
+.RTEditor__textStrikethrough {
+  text-decoration: line-through;
+}
+
+.RTEditor__textUnderlineStrikethrough {
+  text-decoration: underline line-through;
+}
+
+.RTEditor__tabNode {
+  position: relative;
+  text-decoration: none;
+}
+
+.RTEditor__tabNode.RTEditor__textUnderline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.15em;
+  border-bottom: 0.1em solid currentColor;
+}
+
+.RTEditor__tabNode.RTEditor__textStrikethrough::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0.69em;
+  border-top: 0.1em solid currentColor;
+}
+
+.RTEditor__tabNode.RTEditor__textUnderlineStrikethrough::before,
+.RTEditor__tabNode.RTEditor__textUnderlineStrikethrough::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.RTEditor__tabNode.RTEditor__textUnderlineStrikethrough::before {
+  top: 0.69em;
+  border-top: 0.1em solid currentColor;
+}
+
+.RTEditor__tabNode.RTEditor__textUnderlineStrikethrough::after {
+  bottom: 0.05em;
+  border-bottom: 0.1em solid currentColor;
+}
+
+.RTEditor__textSubscript {
+  font-size: 0.8em;
+  vertical-align: sub !important;
+}
+.RTEditor__textSuperscript {
+  font-size: 0.8em;
+  vertical-align: super;
+}
+.RTEditor__textCode {
+  background-color: var(--rt-editor-code-bg);
+  padding: 1px 0.25rem;
+  font-family: Menlo, Consolas, Monaco, monospace;
+  font-size: 94%;
+}
+.RTEditor__textLowercase {
+  text-transform: lowercase;
+}
+.RTEditor__textUppercase {
+  text-transform: uppercase;
+}
+.RTEditor__textCapitalize {
+  text-transform: capitalize;
+}
+.RTEditor__hashtag {
+  background-color: rgba(88, 144, 255, 0.15);
+  border-bottom: 1px solid rgba(88, 144, 255, 0.3);
+}
+.RTEditor__link {
+  color: var(--rt-editor-link-color);
+  text-decoration: none;
+}
+.RTEditor__link:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.RTEditor__blockCursor {
+  display: block;
+  pointer-events: none;
+  position: absolute;
+}
+.RTEditor__blockCursor:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: -2px;
+  width: 20px;
+  border-top: 1px solid black;
+  animation: CursorBlink 1.1s steps(2, start) infinite;
+}
+@keyframes CursorBlink {
+  to {
+    visibility: hidden;
+  }
+}
+.RTEditor__code {
+  background-color: var(--rt-editor-code-bg);
+  border-radius: 8px;
+  font-family: Menlo, Consolas, Monaco, monospace;
+  display: block;
+  padding: 16px;
+  line-height: 1.8;
+  font-size: 14px;
+  margin: 0;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  overflow-x: auto;
+  position: relative;
+  tab-size: 2;
+}
+.RTEditor__tableScrollableWrapper {
+  overflow-x: auto;
+  margin: 0px 25px 30px 0px;
+}
+.RTEditor__tableScrollableWrapper > .RTEditor__table {
+  /* Remove the table's vertical margin and put it on the wrapper */
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.RTEditor__tableAlignmentCenter {
+  margin-left: auto;
+  margin-right: auto;
+}
+.RTEditor__tableAlignmentRight {
+  margin-left: auto;
+}
+.RTEditor__table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  overflow-y: scroll;
+  overflow-x: scroll;
+  table-layout: fixed;
+  width: fit-content;
+  margin-top: 25px;
+  margin-bottom: 30px;
+}
+.RTEditor__tableScrollableWrapper.RTEditor__tableFrozenRow {
+  /* position:sticky needs overflow:clip or visible
+     https://github.com/w3c/csswg-drafts/issues/865#issuecomment-350585274 */
+  overflow-x: clip;
+}
+.RTEditor__tableFrozenRow tr:nth-of-type(1) > td {
+  overflow: clip;
+  background-color: var(--rt-editor-table-frozen-bg);
+  position: sticky;
+  z-index: 2;
+  top: 44px;
+}
+.RTEditor__tableFrozenRow tr:nth-of-type(1) > th {
+  overflow: clip;
+  background-color: var(--rt-editor-table-frozen-header);
+  position: sticky;
+  z-index: 2;
+  top: 44px;
+}
+.RTEditor__tableFrozenRow tr:nth-of-type(1) > th:after,
+.RTEditor__tableFrozenRow tr:nth-of-type(1) > td:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  border-bottom: 1px solid var(--rt-editor-border-color);
+}
+.RTEditor__tableFrozenColumn tr > td:first-child {
+  background-color: var(--rt-editor-table-frozen-bg);
+  position: sticky;
+  z-index: 2;
+  left: 0;
+}
+.RTEditor__tableFrozenColumn tr > th:first-child {
+  background-color: var(--rt-editor-table-frozen-header);
+  position: sticky;
+  z-index: 2;
+  left: 0;
+}
+.RTEditor__tableFrozenColumn tr > :first-child::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 100%;
+  border-right: 1px solid var(--rt-editor-border-color);
+}
+.RTEditor__tableRowStriping tr:nth-child(even) {
+  background-color: var(--rt-editor-table-stripe);
+}
+.RTEditor__tableSelection *::selection {
+  background-color: transparent;
+}
+.RTEditor__tableSelected {
+  outline: 2px solid rgb(60, 132, 244);
+}
+.RTEditor__tableCell {
+  border: 1px solid var(--rt-editor-border-color);
+  width: 75px;
+  vertical-align: top;
+  text-align: start;
+  padding: 6px 8px;
+  position: relative;
+  outline: none;
+  overflow: auto;
+}
+/*
+  A firefox workaround to allow scrolling of overflowing table cell
+  ref: https://bugzilla.mozilla.org/show_bug.cgi?id=1904159
+*/
+.RTEditor__tableCell > * {
+  overflow: inherit;
+}
+.RTEditor__tableCellResizer {
+  position: absolute;
+  right: -4px;
+  height: 100%;
+  width: 8px;
+  cursor: ew-resize;
+  z-index: 10;
+  top: 0;
+}
+.RTEditor__tableCellHeader {
+  background-color: var(--rt-editor-table-header);
+  text-align: start;
+}
+.RTEditor__tableCellSelected {
+  caret-color: transparent;
+}
+.RTEditor__tableCellSelected::after {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-color: highlight;
+  mix-blend-mode: multiply;
+  content: '';
+  pointer-events: none;
+}
+.RTEditor__tableAddColumns {
+  position: absolute;
+  background-color: var(--rt-editor-action-button-bg);
+  height: 100%;
+  animation: table-controls 0.2s ease;
+  border: 0;
+  cursor: pointer;
+}
+.RTEditor__tableAddColumns:after {
+  background-image: url(../images/icons/plus.svg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: block;
+  content: ' ';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.4;
+}
+.RTEditor__tableAddColumns:hover,
+.RTEditor__tableAddRows:hover {
+  background-color: var(--rt-editor-table-hover);
+}
+.RTEditor__tableAddRows {
+  position: absolute;
+  width: calc(100% - 25px);
+  background-color: var(--rt-editor-action-button-bg);
+  animation: table-controls 0.2s ease;
+  border: 0;
+  cursor: pointer;
+}
+.RTEditor__tableAddRows:after {
+  background-image: url(../images/icons/plus.svg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: block;
+  content: ' ';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.4;
+}
+@keyframes table-controls {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.RTEditor__tableCellResizeRuler {
+  display: block;
+  position: absolute;
+  width: 1px;
+  background-color: rgb(60, 132, 244);
+  height: 100%;
+  top: 0;
+}
+.RTEditor__tableCellActionButtonContainer {
+  display: block;
+  right: 5px;
+  top: 6px;
+  position: absolute;
+  z-index: 4;
+  width: 20px;
+  height: 20px;
+}
+.RTEditor__tableCellActionButton {
+  background-color: var(--rt-editor-action-button-bg);
+  display: block;
+  border: 0;
+  border-radius: 20px;
+  width: 20px;
+  height: 20px;
+  color: var(--rt-editor-text-primary);
+  cursor: pointer;
+}
+.RTEditor__tableCellActionButton:hover {
+  background-color: var(--rt-editor-action-button-hover);
+}
+.RTEditor__characterLimit {
+  display: inline;
+  background-color: #ffbbbb !important;
+}
+.RTEditor__ol1 {
+  padding: 0;
+  margin: 0;
+  list-style-position: outside;
+}
+.RTEditor__ol2 {
+  padding: 0;
+  margin: 0;
+  list-style-type: upper-alpha;
+  list-style-position: outside;
+}
+.RTEditor__ol3 {
+  padding: 0;
+  margin: 0;
+  list-style-type: lower-alpha;
+  list-style-position: outside;
+}
+.RTEditor__ol4 {
+  padding: 0;
+  margin: 0;
+  list-style-type: upper-roman;
+  list-style-position: outside;
+}
+.RTEditor__ol5 {
+  padding: 0;
+  margin: 0;
+  list-style-type: lower-roman;
+  list-style-position: outside;
+}
+.RTEditor__ul {
+  padding: 0;
+  margin: 0;
+  list-style-position: outside;
+}
+.RTEditor__listItem {
+  margin: 0 32px;
+}
+.RTEditor__listItem::marker {
+  color: var(--listitem-marker-color);
+  background-color: var(--listitem-marker-background-color);
+  font-family: var(--listitem-marker-font-family);
+  font-size: var(--listitem-marker-font-size);
+}
+.RTEditor__listItemChecked,
+.RTEditor__listItemUnchecked {
+  position: relative;
+  margin-left: 8px;
+  margin-right: 8px;
+  padding-left: 24px;
+  padding-right: 24px;
+  list-style-type: none;
+  outline: none;
+}
+.RTEditor__listItemChecked {
+  text-decoration: line-through;
+}
+.RTEditor__listItemUnchecked:before,
+.RTEditor__listItemChecked:before {
+  content: '';
+  width: 16px;
+  height: 16px;
+  top: 2px;
+  left: 0;
+  cursor: pointer;
+  display: block;
+  background-size: cover;
+  position: absolute;
+}
+.RTEditor__listItemUnchecked[dir='rtl']:before,
+.RTEditor__listItemChecked[dir='rtl']:before {
+  left: auto;
+  right: 0;
+}
+.RTEditor__listItemUnchecked:focus:before,
+.RTEditor__listItemChecked:focus:before {
+  box-shadow: 0 0 0 2px #a6cdfe;
+  border-radius: 2px;
+}
+.RTEditor__listItemUnchecked:before {
+  border: 1px solid #999;
+  border-radius: 2px;
+}
+.RTEditor__listItemChecked:before {
+  border: 1px solid rgb(61, 135, 245);
+  border-radius: 2px;
+  background-color: #3d87f5;
+  background-repeat: no-repeat;
+}
+.RTEditor__listItemChecked:after {
+  content: '';
+  cursor: pointer;
+  border-color: #fff;
+  border-style: solid;
+  position: absolute;
+  display: block;
+  top: 6px;
+  width: 3px;
+  left: 7px;
+  right: 7px;
+  height: 6px;
+  transform: rotate(45deg);
+  border-width: 0 2px 2px 0;
+}
+.RTEditor__nestedListItem {
+  list-style-type: none;
+}
+.RTEditor__nestedListItem:before,
+.RTEditor__nestedListItem:after {
+  display: none;
+}
+.RTEditor__tokenComment {
+  color: slategray;
+}
+.RTEditor__tokenPunctuation {
+  color: #999;
+}
+.RTEditor__tokenProperty {
+  color: #905;
+}
+.RTEditor__tokenSelector {
+  color: #690;
+}
+.RTEditor__tokenOperator {
+  color: #9a6e3a;
+}
+.RTEditor__tokenAttr {
+  color: #07a;
+}
+.RTEditor__tokenVariable {
+  color: #e90;
+}
+.RTEditor__tokenFunction {
+  color: #dd4a68;
+}
+.RTEditor__mark {
+  background: rgba(255, 212, 0, 0.14);
+  border-bottom: 2px solid rgba(255, 212, 0, 0.3);
+  padding-bottom: 2px;
+}
+.RTEditor__markOverlap {
+  background: rgba(255, 212, 0, 0.3);
+  border-bottom: 2px solid rgba(255, 212, 0, 0.7);
+}
+.RTEditor__mark.selected {
+  background: rgba(255, 212, 0, 0.5);
+  border-bottom: 2px solid rgba(255, 212, 0, 1);
+}
+.RTEditor__markOverlap.selected {
+  background: rgba(255, 212, 0, 0.7);
+  border-bottom: 2px solid rgba(255, 212, 0, 0.7);
+}
+.RTEditor__embedBlock {
+  user-select: none;
+}
+.RTEditor__embedBlockFocus {
+  outline: 2px solid rgb(60, 132, 244);
+}
+.RTEditor__layoutContainer {
+  display: grid;
+  gap: 10px;
+  margin: 10px 0;
+}
+.RTEditor__layoutItem {
+  border: 1px dashed var(--rt-editor-layout-border);
+  padding: 8px 16px;
+  min-width: 0;
+  max-width: 100%;
+}
+.RTEditor__autocomplete {
+  color: var(--rt-editor-autocomplete-color);
+}
+.RTEditor__hr {
+  width: 100%;
+  margin-block: calc(var(--rt-editor-header-multiple) * 1.5em);
+  border-color: #e3e3e3;
+  border-style: dashed;
+  border-width: 1px;
+  border-block-start: none;
+  border-inline-start: none;
+  border-inline-end: none;
+}
+.RTEditor__hr.RTEditor__hrSelected {
+  outline: 2px solid rgb(60, 132, 244);
+  user-select: none;
+}
+
+.RTEditor__specialText {
+  background-color: yellow;
+  font-weight: bold;
+}

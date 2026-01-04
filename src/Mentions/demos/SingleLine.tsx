@@ -5,6 +5,7 @@ import {
   Flex,
   Mentions,
   MentionsEditor,
+  message,
   textToEditorState,
 } from '@yuntijs/ui';
 import { Carrot, Cloud, Smile } from 'lucide-react';
@@ -16,10 +17,17 @@ export default () => {
   return (
     <Flex style={{ width: '100%' }} vertical>
       <Mentions
+        autoFocus="rootEnd"
         autoSize={{
           minRows: 1,
         }}
         defaultValue="👋，I'm {{1.zhang}}"
+        onKeyDown={e => {
+          if (e?.key === 'Tab') {
+            e.preventDefault();
+            message.info('你按了 Tab 键');
+          }
+        }}
         options={[
           {
             label: 'zhang',
@@ -52,7 +60,9 @@ export default () => {
         </Button>
         <Button
           onClick={() => {
-            ref.current?.update(textToEditorState("👋，I'm {{3.yunti}}", ['@']));
+            ref.current?.update(
+              textToEditorState("👋，I'm {{3.yunti}} ~", ['@'], { cursor: 'all' })
+            );
           }}
         >
           set

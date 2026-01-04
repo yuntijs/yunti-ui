@@ -33,7 +33,8 @@ export default () => {
 
   return (
     <Dropdown
-      dropdownRender={menu => (
+      menu={{ items }}
+      popupRender={menu => (
         <Flex vertical>
           <Text style={{ fontSize: 12, padding: '10px 16px 4px' }} type="secondary">
             已发布平台
@@ -48,7 +49,6 @@ export default () => {
           </Flex>
         </Flex>
       )}
-      menu={{ items }}
     >
       <Button icon={<DownOutlined />} iconPosition="end">
         <Flex align="center" gap="small">

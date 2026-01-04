@@ -150,7 +150,7 @@ export default () => {
           indentSize={16}
           name="outputs"
           title="输出变量"
-          variant="block"
+          variant="filled"
         />
       </Form>
       <Divider

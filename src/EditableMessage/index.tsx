@@ -5,7 +5,7 @@ import {
   type MessageInputProps,
   MessageModal,
   type MessageModalProps,
-} from '@lobehub/ui';
+} from '@lobehub/ui/chat';
 import { CSSProperties, memo } from 'react';
 import useControlledState from 'use-merge-value';
 
@@ -35,7 +35,7 @@ export interface EditableMessageProps {
   fontSize?: number;
   fullFeaturedCodeBlock?: boolean;
   height?: MessageInputProps['height'];
-  inputType?: MessageInputProps['type'];
+  variant?: MessageInputProps['variant'];
   model?: {
     extra?: MessageModalProps['extra'];
     footer?: MessageModalProps['footer'];
@@ -97,7 +97,7 @@ export const EditableMessage = memo<EditableMessageProps>(
     showEditWhenEmpty = false,
     styles: stylesProps,
     height,
-    inputType,
+    variant,
     editButtonSize,
     text,
     fullFeaturedCodeBlock,
@@ -120,7 +120,7 @@ export const EditableMessage = memo<EditableMessageProps>(
     const input = (
       <MessageInput
         className={classNames?.input}
-        classNames={{ textarea: classNames?.textarea }}
+        classNames={{ textarea: classNames?.textarea, editor: classNames.input }}
         defaultValue={value}
         editButtonSize={editButtonSize}
         height={height}
@@ -132,8 +132,7 @@ export const EditableMessage = memo<EditableMessageProps>(
         placeholder={placeholder}
         style={stylesProps?.input}
         text={text}
-        textareaClassname={classNames?.input}
-        type={inputType}
+        variant={variant}
       />
     );
 

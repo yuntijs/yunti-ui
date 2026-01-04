@@ -208,6 +208,7 @@ export const languageMap = [
   'sh',
   'shader',
   'shell',
+  'shellsession',
   'spl',
   'styl',
   'ts',

@@ -1,4 +1,4 @@
-import { StoryBook, useControls, useCreateStore } from '@lobehub/ui';
+import { StoryBook, useControls, useCreateStore } from '@lobehub/ui/storybook';
 import type { AlertProps } from '@yuntijs/ui';
 import { Alert } from '@yuntijs/ui';
 

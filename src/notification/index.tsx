@@ -38,7 +38,7 @@ const reactNodeToString = function (reactNode: React.ReactNode): string {
       string += reactNodeToString(child);
     }
   } else if (isValidElement(reactNode)) {
-    string += reactNodeToString(reactNode.props.children);
+    string += reactNodeToString((reactNode.props as React.PropsWithChildren).children);
   }
   return string;
 };

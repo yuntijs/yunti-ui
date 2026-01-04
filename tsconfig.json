@@ -6,15 +6,18 @@
     "esModuleInterop": true,
     "jsx": "react-jsx",
     "lib": ["dom", "dom.iterable", "esnext"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "es6",
     "paths": {
       "@@/*": [".dumi/tmp/*"],
       "@/*": ["src/*"],
       "@yuntijs/ui": ["src"],
       "@yuntijs/ui/*": ["src/*"]
     },
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "strict": true,
     "types": ["vitest/globals"]
   },
   "include": ["src", "docs", "tests", ".dumirc.ts", "*.ts"]

@@ -2,7 +2,7 @@ import { memo } from 'react';
 
 import { SvgProps } from '@/types';
 
-export const LogoText = memo<SvgProps | any>(({ ...rest }) => (
+export const LogoText = memo(({ ...rest }: SvgProps | any) => (
   <svg
     fill="currentColor"
     fillRule="evenodd"

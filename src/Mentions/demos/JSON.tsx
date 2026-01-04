@@ -5,6 +5,7 @@ import { Carrot, Cloud, Smile } from 'lucide-react';
 export default () => {
   return (
     <Mentions
+      autoFocus="rootEnd"
       autoSize={{
         minRows: 5,
       }}

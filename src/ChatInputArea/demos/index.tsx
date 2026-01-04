@@ -1,4 +1,5 @@
-import { ActionIcon, TokenTag } from '@lobehub/ui';
+import { ActionIcon } from '@lobehub/ui';
+import { TokenTag } from '@lobehub/ui/chat';
 import { ChatInputActionBar, ChatInputArea, ChatSendButton } from '@yuntijs/ui';
 import { Eraser, Languages } from 'lucide-react';
 import { Flexbox } from 'react-layout-kit';

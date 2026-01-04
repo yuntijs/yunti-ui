@@ -1,4 +1,5 @@
-import { Features, FeaturesProps, Highlighter } from '@lobehub/ui';
+import { Highlighter } from '@lobehub/ui';
+import { Features, FeaturesProps } from '@lobehub/ui/awesome';
 import { useTheme } from 'antd-style';
 import { MoonStar, Palette, Zap } from 'lucide-react';
 import { Center } from 'react-layout-kit';
@@ -55,7 +56,7 @@ export default () => {
           as the default css-in-js styling solution.
         </div>
       </Center>
-      <Highlighter language={'tsx'} style={{ maxWidth: '60%' }} type={'ghost'}>
+      <Highlighter language={'tsx'} style={{ maxWidth: '60%' }} variant="filled">
         {example}
       </Highlighter>
       <Features items={items} />

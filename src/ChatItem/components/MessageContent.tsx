@@ -19,7 +19,7 @@ export interface MessageContentProps {
   primary?: ChatItemProps['primary'];
   renderMessage?: ChatItemProps['renderMessage'];
   text?: ChatItemProps['text'];
-  type?: ChatItemProps['type'];
+  variant?: ChatItemProps['variant'];
   markdownProps?: EditableMessageProps['markdownProps'];
   markdownClassname?: string;
 }
@@ -34,14 +34,14 @@ const MessageContent = memo<MessageContentProps>(
     placement,
     messageExtra,
     renderMessage,
-    type,
+    variant,
     primary,
     onDoubleClick,
     fontSize,
     markdownProps,
     markdownClassname,
   }) => {
-    const { cx, styles } = useStyles({ editing, placement, primary, type });
+    const { cx, styles } = useStyles({ editing, placement, primary, variant });
     const { mobile } = useResponsive();
 
     const content = (

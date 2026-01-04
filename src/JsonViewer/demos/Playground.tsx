@@ -1,4 +1,4 @@
-import { StoryBook, useControls, useCreateStore } from '@lobehub/ui';
+import { StoryBook, useControls, useCreateStore } from '@lobehub/ui/storybook';
 import { JsonViewer, JsonViewerProps } from '@yuntijs/ui';
 
 import { largeJson } from './data/large-json';
@@ -7,9 +7,9 @@ export default () => {
   const store = useCreateStore();
   const options: JsonViewerProps | any = useControls(
     {
-      type: {
-        options: ['ghost', 'block', 'pure'],
-        value: 'block',
+      variant: {
+        options: ['filled', 'outlined', 'borderless'],
+        value: 'filled',
       },
       theme: {
         options: ['default', 'a11y', 'github', 'vscode', 'atom', 'winter-is-coming'],

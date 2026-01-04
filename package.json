@@ -1,6 +1,6 @@
 {
   "name": "@yuntijs/ui",
-  "version": "1.2.0",
+  "version": "2.0.0-beta.23",
   "description": "☁️ Yunti UI - an open-source UI component library for building Cloud Native web apps",
   "keywords": [
     "yuntijs",
@@ -38,7 +38,7 @@
     "docs:dev": "dumi dev",
     "docs:preview": "dumi preview --port 9000",
     "doctor": "father doctor",
-    "lint": "npm run lint:es && npm run lint:style && npm run lint:md",
+    "lint": "npm run lint:es && npm run lint:style",
     "lint-fix": "npm run lint-fix:es && npm run lint-fix:style",
     "lint-fix:es": "eslint --ext .jsx,.js,.tsx,.ts src --fix",
     "lint-fix:style": "stylelint \"{src,tests}/**/*.{css,less,js,jsx,ts,tsx}\" --fix",
@@ -58,7 +58,6 @@
   },
   "lint-staged": {
     "*.md": [
-      "remark --quiet --output --",
       "prettier --write --no-error-on-unmatched-pattern"
     ],
     "*.json": [
@@ -82,27 +81,38 @@
   "dependencies": {
     "@ant-design/icons": "^5",
     "@babel/runtime": "^7",
-    "@lexical/react": "^0.23.1",
-    "@lexical/selection": "^0.23.1",
-    "@lexical/text": "^0.23.1",
-    "@lexical/utils": "^0.23.1",
-    "@lobehub/tts": "^1.25.1",
-    "@lobehub/ui": "^1.164.2",
-    "@melloware/react-logviewer": "^5.2.0",
+    "@lexical/code": "^0.35.0",
+    "@lexical/hashtag": "^0.35.0",
+    "@lexical/link": "^0.35.0",
+    "@lexical/list": "^0.35.0",
+    "@lexical/mark": "^0.35.0",
+    "@lexical/markdown": "^0.35.0",
+    "@lexical/overflow": "^0.35.0",
+    "@lexical/react": "^0.35.0",
+    "@lexical/rich-text": "^0.35.0",
+    "@lexical/selection": "^0.35.0",
+    "@lexical/table": "^0.35.0",
+    "@lexical/text": "^0.35.0",
+    "@lexical/utils": "^0.35.0",
+    "@lobehub/tts": "^2.0.1",
+    "@lobehub/ui": "^2.12.4",
+    "@melloware/react-logviewer": "^6.2.0",
     "@monaco-editor/loader": "^1.5.0",
     "@monaco-editor/react": "^4.7.0",
-    "@shikijs/transformers": "^3.2.1",
+    "@shikijs/core": "^3.17.0",
+    "@shikijs/monaco": "^3.17.0",
+    "@shikijs/transformers": "^3.17.0",
+    "class-variance-authority": "^0.7.1",
     "leva": "^0",
-    "lexical": "^0.23.1",
+    "lexical": "^0.35.0",
     "lodash-es": "^4",
     "lucide-react": "latest",
-    "query-string": "^8",
     "rc-util": "^5.43.0",
     "react-draggable": "^4.4.6",
-    "react-error-boundary": "^4",
-    "react-layout-kit": "^1",
-    "react18-json-view": "^0.2.8",
-    "shiki": "^3.2.1",
+    "react-layout-kit": "^2",
+    "react18-json-view": "^0.2.9",
+    "shiki": "^3.17.0",
+    "shiki-stream": "^0.1.3",
     "swr": "^2.2.5",
     "ts-md5": "^1.3.1",
     "url-join": "^5.0.0",
@@ -111,30 +121,29 @@
   "devDependencies": {
     "@testing-library/react": "^14",
     "@types/lodash-es": "^4",
-    "@types/query-string": "^6",
-    "@types/react": "18.2.40",
-    "@types/react-dom": "^18",
+    "@types/react": "^19.1.13",
+    "@types/react-dom": "^19.1.9",
     "@types/unist": "^3.0.3",
     "@vitest/coverage-v8": "latest",
     "@yuntijs/lint": "^1.7.0",
-    "antd": "^5.23.4",
+    "antd": "^5.27.3",
     "antd-style": "^3.7.1",
     "babel-plugin-antd-style": "latest",
     "commitlint": "^18",
-    "dayjs": "^1.11.10",
-    "dumi": "^2.4.17",
-    "dumi-theme-yunti": "^1.7.3",
+    "dayjs": "^1.11.18",
+    "dumi": "^2.4.21",
+    "dumi-theme-lobehub": "^2.0.9",
     "eslint": "^8.56.0",
-    "father": "^4.3.8",
+    "father": "^4.6.4",
     "husky": "^8",
     "jest": "^27",
     "jsdom": "^22",
     "lint-staged": "^15",
     "mdast-util-to-markdown": "^2.1.2",
-    "monaco-editor": "^0.52.2",
+    "monaco-editor": "^0.53.0",
     "prettier": "^3",
-    "react": "^18",
-    "react-dom": "^18",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
     "remark": "^14",
     "remark-cli": "^11",
     "semantic-release": "^21",
@@ -147,16 +156,24 @@
     "antd": ">=5",
     "antd-style": ">=3",
     "dayjs": ">=1",
-    "react": ">=18",
-    "react-dom": ">=18"
+    "react": ">=19",
+    "react-dom": ">=19"
   },
   "engines": {
-    "node": ">=18.12.0",
-    "pnpm": ">=8.1.0"
+    "node": ">=20.0.0",
+    "pnpm": ">=10.0.0"
   },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org"
+  },
+  "pnpm": {
+    "overrides": {
+      "@lobehub/tts>@lobehub/ui": "^2.12.4",
+      "lucide-react": "latest",
+      "react": "^19.1.1",
+      "react-dom": "^19.1.1"
+    }
   },
   "yunti": {
     "umd": {
@@ -167,7 +184,7 @@
       "externals": {
         "antd": ">=5",
         "antd-style": ">=3",
-        "react": ">=18"
+        "react": ">=19"
       }
     }
   }

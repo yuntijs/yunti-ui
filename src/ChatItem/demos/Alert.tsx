@@ -1,5 +1,5 @@
-import { Highlighter, StoryBook, useControls, useCreateStore } from '@lobehub/ui';
-import { ChatItem, ChatItemProps } from '@yuntijs/ui';
+import { StoryBook, useControls, useCreateStore } from '@lobehub/ui/storybook';
+import { ChatItem, ChatItemProps, Highlighter } from '@yuntijs/ui';
 
 import { avatar } from './data';
 
@@ -37,7 +37,7 @@ export default () => {
         avatar={avatar}
         error={control}
         errorMessage={
-          <Highlighter copyButtonSize={'small'} language={'json'} type={'pure'}>
+          <Highlighter copyButtonSize={'small'} language={'json'} variant="borderless">
             {JSON.stringify(demoError, null, 2)}
           </Highlighter>
         }

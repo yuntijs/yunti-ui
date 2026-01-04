@@ -44,13 +44,13 @@ export const DragPanel: React.FC<DragPanelProps> = memo(
           wrapper: cx(styles.wrapper, classNames.wrapper),
           content: cx(styles.content, classNames.content),
         }}
-        destroyOnClose
+        destroyOnHidden
         drawerRender={drawer => (
           <Draggable
             bounds={bounds}
             defaultPosition={defaultPosition}
             handle={`.${styles.dragHandle}`}
-            nodeRef={draggleRef}
+            nodeRef={draggleRef as React.RefObject<HTMLElement>}
             onStart={(event, uiData) => onStart(event, uiData)}
             onStop={(_e, data) => {
               onPositionChange?.({ x: data.x, y: data.y });

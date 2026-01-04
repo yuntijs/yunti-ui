@@ -1,4 +1,4 @@
-import { StoryBook, useControls, useCreateStore } from '@lobehub/ui';
+import { StoryBook, useControls, useCreateStore } from '@lobehub/ui/storybook';
 import type { TreeDataNode, TreeProps } from '@yuntijs/ui';
 import { Tree } from '@yuntijs/ui';
 

@@ -1,10 +1,10 @@
 import { ActionIcon, CopyButton } from '@lobehub/ui';
 import { Select, type SelectProps } from 'antd';
 import { ChevronDown, ChevronRight } from 'lucide-react';
-import { ReactNode, memo, useState } from 'react';
+import { ReactNode, memo, useEffect, useState } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
-import { languageMap } from '@/hooks/useHighlight';
+import { ThemeProps, languageMap } from '@/hooks/useHighlight';
 import { DivProps } from '@/types';
 
 import { SyntaxHighlighter } from './SyntaxHighlighter';
@@ -23,6 +23,10 @@ export interface FullFeaturedHighlighterProps extends DivProps {
    */
   language: string;
   contentStyle?: React.CSSProperties;
+  enableTransformer?: boolean;
+  theme?: ThemeProps;
+  animated?: boolean;
+  wrap?: boolean;
 }
 
 const options: SelectProps['options'] = languageMap.map(item => ({
@@ -40,20 +44,28 @@ export const FullFeaturedHighlighter = memo<FullFeaturedHighlighterProps>(
     fileName,
     icon,
     contentStyle,
+    enableTransformer,
+    theme,
+    animated,
+    wrap,
     ...rest
   }) => {
     const [expand, setExpand] = useState(true);
     const [lang, setLang] = useState(language || 'markdown');
-    const { styles, cx } = useStyles('block');
-    const container = cx(styles.container, className);
+    const { styles, cx } = useStyles({ variant: 'filled', expand });
+    const container = cx(styles.container, wrap && styles.wrap, className);
+
+    useEffect(() => {
+      setLang(language);
+    }, [language]);
 
     return (
-      <div className={container} data-code-type="highlighter" style={style} {...rest}>
+      <Flexbox className={container} data-code-type="highlighter" style={style} {...rest}>
         <Flexbox align={'center'} className={styles.header} horizontal justify={'space-between'}>
           <ActionIcon
             icon={expand ? ChevronDown : ChevronRight}
             onClick={() => setExpand(!expand)}
-            size={{ blockSize: 24, fontSize: 14, strokeWidth: 3 }}
+            size="small"
           />
           {allowChangeLanguage && !fileName ? (
             <Select
@@ -72,19 +84,22 @@ export const FullFeaturedHighlighter = memo<FullFeaturedHighlighterProps>(
             </Flexbox>
           )}
 
-          <CopyButton
-            content={children}
-            placement="left"
-            size={{ blockSize: 24, fontSize: 14, strokeWidth: 2 }}
-          />
+          <CopyButton content={children} size="small" />
         </Flexbox>
         <SyntaxHighlighter
+          animated={animated}
+          enableTransformer={enableTransformer}
           language={lang?.toLowerCase()}
-          style={expand ? contentStyle : { ...contentStyle, height: 0, overflow: 'hidden' }}
+          style={
+            expand
+              ? { ...contentStyle, flex: 1 }
+              : { ...contentStyle, height: 0, overflow: 'hidden' }
+          }
+          theme={theme}
         >
           {children}
         </SyntaxHighlighter>
-      </div>
+      </Flexbox>
     );
   }
 );

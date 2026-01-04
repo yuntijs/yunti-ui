@@ -17,6 +17,10 @@ description: The Highlighter component is used to display syntax-highlighted cod
 
 <code src="./demos/FullFeatured.tsx" nopadding></code>
 
+## Streaming
+
+<code src="./demos/Streaming.tsx"></code>
+
 ## APIs
 
 <API></API>

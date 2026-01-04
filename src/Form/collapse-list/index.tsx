@@ -139,7 +139,7 @@ export const FormCollapseList: React.FC<FormCollapseListProps> = memo(
     ...formListProps
   }) => {
     const { cx, styles } = useStyles();
-    const listAdd = useRef<FormListOperation['add']>();
+    const listAdd = useRef<FormListOperation['add']>(null);
     const form = Form.useFormInstance();
     const {
       values,

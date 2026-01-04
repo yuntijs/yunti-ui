@@ -20,17 +20,25 @@ const filterOptionWithChildren = (
   return option;
 };
 
-export const useOptions = (allOptions: MentionOption[], queryString: string | null) => {
+export const useOptions = (
+  allOptions: MentionOption[],
+  queryString: string | null,
+  trigger: string | null
+) => {
   const [editor] = useLexicalComposerContext();
 
   const filterOption = useCallback(
     (option: MentionOption) => {
+      if (option.triggers && trigger && !option.triggers.includes(trigger)) {
+        return false;
+      }
+
       const regex = new RegExp(escapeRegExp(queryString!), 'i');
       return (
         regex.test(option.label) || option.keywords?.some(keyword => regex.test(keyword)) || false
       );
     },
-    [queryString]
+    [queryString, trigger]
   );
 
   const options = useMemo(() => {
@@ -49,9 +57,9 @@ export const useOptions = (allOptions: MentionOption[], queryString: string | nu
       return menuOption;
     };
     const menuOptions = allOptions.map(o => new MentionMenuOption(_addOnselect(o)));
-    if (!queryString) {
-      return menuOptions;
-    }
+    // if (!queryString) {
+    //   return menuOptions;
+    // }
     return menuOptions
       .map(o => {
         if (!o.children) {
@@ -62,7 +70,7 @@ export const useOptions = (allOptions: MentionOption[], queryString: string | nu
       .filter(o => {
         return filterOption(o) || (o.children || []).length > 0;
       });
-  }, [allOptions, queryString, editor, filterOption]);
+  }, [allOptions, editor, filterOption]);
 
   return {
     options,

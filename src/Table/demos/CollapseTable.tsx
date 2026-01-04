@@ -49,7 +49,7 @@ export default () => {
       icon={VariableIcon}
       rootStyle={{ width: '100%' }}
       title="输出变量"
-      variant="block"
+      variant="filled"
     />
   );
 };

@@ -1,3 +1,4 @@
+import { AutoFocusPlugin } from '@lexical/react/LexicalAutoFocusPlugin';
 import { ClearEditorPlugin } from '@lexical/react/LexicalClearEditorPlugin';
 import { type InitialConfigType, LexicalComposer } from '@lexical/react/LexicalComposer';
 import { ContentEditable } from '@lexical/react/LexicalContentEditable';
@@ -8,7 +9,7 @@ import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
 import { ConfigProvider } from 'antd';
 // @Todo: 升级 0.25.0 后，ops-console 使用的时候出现了只输入 / 无法触发的问题
 import { $getRoot, TextNode } from 'lexical';
-import React, { forwardRef, useMemo } from 'react';
+import React, { PropsWithChildren, forwardRef, useCallback, useMemo } from 'react';
 
 import { isBrowser } from '@/utils/tools';
 
@@ -22,6 +23,7 @@ import {
 } from './plugins/mention-node';
 import { MentionPickerPlugin, type MentionPickerPluginProps } from './plugins/mention-picker';
 import { OnBlurBlockPlugin } from './plugins/on-blur-block';
+import { OnKeyDownPlugin } from './plugins/on-key-down';
 import { ShiftEnterKeyPlugin } from './plugins/shift-enter-key';
 import { MentionsConfigProvider } from './provider';
 import { useStyles } from './style';
@@ -38,7 +40,7 @@ export * from './types';
 export * from './utils';
 export { CLEAR_EDITOR_COMMAND } from 'lexical';
 
-export interface MentionsProps extends MentionPickerPluginProps {
+export interface MentionsProps extends MentionPickerPluginProps, PropsWithChildren {
   className?: string;
   classNames?: {
     wrapper?: string;
@@ -61,11 +63,20 @@ export interface MentionsProps extends MentionPickerPluginProps {
   /**
    * 用户输入 trigger 后的回调
    */
+  /**
+   * 按下键盘的回调
+   */
+  onKeyDown?: (event: KeyboardEvent | null) => void;
+  /**
+   * 用户输入 trigger 后的回调
+   */
   onTrigger?: (trigger: string) => void;
   variant?: 'outlined' | 'filled' | 'borderless';
   autoSize?: AutoSize;
   code?: boolean;
   getPopContainer?: () => HTMLElement;
+  autoFocus?: 'rootStart' | 'rootEnd';
+  extraNodes?: InitialConfigType['nodes'];
 }
 
 export const Mentions = forwardRef<MentionsEditor, MentionsProps>(
@@ -93,7 +104,11 @@ export const Mentions = forwardRef<MentionsEditor, MentionsProps>(
       code = false,
       getPopContainer,
       onPressEnter,
+      onKeyDown,
       onTrigger,
+      autoFocus,
+      children,
+      extraNodes = [],
     },
     ref
   ) => {
@@ -113,10 +128,12 @@ export const Mentions = forwardRef<MentionsEditor, MentionsProps>(
           {
             replace: TextNode,
             with: (node: TextNode) => new CustomTextNode(node.__text),
+            withKlass: CustomTextNode,
           },
           MentionNode,
+          ...extraNodes,
         ],
-        editorState: textToEditorState(value || defaultValue || '', triggers),
+        editorState: textToEditorState(value || defaultValue || '', triggers, { punctuation }),
         onError: (error: Error) => {
           throw error;
         },
@@ -136,7 +153,7 @@ export const Mentions = forwardRef<MentionsEditor, MentionsProps>(
     // }, [value])
 
     const optionsMap = useMemo(() => {
-      const buildMap = (_options: MentionOption[], parentIcon?: JSX.Element) => {
+      const buildMap = (_options: MentionOption[], parentIcon?: React.ReactElement) => {
         return _options.reduce((acc, option) => {
           acc[option.value] = option;
           if (!acc[option.value].icon) {
@@ -165,6 +182,14 @@ export const Mentions = forwardRef<MentionsEditor, MentionsProps>(
         return document.fullscreenElement as HTMLElement;
       }
     }, [getPopContainer]);
+
+    const onMentionPickerOpen = useCallback<Required<MentionPickerPluginProps>['onOpen']>(
+      resolution => {
+        const _trigger = resolution.match?.replaceableString ?? triggers[0];
+        onTrigger?.(_trigger);
+      },
+      [onTrigger, triggers]
+    );
 
     return (
       <LexicalComposer initialConfig={{ ...initialConfig, editable }}>
@@ -195,9 +220,7 @@ export const Mentions = forwardRef<MentionsEditor, MentionsProps>(
             {editable && (
               <MentionPickerPlugin
                 allowSpaces={allowSpaces}
-                onOpen={resolution =>
-                  onTrigger?.(resolution.match?.replaceableString ?? triggers[0])
-                }
+                onOpen={onMentionPickerOpen}
                 onSelect={onSelect}
                 options={options}
                 overlayClassName={classNames?.menuOverlay}
@@ -216,6 +239,9 @@ export const Mentions = forwardRef<MentionsEditor, MentionsProps>(
             <EditorRefPlugin editorRef={ref} />
             <ClearEditorPlugin />
             {onPressEnter && <ShiftEnterKeyPlugin onPressEnter={onPressEnter} />}
+            {onKeyDown && <OnKeyDownPlugin onKeyDown={onKeyDown} />}
+            {autoFocus && <AutoFocusPlugin defaultSelection={autoFocus} />}
+            {children}
           </div>
         </MentionsConfigProvider>
       </LexicalComposer>

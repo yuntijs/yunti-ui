@@ -1,4 +1,4 @@
-import { StoryBook, useControls, useCreateStore } from '@lobehub/ui';
+import { StoryBook, useControls, useCreateStore } from '@lobehub/ui/storybook';
 import type { CardProps } from '@yuntijs/ui';
 import { Card } from '@yuntijs/ui';
 
