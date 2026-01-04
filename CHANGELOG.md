@@ -2,6 +2,45 @@
 
 # Changelog
 
+# [2.0.0](https://github.com/yuntijs/yunti-ui/compare/v1.2.0...v2.0.0) (2026-01-04)
+
+### Bug Fixes
+
+- Enable auto-scrolling for the SyntaxHighlighter stream ([d07cc35](https://github.com/yuntijs/yunti-ui/commit/d07cc35231d8d404dea2534fc507d73a16808d1b))
+- export mdxEditor css ([a49f1ce](https://github.com/yuntijs/yunti-ui/commit/a49f1ce45bd8c9cab2a1ed9e597407b538b6aff1))
+- label `use client` - MDXEditor ([5762636](https://github.com/yuntijs/yunti-ui/commit/5762636045c80ec0f47780e0d7b7020e8c265b34))
+- **Mentions:** cant not get latest state in onPressEnter ([2800140](https://github.com/yuntijs/yunti-ui/commit/2800140301f2606caca888e4416f1c954336d863))
+- **Mentions:** mention node split incorrect ([65b8a27](https://github.com/yuntijs/yunti-ui/commit/65b8a27722eaac43bbd9a63ce6b9279012d02cb6))
+- MonacoEditor Add Shiki Theme Style ([ac0b5b0](https://github.com/yuntijs/yunti-ui/commit/ac0b5b09a7811271dda586e25440f6dc2af09a77))
+- RichTextEditor markdown transformer ([75bd213](https://github.com/yuntijs/yunti-ui/commit/75bd21349cb28595a2447f34b724cdc4397407cb))
+- RichTextEditor toolbar ([5191284](https://github.com/yuntijs/yunti-ui/commit/51912842b080afd6d81fc2594cd9b0782e22f797))
+- RichTextEditor toolbar ([88bebc1](https://github.com/yuntijs/yunti-ui/commit/88bebc15dc1728a4614d28bd52c2c83b7a23204a))
+- RichTextEditor toolbar ([165a805](https://github.com/yuntijs/yunti-ui/commit/165a8054550c9e72812a8a847b38a45bb9d6157e))
+- RichTextEditor ToolBar ([5630101](https://github.com/yuntijs/yunti-ui/commit/56301015b2375e44c574b341791363ce1aee0e50))
+- RichTextEditor 增加 toolbar ([9bf42df](https://github.com/yuntijs/yunti-ui/commit/9bf42df65416fc4a458d51c217857bb5d2cf7d59))
+- support dark mode of RichTextEditor ([18d7c8e](https://github.com/yuntijs/yunti-ui/commit/18d7c8e63933f2c3ea8c5985c3935fb76c512dc6))
+- update the white-space property for SyntaxHighlighter ([0b2506c](https://github.com/yuntijs/yunti-ui/commit/0b2506cac0ebd7f29c47557b540dc4d4954b2946))
+
+### Features
+
+- bump v2 [force major] ([cff8c87](https://github.com/yuntijs/yunti-ui/commit/cff8c870ae807037a1b6f495d338eb4bb9c122c9))
+- **CollapseGroup:** add style overwrite back ([9ecf60a](https://github.com/yuntijs/yunti-ui/commit/9ecf60a2f45c81fcb87079c03e7fa2fd6401668e))
+- **Highlighter:** add default theme for shellsession ([f51474c](https://github.com/yuntijs/yunti-ui/commit/f51474c64a2834dd85241367fe25b824346ebda8))
+- **Highlighter:** add streaming demo and auto-scroll for StreamRenderer ([8264b4f](https://github.com/yuntijs/yunti-ui/commit/8264b4feb2f163df06119cfeefe7fdd61d9d2670))
+- **Highlighter:** optimize StreamRenderer auto-scroll with RAF throttling ([56a338d](https://github.com/yuntijs/yunti-ui/commit/56a338da65ba29c4bbb05248f063594800001a14))
+- **Highlighter:** support theme config and refactor useHighlight by lobe-ui ([b892825](https://github.com/yuntijs/yunti-ui/commit/b892825f1e90edb0859abdd93c6e3e47bb21803f))
+- MDXEditor ([3028e93](https://github.com/yuntijs/yunti-ui/commit/3028e9302eac92c3b9022d1553c8435865a8c974))
+- **Mentions:** support autoFocus ([9dcc4c1](https://github.com/yuntijs/yunti-ui/commit/9dcc4c15a0f5a857a1d888d3db0980fd98816cf1))
+- **Mentions:** support custom plugins and bump lexical@0.35.0 ([dafd0ec](https://github.com/yuntijs/yunti-ui/commit/dafd0ecc5c86f3f4889afc125c4038ce7eb16a87))
+- **Mentions:** support onKeyDown ([593e804](https://github.com/yuntijs/yunti-ui/commit/593e804baeb74d8b7f1e72182fa72ed8d32c2e23))
+- **Mentions:** support triggers in option and change mention regex ([0f0220d](https://github.com/yuntijs/yunti-ui/commit/0f0220d4d461c5cffa3d0994fc08bb19fbf40152))
+- RichTextEditor ([721bc79](https://github.com/yuntijs/yunti-ui/commit/721bc79f8f03220ad4a48d4b47c17b4f28258bf1))
+- RichTextEditor code block ([b77a13a](https://github.com/yuntijs/yunti-ui/commit/b77a13a44ef82be6642b9094485cbb93a9082dc1))
+- select code language for RichTextEditor ([0a1081e](https://github.com/yuntijs/yunti-ui/commit/0a1081e84db8684d28902c34afd36fb932dc0871))
+- **SelectCard:** support props from flex and checkIcon specify ([22d7cda](https://github.com/yuntijs/yunti-ui/commit/22d7cda5a0ae0397bba1baefc7230d71bb882b98))
+- support ECharts for RichTextEditor ([58498e9](https://github.com/yuntijs/yunti-ui/commit/58498e94721bbb9f0d544f6614fc8cd745f79c7c))
+- SyntaxHighlighter 支持stream ([d6b5640](https://github.com/yuntijs/yunti-ui/commit/d6b564010d16fb4d4f70bfec59352e6a775393d9))
+
 ## [Version&nbsp;2.0.0-beta.23](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.22...v2.0.0-beta.23)
 
 <sup>Released on **2025-12-30**</sup>
