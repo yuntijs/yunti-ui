@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_yuntijs_ui=self.webpackChunk_yuntijs_ui||[]).push([[50192],{50192:function(c,u,_){_.d(u,{createArchitectureServices:function(){return n.i}});var n=_(20460),s=_(84018)}}]);
