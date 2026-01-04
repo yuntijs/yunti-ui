@@ -23,15 +23,16 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup Node.js v22.x
+      - name: Setup Node.js v24.x
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: '24'
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Install pnpm v10.x
         uses: pnpm/action-setup@v4
         with:
-          version: 10
+          version: '10'
 
       - name: Install deps
         run: pnpm install
@@ -46,7 +47,6 @@ jobs:
         run: npm run release
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Sync to cnpm
         run: npm install -g cnpm && cnpm sync @yuntijs/ui
