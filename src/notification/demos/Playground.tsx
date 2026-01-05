@@ -5,7 +5,7 @@ export default () => {
   const store = useCreateStore();
   const control: NotificationArgsProps | any = useControls(
     {
-      message: 'YuntiUI nitification',
+      title: 'YuntiUI nitification',
       description: 'Prompt notification message globally.',
       duration: 4.5,
       key: 'notification',

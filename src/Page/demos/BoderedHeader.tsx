@@ -88,6 +88,8 @@ const PageBorderedHeaderDemo = () => {
               ],
             },
           ],
+          // eslint-disable-next-line no-console
+          onClick: (key, e) => console.log(key, e),
         }}
         icon="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
         status={{

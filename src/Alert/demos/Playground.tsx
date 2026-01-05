@@ -6,7 +6,7 @@ export default () => {
   const store = useCreateStore();
   const control: AlertProps | any = useControls(
     {
-      message: 'YuntiUI',
+      title: 'YuntiUI',
       description:
         'The YuntiUI components are inspired by LobeUI and developed based on Antd components, fully compatible with Antd components, and it is recommended to use antd-style as the default css-in-js styling solution.',
       showIcon: true,

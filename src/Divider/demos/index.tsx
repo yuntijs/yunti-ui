@@ -19,8 +19,8 @@ export default () => {
           defaultOpen={true}
           iconPlacement="left"
           mode="expanded"
-          orientation="left"
           orientationMargin={0}
+          titlePlacement="start"
         >
           <div>
             The YuntiUI components are inspired by LobeUI and developed based on Antd components,
@@ -36,8 +36,8 @@ export default () => {
           defaultOpen={true}
           iconPlacement="left"
           mode="default"
-          orientation="left"
           orientationMargin={0}
+          titlePlacement="start"
         >
           YuntiUI
         </Divider>

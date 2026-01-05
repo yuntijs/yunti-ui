@@ -16,11 +16,11 @@ export default () => {
         options: ['left', 'right'],
         value: 'left',
       },
-      type: {
+      orientation: {
         options: ['horizontal', 'vertical'],
         value: 'horizontal',
       },
-      orientation: {
+      titlePlacement: {
         options: ['left', 'right', 'center'],
         value: 'left',
       },

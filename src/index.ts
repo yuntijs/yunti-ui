@@ -143,7 +143,6 @@ export {
   type SpinProps,
   Statistic,
   type StatisticProps,
-  type StepProps,
   Steps,
   type StepsProps,
   type SubMenuProps,

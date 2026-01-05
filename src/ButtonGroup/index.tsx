@@ -1,3 +1,4 @@
+import { EllipsisOutlined } from '@ant-design/icons';
 import { Button, Dropdown, Space } from 'antd';
 import type { ButtonProps } from 'antd';
 import type { SizeType } from 'antd/es/config-provider/SizeContext';
@@ -29,12 +30,17 @@ export interface ButtonGroupProps extends Omit<React.HTMLAttributes<HTMLSpanElem
   ) => void;
   items?: ButtonGroupItem[];
   size?: SizeType;
+  /**
+   * @description 当按钮数量超过此值时，使用下拉菜单
+   * @default 2
+   */
+  maxItems?: number;
 }
 
 export const ButtonGroup: React.FC<ButtonGroupProps> = props => {
-  const { items = [], onClick = () => {}, size, ...otherProps } = props;
+  const { items = [], onClick = () => {}, size, maxItems = 2, ...otherProps } = props;
 
-  if (items.length <= 2) {
+  if (items.length <= maxItems) {
     return (
       <Space align="end" size={12} {...otherProps}>
         {(items as ButtonType[]).map(({ key, label, ...btnProps }) => (
@@ -48,21 +54,24 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = props => {
   const [firstButton, ...menuItems] = items;
   const { key: firstKey, label: firstLabel, ...btnProps } = firstButton as ButtonType;
   return (
-    <Dropdown.Button
-      key={firstKey}
-      onClick={e => onClick(firstKey!, e)}
-      {...btnProps}
-      menu={{
-        onClick: ({ key, domEvent }) => onClick(key, domEvent),
-        items: menuItems as ItemType[],
-      }}
-      overlayStyle={{
-        minWidth: 100,
-      }}
-      size={size}
-      {...otherProps}
-    >
-      {firstLabel}
-    </Dropdown.Button>
+    <Space.Compact {...otherProps}>
+      <Button key={firstKey} onClick={e => onClick(firstKey!, e)} size={size} {...btnProps}>
+        {firstLabel}
+      </Button>
+      <Dropdown
+        menu={{
+          onClick: ({ key, domEvent }) => onClick(key, domEvent),
+          items: menuItems as ItemType[],
+        }}
+        placement="bottomRight"
+        styles={{
+          root: {
+            minWidth: 100,
+          },
+        }}
+      >
+        <Button icon={<EllipsisOutlined />} size={size} />
+      </Dropdown>
+    </Space.Compact>
   );
 };

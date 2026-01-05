@@ -21,7 +21,7 @@ export default () => {
       centered: false,
       keyboard: true,
       focusTriggerAfterClose: true,
-      destroyOnClose: false,
+      destroyOnHidden: false,
       zIndex: 1000,
       borderd: true,
     },

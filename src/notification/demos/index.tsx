@@ -7,7 +7,7 @@ export default () => {
         <Button
           onClick={() => {
             notification.success({
-              message: 'YuntiUI notification success',
+              title: 'YuntiUI notification success',
               description: 'Prompt notification message globally.',
             });
           }}
@@ -17,7 +17,7 @@ export default () => {
         <Button
           onClick={() => {
             notification.info({
-              message: 'YuntiUI notification info',
+              title: 'YuntiUI notification info',
               description: 'Prompt notification message globally.',
             });
           }}
@@ -27,7 +27,7 @@ export default () => {
         <Button
           onClick={() => {
             notification.warning({
-              message: 'YuntiUI notification warning',
+              title: 'YuntiUI notification warning',
               description: 'Prompt notification message globally.',
             });
           }}
@@ -37,7 +37,7 @@ export default () => {
         <Button
           onClick={() => {
             notification.warn({
-              message: 'YuntiUI notification warn',
+              title: 'YuntiUI notification warn',
               description: 'Prompt notification message globally.',
             });
           }}
@@ -47,7 +47,7 @@ export default () => {
         <Button
           onClick={() => {
             notification.error({
-              message: 'YuntiUI notification error',
+              title: 'YuntiUI notification error',
               description: 'Prompt notification message globally.',
             });
           }}
@@ -57,7 +57,7 @@ export default () => {
         <Button
           onClick={() => {
             notification.warnings({
-              message: 'YuntiUI notification warnings',
+              title: 'YuntiUI notification warnings',
               description: 'Prompt notification message globally.',
               errors: [
                 {
@@ -74,7 +74,7 @@ export default () => {
         <Button
           onClick={() => {
             notification.warns({
-              message: 'YuntiUI notification warns',
+              title: 'YuntiUI notification warns',
               description: 'Prompt notification message globally.',
               errors: [
                 {

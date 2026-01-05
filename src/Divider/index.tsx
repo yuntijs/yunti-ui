@@ -46,7 +46,7 @@ export const Divider: React.FC<DividerProps> = props => {
     iconPlacement = 'left',
     openIcon,
     closeIcon,
-    type,
+    orientation,
     ...otherProps
   } = props;
 
@@ -58,12 +58,12 @@ export const Divider: React.FC<DividerProps> = props => {
   const closeIconDom = closeIcon ? closeIcon : <MinusSquareOutlined />;
   const openIconDom = openIcon ? openIcon : <PlusSquareOutlined />;
   const iconDom = canExpanded && <span>{open ? closeIconDom : openIconDom}</span>;
-  if (mode === 'line' || type === 'vertical') {
-    return <AntdDivider type={type} {...otherProps} />;
+  if (mode === 'line' || orientation === 'vertical') {
+    return <AntdDivider orientation={orientation} {...otherProps} />;
   }
   return (
     <>
-      <AntdDivider type={type} {...otherProps}>
+      <AntdDivider orientation={orientation} {...otherProps}>
         <span
           className={canExpanded ? styles.custom : ''}
           onClick={() => {

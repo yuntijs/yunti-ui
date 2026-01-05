@@ -42,7 +42,7 @@ export default () => {
         ),
       }}
     >
-      <Button icon={<DownOutlined />} iconPosition="end">
+      <Button icon={<DownOutlined />} iconPlacement="end">
         <Flex align="center" gap="small">
           <Avatar size={16} />
           <span>Botnow</span>

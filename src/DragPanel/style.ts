@@ -1,6 +1,6 @@
 import { createStyles } from 'antd-style';
 
-export const useStyles = createStyles(({ css, token, prefixCls }) => {
+export const useStyles = createStyles(({ css, token }) => {
   return {
     root: css`
       overflow: hidden;
@@ -10,7 +10,7 @@ export const useStyles = createStyles(({ css, token, prefixCls }) => {
       margin: ${token.marginLG}px;
       box-shadow: none !important;
     `,
-    content: css`
+    section: css`
       overflow: hidden;
       border-radius: ${token.borderRadiusLG}px;
       box-shadow: ${token.boxShadowSecondary};

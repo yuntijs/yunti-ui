@@ -59,4 +59,6 @@ export type { DropdownButtonProps, DropdownButtonType } from 'antd/es/dropdown';
 export const Dropdown = YuntiDropdown as typeof YuntiDropdown & {
   Button: typeof AntDropdown.Button;
 };
+
+/** @deprecated Please use Space.Compact + Dropdown + Button instead */
 Dropdown.Button = AntDropdown.Button;

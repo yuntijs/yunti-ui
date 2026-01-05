@@ -1,8 +1,12 @@
 'use client';
 
+// @ts-ignore
 import Avatar from '@lobehub/ui/es/chat/ChatItem/components/Avatar';
+// @ts-ignore
 import BorderSpacing from '@lobehub/ui/es/chat/ChatItem/components/BorderSpacing';
+// @ts-ignore
 import ErrorContent from '@lobehub/ui/es/chat/ChatItem/components/ErrorContent';
+// @ts-ignore
 import Title from '@lobehub/ui/es/chat/ChatItem/components/Title';
 import { useResponsive } from 'antd-style';
 import { memo } from 'react';

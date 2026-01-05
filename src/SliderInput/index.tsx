@@ -1,4 +1,4 @@
-import { Col, ColProps, InputNumber, Row, Slider } from 'antd';
+import { Col, ColProps, InputNumber, Row, Slider, Space } from 'antd';
 import type { InputNumberProps, SliderSingleProps } from 'antd';
 import React, { useState } from 'react';
 
@@ -84,6 +84,7 @@ export const SliderInput: React.FC<SliderInputProps> = ({
   return (
     <Row className={className} gutter={gutter} style={style}>
       <Col {...sliderCol}>
+        {/* @TODO: tootip 背景色异常 */}
         <Slider
           {...sliderProps}
           defaultValue={defaultValue}
@@ -95,18 +96,20 @@ export const SliderInput: React.FC<SliderInputProps> = ({
         />
       </Col>
       <Col {...inputCol}>
-        <InputNumber
-          {...inputProps}
-          addonAfter={addonAfter}
-          addonBefore={addonBefore}
-          defaultValue={defaultValue}
-          max={max}
-          min={min}
-          onChange={onNumberChange as InputNumberProps['onChange']}
-          placeholder={placeholder}
-          step={step}
-          value={value ?? number}
-        />
+        <Space.Compact block>
+          {addonBefore && <Space.Addon>{addonBefore}</Space.Addon>}
+          <InputNumber
+            {...inputProps}
+            defaultValue={defaultValue}
+            max={max}
+            min={min}
+            onChange={onNumberChange as InputNumberProps['onChange']}
+            placeholder={placeholder}
+            step={step}
+            value={value ?? number}
+          />
+          {addonAfter && <Space.Addon>{addonAfter}</Space.Addon>}
+        </Space.Compact>
       </Col>
     </Row>
   );

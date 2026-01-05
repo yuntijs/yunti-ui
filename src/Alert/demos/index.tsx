@@ -3,7 +3,7 @@ import { Button, Space } from 'antd';
 
 export default () => {
   return (
-    <Space direction="vertical">
+    <Space orientation="vertical">
       <Alert
         action={
           <Button size="small" type="text">
@@ -13,32 +13,32 @@ export default () => {
         closable
         description="The YuntiUI components are inspired by LobeUI and developed based on Antd components, fully compatible with Antd components,
         and it is recommended to use antd-style as the default css-in-js styling solution."
-        message="YuntiUI"
         showIcon
+        title="YuntiUI"
         type="info"
       />
       <Alert
-        message="The YuntiUI components are inspired by LobeUI and developed based on Antd components, fully compatible with Antd components,
-        and it is recommended to use antd-style as the default css-in-js styling solution."
         showIcon
+        title="The YuntiUI components are inspired by LobeUI and developed based on Antd components, fully compatible with Antd components,
+        and it is recommended to use antd-style as the default css-in-js styling solution."
         type="info"
       />
       <Alert
-        message="The YuntiUI components are inspired by LobeUI and developed based on Antd components, fully compatible with Antd components,
-        and it is recommended to use antd-style as the default css-in-js styling solution."
         showIcon
+        title="The YuntiUI components are inspired by LobeUI and developed based on Antd components, fully compatible with Antd components,
+        and it is recommended to use antd-style as the default css-in-js styling solution."
         type="success"
       />
       <Alert
-        message="The YuntiUI components are inspired by LobeUI and developed based on Antd components, fully compatible with Antd components,
-        and it is recommended to use antd-style as the default css-in-js styling solution."
         showIcon
+        title="The YuntiUI components are inspired by LobeUI and developed based on Antd components, fully compatible with Antd components,
+        and it is recommended to use antd-style as the default css-in-js styling solution."
         type="warning"
       />
       <Alert
-        message="The YuntiUI components are inspired by LobeUI and developed based on Antd components, fully compatible with Antd components,
-        and it is recommended to use antd-style as the default css-in-js styling solution."
         showIcon
+        title="The YuntiUI components are inspired by LobeUI and developed based on Antd components, fully compatible with Antd components,
+        and it is recommended to use antd-style as the default css-in-js styling solution."
         type="error"
       />
     </Space>

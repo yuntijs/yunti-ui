@@ -22,7 +22,11 @@ export default () => {
           children: 'Automatic dark mode recognition',
         },
       ]}
-      labelStyle={{ width: 120 }}
+      styles={{
+        label: {
+          width: 120,
+        },
+      }}
       title="YuntiUI"
     />
   );

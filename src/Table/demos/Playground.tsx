@@ -1,5 +1,5 @@
 import { StoryBook, useControls, useCreateStore } from '@lobehub/ui/storybook';
-import { Dropdown, Table, TableProps, Tag } from '@yuntijs/ui';
+import { ButtonGroup, Table, TableProps, Tag } from '@yuntijs/ui';
 import { useState } from 'react';
 
 interface DataType {
@@ -105,27 +105,22 @@ export default () => {
       key: 'action',
       width: 130,
       render: (_, record) => (
-        <Dropdown.Button
-          menu={{
-            items: [
-              {
-                key: 'detail',
-                label: '详情',
-              },
-            ],
-            onClick: ({ key }) => {
-              console.warn('click', key, record);
+        <ButtonGroup
+          items={[
+            {
+              key: 'delete',
+              label: '删除',
             },
+            {
+              key: 'detail',
+              label: '详情',
+            },
+          ]}
+          maxItems={1}
+          onClick={key => {
+            console.warn('click', key, record);
           }}
-          onClick={() => {
-            console.warn('删除', record);
-          }}
-          overlayStyle={{
-            width: 100,
-          }}
-        >
-          删除
-        </Dropdown.Button>
+        />
       ),
     },
   ];

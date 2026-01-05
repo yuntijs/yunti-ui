@@ -109,8 +109,16 @@ const Description = (props: { noticeKey: string }) => {
 };
 
 const notice = (args: NotificationArgsProps) => {
-  const { detail, message, description, onClose: onCloseFromProps, className, ...restArgs } = args;
-  const key = reactNodeToString(message);
+  const {
+    detail,
+    message,
+    title,
+    description,
+    onClose: onCloseFromProps,
+    className,
+    ...restArgs
+  } = args;
+  const key = reactNodeToString(title || message);
   setNoticeMap(key, args);
   const onClose = () => {
     onCloseFromProps?.();
@@ -122,7 +130,7 @@ const notice = (args: NotificationArgsProps) => {
   if (!detail) {
     return AntdNotification.open({
       key,
-      message: <Message message={message} noticeKey={key} />,
+      title: <Message message={title || message} noticeKey={key} />,
       description,
       onClose,
       className: `yunti-notification ${className}`,
@@ -131,7 +139,7 @@ const notice = (args: NotificationArgsProps) => {
   }
   return AntdNotification.open({
     key,
-    message: <Message message={message} noticeKey={key} />,
+    title: <Message message={title || message} noticeKey={key} />,
     description: <Description noticeKey={key} />,
     onClose,
     className: `yunti-notification ${className}`,

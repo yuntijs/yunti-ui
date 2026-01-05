@@ -10,14 +10,12 @@ export default () => {
       extra: 'extra',
       footer: 'A panel that slides out from the edge of the screen.',
       title: 'YuntiUI Drawer',
-      width: 378,
-      height: 378,
       placement: {
         options: ['top', 'right', 'left', 'bootom'],
         value: 'right',
       },
       size: {
-        options: ['default', 'large'],
+        options: ['default', 'large', '512px'],
         value: 'default',
       },
       closeIconPlacement: {

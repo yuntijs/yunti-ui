@@ -1,5 +1,5 @@
 import { Typography as AntdTypography, Tooltip } from 'antd';
-import type { TooltipPropsWithTitle } from 'antd/es/tooltip';
+import type { TooltipProps } from 'antd/es/tooltip';
 import type { TextProps } from 'antd/es/typography/Text';
 import dayjs from 'dayjs';
 import dayjsRelativeTime from 'dayjs/plugin/relativeTime';
@@ -30,7 +30,7 @@ interface TimeProps extends TextProps {
    * @description Mouse above to show time
    * @default '{title: "YYYY-MM-DD HH:mm:ss"}'
    */
-  tooltip?: TooltipPropsWithTitle;
+  tooltip?: TooltipProps;
 }
 const getFromNow = (t: any) => dayjs(t ? new Date(t) : new Date()).fromNow();
 const Time: React.FC<TimeProps> = props => {

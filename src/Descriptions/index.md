@@ -20,7 +20,11 @@ export default () => {
       title="YuntiUI"
       column={2}
       colon={false}
-      labelStyle={{ width: 120 }}
+      styles={{
+        label: {
+          width: 120,
+        },
+      }}
       items={[
         {
           key: 'Themeable',

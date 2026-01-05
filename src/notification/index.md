@@ -22,7 +22,7 @@ export default () => {
       <Button
         onClick={() => {
           notification.warnings({
-            message: 'YuntiUI nitification',
+            title: 'YuntiUI nitification',
             description: 'Prompt notification message globally.',
             errors: [
               {

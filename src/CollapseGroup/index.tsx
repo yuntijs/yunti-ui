@@ -20,7 +20,7 @@ export const CollapseGroup: React.FC<CollapseGroupProps> = ({
   ),
   ...otherProps
 }) => {
-  const { styles, cx } = useStyles({ collapsible });
+  const { styles, cx } = useStyles();
 
   return (
     <FormGroup
