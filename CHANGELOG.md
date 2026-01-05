@@ -2,6 +2,12 @@
 
 # Changelog
 
+# [3.0.0-beta.1](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.23...v3.0.0-beta.1) (2026-01-05)
+
+### Features
+
+- bump antd@6, @lobehub/ui@4 [force major] ([07f4135](https://github.com/yuntijs/yunti-ui/commit/07f413572122a03e29c67ced72580a0f8dd4d0e3))
+
 ## [Version&nbsp;2.0.0-beta.23](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.22...v2.0.0-beta.23)
 
 <sup>Released on **2025-12-30**</sup>
