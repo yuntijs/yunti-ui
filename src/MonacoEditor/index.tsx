@@ -28,7 +28,7 @@ export interface BaseMonacoEditorProps extends IGeneralManacoEditorProps {
   contextmenu?: boolean;
   /** Enable the rendering of the minimap. Defaults to false. */
   minimapEnabled?: boolean;
-  /** Control the version of monaco-editor be loaded. Defaults to 0.45.0 */
+  /** Control the version of monaco-editor be loaded. Defaults to 0.55.1 */
   version?: string;
   /** An event emitted when the content of the current model has changed. */
   onChange?: (input: string, event: any) => void;
@@ -54,7 +54,7 @@ export const BaseMonacoEditor: React.FC<
     language,
     theme: themeFromProps,
     minimapEnabled = false,
-    version = '0.52.2',
+    version = '0.55.1',
     requireConfig: requireConfigFromProps = {},
     options,
     className,
@@ -99,6 +99,8 @@ export const BaseMonacoEditor: React.FC<
           : Object.assign({}, options?.minimap, {
               enabled: minimapEnabled,
             }),
+      // Control the rendering of the overview ruler in diff editor, sync with minimapEnabled
+      renderOverviewRuler: minimapEnabled ?? options?.renderOverviewRuler,
     });
     editorInstance?.updateOptions(newOps);
     return newOps;

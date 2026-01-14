@@ -231,8 +231,6 @@ export const useEditor = <T = IEditorInstance>(
     setLoading(true);
     getMonaco(requireConfigRef.current)
       .then((monaco: Monaco) => {
-        // 兼容旧版本 monaco-editor 写死 MonacoEnvironment 的问题
-        (window as any).MonacoEnvironment = undefined;
         if (typeof (window as any).define === 'function' && (window as any).define.amd) {
           // make monaco-editor's loader work with webpack's umd loader
           // @see https://github.com/microsoft/monaco-editor/issues/2283

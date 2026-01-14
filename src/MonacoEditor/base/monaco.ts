@@ -14,7 +14,7 @@ export const getSingletonMonaco = (() => {
           ? options
           : {
               paths: {
-                vs: 'https://g.alicdn.com/code/lib/monaco-editor/0.33.0/min/vs',
+                vs: 'https://registry.npmmirror.com/monaco-editor/0.55.1/files/min/vs',
               },
             }
       );
@@ -33,7 +33,7 @@ export const getCommonMonaco = (config: any): Promise<Monaco> => {
   } else {
     loader.config({
       paths: {
-        vs: 'https://g.alicdn.com/code/lib/monaco-editor/0.31.1/min/vs',
+        vs: 'https://registry.npmmirror.com/monaco-editor/0.55.1/files/min/vs',
       },
     });
   }
