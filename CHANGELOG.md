@@ -2,6 +2,12 @@
 
 # Changelog
 
+# [3.0.0-beta.2](https://github.com/yuntijs/yunti-ui/compare/v3.0.0-beta.1...v3.0.0-beta.2) (2026-01-14)
+
+### Features
+
+- **MonacoEditor:** upgrade monaco-editor and improve diff editor ([dc59539](https://github.com/yuntijs/yunti-ui/commit/dc5953982af4328758b6b9ea1b8e74bb5e96755f))
+
 # [3.0.0-beta.1](https://github.com/yuntijs/yunti-ui/compare/v2.0.0-beta.23...v3.0.0-beta.1) (2026-01-05)
 
 ### Features
