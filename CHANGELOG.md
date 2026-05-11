@@ -2,6 +2,17 @@
 
 # Changelog
 
+# [3.0.0-beta.3](https://github.com/yuntijs/yunti-ui/compare/v3.0.0-beta.2...v3.0.0-beta.3) (2026-05-11)
+
+### Bug Fixes
+
+- modernize tsconfig and fix deep imports exposed by bundler resolution ([2e6ecac](https://github.com/yuntijs/yunti-ui/commit/2e6ecac1d20a3c66ad4c3f94761b731519443a43))
+- resolve antd v6 deprecation warnings and update internal classNames ([9d8ca61](https://github.com/yuntijs/yunti-ui/commit/9d8ca61aeefa7fc4a4489d6329f16a5eae99ebdc))
+
+### Features
+
+- deprecate static notification/message and Modal static methods in favor of App.useApp() ([caaeb08](https://github.com/yuntijs/yunti-ui/commit/caaeb08f496854008f00d2c9510e41b07c3975a6))
+
 # [3.0.0-beta.2](https://github.com/yuntijs/yunti-ui/compare/v3.0.0-beta.1...v3.0.0-beta.2) (2026-01-14)
 
 ### Features
