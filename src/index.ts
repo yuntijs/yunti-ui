@@ -28,6 +28,7 @@ export * from './FormHelper';
 export * from './Modal';
 export * from './notification';
 export * from './Table';
+export * from './ThemeProvider';
 export * from './Tree';
 export * from './Typography';
 
