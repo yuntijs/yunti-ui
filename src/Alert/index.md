@@ -17,7 +17,7 @@ import { Alert } from '@yuntijs/ui';
 export default () => {
   return (
     <Alert
-      message="The YuntiUI components are inspired by LobeUI and developed based on Antd components, fully compatible with Antd components, and it is recommended to use antd-style as the default css-in-js styling solution."
+      title="The YuntiUI components are inspired by LobeUI and developed based on Antd components, fully compatible with Antd components, and it is recommended to use antd-style as the default css-in-js styling solution."
       showIcon
       type="info"
     />

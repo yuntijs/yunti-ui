@@ -2,7 +2,7 @@ import { MonacoEditor, Tabs } from '@yuntijs/ui';
 
 export default () => (
   <Tabs
-    destroyInactiveTabPane
+    destroyOnHidden
     items={[
       {
         label: 'test1',

@@ -27,8 +27,8 @@ export default () => {
         </div>
       }
       iconPlacement="left"
-      orientation="left"
-      orientationMargin={0}
+      titlePlacement="left"
+      styles={{ content: { margin: 0 } }}
       dashed={true}
     >
       YuntiUI

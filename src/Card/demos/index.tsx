@@ -9,7 +9,6 @@ export default () => {
         <EditOutlined key="edit" />,
         <EllipsisOutlined key="ellipsis" />,
       ]}
-      bordered={true}
       cover={
         <img
           alt="example"
@@ -20,6 +19,7 @@ export default () => {
       hoverable={true}
       loading={false}
       title="YuntiUI Card"
+      variant="outlined"
     >
       The YuntiUI components are inspired by LobeUI and developed based on Antd components, fully
       compatible with Antd components, and it is recommended to use antd-style as the default

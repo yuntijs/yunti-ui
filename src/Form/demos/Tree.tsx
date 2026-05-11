@@ -157,8 +157,8 @@ export default () => {
         content="Form value 值"
         dashed
         mode="expanded"
-        orientation="left"
-        orientationMargin={0}
+        styles={{ content: { margin: 0 } }}
+        titlePlacement="left"
       >
         <JsonViewer collapsed={false} src={values} />
       </Divider>

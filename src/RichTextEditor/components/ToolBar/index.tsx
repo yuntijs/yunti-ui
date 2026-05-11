@@ -191,9 +191,9 @@ export const Toolbar: React.FC<RichTextToolbarProps> = ({
         onClick={() => editor.dispatchCommand(REDO_COMMAND, void 0)}
         size={size}
       />
-      <Divider className={styles.divider} type="vertical" />
+      <Divider className={styles.divider} orientation="vertical" />
       <BlockFormatDropDown blockType={blockType} editor={editor} />
-      <Divider className={styles.divider} type="vertical" />
+      <Divider className={styles.divider} orientation="vertical" />
       <ActionIcon
         active={isBold}
         icon={Bold}
@@ -229,7 +229,7 @@ export const Toolbar: React.FC<RichTextToolbarProps> = ({
         size={size}
         title="Inline code"
       />
-      <Divider className={styles.divider} type="vertical" />
+      <Divider className={styles.divider} orientation="vertical" />
       <ActionIcon
         active={blockType === BLOCK_TYPE.BULLET}
         icon={List}
@@ -265,7 +265,7 @@ export const Toolbar: React.FC<RichTextToolbarProps> = ({
         size={size}
         value={language}
       />
-      <Divider className={styles.divider} type="vertical" />
+      <Divider className={styles.divider} orientation="vertical" />
       <ActionIcon
         icon={TextAlignStart}
         onClick={() => {

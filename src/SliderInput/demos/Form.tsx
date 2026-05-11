@@ -38,7 +38,7 @@ const SliderInputFormDemo = () => {
           </Button>
         </Form.Item>
       </Form>
-      <Divider orientation="left" plain>
+      <Divider plain titlePlacement="left">
         Form values
       </Divider>
       <pre>{JSON.stringify(values, null, 2)}</pre>

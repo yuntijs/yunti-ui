@@ -96,7 +96,7 @@ export const PageHeader: React.FC<PageHeaderProps> = props => {
       const { icon: descIcon, text } = desc;
       if (status || index >= 1) {
         descriptionsElement.push(
-          <Divider dashed={false} key={`divider-${index}`} type="vertical" />
+          <Divider dashed={false} key={`divider-${index}`} orientation="vertical" />
         );
       }
       descriptionsElement.push(

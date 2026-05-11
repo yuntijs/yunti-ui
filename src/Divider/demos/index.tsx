@@ -4,11 +4,11 @@ export default () => {
   return (
     <div style={{ width: '100%' }}>
       <div>
-        <Divider mode="line" type="horizontal" />
+        <Divider mode="line" orientation="horizontal" />
       </div>
       <div>
         分割线左侧
-        <Divider mode="line" type="vertical" />
+        <Divider mode="line" orientation="vertical" />
         分割线右侧
       </div>
 
@@ -19,7 +19,7 @@ export default () => {
           defaultOpen={true}
           iconPlacement="left"
           mode="expanded"
-          orientationMargin={0}
+          styles={{ content: { margin: 0 } }}
           titlePlacement="start"
         >
           <div>
@@ -36,7 +36,7 @@ export default () => {
           defaultOpen={true}
           iconPlacement="left"
           mode="default"
-          orientationMargin={0}
+          styles={{ content: { margin: 0 } }}
           titlePlacement="start"
         >
           YuntiUI

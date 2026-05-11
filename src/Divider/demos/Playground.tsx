@@ -21,10 +21,9 @@ export default () => {
         value: 'horizontal',
       },
       titlePlacement: {
-        options: ['left', 'right', 'center'],
+        options: ['left', 'right', 'center', 'start', 'end'],
         value: 'left',
       },
-      orientationMargin: 10,
       children: '',
       dashed: false,
       plain: false,

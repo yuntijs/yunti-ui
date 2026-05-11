@@ -8,7 +8,10 @@ export default () => {
     {
       title: 'YuntiUI Card',
       extra: 'extra',
-      bordered: true,
+      variant: {
+        options: ['outlined', 'borderless'],
+        value: 'outlined',
+      },
       loading: false,
       hoverable: true,
       children:

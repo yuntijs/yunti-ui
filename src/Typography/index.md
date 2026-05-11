@@ -16,7 +16,7 @@ import { Space, Typography } from '@yuntijs/ui';
 
 export default () => {
   return (
-    <Space direction="vertical">
+    <Space orientation="vertical">
       <Typography.Link>Link</Typography.Link>
       <Typography.Text>Text</Typography.Text>
       <Typography.Title level={3}>Title</Typography.Title>

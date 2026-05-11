@@ -53,11 +53,11 @@ export const NotificationGlobalStyle = createGlobalStyle`
           text-rendering: optimizelegibility;
           vertical-align: -0.125em;
         }
-        & > .ant-collapse-header-text {
+        & > .ant-collapse-title {
           width: 100%;
         }
       }
-      & > .ant-collapse-content > .ant-collapse-content-box {
+      & > .ant-collapse-panel > .ant-collapse-body {
         padding: 0;
       }
     }
@@ -93,7 +93,7 @@ export const NotificationGlobalStyle = createGlobalStyle`
       prefixCls,
     });
     return `
-      .${prefixCls}-notice-message {
+      .${prefixCls}-notice-title {
         font-weight: 500 !important;
       }
       .${prefixCls}-notice-description {

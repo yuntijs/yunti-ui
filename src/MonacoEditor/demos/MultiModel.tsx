@@ -26,7 +26,7 @@ export default () => {
   const file = files[fileName];
 
   return (
-    <Space direction="vertical" size="large">
+    <Space orientation="vertical" size="large">
       <Segmented
         onChange={value => setFileName(value as string)}
         options={Object.keys(files)}
