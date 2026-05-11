@@ -2,6 +2,12 @@
 
 # Changelog
 
+# [3.0.0-beta.4](https://github.com/yuntijs/yunti-ui/compare/v3.0.0-beta.3...v3.0.0-beta.4) (2026-05-11)
+
+### Features
+
+- **ThemeProvider:** add light ThemeProvider that respects user-defined colorPrimary ([f41604d](https://github.com/yuntijs/yunti-ui/commit/f41604d066a2004d4634ded4eaf967689216e081))
+
 # [3.0.0-beta.3](https://github.com/yuntijs/yunti-ui/compare/v3.0.0-beta.2...v3.0.0-beta.3) (2026-05-11)
 
 ### Bug Fixes
