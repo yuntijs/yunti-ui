@@ -1,106 +1,48 @@
-import { Button, Modal, Space } from '@yuntijs/ui';
+import { App, Button, Space } from '@yuntijs/ui';
 
-export default () => {
+const SHARED_CONTENT = (
+  <div>
+    The YuntiUI components are inspired by LobeUI and developed based on Antd components, fully
+    compatible with Antd components, and it is recommended to use antd-style as the default
+    css-in-js styling solution.
+  </div>
+);
+
+const MethodDemoInner = () => {
+  const { modal } = App.useApp();
   return (
-    <Space>
+    <Space wrap>
       <Button
         onClick={() => {
-          Modal.info({
-            title: 'YuntiUI Modal.info',
-            content: (
-              <div>
-                The YuntiUI components are inspired by LobeUI and developed based on Antd
-                components, fully compatible with Antd components, and it is recommended to use
-                antd-style as the default css-in-js styling solution.
-              </div>
-            ),
-            onOk() {},
-          });
+          modal.info({ title: 'YuntiUI modal.info', content: SHARED_CONTENT, onOk() {} });
         }}
       >
         Info
       </Button>
       <Button
         onClick={() => {
-          Modal.success({
-            title: 'YuntiUI Modal.success',
-            content: (
-              <div>
-                The YuntiUI components are inspired by LobeUI and developed based on Antd
-                components, fully compatible with Antd components, and it is recommended to use
-                antd-style as the default css-in-js styling solution.
-              </div>
-            ),
-            onOk() {},
-          });
+          modal.success({ title: 'YuntiUI modal.success', content: SHARED_CONTENT, onOk() {} });
         }}
       >
         Success
       </Button>
       <Button
         onClick={() => {
-          Modal.error({
-            title: 'YuntiUI Modal.error',
-            content: (
-              <div>
-                The YuntiUI components are inspired by LobeUI and developed based on Antd
-                components, fully compatible with Antd components, and it is recommended to use
-                antd-style as the default css-in-js styling solution.
-              </div>
-            ),
-            onOk() {},
-          });
+          modal.error({ title: 'YuntiUI modal.error', content: SHARED_CONTENT, onOk() {} });
         }}
       >
         Error
       </Button>
       <Button
         onClick={() => {
-          Modal.warning({
-            title: 'YuntiUI Modal.warning',
-            content: (
-              <div>
-                The YuntiUI components are inspired by LobeUI and developed based on Antd
-                components, fully compatible with Antd components, and it is recommended to use
-                antd-style as the default css-in-js styling solution.
-              </div>
-            ),
-            onOk() {},
-          });
+          modal.warning({ title: 'YuntiUI modal.warning', content: SHARED_CONTENT, onOk() {} });
         }}
       >
         Warning
       </Button>
       <Button
         onClick={() => {
-          Modal.warn({
-            title: 'YuntiUI Modal.warn',
-            content: (
-              <div>
-                The YuntiUI components are inspired by LobeUI and developed based on Antd
-                components, fully compatible with Antd components, and it is recommended to use
-                antd-style as the default css-in-js styling solution.
-              </div>
-            ),
-            onOk() {},
-          });
-        }}
-      >
-        Warn
-      </Button>
-      <Button
-        onClick={() => {
-          Modal.confirm({
-            title: 'YuntiUI Modal.confirm',
-            content: (
-              <div>
-                The YuntiUI components are inspired by LobeUI and developed based on Antd
-                components, fully compatible with Antd components, and it is recommended to use
-                antd-style as the default css-in-js styling solution.
-              </div>
-            ),
-            onOk() {},
-          });
+          modal.confirm({ title: 'YuntiUI modal.confirm', content: SHARED_CONTENT, onOk() {} });
         }}
       >
         Confirm
@@ -108,3 +50,9 @@ export default () => {
     </Space>
   );
 };
+
+export default () => (
+  <App>
+    <MethodDemoInner />
+  </App>
+);

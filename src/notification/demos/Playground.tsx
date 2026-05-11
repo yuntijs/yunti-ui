@@ -1,6 +1,7 @@
 import { StoryBook, useControls, useCreateStore } from '@lobehub/ui/storybook';
-import { App, Button, NotificationArgsProps, notification } from '@yuntijs/ui';
+import { Alert, App, Button, NotificationArgsProps, notification } from '@yuntijs/ui';
 
+/** @deprecated Use `App.useApp().notification` instead. */
 export default () => {
   const store = useCreateStore();
   const control: NotificationArgsProps | any = useControls(
@@ -19,6 +20,13 @@ export default () => {
   return (
     <StoryBook levaStore={store}>
       <App>
+        <Alert
+          description="此 demo 演示的是已废弃的静态 API。请改用 App.useApp().notification 来获取绑定 ConfigProvider 上下文的实例。"
+          showIcon
+          style={{ marginBottom: 12 }}
+          title="Deprecated"
+          type="warning"
+        />
         <Button
           onClick={() => {
             notification.warnings({

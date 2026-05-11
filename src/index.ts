@@ -105,7 +105,6 @@ export {
   type MenuProps,
   type MenuRef,
   type MenuTheme,
-  message,
   type MessageArgsProps,
   Pagination,
   type PaginationProps,
@@ -181,6 +180,22 @@ export {
   Watermark,
   type WatermarkProps,
 } from 'antd';
+
+/**
+ * @deprecated Static `message` methods do not pick up `ConfigProvider` context (theme, locale,
+ * prefixCls). Use `App.useApp().message` instead, which is bound to the surrounding `<App />`.
+ *
+ * @example
+ * ```tsx
+ * import { App } from '@yuntijs/ui';
+ *
+ * const MyComponent = () => {
+ *   const { message } = App.useApp();
+ *   return <Button onClick={() => message.success('Done')}>Click</Button>;
+ * };
+ * ```
+ */
+export { message } from 'antd';
 
 // ~ @lobehub/ui
 export {

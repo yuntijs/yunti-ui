@@ -1,8 +1,16 @@
-import { App, Button, Space, notification } from '@yuntijs/ui';
+import { Alert, App, Button, Space, notification } from '@yuntijs/ui';
 
+/** @deprecated Use `App.useApp().notification` instead. */
 export default () => {
   return (
     <App>
+      <Alert
+        description="此 demo 演示的是已废弃的静态 API。请改用 App.useApp().notification 来获取绑定 ConfigProvider 上下文的实例。"
+        showIcon
+        style={{ marginBottom: 12 }}
+        title="Deprecated"
+        type="warning"
+      />
       <Space>
         <Button
           onClick={() => {

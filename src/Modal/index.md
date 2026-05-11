@@ -46,7 +46,13 @@ export default () => {
 
 <code src="./demos/index.tsx" center></code>
 
-### Modal.method usage
+### Modal method usage
+
+:::warning{title=Deprecated static methods}
+`Modal.info`、`Modal.success`、`Modal.error`、`Modal.warning`、`Modal.warn`、`Modal.confirm`、`Modal.destroyAll`、`Modal.config` 等静态方法已废弃，它们无法获取 `ConfigProvider` 的上下文（主题、locale、prefixCls 等）。
+
+请改用 `App.useApp().modal`，下面的 demo 已切换到该用法。
+:::
 
 <code src="./demos/Method.tsx" center></code>
 

@@ -10,6 +10,10 @@ import React, { isValidElement, useState } from 'react';
 const { Panel } = Collapse;
 const { Link, Paragraph, Text } = Typography;
 
+/**
+ * @deprecated antd v6 has built-in support for similar features and notification must be used via
+ * `App.useApp()` to bind to ConfigProvider context. Use `App.useApp().notification` instead.
+ */
 export interface NotificationArgsProps extends AntdNotificationArgsProps {
   /** 如果不为空，则会以折叠面板的形式展示描述，展开后展示报错内容，可用来展示报错详情 */
   detail?: Record<string, any>;
@@ -162,6 +166,21 @@ const warnsFun = (args: NotificationArgsProps) => {
     notice({ ...args, type: 'warning' });
   }
 };
+/**
+ * @deprecated antd v6 has built-in support for similar features (description JSX, stacking) and
+ * static notification methods do not pick up the ConfigProvider context. Use
+ * `App.useApp().notification` instead, which is bound to the surrounding `<App />` context.
+ *
+ * @example
+ * ```tsx
+ * import { App } from '@yuntijs/ui';
+ *
+ * const MyComponent = () => {
+ *   const { notification } = App.useApp();
+ *   return <Button onClick={() => notification.success({ title: 'Done' })}>Notify</Button>;
+ * };
+ * ```
+ */
 export const notification = {
   ...AntdNotification,
   success: (args: NotificationArgsProps) => notice({ ...args, type: 'success' }),
@@ -173,6 +192,10 @@ export const notification = {
   warns: warnsFun,
 };
 
+/**
+ * @deprecated Use `App.useApp().notification` instead. See the named export `notification` for
+ * migration details.
+ */
 export default notification;
 
 export { NotificationGlobalStyle } from './style';
