@@ -11,6 +11,24 @@ Project-specific notes for AI coding agents working on **`@yuntijs/ui`**, a Reac
 - **father** — library build (`father build`), outputs to `es/` (ESM) and `umd/`
 - **@yuntijs/lint** — shared eslint/stylelint/prettier/commitlint config
 - **vitest** — test runner (most components do not have tests yet)
+- **lexical 0.35** — drives `RichTextEditor` and `Mentions` (used in ~40 files, 121 imports). See [Lexical version notes](#lexical-version-notes) before bumping.
+
+## TypeScript module resolution
+
+`tsconfig.json` uses **`moduleResolution: "bundler"`**. Required because `@lobehub/ui`, `@lobehub/tts`, and several other deps ship modern `exports` field with `.d.mts` types — the old `"node"` resolver can't see them and would emit ~100 false "Cannot find module" errors. The library is built via father/dumi (bundlers), so `bundler` matches reality.
+
+**Practical consequence**: don't reach into a dep's internal paths (e.g. `import type { X } from 'some-pkg/es/internal/foo'`). If a type isn't in the package's `exports` map, derive it from the public API:
+
+```ts
+// Bad — relies on internal path not in exports
+// Good — derive from public API
+import type { LexicalEditor } from 'lexical';
+import type { EditorFocusOptions } from 'lexical/LexicalEditor';
+
+type EditorFocusOptions = NonNullable<Parameters<LexicalEditor['focus']>[1]>;
+```
+
+The few existing `// @ts-ignore`-guarded deep imports into `@lobehub/ui/es/chat/ChatItem/components/*` work at runtime under bundler resolution but produce TS errors that have to be suppressed — avoid this pattern in new code.
 
 ## Common commands
 
@@ -133,10 +151,33 @@ When writing new demos, use `App.useApp()`. Keep deprecated forms only when inte
 - Don't bypass the deprecation: if you find static `Modal.info(...)` or static `message.xxx(...)` in new code, fix it to use `App.useApp()`
 - Don't run destructive git ops (`reset --hard`, `push --force`, `branch -D`) without explicit user confirmation
 
+## Lexical version notes
+
+Pinned at **lexical 0.35**. Upgrading to the latest (`0.44`) is non-trivial — there is no automated test coverage of editor behavior, so each minor bump needs manual verification of `RichTextEditor` and `Mentions` demos.
+
+Key breaking changes between 0.35 and 0.44 (research done 2026-05; re-check before bumping):
+
+| Version  | Breaking change                                                                                                                                             | Impact area                                                                                                                                   |
+| -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| 0.38.1   | Static transforms now auto-inherit from parent class (no manual `super` needed)                                                                             | Custom nodes: `MentionNode`, `CustomTextNode`, etc.                                                                                           |
+| 0.39     | `ElementNode` JSON serialization omits default `textFormat`/`textStyle`                                                                                     | Persisted editor state JSON format                                                                                                            |
+| 0.40     | `mergeRegister`/`addClassNames`/`removeClassNames` moved from `@lexical/utils` to `lexical`                                                                 | Import paths (re-exports still work)                                                                                                          |
+| 0.41     | `$toggleLink` removes entire link on collapsed selection; `--lexical-indent-base-value` CSS variable behavior fixed                                         | Link plugin behavior                                                                                                                          |
+| **0.42** | `@lexical/code` Prism functionality deprecated → moved to `@lexical/code-prism` / `@lexical/code-core`; legacy events mode removed; old ContextMenu removed | `RichTextEditor/plugins/CodeHighlightPlugin/*`, anywhere using `CodeNode`, `CodeHighlightNode`, `getCodeLanguageOptions` from `@lexical/code` |
+| 0.43     | Async parent editor delegation behavior change                                                                                                              | Rare; nested editors                                                                                                                          |
+| 0.44     | `CodeNode` expects `CodeExtension` (dev warning if not used); `$createChildrenArray` moved from `@lexical/offset` to `lexical`                              | Code blocks emit dev warnings                                                                                                                 |
+
+When you do bump:
+
+1. Try a one-shot bump to latest first and run `npm run type-check` + `npm run build` — most APIs keep deprecated-compat shims.
+2. Start `npm run dev` and manually exercise: rich text formatting, lists, code blocks, links, markdown round-trip, mentions trigger + selection, on-blur/on-key-down handling.
+3. Pay extra attention to custom nodes under `src/Mentions/plugins/` (the 0.38.1 transform-inheritance change is the most likely silent regression).
+
 ## Useful references
 
 - antd v6 docs: <https://ant.design/components/overview>
 - antd-style: <https://ant-design.github.io/antd-style>
 - dumi: <https://d.umijs.org>
 - father: <https://github.com/umijs/father>
+- lexical releases: <https://github.com/facebook/lexical/releases>
 - Internal lint preset: `@yuntijs/lint` (controls eslint/stylelint/prettier/commitlint)
