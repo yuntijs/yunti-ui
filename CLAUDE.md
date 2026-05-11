@@ -19,11 +19,16 @@ Project-specific notes for AI coding agents working on **`@yuntijs/ui`**, a Reac
 
 **Practical consequence**: don't reach into a dep's internal paths (e.g. `import type { X } from 'some-pkg/es/internal/foo'`). If a type isn't in the package's `exports` map, derive it from the public API:
 
+Bad — relies on an internal path not in the `exports` map (lint/typecheck passes only because of `@ts-ignore` or — pre-bundler — loose `node` resolution):
+
 ```ts
-// Bad — relies on internal path not in exports
-// Good — derive from public API
-import type { LexicalEditor } from 'lexical';
 import type { EditorFocusOptions } from 'lexical/LexicalEditor';
+```
+
+Good — derive from the public API:
+
+```ts
+import type { LexicalEditor } from 'lexical';
 
 type EditorFocusOptions = NonNullable<Parameters<LexicalEditor['focus']>[1]>;
 ```
