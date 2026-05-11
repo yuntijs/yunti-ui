@@ -1,10 +1,11 @@
 import { $convertFromMarkdownString, $convertToMarkdownString } from '@lexical/markdown';
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
-import { CLEAR_EDITOR_COMMAND } from 'lexical';
-import { EditorFocusOptions } from 'lexical/LexicalEditor';
+import { CLEAR_EDITOR_COMMAND, type LexicalEditor } from 'lexical';
 import { useCallback } from 'react';
 
 import { PLAYGROUND_TRANSFORMERS } from '../plugins/MarkdownTransformers';
+
+type EditorFocusOptions = NonNullable<Parameters<LexicalEditor['focus']>[1]>;
 
 const shouldPreserveNewLinesInMarkdown = false;
 

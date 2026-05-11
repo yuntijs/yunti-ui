@@ -1,9 +1,11 @@
-import type { SsmlOptions } from '@lobehub/tts/es/core/utils/genSSML';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { SpeechSynthesis, SpeechSynthesisUtterance } from './const/polyfill';
 
-export interface SpeechSynthesOptions extends Pick<SsmlOptions, 'voice' | 'rate' | 'pitch'> {
+export interface SpeechSynthesOptions {
+  voice: string;
+  rate?: number;
+  pitch?: number;
   onStart?: () => void;
   onStop?: () => void;
 }

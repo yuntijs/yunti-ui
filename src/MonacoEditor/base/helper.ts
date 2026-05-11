@@ -270,14 +270,15 @@ export const useEditor = <T = IEditorInstance>(
 
           const modifiedModel = monaco.editor.createModel(valueRef.current!, languageRef.current);
 
-          editor = monaco.editor.createDiffEditor(containerRef.current, {
+          const diffEditor = monaco.editor.createDiffEditor(containerRef.current, {
             automaticLayout: true,
             ...DIFF_EDITOR_INITIAL_OPTIONS,
             placeholder,
             ...optionRef.current,
           });
 
-          editor.setModel({ original: originalModel, modified: modifiedModel });
+          diffEditor.setModel({ original: originalModel, modified: modifiedModel });
+          editor = diffEditor;
         }
         editorRef.current = editor;
         enhancersRef.current.enhancers?.forEach((en: any) => en(monaco, editor as any));
