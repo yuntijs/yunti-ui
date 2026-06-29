@@ -2,6 +2,12 @@
 
 # Changelog
 
+# [3.0.0-beta.5](https://github.com/yuntijs/yunti-ui/compare/v3.0.0-beta.4...v3.0.0-beta.5) (2026-06-29)
+
+### Bug Fixes
+
+- mathToMarkdown ([13b0d5c](https://github.com/yuntijs/yunti-ui/commit/13b0d5c9432fca31ed0ab9401ab309c36479a0db))
+
 # [3.0.0-beta.4](https://github.com/yuntijs/yunti-ui/compare/v3.0.0-beta.3...v3.0.0-beta.4) (2026-05-11)
 
 ### Features
