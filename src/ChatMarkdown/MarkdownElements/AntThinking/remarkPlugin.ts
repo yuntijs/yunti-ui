@@ -1,5 +1,9 @@
+import { mathToMarkdown } from 'mdast-util-math';
 import { toMarkdown } from 'mdast-util-to-markdown';
 import { SKIP, visit } from 'unist-util-visit';
+
+// 无状态、可复用的序列化扩展,提到模块作用域避免在 map 回调里重复创建
+const mathExtension = mathToMarkdown();
 
 export const remarkCaptureThink = () => {
   return (tree: any) => {
@@ -38,7 +42,7 @@ export const remarkCaptureThink = () => {
               return n.children.map((child: any) => child.value).join('');
             }
 
-            return toMarkdown(n);
+            return toMarkdown(n, { extensions: [mathExtension] });
           })
           .join('\n\n')
           .trim();
