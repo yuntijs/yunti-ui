@@ -2,6 +2,12 @@
 
 # Changelog
 
+# [3.0.0-beta.6](https://github.com/yuntijs/yunti-ui/compare/v3.0.0-beta.5...v3.0.0-beta.6) (2026-07-10)
+
+### Bug Fixes
+
+- **ChatMarkdown:** slice <think> content from raw markdown to avoid toMarkdown crashes ([468442a](https://github.com/yuntijs/yunti-ui/commit/468442a9a80d53fe58e42427c18678a671d2047c))
+
 # [3.0.0-beta.5](https://github.com/yuntijs/yunti-ui/compare/v3.0.0-beta.4...v3.0.0-beta.5) (2026-06-29)
 
 ### Bug Fixes
