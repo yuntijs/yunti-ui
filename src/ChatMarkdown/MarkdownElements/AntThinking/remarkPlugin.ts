@@ -1,51 +1,40 @@
-import { mathToMarkdown } from 'mdast-util-math';
-import { toMarkdown } from 'mdast-util-to-markdown';
 import { SKIP, visit } from 'unist-util-visit';
 
-// 无状态、可复用的序列化扩展,提到模块作用域避免在 map 回调里重复创建
-const mathExtension = mathToMarkdown();
-
 export const remarkCaptureThink = () => {
-  return (tree: any) => {
+  return (tree: any, file: any) => {
+    // 完整原始 markdown 文本。<think> 内容直接从这里按偏移量切出原文,
+    // 不再走 mdast「解析 → 再序列化」的往返 —— 那种做法一旦内容里出现
+    // toMarkdown 不认识的节点(inlineMath / table 等)就会整体报错。
+    const source = String(file?.value ?? '');
+
     visit(tree, 'html', (node, index, parent) => {
       if (node.value === '<think>') {
         const startIndex = index as number;
         let endIndex = startIndex + 1;
-        let hasCloseTag = false;
+        let closeNode: any;
 
         // 查找闭合标签
         while (endIndex < parent.children.length) {
           const sibling = parent.children[endIndex];
           if (sibling.type === 'html' && sibling.value === '</think>') {
-            hasCloseTag = true;
+            closeNode = sibling;
             break;
           }
           endIndex++;
         }
 
         // 计算需要删除的节点范围
-        const deleteCount = hasCloseTag
+        const deleteCount = closeNode
           ? endIndex - startIndex + 1
           : parent.children.length - startIndex;
 
-        // 提取内容节点
-        const contentNodes = parent.children.slice(
-          startIndex + 1,
-          hasCloseTag ? endIndex : undefined
-        );
-
-        // 转换为 Markdown 字符串
-        const content = contentNodes
-          .map((n: any) => {
-            // fix https://github.com/lobehub/lobe-chat/issues/5668
-            if (n.type === 'paragraph') {
-              return n.children.map((child: any) => child.value).join('');
-            }
-
-            return toMarkdown(n, { extensions: [mathExtension] });
-          })
-          .join('\n\n')
-          .trim();
+        // 直接从原始文本里切出 <think> 与 </think> 之间的内容,原样保留
+        const contentStart = node.position?.end?.offset;
+        const contentEnd = closeNode ? closeNode.position?.start?.offset : source.length;
+        const content =
+          typeof contentStart === 'number' && typeof contentEnd === 'number'
+            ? source.slice(contentStart, contentEnd).trim()
+            : '';
 
         // 创建自定义节点
         const thinkNode = {
