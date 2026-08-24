@@ -7,6 +7,7 @@ import { themeMap } from '@/hooks/themeMap';
 
 import { useCdnFn } from '../ConfigProvider';
 import { SingleMonacoEditorComponent } from './base';
+import { DEFAULT_MONACO_VERSION } from './base/const';
 import type {
   IDiffMonacoEditorProps,
   IEditorInstance,
@@ -28,7 +29,7 @@ export interface BaseMonacoEditorProps extends IGeneralManacoEditorProps {
   contextmenu?: boolean;
   /** Enable the rendering of the minimap. Defaults to false. */
   minimapEnabled?: boolean;
-  /** Control the version of monaco-editor be loaded. Defaults to 0.55.1 */
+  /** Control the version of monaco-editor be loaded. Defaults to DEFAULT_MONACO_VERSION. */
   version?: string;
   /** An event emitted when the content of the current model has changed. */
   onChange?: (input: string, event: any) => void;
@@ -54,7 +55,7 @@ export const BaseMonacoEditor: React.FC<
     language,
     theme: themeFromProps,
     minimapEnabled = false,
-    version = '0.55.1',
+    version = DEFAULT_MONACO_VERSION,
     requireConfig: requireConfigFromProps = {},
     options,
     className,
