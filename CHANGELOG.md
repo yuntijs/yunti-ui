@@ -2,6 +2,12 @@
 
 # Changelog
 
+# [3.0.0-beta.7](https://github.com/yuntijs/yunti-ui/compare/v3.0.0-beta.6...v3.0.0-beta.7) (2026-08-24)
+
+### Bug Fixes
+
+- **ConfigProvider:** fall back to @lobehub/ui cdn config, unify monaco version ([1c4db22](https://github.com/yuntijs/yunti-ui/commit/1c4db223b6cc2ca97b58d9b84ed988e4b271d1ed))
+
 # [3.0.0-beta.6](https://github.com/yuntijs/yunti-ui/compare/v3.0.0-beta.5...v3.0.0-beta.6) (2026-07-10)
 
 ### Bug Fixes
